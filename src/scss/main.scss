@@ -1,2 +1,10 @@
 @import "components/ElementList";
 @import 'components/ErrorFeedback';
+@import 'components/WeForm';
+
+
+html, body, #root, .container, .container-fluid{
+    height: 100vh;
+}
+
+
