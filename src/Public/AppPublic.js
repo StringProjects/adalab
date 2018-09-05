@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Landing from './Landing';
+import Login from './Login';
 
 
 class AppPublic extends Component {
   render() {
     return (
      
-        <Landing/>
+        <Login/>
 
     );
   }

@@ -1,5 +1,8 @@
 @import "components/ElementList";
+@import "layaout/WeHeader";
+@import "components/WeHeaderThread";
 @import 'components/WeForm';
+@import 'components/WeInputButton';
 
 
 html, body, #root, .container, .container-fluid{

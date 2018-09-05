@@ -5,7 +5,7 @@ class Thread extends Component {
   render() {
     return (
       <div className="App">
-        
+        <WeHeaderThread/>
       </div>
     );
   }
