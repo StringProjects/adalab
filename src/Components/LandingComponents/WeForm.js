@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+import '@fortawesome/fontawesome-free/css/all.css';
 
 class WeForm extends Component {
   render() {
@@ -16,7 +16,7 @@ class WeForm extends Component {
                 <Input type="password" className="form-control input--login-style" id="pwd" placeholder="Contraseña" name="pswd"/>
               </FormGroup>
               </FormGroup>
-              <Button  type="submit" className="btn btn--login">Submit</Button>
+              <Button  type="submit" className="btn btn--login"><i class="fas fa-chevron-right"></i></Button>
             </Form>
       </div>
     );
