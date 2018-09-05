@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
-import {Button, Form, FormGroup, Input, Nav} from 'reactstrap';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-//import '@fortawesome/fontawesome-free/css/all.css';
+import {
+    Button,
+    Form,
+    FormGroup,
+    Input,
+    Row,
+    Col,
+    Nav
+} from 'reactstrap';
+
 
 class WeForm extends Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container--form-landing">
                 <Form className="form--style">
                     <FormGroup className="form--group">
                         <FormGroup>
@@ -31,7 +38,7 @@ class WeForm extends Component {
                         <i className="fas fa-chevron-right"></i>
                     </Button>
                 </Form>
-            </div>
+                </div>
         );
     }
 }
