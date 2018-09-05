@@ -7,6 +7,7 @@ import WeInputButton from './Components/WeInputButton ';
 class Group extends Component {
   render() {
     return (
+      
       <div className="App">
         
       </div>
