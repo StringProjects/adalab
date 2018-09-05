@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import WeHeader from './LandingComponents/WeHeader';
-import WeForm from './LandingComponents/WeForm';
-import ErrorFeedBack from './LandingComponents/ErrorFeedBack';
+import WeForm from '../Components/LandingComponents/WeForm';
+
 
 class Landing extends Component {
   render() {
     return (
-      <div className="App">
-        
-      </div>
+     
+        <WeForm/>
+     
     );
   }
 }
 
-export default  ErrorFeedBack;
+export default  Landing;
