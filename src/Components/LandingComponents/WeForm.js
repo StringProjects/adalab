@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Nav} from 'reactstrap';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-//import '@fortawesome/fontawesome-free/css/all.css';
+
 
 class WeForm extends Component {
     render() {
