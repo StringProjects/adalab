@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import WeHeader from './LandingComponents/WeHeader';
-import WeForm from './LandingComponents/WeForm';
-import ErrorFeedBack from './LandingComponents/ErrorFeedBack';
-import WeHeaderThread from '../private/Components/WeHeaderThread';
+import WeHeader from '../Components/LandingComponents/WeHeader';
+import WeHeaderThread from '../Components/WeHeaderThread';
+import WeForm from '../Components/LandingComponents/WeForm';
+
 
 class Landing extends Component {
   render() {
     return (
       <div className="App">
-        {/* <WeHeader/> */}
-        <WeHeaderThread/>
+        <WeHeader/>
+        {/* <WeHeaderThread/> */}
+        <WeForm/>
       </div>
     );
   }

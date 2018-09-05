@@ -29,3 +29,35 @@
 .HeaderThread__logo {
   color: #006ef5;
   font-weight: 600; }
+
+.form--style {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between; }
+
+.form--group {
+  flex: 1; }
+
+.form-control.input--login-style {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  padding: 0; }
+
+.btn.btn--login {
+  margin: auto auto 75px;
+  width: 70px;
+  border-radius: 35px;
+  height: 70px;
+  background-color: #006ef5; }
+
+.icon--psw {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  color: #ced4da; }
+
+html, body, #root, .container, .container-fluid {
+  height: 100vh; }
