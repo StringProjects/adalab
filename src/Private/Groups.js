@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-class WeForm extends Component {
+
+class Groups extends Component {
   render() {
     return (
       <div className="App">
@@ -10,4 +11,4 @@ class WeForm extends Component {
   }
 }
 
-export default WeForm;
+export default Groups;

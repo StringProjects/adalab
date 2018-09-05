@@ -1,0 +1,17 @@
+.Input__form {
+  display: flex;
+}
+
+.Input__text {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid  #989898;
+}
+
+.Input__btn {
+  width: 100px;
+  height: 40px;
+  background-color:#006ef5;
+  border-radius: 30px;
+}

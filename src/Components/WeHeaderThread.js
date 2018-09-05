@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import '@fortawesome/fontawesome-free/css/all.css';
 
 class WeHeaderThread extends Component {
   render() {
