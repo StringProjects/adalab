@@ -119,6 +119,12 @@
   .form--group {
     padding: 0; } }
 
+.WeList-wrapper {
+  max-width: 320px; }
+
+.list-container {
+  list-style: none; }
+
 .Input__form {
   display: flex; }
 
