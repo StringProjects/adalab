@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import { Form, Input, Button } from 'reactstrap';
 
-
-class Group extends Component {
+class WeInputButton extends Component {
   render() {
     return (
-      <div className="App">
-        
-      </div>
+      <Form className='Input__form'>
+        <Input
+          type="text"
+          className="form-control Input__text"
+          id="message"
+          placeholder="Type message"
+          name="message" />
+        <Button
+          type="submit"
+          className="btn Input__btn" >
+          <p>Send</p>
+        </Button>
+      </Form>
     );
   }
 }
 
-export default Group;
+export default WeInputButton;
