@@ -11,6 +11,25 @@ import {
 
 
 class WeForm extends Component {
+  constructor(props){
+      super(props);
+      this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+      
+      if(event.target.classList.contains('show-off')){
+          console.log("entra")
+        document.getElementById('pwd').type = 'text';
+        document.getElementById('hide-psw').classList.remove('show-off');
+      }else{
+          document.getElementById('pwd').type = 'password';
+          document.getElementById('hide-psw').classList.add('show-off');
+      }
+      
+  }
+
+
     render() {
         return (
             <div className="container--form-landing">
@@ -31,7 +50,7 @@ class WeForm extends Component {
                                 id="pwd"
                                 placeholder="Contraseña"
                                 name="pswd"/>
-                            <i className="far fa-eye-slash icon--psw"></i>
+                           <i onClick={this.handleClick} id="hide-psw" className="far fa-eye-slash icon--psw show-off"></i>
                         </FormGroup>
                     </FormGroup>
                     <Button type="submit" className="btn btn--login">
