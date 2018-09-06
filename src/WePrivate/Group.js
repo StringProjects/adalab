@@ -12,15 +12,14 @@ class Group extends Component {
       <div className= "wrapper-group">
       <WeHeader/>
       <WeButtonOption/>
-      <div className= "wrapper-nameGroup">
-        <img className="rounded-circle imgGroup" width="50px" height="50px" src={profile} alt="profile picture"/>
-        <div className= "wrapper-name-number">
-        <h2 className="nameGroup">Adalab</h2>
-        <h3 className="numberGroup">10 personas</h3>
-        </div>
-        </div>
-      
-      <WeList/>
+      <WeList
+              image={profile}
+              group="Adalat"
+              name="María"
+              date="15:13"
+              message="last message from this group" 
+              answers="8 answers"
+      />
       <WeInputButton/>
       </div>
     );
