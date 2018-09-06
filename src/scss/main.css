@@ -98,7 +98,11 @@
   right: 0;
   color: #ced4da; }
 
-.button-group .button-option::before {
+.Button-option-link {
+  margin-left: auto;
+  margin-right: auto; }
+
+.button-group .Button-option::before {
   display: none; }
 
 .dropdown-container {
@@ -118,6 +122,21 @@
 @media (max-width: 375px) {
   .form--group {
     padding: 0; } }
+
+.wrapper-nameGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center; }
+
+.nameGroup {
+  padding-left: 30px; }
+
+.numberGroup {
+  align-self: stretch;
+  font-size: 14px;
+  width: 100%;
+  padding-left: 30px; }
 
 .Input__form {
   display: flex; }

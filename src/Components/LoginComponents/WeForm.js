@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Button,
     Form,
@@ -8,6 +8,7 @@ import {
     Col,
     Nav
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class WeForm extends Component {
     constructor(props) {
@@ -63,7 +64,7 @@ class WeForm extends Component {
                                 className="form-control input--login-style"
                                 id="email"
                                 placeholder="Email"
-                                name="email"/>
+                                name="email" />
                         </FormGroup>
                         <FormGroup>
                             <Input
@@ -71,16 +72,20 @@ class WeForm extends Component {
                                 className="form-control input--login-style"
                                 id="pwd"
                                 placeholder="Contraseña"
-                                name="pswd"/>
+                                name="pswd" />
                             <i
                                 onClick={this.handleClick}
                                 id="hide-psw"
-                                className="far fa-eye-slash icon--psw show-off"></i>
+                                className="far fa-eye-slash icon--psw show-off"
+                            >
+                            </i>
                         </FormGroup>
                     </FormGroup>
-                    <Button type="submit" className="btn btn--login">
-                        <i className="fas fa-chevron-right"></i>
-                    </Button>
+                    <Link to='/private' className="Button-option-link">
+                        <Button type="submit" className="btn btn--login">
+                            <i className="fas fa-chevron-right"></i>
+                        </Button>
+                    </Link>
                 </Form>
             </div>
         );
