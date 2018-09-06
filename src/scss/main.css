@@ -98,7 +98,7 @@
   right: 0;
   color: #ced4da; }
 
-.Button-option::after {
+.button-group .button-option::before {
   display: none; }
 
 .dropdown-container {

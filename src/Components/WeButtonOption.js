@@ -23,8 +23,8 @@ class WeButtonOption extends Component {
       <Button className='btn HeaderThread__btn'>
          <i class="fas fa-arrow-left HeaderThread__arrow"></i>
        </Button>
-        <ButtonDropdown className="Cris" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle className="Button-option" caret color="primary">
+        <ButtonDropdown className="button-group" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+          <DropdownToggle className="button-option" caret color="primary">
           ···
           </DropdownToggle>
           <DropdownMenu className="dropdown-menu dropdown-menu-right">
