@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import AppPublic from './Public/AppPublic';
-import AppPrivate from './Private/AppPrivate';
+import AppPublic from './WePublic/AppPublic';
+import AppPrivate from './WePrivate/AppPrivate';
 
 class App extends Component {
   render() {
     return (
       <div className="container">
-        <AppPrivate/>
-        {/* <AppPublic/> */}
+        {/* <AppPrivate/> */}
+        <AppPublic/>
       </div>
     );
   }
