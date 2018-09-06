@@ -1,3 +1,67 @@
+.element-wrapper {
+  padding-top: 22px; }
+
+.group-title {
+  font-size: 16px;
+  margin-bottom: 0; }
+
+.person-title {
+  font-size: 16px;
+  margin-bottom: 0;
+  padding: 0; }
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.message-text {
+  font-size: 16px; }
+
+.date-text {
+  font-size: 13px; }
+
+.date-wrapper {
+  padding: 0; }
+
+.answers-number {
+  font-size: 13px; }
+
+.add-answer {
+  font-size: 13px; }
+
+.Header__title {
+  color: #006ef5;
+  font-weight: 600;
+  text-align: center;
+  padding: 30px 30px; }
+
+.HeaderThread__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 30px 30px;
+  border-bottom: 1px solid #989898; }
+
+.HeaderThread__btn {
+  background-color: #ffffff;
+  border: 0px; }
+
+.HeaderThread__btn:hover {
+  background-color: #ffffff;
+  border: 0px; }
+
+.HeaderThread__arrow {
+  font-size: 22px;
+  color: #989898; }
+
+.HeaderThread__arrow:hover {
+  color: #006ef5; }
+
+.HeaderThread__logo {
+  color: #006ef5;
+  font-weight: 600; }
+
 .form--style {
   height: 100%;
   display: flex;
@@ -27,6 +91,7 @@
   right: 0;
   color: #ced4da; }
 
+
 .Button-option::after {
   display: none; }
 
@@ -34,6 +99,23 @@
   display: flex;
   justify-content: space-between;
   padding: 30px 30px; }
+
+.Input__form {
+  display: flex; }
+
+.Input__text {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid  #989898; }
+
+.Input__btn {
+  width: 100px;
+  height: 40px;
+  background-color: #006ef5;
+  border-radius: 30px;
+}
+
 
 html, body, #root, .container, .container-fluid {
   height: 100vh; }
