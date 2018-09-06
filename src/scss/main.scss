@@ -3,9 +3,19 @@
 @import "components/WeHeaderThread";
 @import 'components/WeForm';
 @import 'components/WeButtonOption';
+@import 'pages/Landing';
+
 @import 'components/WeInputButton';
 
 
-html, body, #root, .container, .container-fluid{
-    height: 100vh;
+body, #root{
+
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+    top: 0;
 }

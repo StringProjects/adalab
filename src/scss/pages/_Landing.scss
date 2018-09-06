@@ -1,0 +1,23 @@
+
+
+.main--landing{
+    margin-top: 185px;
+}
+
+
+@media (min-width: 1024px) {
+
+    .container--text-login{
+        margin-top: 130px;
+    }
+    .container--form-landing {
+        margin-top: 130px;
+    }
+
+}
+
+@media (max-width: 375px){
+    .form--group{
+        padding: 0;
+    }
+}
