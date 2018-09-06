@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
 import Login from './WePublic/Login';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
+import Thread from './WePrivate/Thread';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
