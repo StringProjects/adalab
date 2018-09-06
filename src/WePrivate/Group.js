@@ -4,6 +4,7 @@ import WeButtonOption from '../Components/WeButtonOption';
 import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
 import ElementList from '../Components/WeListComponents/ElementList';
+import profile from '../images/wp-image-58683558-random-picture.jpg';
 
 class Group extends Component {
   render() {
@@ -11,7 +12,14 @@ class Group extends Component {
       <div className= "wrapper-group">
       <WeHeader/>
       <WeButtonOption/>
-      <WeList/>
+      <WeList
+              image={profile}
+              group="Adalat"
+              name="María"
+              date="15:13"
+              message="last message from this group" 
+              answers="8 answers"
+      />
       <WeInputButton/>
       </div>
     );
