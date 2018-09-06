@@ -1,3 +1,34 @@
+.element-wrapper {
+  padding-top: 22px; }
+
+.group-title {
+  font-size: 16px;
+  margin-bottom: 0; }
+
+.person-title {
+  font-size: 16px;
+  margin-bottom: 0;
+  padding: 0; }
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.message-text {
+  font-size: 16px; }
+
+.date-text {
+  font-size: 13px; }
+
+.date-wrapper {
+  padding: 0; }
+
+.answers-number {
+  font-size: 13px; }
+
+.add-answer {
+  font-size: 13px; }
 .Header__title {
   color: #006ef5;
   font-weight: 600;

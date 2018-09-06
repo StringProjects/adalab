@@ -5,7 +5,7 @@ class WeList extends Component {
   render() {
     return (
       <div className="App">
-        
+        <ElementList/>
       </div>
     );
   }
