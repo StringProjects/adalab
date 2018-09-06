@@ -8,8 +8,7 @@ import WeList from '../Components/WeList';
 class AppPrivate extends Component {
   render() {
     return (
-      <div className="App">
-         <WeList/>
+      <div className="AppPrivate">
          <Group/>
       </div>
     );
