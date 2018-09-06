@@ -98,6 +98,10 @@
   right: 0;
   color: #ced4da; }
 
+.Button-option-link {
+  margin-left: auto;
+  margin-right: auto; }
+
 .Button-option::after {
   display: none; }
 
