@@ -4,6 +4,10 @@ import ErrorFeedback from '../LoginComponents/ErrorFeedback';
 
 class WeForm extends Component {
     render() {
+        const {
+            openedErrorFeedback,
+            toggleErrorFeedback,
+        } = this.props;
         return (
             <div className="container-fluid">
                 <Form className="form--style">
@@ -26,8 +30,11 @@ class WeForm extends Component {
                             <i className="far fa-eye-slash icon--psw"></i>
                         </FormGroup>
                     </FormGroup>
-                    <ErrorFeedback/>
-                    <Button type="submit" className="btn btn--login">
+                    <ErrorFeedback
+                        openedErrorFeedback={openedErrorFeedback}
+                        
+                    />
+                    <Button type="submit" className="btn btn--login" onClick={toggleErrorFeedback}>
                         <i className="fas fa-chevron-right"></i>
                     </Button>
                 </Form>

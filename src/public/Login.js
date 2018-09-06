@@ -3,9 +3,16 @@ import WeForm from '../Components/LoginComponents/WeForm';
 
 class Landing extends Component {
   render() {
+    const {
+      openedErrorFeedback,
+      toggleErrorFeedback,
+    } = this.props;
     return (
       <div>
-        <WeForm/>
+        <WeForm
+          openedErrorFeedback={openedErrorFeedback}
+          toggleErrorFeedback={toggleErrorFeedback}
+        />
       </div>
     );
   }

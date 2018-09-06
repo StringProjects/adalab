@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import { Alert } from 'reactstrap';
 
 class ErrorFeedBack extends Component {
+
   render() {
+      const {
+        openedErrorFeedback,
+        toggleErrorFeedback,
+      } = this.props;
     return (
-      <Alert color="danger" className="pepe">
-        El nombre de usuario o contraseña que has introducido no coincide con nuestro registro. Registrate para crear una cuenta.
-      </Alert>
+      <div>
+        {
+          openedErrorFeedback && <Alert color="danger" >
+          El nombre de usuario o contraseña que has introducido no coincide con nuestro registro. Registrate para crear una cuenta.
+        </Alert>
+        }
+      </div>
     );
   }
 }

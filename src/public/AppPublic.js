@@ -4,10 +4,15 @@ import Login from './Login';
 
 class AppPublic extends Component {
   render() {
+    const {
+      openedErrorFeedback, 
+      toggleErrorFeedback,
+    } = this.props;
     return (
-     
-        <Login/>
-
+        <Login
+          openedErrorFeedback={openedErrorFeedback}
+          toggleErrorFeedback={toggleErrorFeedback}
+        />
     );
   }
 }
