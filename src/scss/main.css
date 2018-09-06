@@ -109,6 +109,3 @@
   height: 40px;
   background-color: #006ef5;
   border-radius: 30px; }
-
-html, body, #root, .container, .container-fluid {
-  height: 100vh; }
