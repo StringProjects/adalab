@@ -1,0 +1,16 @@
+.wrapper-nameGroup{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    
+}
+.nameGroup{
+    padding-left: 30px;
+}
+.numberGroup{
+    align-self: stretch;
+    font-size: 14px;
+    width: 100%;
+    padding-left: 30px;
+}

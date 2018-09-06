@@ -10,26 +10,14 @@ class WeList extends Component {
         <ul className="list-group">
           <li>
             <ElementList
-              image={profile}
-              group="Adalat"
-              name="María"
-              date="15:13"
-              message="last message from this group" 
-              addAnswer="Add answer"
+              image={this.props.image}
+              group={this.props.group}
+              name={this.props.name}
+              date={this.props.date}
+              message={this.props.message}
+              answers={this.props.answers}
             />
           </li>
-          <li>
-            <ElementList 
-                image={profile}
-                name="Bis"
-                date="12:25"
-                message="my message" 
-                answers="8 answers"
-              />
-          </li>
-            
-          
-          
         </ul>
       </div>  
     );
