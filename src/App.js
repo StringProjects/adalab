@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import AppPublic from './public/AppPublic';
-import AppPrivate from './private/AppPrivate';
-import Login from './public/Login';
+
+import Login from './WePublic/Login';
+import AppPublic from './WePublic/AppPublic';
+import AppPrivate from './WePrivate/AppPrivate';
 
 class App extends Component {
   render() {

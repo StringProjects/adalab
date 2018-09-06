@@ -1,4 +1,4 @@
-.element-wrapper {
+.ElementList-wrapper {
   padding-top: 22px; }
 
 .group-title {
@@ -19,16 +19,20 @@
   font-size: 16px; }
 
 .date-text {
-  font-size: 13px; }
+  color: grey;
+  font-size: 13px;
+  margin-left: 10px; }
 
 .date-wrapper {
   padding: 0; }
 
 .answers-number {
-  font-size: 13px; }
+  font-size: 13px;
+  color: grey; }
 
 .add-answer {
-  font-size: 13px; }
+  font-size: 13px;
+  color: grey; }
 
 .Header__title {
   color: #006ef5;
