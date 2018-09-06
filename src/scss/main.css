@@ -27,5 +27,13 @@
   right: 0;
   color: #ced4da; }
 
+.Button-option::after {
+  display: none; }
+
+.dropdown-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px; }
+
 html, body, #root, .container, .container-fluid {
   height: 100vh; }

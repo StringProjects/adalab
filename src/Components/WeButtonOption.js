@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ButtonDropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap';
+import {ButtonDropdown, DropdownItem, DropdownToggle, DropdownMenu, Button} from 'reactstrap';
 
 class WeButtonOption extends Component {
   constructor(props) {
@@ -19,12 +19,15 @@ class WeButtonOption extends Component {
 
   render() {
     return (
-      <div className="pepe">
-        <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle caret color="primary">
+      <div className="dropdown-container">
+      <Button className='btn HeaderThread__btn'>
+         <i class="fas fa-arrow-left HeaderThread__arrow"></i>
+       </Button>
+        <ButtonDropdown className="Cris" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+          <DropdownToggle className="Button-option" caret color="primary">
           ···
           </DropdownToggle>
-          <DropdownMenu>
+          <DropdownMenu className="dropdown-menu dropdown-menu-right">
             <DropdownItem> Crear grupo </DropdownItem>
             <DropdownItem> Cerrar sesión</DropdownItem>
           </DropdownMenu>
