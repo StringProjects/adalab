@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import Login from './WePublic/Login';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import { Route, Switch } from 'react-router-dom';
