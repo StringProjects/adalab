@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Nav} from 'reactstrap';
 
-
 class WeForm extends Component {
     render() {
         return (
