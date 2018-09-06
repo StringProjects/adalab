@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import ElementList from './WeListComponents/ElementList';
+import ListHeader from './WeListComponents/ListHeader';
+import profile from '../images/wp-image-58683558-random-picture.jpg';
 
 class WeList extends Component {
   render() {
     return (
       <div className="welist-wrapper">
-        <header></header>
-        <ul className="list-group">
-          <ElementList 
+        <ListHeader/>
+        {/* <ul className="list-group">
+          <ElementList
+            image={profile}
             group="Adalat"
+            date="15:13"
             message="last message from this group" 
             addAnswer="Add answer"
           />
@@ -18,7 +22,7 @@ class WeList extends Component {
             message="my message" 
             answers="8 answers"
           />
-        </ul>
+        </ul> */}
       </div>  
     );
   }
