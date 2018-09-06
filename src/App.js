@@ -14,6 +14,7 @@ class App extends Component {
           <Route exact path='/' component={AppPublic} />
           <Route path='/private' component={AppPrivate} />
           <Route path='/group' component={Group} />
+          <Route path='/Thread' component={Thread} />
         </Switch>
       </div>
     );
