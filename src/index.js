@@ -5,8 +5,11 @@ import './scss/main.css';
 import App from './App';
 import '@fortawesome/fontawesome-free/css/all.css';
 import registerServiceWorker from './registerServiceWorker';
-import AppPrivate from './private/AppPrivate';
+import { HashRouter } from 'react-router-dom';
 
-ReactDOM.render(<App />,
-    document.getElementById('root'));
+ReactDOM.render(
+  <HashRouter>
+    <App />
+  </HashRouter>,
+  document.getElementById('root'));
 registerServiceWorker();
