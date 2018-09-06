@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import WeButtonOption from '../Components/WeButtonOption';
 
 
 class Groups extends Component {
   render() {
     return (
-      <div className="App">
-        
-      </div>
+      <WeButtonOption/>
+
+
+
     );
   }
 }

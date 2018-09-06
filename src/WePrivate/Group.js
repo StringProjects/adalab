@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import WeList from '../Components/WeList';
+import WeButtonOption from '../Components/WeButtonOption';
 
 
 class Group extends Component {
   render() {
     return (
-      <WeList/>
+
+      <div className="App">
+
+      </div>
     );
   }
 }
