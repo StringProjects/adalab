@@ -7,7 +7,6 @@ class Landing extends Component {
   render() {
     return (
 
-        // <WeForm/>
         <Groups/>
     );
   }
