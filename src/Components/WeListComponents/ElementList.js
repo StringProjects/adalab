@@ -1,43 +1,47 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardLink,
   CardTitle, CardSubtitle } from 'reactstrap';
-import profile from '../../images/wp-image-58683558-random-picture.jpg';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
+
 
 class ElementList extends Component {
   render() {
     return (
-      <Row className="element-wrapper">
-        <Col xs="2" md="2" lg="2" xl="2">
-            <div className="img">
-                <img className="rounded-circle" width="50px" height="50px" src={profile} alt="profile picture"/>
-            </div>
-        </Col>
-        <Col xs="9" md="9" lg="9" xl="9">
+      <Row className="ElementList-wrapper">
+          <Col xs="2" md="2" lg="1" xl="1" className="image-column">
+              <img className="rounded-circle" width="50px" height="50px" src={this.props.image} alt="profile picture"/>
+          </Col>
+        <Col xs="9" md="9" lg="11" xl="11">
+        
+            <Row>
+              <Col>
+                <h3 className="group-title">
+                {this.props.group}
+                </h3>
+              </Col>
+            </Row>
+          <Row>
+              <Col className="flex-wrapper">
+                <h3 className="person-title">
+                  {this.props.name}
+                  <span className="date-text">{this.props.date}</span>
+                </h3>
+              </Col>
+          </Row>
           <Row>
               <Col>
-                  <h3 className="group-title">Nombre grupo</h3>
+                <p className="message-text">{this.props.message}</p>
               </Col>
           </Row>
           <Row>
               <Col className="flex-wrapper">
-                <h4 className="person-title">Nombre persona</h4>  
-                <span className="date-text">hora</span>
-              </Col>
-          </Row>
-          <Row>
-              <Col>
-                  <p className="message-text">Aquí iría el mensaje que escribe cada persona</p>
-              </Col>
-          </Row>
-          <Row>
-              <Col className="flex-wrapper">
-                  <span className="answers-number">número respuestas</span>
-                  <span className="add-answer">Añadir respuesta</span>
+               <span className="answers-number">{this.props.answers}</span>
+               <span className="add-answer">{this.props.addAnswer}</span>
               </Col>
           </Row>
         </Col>
       </Row>
+      
     );
   }
 }
