@@ -9,7 +9,7 @@ class AppPrivate extends Component {
   render() {
     return (
       <div className="App">
-         {/* <WeList/> */}
+         <WeList/>
          <Group/>
       </div>
     );
