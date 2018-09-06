@@ -2,12 +2,14 @@
 @import "layaout/WeHeader";
 @import "components/WeHeaderThread";
 @import 'components/WeForm';
+@import 'components/WeButtonOption';
 @import 'pages/Landing';
+
 @import 'components/WeInputButton';
 
 
 body, #root{
-   
+
 }
 
 .header{
@@ -15,6 +17,5 @@ body, #root{
     width: 100%;
     background-color: white;
     z-index: 1;
-    top: 0; 
+    top: 0;
 }
-
