@@ -62,6 +62,9 @@
   right: 0;
   color: #ced4da; }
 
+.main--landing {
+  margin-top: 185px; }
+
 @media (min-width: 1024px) {
   .container--text-login {
     margin-top: 130px; }
@@ -72,5 +75,9 @@
   .form--group {
     padding: 0; } }
 
-body, #root {
-  height: 100vh; }
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  top: 0; }

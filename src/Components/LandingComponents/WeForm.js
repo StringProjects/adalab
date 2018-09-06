@@ -22,9 +22,12 @@ class WeForm extends Component {
           console.log("entra")
         document.getElementById('pwd').type = 'text';
         document.getElementById('hide-psw').classList.remove('show-off');
+        document.getElementById('hide-psw').classList.remove('fa-eye-slash');
+        document.getElementById('hide-psw').classList.add('fa-eye');
       }else{
           document.getElementById('pwd').type = 'password';
           document.getElementById('hide-psw').classList.add('show-off');
+          document.getElementById('hide-psw').classList.add('fa-eye-slash');
       }
       
   }

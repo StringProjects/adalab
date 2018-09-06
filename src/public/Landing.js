@@ -9,7 +9,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="wrapper">
-          <header className="header--landing">
+          <header className="header--landing header">
           <WeHeader/>
           </header>
           <main className="main--landing">
