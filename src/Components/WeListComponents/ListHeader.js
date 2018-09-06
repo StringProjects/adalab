@@ -1,23 +1,54 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'reactstrap';
 
-class ListHeader extends Component {
-  render() {
-    return (
-      <div className="ListHeader-wrapper">
-        <img src="" alt=""/>
-        <h3>
-            Nombre grupo
-            <span>hora</span>
-        </h3>
-        <h3>
-            Nombre persona
-            <span>hora</span>
-        </h3>
-        <p>mensaje</p>
-        <span>nº personas</span>
 
-      </div>
-    )
-  }
-}
-export default ListHeader;
+// class ListHeader extends Component {
+//   render() {
+//     return (
+//         <Row className="ElementList-wrapper">
+//           <Col xs="2" md="2" lg="2" xl="2">
+//             {this.props.image ?
+//               <div className="img">
+//                   <img className="rounded-circle" width="50px" height="50px" src={this.props.image} alt="profile picture"/>
+//               </div>
+//              : "" }
+//           </Col>
+//         <Col xs="9" md="9" lg="9" xl="9">
+//         {this.props.group ? 
+//             <Row>
+//               <Col>
+//                 <h3 className="group-title">
+//                 {this.props.group}
+//                 {this.props.date ? <span className="date-text">{this.props.date}</span> : "" }
+//                 </h3>
+//                 <span>{this.props.numberOfPeople}</span>
+//               </Col>
+//             </Row>
+//           : "" }
+//         {this.props.name ? 
+//           <Row>
+//               <Col className="flex-wrapper">
+//                 <h3 className="person-title">
+//                     {this.props.name}
+//                     {this.props.date ? <span className="date-text">{this.props.date}</span> : "" }
+//                 </h3>
+//               </Col>
+//           </Row>
+//         : ""}
+//           <Row>
+//               <Col>
+//                 {this.props.message ? <p className="message-text">{this.props.message}</p> : "" }
+//               </Col>
+//           </Row>
+//           <Row>
+//               <Col className="flex-wrapper">
+//                 {this.props.answers ? <span className="answers-number">{this.props.answers}</span> : "" }
+//                 {this.props.addAnswer ? <span className="add-answer">{this.props.addAnswer}</span> : "" }
+//               </Col>
+//           </Row>
+//         </Col>
+//       </Row>
+//     )
+//   }
+// }
+// export default ListHeader;
