@@ -81,7 +81,7 @@ class WeForm extends Component {
                             </i>
                         </FormGroup>
                     </FormGroup>
-                    <Link to='/private'>
+                    <Link to='/private' className="Button-option-link">
                         <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
                         </Button>
