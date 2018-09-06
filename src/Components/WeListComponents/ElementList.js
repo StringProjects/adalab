@@ -14,26 +14,32 @@ class ElementList extends Component {
             </div>
         </Col>
         <Col xs="9" md="9" lg="9" xl="9">
+        {this.props.group ? 
+            <Row>
+              <Col>
+                <h3 className="group-title">{this.props.group}</h3>
+              </Col>
+            </Row>
+          : ""}
+        {this.props.name ? 
+          <Row>
+              <Col className="flex-wrapper">
+                <h4 className="person-title">
+                    {this.props.name}
+                    {this.props.date ? <span className="date-text">{this.props.date}</span> : "" }
+                </h4>
+              </Col>
+          </Row>
+        : ""}
           <Row>
               <Col>
-                  <h3 className="group-title">Nombre grupo</h3>
+                {this.props.message ? <p className="message-text">{this.props.message}</p> : "" }
               </Col>
           </Row>
           <Row>
               <Col className="flex-wrapper">
-                <h4 className="person-title">Nombre persona</h4>  
-                <span className="date-text">hora</span>
-              </Col>
-          </Row>
-          <Row>
-              <Col>
-                  <p className="message-text">Aquí iría el mensaje que escribe cada persona</p>
-              </Col>
-          </Row>
-          <Row>
-              <Col className="flex-wrapper">
-                  <span className="answers-number">número respuestas</span>
-                  <span className="add-answer">Añadir respuesta</span>
+                {this.props.answers ? <span className="answers-number">{this.props.answers}</span> : "" }
+                {this.props.addAnswer ? <span className="add-answer">{this.props.addAnswer}</span> : "" }
               </Col>
           </Row>
         </Col>
