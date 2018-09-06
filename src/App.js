@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AppPublic from './Public/AppPublic';
-import AppPrivate from './Private/AppPrivate';
+import AppPublic from './WePublic/AppPublic';
+import AppPrivate from './WePrivate/AppPrivate';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
       <div className="container-fluid">
         <Switch>
           <Route exact path='/' component={AppPublic} />
-          <Route path='/about' component={AppPrivate} />
+          <Route path='/private' component={AppPrivate} />
         </Switch>
       </div>
     );

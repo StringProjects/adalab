@@ -7,7 +7,7 @@ class WeHeaderThread extends Component {
       <div className='container-fluid'>
         <header className='HeaderThread__container'>
           <Button className='btn HeaderThread__btn'>
-            <i class="fas fa-arrow-left HeaderThread__arrow"></i>
+            <i className="fas fa-arrow-left HeaderThread__arrow"></i>
           </Button>
           <h1 className='HeaderThread__name'>Hilo</h1>
           <h2 className='HeaderThread__logo'>we .</h2>
