@@ -40,7 +40,7 @@
   align-content: space-between; }
 
 .form--group {
-  flex: 1; }
+  padding: 0 20px 0 20px; }
 
 .input--login-style {
   border-top: 0;
@@ -50,10 +50,10 @@
   padding: 0; }
 
 .btn--login {
-  margin: auto auto 75px;
-  width: 70px;
+  margin: 150px auto auto;
+  width: 60px;
   border-radius: 35px;
-  height: 70px;
+  height: 60px;
   background-color: #006ef5; }
 
 .icon--psw {
@@ -61,6 +61,16 @@
   top: 16px;
   right: 0;
   color: #ced4da; }
+
+@media (min-width: 1024px) {
+  .container--text-login {
+    margin-top: 130px; }
+  .container--form-landing {
+    margin-top: 130px; } }
+
+@media (max-width: 375px) {
+  .form--group {
+    padding: 0; } }
 
 body, #root {
   height: 100vh; }

@@ -10,7 +10,7 @@
 }
 
 .form--group {
-    flex: 1;
+    padding: 0 20px 0 20px;
 }
 
 .input--login-style {
@@ -22,10 +22,10 @@
 }
 
 .btn--login {
-    margin: auto auto 75px;
-    width: 70px;
+    margin: 150px auto auto;
+    width: 60px;
     border-radius: 35px;
-    height: 70px;
+    height: 60px;
     background-color: #006ef5;
 }
 
