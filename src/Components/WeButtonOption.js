@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {ButtonDropdown, DropdownItem, DropdownToggle, DropdownMenu, Button} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class WeButtonOption extends Component {
   constructor(props) {
@@ -20,10 +21,12 @@ class WeButtonOption extends Component {
   render() {
     return (
       <div className="dropdown-container">
-      <Button className='btn HeaderThread__btn'>
-         <i class="fas fa-arrow-left HeaderThread__arrow"></i>
-       </Button>
-        <ButtonDropdown className="Cris" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <Link to='/'>
+          <Button className='btn HeaderThread__btn'>
+            <i className="fas fa-arrow-left HeaderThread__arrow"></i>
+          </Button>
+        </Link>
+        <ButtonDropdown className="button-group" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
           <DropdownToggle className="Button-option" caret color="primary">
           ···
           </DropdownToggle>
