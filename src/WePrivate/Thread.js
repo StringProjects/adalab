@@ -10,7 +10,7 @@ class Thread extends Component {
       <div className="App">
         <WeHeaderThread/>
         <WeList
-          personName=
+          
         />
         <WeInputButton/>
       </div>

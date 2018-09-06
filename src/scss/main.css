@@ -98,7 +98,11 @@
   right: 0;
   color: #ced4da; }
 
-.Button-option::after {
+.Button-option-link {
+  margin-left: auto;
+  margin-right: auto; }
+
+.button-group .Button-option::before {
   display: none; }
 
 .dropdown-container {
@@ -119,12 +123,29 @@
   .form--group {
     padding: 0; } }
 
+<<<<<<< HEAD
 .WeList-wrapper {
   max-width: 320px;
   margin: 20px; }
 
 .list-container {
   list-style: none; }
+=======
+.wrapper-nameGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center; }
+
+.nameGroup {
+  padding-left: 30px; }
+
+.numberGroup {
+  align-self: stretch;
+  font-size: 14px;
+  width: 100%;
+  padding-left: 30px; }
+>>>>>>> master
 
 .Input__form {
   display: flex; }
