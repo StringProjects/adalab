@@ -45,7 +45,7 @@ class App extends Component {
       }).then((response) => response.json({})).then((data) => {
         
         this.savedToken(data.user.auth_token)
-        //console.log(data.user.auth_token);
+        console.log(data.user.auth_token);
       });
     }
 
