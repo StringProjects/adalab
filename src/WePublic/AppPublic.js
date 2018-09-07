@@ -58,13 +58,21 @@ handleInputPswLoginValue(e) {
 }
 
   render() {
+    const {
+      openedErrorFeedback,
+      toggleErrorFeedback,
+      } = this.props;
+    console.log('AppPublic openedErrorFeedback',openedErrorFeedback);
     return (
      
       <div className="container-fluid">
       <Login
-          onInputEmail={this.handleInputEmailLoginValue}
-          onInputPsw={this.handleInputPswLoginValue}/>
-      <AppPrivate/> {/* <AppPublic/> */}
+        onInputEmail={this.handleInputEmailLoginValue}
+        onInputPsw={this.handleInputPswLoginValue}
+        openedErrorFeedback={openedErrorFeedback}
+        toggleErrorFeedback={toggleErrorFeedback}
+      />
+      {/* <AppPrivate/>  <AppPublic/> */}
   </div>
 
     );
