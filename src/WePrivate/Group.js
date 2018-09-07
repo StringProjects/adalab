@@ -15,13 +15,25 @@ class Group extends Component {
         <Link to='/private'>
           <WeButtonOption />
         </Link>
+        <div className= "wrapper-nameGroup">
+          <img className="rounded-circle imgGroup"              width="50px" height="50px" src={profile}            alt="profile picture"/>
+          <div className= "wrapper-name-number">
+            <h2 className="nameGroup">Adalab Work</h2>
+            <h3 className="numberGroup">10 personas</h3>
+          </div>
+        </div>
         <WeList
           image={profile}
-          group="Adalat"
           name="María"
           date="15:13"
           message="last message from this group"
           answers="8 answers"
+        />
+        <WeList
+          image={profile}
+          name="Bis"
+          date="17:00"
+          message="last message from this group"
         />
         <WeInputButton />
       </div>
