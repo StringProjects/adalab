@@ -15,8 +15,14 @@ import {
 
 class Login extends Component {
     render() {
-        const {onInputEmail, onInputPsw, onSubmitLogin} = this.props;
-
+        const {
+            onInputEmail,
+            onInputPsw,
+            openedErrorFeedback,
+            toggleErrorFeedback,
+            onSubmitBtn
+            } = this.props;
+        console.log('Login openedErrorFeedback',openedErrorFeedback);
         return (
             <div className="wrapper">
                 <header className="header--landing header">
@@ -52,7 +58,13 @@ class Login extends Component {
                             size: 8,
                             offset: 2
                         }}>
-                            <WeForm onInputEmail={onInputEmail} onInputPsw={onInputPsw} onSubmitLogin={onSubmitLogin}/>
+                            <WeForm 
+                                onInputEmail={onInputEmail} 
+                                onInputPsw={onInputPsw}
+                                openedErrorFeedback={openedErrorFeedback}
+                                toggleErrorFeedback={toggleErrorFeedback}
+                                onSubmitBtn={onSubmitBtn}
+                            />
                         </Col>
 
                     </Row>

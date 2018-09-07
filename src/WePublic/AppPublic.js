@@ -7,11 +7,25 @@ class AppPublic extends Component {
 
 
   render() {
+    const {
+      openedErrorFeedback,
+      toggleErrorFeedback,
+      onInputEmail,
+      onInputPsw,
+      onSubmitBtn
+      } = this.props;
+    console.log('AppPublic openedErrorFeedback',openedErrorFeedback);
     return (
      
       <div className="container-fluid">
-      <Login/>
-      <AppPrivate/> {/* <AppPublic/> */}
+      <Login
+        onInputEmail={onInputEmail}
+        onInputPsw={onInputPsw}
+        openedErrorFeedback={openedErrorFeedback}
+        toggleErrorFeedback={toggleErrorFeedback}
+        onSubmitBtn={onSubmitBtn}
+      />
+      {/* <AppPrivate/>  <AppPublic/> */}
   </div>
 
     );
