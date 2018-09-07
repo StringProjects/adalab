@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Nav} from 'reactstrap';
 import ErrorFeedback from '../LoginComponents/ErrorFeedback';
+import { Link } from 'react-router-dom';
 
 class WeForm extends Component {
     render() {
@@ -8,6 +9,7 @@ class WeForm extends Component {
             openedErrorFeedback,
             toggleErrorFeedback,
         } = this.props;
+        console.log('WeForm openedErrorFeedback',openedErrorFeedback);
         return (
             <div className="container-fluid">
                 <Form className="form--style">
@@ -30,13 +32,22 @@ class WeForm extends Component {
                             <i className="far fa-eye-slash icon--psw"></i>
                         </FormGroup>
                     </FormGroup>
-                    <ErrorFeedback
-                        openedErrorFeedback={openedErrorFeedback}
-                        
-                    />
-                    <Button type="submit" className="btn btn--login" onClick={toggleErrorFeedback}>
-                        <i className="fas fa-chevron-right"></i>
-                    </Button>
+                    { openedErrorFeedback && <ErrorFeedback />}
+                    <button
+                        onClick={toggleErrorFeedback}
+                    >
+                        Mostrar mensaje de error
+                    </button>
+                    <Link 
+                        to='/private' 
+                        className="Button-option-link">
+                        <Button 
+                            type="submit" 
+                            className="btn btn--login" 
+                        >
+                            <i className="fas fa-chevron-right"></i>
+                        </Button>
+                    </Link>
                 </Form>
             </div>
         );

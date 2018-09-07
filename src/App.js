@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      openedErrorFeedback: true,
+      openedErrorFeedback: false,
     };
 
     this.toggleErrorFeedback = this.toggleErrorFeedback.bind(this);
@@ -27,18 +27,23 @@ class App extends Component {
 
   render() {
     const {openedErrorFeedback} = this.state;
+    console.log('app openedErrorFeedback',openedErrorFeedback);
     return (
       <div className="container-fluid">
         <Switch>
-          <Route exact path='/' component={AppPublic} />
           <Route path='/private' component={AppPrivate} />
           <Route path='/group' component={Group} />
           <Route path='/Thread' component={Thread} />
+          <Route
+            path='/'
+            render={() =>
+            <AppPublic
+              openedErrorFeedback={openedErrorFeedback}
+              toggleErrorFeedback={this.toggleErrorFeedback}
+            />
+            }
+          />
         </Switch>
-        {/*<AppPublic
-          openedErrorFeedback={openedErrorFeedback}
-          toggleErrorFeedback={this.toggleErrorFeedback}
-        />*/}
       </div>
     );
   }
