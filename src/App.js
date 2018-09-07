@@ -33,7 +33,7 @@ class App extends Component {
         <Switch>
           <Route path='/private' component={AppPrivate} />
           <Route path='/group' component={Group} />
-          <Route path='/thread' component={Thread} />
+          <Route path='/Thread' component={Thread} />
           <Route
             path='/'
             render={() =>

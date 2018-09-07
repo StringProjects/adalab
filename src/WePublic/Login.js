@@ -21,6 +21,7 @@ class Login extends Component {
             openedErrorFeedback,
             toggleErrorFeedback,
             } = this.props;
+        console.log('Login openedErrorFeedback',openedErrorFeedback);
         return (
             <div className="wrapper">
                 <header className="header--landing header">

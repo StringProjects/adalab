@@ -22,15 +22,13 @@ class Group extends Component {
             <h3 className="numberGroup">10 personas</h3>
           </div>
         </div>
-        <Link to='/thread'>
-          <WeList
-            image={profile}
-            name="María"
-            date="15:13"
-            message="last message from this group"
-            answers="8 answers"
-          />
-        </Link>
+        <WeList
+          image={profile}
+          name="María"
+          date="15:13"
+          message="last message from this group"
+          answers="8 answers"
+        />
         <WeList
           image={profile}
           name="Bis"

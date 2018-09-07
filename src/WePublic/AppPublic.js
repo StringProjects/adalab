@@ -62,6 +62,7 @@ handleInputPswLoginValue(e) {
       openedErrorFeedback,
       toggleErrorFeedback,
       } = this.props;
+    console.log('AppPublic openedErrorFeedback',openedErrorFeedback);
     return (
      
       <div className="container-fluid">
