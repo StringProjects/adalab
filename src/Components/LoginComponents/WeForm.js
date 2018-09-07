@@ -57,7 +57,6 @@ class WeForm extends Component {
             openedErrorFeedback,
             toggleErrorFeedback,
         } = this.props;
-        console.log('WeForm openedErrorFeedback',openedErrorFeedback);
         return (
             <div className="container--form-landing">
                 <Form className="form--style">

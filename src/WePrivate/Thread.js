@@ -3,12 +3,15 @@ import WeHeaderThread from '../Components/WeHeaderThread';
 import WeList from '../Components/WeList';
 import profile from '../images/wp-image-58683558-random-picture.jpg';
 import WeInputButton from '../Components/WeInputButton';
+import { Link } from 'react-router-dom';
 
 class Thread extends Component {
   render() {
     return (
       <div className="App">
-        <WeHeaderThread/>
+        <Link to='/group'>
+          <WeHeaderThread/>
+        </Link>
         <WeList
           image={profile}
           name="María"
