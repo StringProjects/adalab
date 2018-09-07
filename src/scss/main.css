@@ -1,5 +1,7 @@
 .ElementList-wrapper {
-  padding-top: 22px; }
+  width: 100%;
+  height: 100%;
+  margin: 0; }
 
 .group-title {
   font-size: 16px;
@@ -33,6 +35,23 @@
 .add-answer {
   font-size: 13px;
   color: grey; }
+
+.ElementList_image-container {
+  padding: 0;
+  margin-right: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.ElementList_text-container {
+  padding: 0; }
+
+.WeList-wrapper {
+  max-width: 320px;
+  margin: 20px; }
+
+.list-container {
+  list-style: none; }
 
 .Header__title {
   color: #006ef5;
@@ -123,14 +142,6 @@
   .form--group {
     padding: 0; } }
 
-<<<<<<< HEAD
-.WeList-wrapper {
-  max-width: 320px;
-  margin: 20px; }
-
-.list-container {
-  list-style: none; }
-=======
 .wrapper-nameGroup {
   display: flex;
   flex-wrap: wrap;
@@ -145,7 +156,6 @@
   font-size: 14px;
   width: 100%;
   padding-left: 30px; }
->>>>>>> master
 
 .Input__form {
   display: flex; }
