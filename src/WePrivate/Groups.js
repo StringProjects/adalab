@@ -22,7 +22,6 @@ class Groups extends Component {
             name="María"
             date="15:13"
             message="last message from this group"
-
           />
         </Link>
         <WeList
@@ -31,7 +30,6 @@ class Groups extends Component {
           name="Bis"
           date="2days"
           message="last message from this group"
-
         />
       </div>
 
