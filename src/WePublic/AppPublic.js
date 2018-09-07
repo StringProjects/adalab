@@ -10,10 +10,7 @@ class AppPublic extends Component {
     return (
      
       <div className="container-fluid">
-      <Login
-          onInputEmail={this.handleInputEmailLoginValue}
-          onInputPsw={this.handleInputPswLoginValue}
-          onSubmitLogin={this.handleSubmitLogin}/>
+      <Login/>
       <AppPrivate/> {/* <AppPublic/> */}
   </div>
 
