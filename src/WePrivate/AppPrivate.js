@@ -11,6 +11,7 @@ class AppPrivate extends Component {
     return (
       <div className="AppPrivate">
          <Groups/>
+         <Thread/>
       </div>
     );
   }
