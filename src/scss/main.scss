@@ -1,10 +1,26 @@
 @import "components/ElementList";
+<<<<<<< HEAD
 @import 'components/ErrorFeedback';
+=======
+@import "layaout/WeHeader";
+@import "components/WeHeaderThread";
+>>>>>>> master
 @import 'components/WeForm';
+@import 'components/WeButtonOption';
+@import 'pages/Landing';
+@import 'pages/Group';
+
+@import 'components/WeInputButton';
 
 
-html, body, #root, .container, .container-fluid{
-    height: 100vh;
+body, #root{
+
 }
 
-
+.header{
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+    top: 0;
+}

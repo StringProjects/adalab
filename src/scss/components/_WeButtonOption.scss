@@ -1,0 +1,9 @@
+.button-group .Button-option::before {
+  display: none;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px;
+}
