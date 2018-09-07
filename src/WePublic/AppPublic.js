@@ -14,7 +14,6 @@ class AppPublic extends Component {
       onInputPsw,
       onSubmitBtn
       } = this.props;
-    console.log('AppPublic openedErrorFeedback',openedErrorFeedback);
     return (
      
       <div className="container-fluid">

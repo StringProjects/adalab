@@ -51,6 +51,7 @@ class WeForm extends Component {
         }
     }
     render() {
+        login-prueba
         const {onInputEmail, onInputPsw, openedErrorFeedback, toggleErrorFeedback, onSubmitBtn} = this.props;
         console.log('WeForm openedErrorFeedback', openedErrorFeedback);
         return (
