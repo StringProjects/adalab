@@ -54,7 +54,7 @@ class WeForm extends Component {
     }
 
     render() {
-        const {onInputEmail, onInputPsw} = this.props;
+        const {onInputEmail, onInputPsw, onSubmitLogin} = this.props;
         return (
             <div className="container--form-landing">
                 <Form className="form--style">
@@ -85,7 +85,7 @@ class WeForm extends Component {
                         </FormGroup>
                     </FormGroup>
                     <Link to='/private' className="Button-option-link">
-                        <Button type="submit" className="btn btn--login">
+                        <Button type="submit" className="btn btn--login" onSubmit={onSubmitLogin}>
                             <i className="fas fa-chevron-right"></i>
                         </Button>
                     </Link>

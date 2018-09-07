@@ -15,7 +15,7 @@ import {
 
 class Login extends Component {
     render() {
-        const {onInputEmail, onInputPsw} = this.props;
+        const {onInputEmail, onInputPsw, onSubmitLogin} = this.props;
 
         return (
             <div className="wrapper">
@@ -52,7 +52,7 @@ class Login extends Component {
                             size: 8,
                             offset: 2
                         }}>
-                            <WeForm onInputEmail={onInputEmail} onInputPsw={onInputPsw}/>
+                            <WeForm onInputEmail={onInputEmail} onInputPsw={onInputPsw} onSubmitLogin={onSubmitLogin}/>
                         </Col>
 
                     </Row>
