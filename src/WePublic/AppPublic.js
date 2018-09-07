@@ -32,9 +32,14 @@ fecthApi() {
           'Content-type': 'application/json'
       },
       body: JSON.stringify({"nickname": 'adalab1', "password": 'C12345678'})
-  }).then((response) => response.json({})).then((jsonskills) => {
-      console.log(jsonskills.user.auth_token);
+  }).then((response) => response.json({})).then((data) => {
+      this.savedToken(data.user.auth_token)
+      console.log(data.user.auth_token);
   });
+}
+
+savedToken(token){
+  localStorage.setItem('token', token)
 }
 
 
@@ -53,13 +58,21 @@ handleInputPswLoginValue(e) {
 }
 
   render() {
+    const {
+      openedErrorFeedback,
+      toggleErrorFeedback,
+      } = this.props;
+    console.log('AppPublic openedErrorFeedback',openedErrorFeedback);
     return (
      
       <div className="container-fluid">
       <Login
-          onInputEmail={this.handleInputEmailLoginValue}
-          onInputPsw={this.handleInputPswLoginValue}/>
-      <AppPrivate/> {/* <AppPublic/> */}
+        onInputEmail={this.handleInputEmailLoginValue}
+        onInputPsw={this.handleInputPswLoginValue}
+        openedErrorFeedback={openedErrorFeedback}
+        toggleErrorFeedback={toggleErrorFeedback}
+      />
+      {/* <AppPrivate/>  <AppPublic/> */}
   </div>
 
     );
