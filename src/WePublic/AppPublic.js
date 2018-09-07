@@ -26,7 +26,7 @@ componentDidMount() {
 }
 
 fecthApi() {
-  fetch('http://adalab.string-projects.com/api/v1/sessions', {
+  fetch('https://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
           'Content-type': 'application/json'
