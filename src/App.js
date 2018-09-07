@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import React, {Component} from 'react';
+=======
 import React, { Component } from 'react';
+>>>>>>> master
 import Login from './WePublic/Login';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';

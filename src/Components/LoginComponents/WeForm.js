@@ -54,12 +54,14 @@ class WeForm extends Component {
     }
 
     render() {
+        const {onInputEmail, onInputPsw} = this.props;
         return (
             <div className="container--form-landing">
                 <Form className="form--style">
                     <FormGroup className="form--group">
                         <FormGroup>
                             <Input
+                                onChange={onInputEmail}
                                 type="email"
                                 className="form-control input--login-style"
                                 id="email"
@@ -68,6 +70,7 @@ class WeForm extends Component {
                         </FormGroup>
                         <FormGroup>
                             <Input
+                                onChange={onInputPsw}
                                 type="password"
                                 className="form-control input--login-style"
                                 id="pwd"
