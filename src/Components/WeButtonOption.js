@@ -21,11 +21,11 @@ class WeButtonOption extends Component {
   render() {
     return (
       <div className="dropdown-container">
-        <Link to='/'>
+        {/* <Link to={'to' === '/private' ? '/' : '/group'}> */}
           <Button className='btn HeaderThread__btn'>
             <i className="fas fa-arrow-left HeaderThread__arrow"></i>
           </Button>
-        </Link>
+        {/* </Link> */}
         <ButtonDropdown className="button-group" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
           <DropdownToggle className="Button-option" caret color="primary">
           ···
