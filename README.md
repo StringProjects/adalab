@@ -66,13 +66,11 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 
 
-
+# Ejemplo de README de los distintos apartados
 
 # Peluqueria canina 
 Proyecto final de programación entorno servidor de 2do año basado en aplicación de registros para peluquería canina.
 
-![status](https://img.shields.io/badge/status-running-green.svg?colorB=00C106) ![readme](https://img.shields.io/badge/readme-OK-green.svg?colorB=00C106) ![database](https://img.shields.io/badge/database-OK-green.svg?colorB=00C106) ![commits](https://img.shields.io/badge/commits-26-blue.svg) ![tag](https://img.shields.io/badge/tag-v0.3-orange.svg)
-![template](https://img.shields.io/badge/template-twig-yellow.svg) ![techs](https://img.shields.io/badge/techs-javascript—php—css—bootstrap-yellow.svg)
 
 ---
 
