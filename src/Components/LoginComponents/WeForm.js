@@ -8,7 +8,7 @@ import {
     Col,
     Nav
 } from 'reactstrap';
-import ErrorFeedback from '../LoginComponents/ErrorFeedback';
+import ErrorFeedback from './ErrorFeedback';
 import { Link } from 'react-router-dom';
 
 class WeForm extends Component {

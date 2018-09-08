@@ -1,5 +1,8 @@
+
 .ElementList-wrapper {
-    padding-top: 22px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 .group-title {
@@ -42,5 +45,16 @@
 .add-answer {
     font-size: 13px;
     color: grey;
+}
 
+.ElementList_image-container {
+    padding: 0;
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ElementList_text-container {
+    padding: 0;
 }
