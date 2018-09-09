@@ -20,6 +20,7 @@ class Login extends Component {
             onInputPsw,
             openedErrorFeedback,
             toggleErrorFeedback,
+            onSubmitBtn
             } = this.props;
         return (
             <div className="wrapper">
@@ -61,6 +62,7 @@ class Login extends Component {
                                 onInputPsw={onInputPsw}
                                 openedErrorFeedback={openedErrorFeedback}
                                 toggleErrorFeedback={toggleErrorFeedback}
+                                onSubmitBtn={onSubmitBtn}
                             />
                         </Col>
 
