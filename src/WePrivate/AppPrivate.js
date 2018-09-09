@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
-// import Groups from './Groups';
+import WeHeader from '../Components/WeHeader';
+import WeButtonOption from '../Components/WeButtonOption';
 import Groups from './Groups';
-import WeList from '../Components/WeList';
 
 
 class AppPrivate extends Component {
   render() {
+    const {
+      routePrivate,
+      routePublic,
+      routeGroup,
+      match,
+    } = this.props;
+    console.log('props en app private', this.props)
     return (
       <div className="AppPrivate">
-         <Groups/>
+        <WeHeader />
+          <WeButtonOption
+            routePrivate={routePrivate}
+            routePublic={routePublic}
+            routeGroup={routeGroup}
+            match={match}
+          />
+        <Groups
+          routePrivate={routePrivate}
+          routePublic={routePublic}
+          routeGroup={routeGroup}
+        />
       </div>
     );
   }
