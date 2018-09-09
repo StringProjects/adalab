@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Alert} from 'reactstrap';
 
 
-class ErrorFeedback extends Component {
+class ErrorFeedBack extends Component {
   render() {
     return (
       <div className="">
@@ -14,4 +14,4 @@ class ErrorFeedback extends Component {
   }
 }
 
-export default  ErrorFeedback;
+export default  ErrorFeedBack;

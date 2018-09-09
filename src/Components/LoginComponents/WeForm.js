@@ -8,7 +8,7 @@ import {
     Col,
     Nav
 } from 'reactstrap';
-import ErrorFeedback from './ErrorFeedback';
+import ErrorFeedBack from './ErrorFeedBack';
 import { Link } from 'react-router-dom';
 
 class WeForm extends Component {
@@ -87,7 +87,7 @@ class WeForm extends Component {
                                 </i>
                         </FormGroup>
                     </FormGroup>
-                    { openedErrorFeedback && <ErrorFeedback />}
+                    { openedErrorFeedback && <ErrorFeedBack />}
                     <button
                         onClick={toggleErrorFeedback}
                     >
