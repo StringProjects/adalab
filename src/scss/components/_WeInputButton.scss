@@ -1,5 +1,6 @@
 .Input__form {
   display: flex;
+ 
 }
 
 .Input__text {
@@ -7,6 +8,7 @@
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid  #989898;
+  border-radius: 0;
 }
 
 .Input__btn {

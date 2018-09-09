@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 class Groups extends Component {
   render() {
     return (
-      <div className="wrapper-group">
+      <div className="main--welist">
         <Link to='/group'>
           <WeList
             image={profile}
@@ -25,6 +25,7 @@ class Groups extends Component {
           date="2days"
           message="last message from this group"
         />
+
       </div>
 
 

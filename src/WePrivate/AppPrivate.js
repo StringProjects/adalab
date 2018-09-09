@@ -14,7 +14,7 @@ class AppPrivate extends Component {
     } = this.props;
     console.log('props en app private', this.props)
     return (
-      <div className="AppPrivate">
+      <div className="wrapper-group">
         <WeHeader />
           <WeButtonOption
             routePrivate={routePrivate}

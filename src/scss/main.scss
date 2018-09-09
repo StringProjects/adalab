@@ -1,3 +1,4 @@
+@import "core/variables";
 @import "components/ElementList";
 @import "components/WeList";
 @import 'components/ErrorFeedBack';
@@ -5,15 +6,20 @@
 @import "components/WeHeaderThread";
 @import 'components/WeForm';
 @import 'components/WeButtonOption';
-@import 'pages/Landing';
+@import 'pages/Login';
 @import 'pages/Group';
 @import 'components/WeInputButton';
+@import 'pages/Thread';
 
 
-body, #root{
-
+body, #root {
+height: 100vh;
 }
 
+.container-fluid{
+    padding: 0;
+    margin: 0;
+}
 .header{
     position: fixed;
     width: 100%;
