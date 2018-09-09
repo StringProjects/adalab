@@ -79,6 +79,7 @@ class App extends Component {
     }
 
     handleSubmitLogin(e) {
+      e.preventDefault;
       console.log("entra submit")
       this.fecthApi();
     }
