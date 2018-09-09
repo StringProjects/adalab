@@ -16,12 +16,13 @@ class Group extends Component {
           <WeButtonOption />
         </Link>
         <div className= "wrapper-nameGroup">
-          <img className="rounded-circle imgGroup"              width="50px" height="50px" src={profile}            alt="profile picture"/>
+          <img className="rounded-circle imgGroup" width="50px" height="50px" src={profile} alt="profile picture"/>
           <div className= "wrapper-name-number">
             <h2 className="nameGroup">Adalab Work</h2>
             <h3 className="numberGroup">10 personas</h3>
           </div>
         </div>
+        <div className="wrapper-welist">
         <Link to='/thread'>
           <WeList
             image={profile}
@@ -37,7 +38,11 @@ class Group extends Component {
           date="17:00"
           message="last message from this group"
         />
-        <WeInputButton />
+        </div>
+        <div className= "wrapper-input-send">
+          <WeInputButton/>
+        </div>
+        
       </div>
     );
   }

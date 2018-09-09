@@ -1,9 +1,15 @@
+
+.wrapper-group{
+    height: 100vh;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+}
+
 .wrapper-nameGroup{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    
+    border-bottom: 1px solid rgb(104,118,130);
 }
 .nameGroup{
     padding-left: 30px;
@@ -13,4 +19,16 @@
     font-size: 14px;
     width: 100%;
     padding-left: 30px;
+}
+
+.wrapper-welist{
+    
+}
+
+.wrapper-input-send{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 16px;
+    background-color: white;
 }

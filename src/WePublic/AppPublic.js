@@ -16,7 +16,7 @@ class AppPublic extends Component {
       } = this.props;
     return (
      
-      <div className="container-fluid">
+      <div>
       <Login
         onInputEmail={onInputEmail}
         onInputPsw={onInputPsw}
