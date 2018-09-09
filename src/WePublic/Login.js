@@ -16,7 +16,7 @@ import {
 class Login extends Component {
     render() {
         const {
-            onInputEmail,
+            onInputUser,
             onInputPsw,
             openedErrorFeedback,
             toggleErrorFeedback,
@@ -44,7 +44,7 @@ class Login extends Component {
                         }}>
                             <div className="container--text-login">
                                 <h3 className="title--login text-center">¡Hola de nuevo!</h3>
-                                <p className="subtitle--landing text-center">Escribe tu email y contraseña para entrar en We.</p>
+                                <p className="subtitle--landing text-center">Escribe tu nombre de usuario y contraseña para entrar en We.</p>
                             </div>
                         </Col>
                         <Col
@@ -58,7 +58,7 @@ class Login extends Component {
                             offset: 2
                         }}>
                             <WeForm 
-                                onInputEmail={onInputEmail} 
+                                onInputUser={onInputUser} 
                                 onInputPsw={onInputPsw}
                                 openedErrorFeedback={openedErrorFeedback}
                                 toggleErrorFeedback={toggleErrorFeedback}

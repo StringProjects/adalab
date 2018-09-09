@@ -15,8 +15,8 @@ class App extends Component {
       psw: '',
       openedErrorFeedback: false,
     }
-    this.handleInputEmailLoginValue = this
-      .handleInputEmailLoginValue
+    this.handleInputUserLoginValue = this
+      .handleInputUserLoginValue
       .bind(this);
     this.handleInputPswLoginValue = this
       .handleInputPswLoginValue
@@ -24,20 +24,12 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-    this.toggleErrorFeedback = this.toggleErrorFeedback.bind(this);
   }
 
   // componentDidMount() {
   //   this.fecthApi();
   // }
 
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const { openedErrorFeedback } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
-  }
   fecthApi() {
     console.log("state", this.state.user)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
@@ -61,7 +53,7 @@ class App extends Component {
   }
 
 
-  handleInputEmailLoginValue(e) {
+  handleInputUserLoginValue(e) {
 
     const {
       value
@@ -91,15 +83,6 @@ class App extends Component {
     this.fecthApi();
   }
 
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const {
-      openedErrorFeedback
-    } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
-  }
 
   render() {
     const { openedErrorFeedback } = this.state;
@@ -142,7 +125,7 @@ class App extends Component {
                 openedErrorFeedback={openedErrorFeedback}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 match={props.match}
-                onInputEmail={this.handleInputEmailLoginValue}
+                onInputUser={this.handleInputUserLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitLogin={this.handleSubmitLogin}
                 onSubmitBtn={this.handleSubmitLogin}
