@@ -8,7 +8,7 @@ import {
     Col,
     Nav
 } from 'reactstrap';
-import ErrorFeedback from '../LoginComponents/ErrorFeedback';
+import ErrorFeedBack from './ErrorFeedBack';
 import { Link } from 'react-router-dom';
 
 class WeForm extends Component {
@@ -18,8 +18,8 @@ class WeForm extends Component {
             .handleClick
             .bind(this);
     }
-     handleClick(event) {
-         if (event.target.classList.contains('show-off')) {
+    handleClick(event) {
+        if (event.target.classList.contains('show-off')) {
             console.log("entra")
             document
                 .getElementById('pwd')
@@ -51,56 +51,41 @@ class WeForm extends Component {
         }
     }
     render() {
-        const {
-            onInputEmail, 
-            onInputPsw,
-            openedErrorFeedback,
-            toggleErrorFeedback,
-        } = this.props;
+        const {onInputEmail, onInputPsw, openedErrorFeedback, toggleErrorFeedback, onSubmitBtn} = this.props;
+        console.log('WeForm openedErrorFeedback', openedErrorFeedback);
         return (
             <div className="container--form-landing">
-                <Form className="form--style">
-                    <FormGroup className="form--group">
-                        <FormGroup>
+                <Form className="form--style" onSubmit={onSubmitBtn}>
+                        <FormGroup role="form">
                             <Input
                                 onChange={onInputEmail}
-                                type="email"
+                                type="text"
                                 className="form-control input--login-style"
                                 id="email"
                                 placeholder="Email"
                                 name="email"/>
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup role="form">
                             <Input
                                 onChange={onInputPsw}
                                 type="password"
                                 className="form-control input--login-style"
                                 id="pwd"
                                 placeholder="Contraseña"
-                                name="pswd" 
-                            />
-                                <i
-                                    onClick={this.handleClick}
-                                    id="hide-psw"
-                                    className="far fa-eye-slash icon--psw show-off"
-                                >
-                                </i>
+                                name="pswd"/>
+                            <i
+                                onClick={this.handleClick}
+                                id="hide-psw"
+                                className="far fa-eye-slash icon--psw show-off"></i>
                         </FormGroup>
-                    </FormGroup>
-                    { openedErrorFeedback && <ErrorFeedback />}
+                    { openedErrorFeedback && <ErrorFeedBack />}
                     <button
                         onClick={toggleErrorFeedback}
                     >
                         Mostrar mensaje de error
                     </button>
-                    <Link 
-                        to='/private' 
-                        className="Button-option-link"
-                    >
-                        <Button 
-                            type="submit" 
-                            className="btn btn--login" 
-                        >
+                    <Link to='/private' className="Button-option-link">
+                        <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
                         </Button>
                     </Link>
