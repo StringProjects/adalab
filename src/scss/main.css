@@ -146,13 +146,13 @@
 .dropdown-container {
   display: flex;
   justify-content: space-between;
-  padding: 30px 30px; }
+  padding: 20px 20px;
+  align-items: center; }
 
 .HeaderThread__arrow {
   color: #0c2c5d; }
 
-.main--landing {
-  margin-top: 185px;
+.main--login {
   padding: 25px; }
 
 @media (min-width: 1024px) {
@@ -185,6 +185,9 @@
   width: 100%;
   padding-left: 30px; }
 
+.wrapper-welist {
+  margin-bottom: 100px; }
+
 .wrapper-input-send {
   position: fixed;
   width: 100%;
@@ -199,7 +202,8 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid  #989898; }
+  border-bottom: 1px solid  #989898;
+  border-radius: 0; }
 
 .Input__btn {
   width: 100px;
@@ -207,7 +211,7 @@
   background-color: #006ef5;
   border-radius: 30px; }
 
-body, #root, .container-fluid {
+body, #root {
   height: 100vh; }
 
 .container-fluid {

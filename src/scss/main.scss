@@ -6,12 +6,12 @@
 @import "components/WeHeaderThread";
 @import 'components/WeForm';
 @import 'components/WeButtonOption';
-@import 'pages/Landing';
+@import 'pages/Login';
 @import 'pages/Group';
 @import 'components/WeInputButton';
 
 
-body, #root, .container-fluid{
+body, #root {
 height: 100vh;
 }
 
