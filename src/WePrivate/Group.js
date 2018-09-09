@@ -9,15 +9,26 @@ import { Link } from 'react-router-dom';
 
 class Group extends Component {
   render() {
+    const {
+      routePrivate,
+      routePublic,
+      routeGroup,
+      match,
+    } = this.props;
+
+    console.log('props en group', this.props)
     return (
       <div className="wrapper-group">
         <WeHeader />
-        <Link to='/private'>
-          <WeButtonOption />
-        </Link>
-        <div className= "wrapper-nameGroup">
-          <img className="rounded-circle imgGroup"              width="50px" height="50px" src={profile}            alt="profile picture"/>
-          <div className= "wrapper-name-number">
+          <WeButtonOption
+              routePrivate={routePrivate}
+              routePublic={routePublic}
+              routeGroup={routeGroup}
+              match={match}
+          />
+        <div className="wrapper-nameGroup">
+          <img className="rounded-circle imgGroup" width="50px" height="50px" src={profile} alt="profile picture" />
+          <div className="wrapper-name-number">
             <h2 className="nameGroup">Adalab Work</h2>
             <h3 className="numberGroup">10 personas</h3>
           </div>

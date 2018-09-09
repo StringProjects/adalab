@@ -19,28 +19,54 @@ class App extends Component {
 
   toggleErrorFeedback(event) {
     event.preventDefault();
-    const {openedErrorFeedback} = this.state;
-    this.setState({ 
+    const { openedErrorFeedback } = this.state;
+    this.setState({
       openedErrorFeedback: !openedErrorFeedback,
     });
   }
 
   render() {
-    const {openedErrorFeedback} = this.state;
-    console.log('app openedErrorFeedback',openedErrorFeedback);
+    const { openedErrorFeedback } = this.state;
+    const routePrivate = '/private';
+    const routePublic = '/';
+    const routeGroup = '/group';
+    const routeThread = '/thread';
+
+    console.log('app openedErrorFeedback', openedErrorFeedback);
     return (
       <div className="container-fluid">
         <Switch>
-          <Route path='/private' component={AppPrivate} />
-          <Route path='/group' component={Group} />
-          <Route path='/thread' component={Thread} />
           <Route
-            path='/'
-            render={() =>
-            <AppPublic
-              openedErrorFeedback={openedErrorFeedback}
-              toggleErrorFeedback={this.toggleErrorFeedback}
-            />
+            path={routePrivate}
+            render={props =>
+              <AppPrivate
+                match={props.match}
+                routePrivate={routePrivate}
+                routePublic={routePublic}
+                routeGroup={routeGroup}
+              />
+            }
+          />
+          <Route
+            path={routeGroup}
+            render={props =>
+              <Group
+                match={props.match}
+                routeGroup={routeGroup}
+                routePrivate={routePrivate}
+                routePublic={routePublic}
+              />
+            }
+          />
+          <Route path={routeThread} component={Thread} />
+          <Route
+            exact path={routePublic}
+            render={props =>
+              <AppPublic
+                openedErrorFeedback={openedErrorFeedback}
+                toggleErrorFeedback={this.toggleErrorFeedback}
+                match={props.match}
+              />
             }
           />
         </Switch>

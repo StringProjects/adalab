@@ -19,13 +19,19 @@ class WeButtonOption extends Component {
   }
 
   render() {
+    const {
+      routePrivate,
+      routePublic,
+      routeGroup,
+      match,
+    } = this.props;
     return (
       <div className="dropdown-container">
-        {/* <Link to={'to' === '/private' ? '/' : '/group'}> */}
+        <Link to={match.path===routeGroup ? routePrivate : routePublic}>
           <Button className='btn HeaderThread__btn'>
             <i className="fas fa-arrow-left HeaderThread__arrow"></i>
           </Button>
-        {/* </Link> */}
+        </Link>
         <ButtonDropdown className="button-group" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
           <DropdownToggle className="Button-option" caret color="primary">
           ···
