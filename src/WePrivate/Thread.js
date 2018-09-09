@@ -7,7 +7,7 @@ import WeInputButton from '../Components/WeInputButton';
 class Thread extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="wrapper-thread">
         <WeHeaderThread />
         <WeList
           image={profile}
@@ -28,7 +28,9 @@ class Thread extends Component {
           date="17h"
           message="last message from this group"
         />
+        <div className= "wrapper-input-send">
         <WeInputButton />
+        </div>
       </div>
     );
   }

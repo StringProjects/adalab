@@ -61,7 +61,7 @@
 
 .HeaderThread__container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: baseline;
   padding: 30px 30px;
   border-bottom: 1px solid #989898; }
@@ -146,7 +146,7 @@
 .dropdown-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px 20px;
+  padding: 2px 20px;
   align-items: center; }
 
 .HeaderThread__arrow {
@@ -175,6 +175,10 @@
   justify-content: center;
   text-align: center;
   border-bottom: 1px solid #687682; }
+
+.img-group {
+  width: 40px;
+  height: 40px; }
 
 .nameGroup {
   padding-left: 30px; }
@@ -210,6 +214,10 @@
   height: 40px;
   background-color: #006ef5;
   border-radius: 30px; }
+
+.wrapper-thread {
+  height: 100vh;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
 
 body, #root {
   height: 100vh; }

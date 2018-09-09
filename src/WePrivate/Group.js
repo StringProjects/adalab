@@ -27,7 +27,7 @@ class Group extends Component {
               match={match}
           />
         <div className="wrapper-nameGroup">
-          <img className="rounded-circle imgGroup" width="50px" height="50px" src={profile} alt="profile picture" />
+          <img className="rounded-circle img-group" src={profile} alt="profile picture" />
           <div className="wrapper-name-number">
             <h2 className="nameGroup">Adalab Work</h2>
             <h3 className="numberGroup">10 personas</h3>
