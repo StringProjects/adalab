@@ -63,6 +63,21 @@
   text-align: center;
   padding: 30px 30px; }
 
+.footer-login {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 16px;
+  background-color: white;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.text-footer {
+  color: #006ef5;
+  margin-bottom: 0; }
+
 .HeaderThread__container {
   display: flex;
   justify-content: space-between;
@@ -175,21 +190,6 @@
 
 .main--login {
   padding: 25px; }
-
-.footer-login {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  padding: 16px;
-  background-color: white;
-  height: 75px;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.text-footer {
-  color: #006ef5;
-  margin-bottom: 0; }
 
 @media (min-width: 1024px) {
   .container--text-login {
