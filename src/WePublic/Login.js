@@ -44,7 +44,7 @@ class Login extends Component {
                         }}>
                             <div className="container--text-login">
                                 <h3 className="title--login text-center">¡Hola de nuevo!</h3>
-                                <p className="subtitle--landing text-center">Escribe tu email y contraseña para entrar en We.</p>
+                                <p className="subtitle--landing text-center">Escribe tu nombre de ususario y contraseña para entrar en We.</p>
                             </div>
                         </Col>
                         <Col
