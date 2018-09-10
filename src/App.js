@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Login from './WePublic/Login';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
 import Thread from './WePrivate/Thread';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 let localToken;
 
@@ -125,6 +124,8 @@ class App extends Component {
     const routePublic = '/';
     const routeGroup = '/group';
     const routeThread = '/thread';
+
+    console.log('localToken', localToken)
 
     return (
       <div className="container-fluid">
