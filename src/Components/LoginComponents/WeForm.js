@@ -90,9 +90,11 @@ class WeForm extends Component {
                     >
                         Mostrar mensaje de error
                     </button>
+                    <Link to='/private' className="Button-option-link">
                         <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
                         </Button>
+                    </Link>
                 </Form>
             </div>
         );
