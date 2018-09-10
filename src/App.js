@@ -4,7 +4,8 @@ import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
 import Thread from './WePrivate/Thread';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch,  Redirect } from 'react-router-dom';
+
 
 class App extends Component {
   constructor() {
@@ -52,15 +53,14 @@ class App extends Component {
     }).then((response) => response.json({})).then((data) => {
 
       this.savedToken(data.user.auth_token)
-      console.log(data.user.auth_token);
-      console.log('where is token', this.savedToken)
+      console.log('what is token', data.user.auth_token);
     });
   }
 
   savedToken(token) {
     localStorage.setItem('token', token)
   }
-
+ 
 
   handleInputEmailLoginValue(e) {
 
