@@ -102,7 +102,9 @@
   border-left: 0;
   border-right: 0;
   border-radius: 0;
-  padding: 0; }
+  padding: 6px;
+  background-color: transparent;
+  border-bottom: 1px solid #6c757d; }
 
 .btn--login {
   margin: 150px auto auto;
@@ -152,8 +154,27 @@
 .HeaderThread__arrow {
   color: #0c2c5d; }
 
+.wrapper-login {
+  height: 100vh;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
+
 .main--login {
   padding: 25px; }
+
+.footer-login {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 16px;
+  background-color: white;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.text-footer {
+  color: #006ef5;
+  margin-bottom: 0; }
 
 @media (min-width: 1024px) {
   .container--text-login {
@@ -221,6 +242,9 @@
 
 body, #root {
   height: 100vh; }
+
+body {
+  font-family: 'Montserrat', sans-serif; }
 
 .container-fluid {
   padding: 0;
