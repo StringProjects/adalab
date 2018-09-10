@@ -1,18 +1,18 @@
 .HeaderThread__container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: baseline;
   padding: 30px 30px;
   border-bottom: 1px solid #989898; 
 }
 
 .HeaderThread__btn {
-  background-color: #ffffff;
+  background-color: transparent;
   border: 0px;
 }
 
 .HeaderThread__btn:hover {
-  background-color: #ffffff;
+  background-color: transparent;
   border: 0px;
 }
 
@@ -28,4 +28,14 @@
 .HeaderThread__logo {
   color: #006ef5;
   font-weight: 600;
+}
+
+
+@media (min-width: 1024px) {
+  .HeaderThread__container{
+
+    width: 1000px;
+    margin: auto;
+
+  }
 }

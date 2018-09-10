@@ -23,11 +23,11 @@ class Login extends Component {
             onSubmitBtn
             } = this.props;
         return (
-            <div className="wrapper">
-                <header className="header--landing header">
+            <div className="wrapper-login">
+                <header className="header--login">
                     <WeHeader/>
                 </header>
-                <main className="main--landing">
+                <main className="main--login">
                     <Row>
                         <Col
                             xl={{
@@ -43,7 +43,7 @@ class Login extends Component {
                             offset: 2
                         }}>
                             <div className="container--text-login">
-                                <h1 className="title--landing text-center">¡Hola de nuevo!</h1>
+                                <h3 className="title--login text-center">¡Hola de nuevo!</h3>
                                 <p className="subtitle--landing text-center">Escribe tu email y contraseña para entrar en We.</p>
                             </div>
                         </Col>
@@ -69,7 +69,9 @@ class Login extends Component {
                     </Row>
 
                 </main>
-                {/* <WeHeaderThread/> */}
+                <div className="footer-login">
+                     <p className="text-footer">2018 ©  We. by AdaLab <span className="heart">❤︎</span></p>    
+                </div>
 
             </div>
         );

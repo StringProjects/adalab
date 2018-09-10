@@ -1,8 +1,13 @@
-
-
-.main--landing{
-    margin-top: 185px;
+.wrapper-login{
+    height: 100vh;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
+
+.main--login{
+    
+    padding: 25px;
+}
+
 
 
 @media (min-width: 1024px) {

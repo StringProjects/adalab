@@ -1,8 +1,16 @@
 .WeList-wrapper {
-    max-width: 320px;
+
     margin: 20px;
 }
 
 .list-container {
     list-style: none;
+}
+
+@media (min-width: 1024px) {
+    .WeList-wrapper {
+        width: 1000px;
+        margin: 20px auto;
+        
+    }
 }

@@ -62,7 +62,7 @@ class WeForm extends Component {
                                 type="text"
                                 className="form-control input--login-style"
                                 id="email"
-                                placeholder="Email"
+                                placeholder="Usuario"
                                 name="email"/>
                         </FormGroup>
                         <FormGroup role="form">

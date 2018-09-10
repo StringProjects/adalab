@@ -47,11 +47,15 @@
   padding: 0; }
 
 .WeList-wrapper {
-  max-width: 320px;
   margin: 20px; }
 
 .list-container {
   list-style: none; }
+
+@media (min-width: 1024px) {
+  .WeList-wrapper {
+    width: 1000px;
+    margin: 20px auto; } }
 
 .Header__title {
   color: #006ef5;
@@ -59,19 +63,34 @@
   text-align: center;
   padding: 30px 30px; }
 
+.footer-login {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 16px;
+  background-color: white;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.text-footer {
+  color: #006ef5;
+  margin-bottom: 0; }
+
 .HeaderThread__container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: baseline;
   padding: 30px 30px;
   border-bottom: 1px solid #989898; }
 
 .HeaderThread__btn {
-  background-color: #ffffff;
+  background-color: transparent;
   border: 0px; }
 
 .HeaderThread__btn:hover {
-  background-color: #ffffff;
+  background-color: transparent;
   border: 0px; }
 
 .HeaderThread__arrow {
@@ -84,6 +103,11 @@
 .HeaderThread__logo {
   color: #006ef5;
   font-weight: 600; }
+
+@media (min-width: 1024px) {
+  .HeaderThread__container {
+    width: 1000px;
+    margin: auto; } }
 
 .container--form-landing {
   margin-top: 70px; }
@@ -102,10 +126,12 @@
   border-left: 0;
   border-right: 0;
   border-radius: 0;
-  padding: 0; }
+  padding: 6px;
+  background-color: transparent;
+  border-bottom: 1px solid #6c757d; }
 
 .btn--login {
-  margin: 150px auto auto;
+  margin: 100px auto auto;
   width: 60px;
   border-radius: 35px;
   height: 60px;
@@ -121,16 +147,49 @@
   margin-left: auto;
   margin-right: auto; }
 
+.Button-option {
+  background-color: transparent;
+  border: 0;
+  color: #286df3;
+  font-size: 34px;
+  padding: 0; }
+
+.Button-option:hover {
+  background-color: white;
+  color: #286df3; }
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  background-color: white;
+  color: #286df3;
+  border-color: white; }
+
+.Button-option:focus {
+  box-shadow: none; }
+
 .button-group .Button-option::before {
   display: none; }
 
 .dropdown-container {
   display: flex;
   justify-content: space-between;
-  padding: 30px 30px; }
+  padding: 2px 20px;
+  align-items: center; }
 
-.main--landing {
-  margin-top: 185px; }
+.HeaderThread__arrow {
+  color: #0c2c5d; }
+
+@media (min-width: 1024px) {
+  .dropdown-container {
+    width: 1000px;
+    background-color: white;
+    margin: auto; } }
+
+.wrapper-login {
+  height: 100vh;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
+
+.main--login {
+  padding: 25px; }
 
 @media (min-width: 1024px) {
   .container--text-login {
@@ -142,11 +201,20 @@
   .form--group {
     padding: 0; } }
 
+.wrapper-group {
+  height: 100vh;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
+
 .wrapper-nameGroup {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  text-align: center; }
+  text-align: center;
+  border-bottom: 1px solid #687682; }
+
+.img-group {
+  width: 40px;
+  height: 40px; }
 
 .nameGroup {
   padding-left: 30px; }
@@ -157,6 +225,29 @@
   width: 100%;
   padding-left: 30px; }
 
+.wrapper-welist {
+  margin-bottom: 100px; }
+
+.wrapper-input-send {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 16px;
+  background-color: white; }
+
+@media (min-width: 1024px) {
+  .wrapper-welist {
+    width: 1000px;
+    margin: auto; }
+  .wrapper-nameGroup {
+    width: 1000px;
+    margin: auto; } }
+
+@media (min-width: 1024px) {
+  .main--welist {
+    width: 1000px;
+    margin: auto; } }
+
 .Input__form {
   display: flex; }
 
@@ -164,13 +255,28 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid  #989898; }
+  border-bottom: 1px solid  #989898;
+  border-radius: 0; }
 
 .Input__btn {
   width: 100px;
   height: 40px;
   background-color: #006ef5;
   border-radius: 30px; }
+
+.wrapper-thread {
+  height: 100vh;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
+
+body, #root {
+  height: 100vh; }
+
+body {
+  font-family: 'Montserrat', sans-serif; }
+
+.container-fluid {
+  padding: 0;
+  margin: 0; }
 
 .header {
   position: fixed;

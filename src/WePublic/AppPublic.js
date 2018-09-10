@@ -16,7 +16,7 @@ class AppPublic extends Component {
       } = this.props;
     return (
      
-      <div className="container-fluid">
+     
       <Login
         onInputEmail={onInputEmail}
         onInputPsw={onInputPsw}
@@ -24,8 +24,7 @@ class AppPublic extends Component {
         toggleErrorFeedback={toggleErrorFeedback}
         onSubmitBtn={onSubmitBtn}
       />
-      {/* <AppPrivate/>  <AppPublic/> */}
-  </div>
+     
 
     );
   }
