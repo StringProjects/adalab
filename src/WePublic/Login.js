@@ -12,16 +12,31 @@ import {
     Col,
     Nav
 } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
+
     render() {
+
         const {
             onInputEmail,
             onInputPsw,
             openedErrorFeedback,
             toggleErrorFeedback,
-            onSubmitBtn
+            onSubmitBtn,
+            getToken,
+            redirectToPrivateArea,
+            location
             } = this.props;
+
+            console.log('props en login', this.props)
+
+        const { from } = location.state || { from: { pathname: '/private'}};
+
+        if (redirectToPrivateArea === true) {
+            return <Redirect to={from} />
+        }
+
         return (
             <div className="wrapper-login">
                 <header className="header--login">
@@ -63,6 +78,7 @@ class Login extends Component {
                                 openedErrorFeedback={openedErrorFeedback}
                                 toggleErrorFeedback={toggleErrorFeedback}
                                 onSubmitBtn={onSubmitBtn}
+                                getToken={getToken}
                             />
                         </Col>
 

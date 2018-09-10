@@ -4,8 +4,9 @@ import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
 import Thread from './WePrivate/Thread';
-import { Route, Switch,  Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
+let localToken;
 
 class App extends Component {
   constructor() {
@@ -15,6 +16,7 @@ class App extends Component {
       user: '',
       psw: '',
       openedErrorFeedback: false,
+      redirectToPrivateArea: false,
     }
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
@@ -26,6 +28,7 @@ class App extends Component {
       .handleSubmitLogin
       .bind(this);
     this.toggleErrorFeedback = this.toggleErrorFeedback.bind(this);
+    this.getToken = this.getToken.bind(this);
   }
 
   // componentDidMount() {
@@ -58,9 +61,20 @@ class App extends Component {
   }
 
   savedToken(token) {
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', token);
   }
- 
+
+  getToken(event) {
+    event.preventDefault();
+    localToken = localStorage.getItem('token');
+    
+    if (localToken !== null) {
+      console.log('estamos logeados??');
+      this.setState ({
+        redirectToPrivateArea: true,
+      },()=> {console.log('estado', this.state.redirectToPrivateArea)})
+    }
+  }
 
   handleInputEmailLoginValue(e) {
 
@@ -103,7 +117,10 @@ class App extends Component {
   }
 
   render() {
-    const { openedErrorFeedback } = this.state;
+    const { 
+      openedErrorFeedback,
+      redirectToPrivateArea
+    } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroup = '/group';
@@ -117,6 +134,7 @@ class App extends Component {
             render={props =>
               <AppPrivate
                 match={props.match}
+                location={props.location}
                 routePrivate={routePrivate}
                 routePublic={routePublic}
                 routeGroup={routeGroup}
@@ -128,6 +146,7 @@ class App extends Component {
             render={props =>
               <Group
                 match={props.match}
+                loacation={props.location}
                 routeGroup={routeGroup}
                 routePrivate={routePrivate}
                 routePublic={routePublic}
@@ -140,12 +159,15 @@ class App extends Component {
             render={props =>
               <AppPublic
                 openedErrorFeedback={openedErrorFeedback}
+                redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 match={props.match}
+                location={props.location}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitLogin={this.handleSubmitLogin}
                 onSubmitBtn={this.handleSubmitLogin}
+                getToken={this.getToken}
               />
             }
           />

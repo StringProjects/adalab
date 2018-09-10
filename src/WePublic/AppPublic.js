@@ -7,12 +7,18 @@ class AppPublic extends Component {
 
 
   render() {
+
+    console.log('props', this.props)
+
     const {
       openedErrorFeedback,
       toggleErrorFeedback,
       onInputEmail,
       onInputPsw,
-      onSubmitBtn
+      onSubmitBtn,
+      getToken,
+      location,
+      redirectToPrivateArea
       } = this.props;
     return (
      
@@ -23,6 +29,9 @@ class AppPublic extends Component {
         openedErrorFeedback={openedErrorFeedback}
         toggleErrorFeedback={toggleErrorFeedback}
         onSubmitBtn={onSubmitBtn}
+        getToken={getToken}
+        redirectToPrivateArea={redirectToPrivateArea}
+        location={location}
       />
      
 

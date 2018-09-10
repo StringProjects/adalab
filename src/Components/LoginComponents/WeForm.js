@@ -56,7 +56,8 @@ class WeForm extends Component {
             onInputPsw, 
             openedErrorFeedback, 
             toggleErrorFeedback, 
-            onSubmitBtn
+            onSubmitBtn,
+            getToken
         } = this.props;
        
         return (
@@ -91,7 +92,11 @@ class WeForm extends Component {
                         Mostrar mensaje de error
                     </button>
                     {/* <Link to='/private' className="Button-option-link"> */}
-                        <Button type="submit" className="btn btn--login">
+                        <Button 
+                            type="submit" 
+                            className="btn btn--login"
+                            onClick={getToken}
+                        >
                             <i className="fas fa-chevron-right"></i>
                         </Button>
                     {/* </Link> */}
