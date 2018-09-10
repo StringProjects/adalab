@@ -1,0 +1,35 @@
+@import "core/variables";
+@import "components/ElementList";
+@import "components/WeList";
+@import 'components/ErrorFeedBack';
+@import "layaout/WeHeader";
+@import "layaout/Footer-login";
+@import "components/WeHeaderThread";
+@import 'components/WeForm';
+@import 'components/WeButtonOption';
+@import 'pages/Login';
+@import 'pages/Group';
+@import 'pages/Groups';
+@import 'components/WeInputButton';
+@import 'pages/Thread';
+
+
+body, #root {
+height: 100vh;
+}
+
+body{
+   font-family: 'Montserrat', sans-serif; 
+}
+
+.container-fluid{
+    padding: 0;
+    margin: 0;
+}
+.header{
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+    top: 0;
+}

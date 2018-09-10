@@ -1,0 +1,52 @@
+
+.wrapper-group{
+    height: 100vh;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+}
+
+.wrapper-nameGroup{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid rgb(104,118,130);
+}
+
+.img-group{
+    width: 40px; 
+    height: 40px;
+}
+.nameGroup{
+    padding-left: 30px;
+}
+.numberGroup{
+    align-self: stretch;
+    font-size: 14px;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.wrapper-welist{
+    margin-bottom: 100px;
+}
+
+.wrapper-input-send{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 16px;
+    background-color: white;
+}
+
+
+@media (min-width: 1024px) {
+   .wrapper-welist {
+      width: 1000px;
+      margin: auto;
+   }
+
+    .wrapper-nameGroup{
+        width: 1000px;
+        margin: auto;
+    }
+}

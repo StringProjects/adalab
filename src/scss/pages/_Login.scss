@@ -1,0 +1,28 @@
+.wrapper-login{
+    height: 100vh;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+}
+
+.main--login{
+    
+    padding: 25px;
+}
+
+
+
+@media (min-width: 1024px) {
+
+    .container--text-login{
+        margin-top: 130px;
+    }
+    .container--form-landing {
+        margin-top: 130px;
+    }
+
+}
+
+@media (max-width: 375px){
+    .form--group{
+        padding: 0;
+    }
+}

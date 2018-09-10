@@ -1,0 +1,46 @@
+
+.Button-option{
+  background-color: transparent;
+  border: 0;
+  color: $color-button;
+  font-size: 34px;
+  padding: 0;
+}
+
+.Button-option:hover{
+  background-color: $color-light;
+  color: $color-button;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+  background-color: $color-light;
+  color: $color-button;
+  border-color: $color-light;
+}
+
+.Button-option:focus{
+  box-shadow: none;
+}
+
+.button-group .Button-option::before {
+  display: none;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 20px;
+  align-items: center;
+}
+
+.HeaderThread__arrow{
+ color: $color-secondary;
+}
+
+@media (min-width: 1024px) {
+    .dropdown-container{
+      width: 1000px;
+      background-color: white;
+      margin: auto;
+    }
+}
