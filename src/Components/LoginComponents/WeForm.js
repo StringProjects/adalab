@@ -8,8 +8,8 @@ import {
     Col,
     Nav
 } from 'reactstrap';
-import ErrorFeedBack from './ErrorFeedBack';
 import { Link } from 'react-router-dom';
+import ErrorFeedBack from './ErrorFeedBack';
 
 class WeForm extends Component {
     constructor(props) {
@@ -78,17 +78,14 @@ class WeForm extends Component {
                                 id="hide-psw"
                                 className="far fa-eye-slash icon--psw show-off"></i>
                         </FormGroup>
-                    { openedErrorFeedback && <ErrorFeedBack />}
-                    <button
-                        onClick={toggleErrorFeedback}
-                    >
-                        Mostrar mensaje de error
-                    </button>
                   
+                        <ErrorFeedBack
+                            errorClass= {this.props.errorClass}
+                        />
                         <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
                         </Button>
-                  
+                    
                 </Form>
             </div>
         );
