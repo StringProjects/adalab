@@ -6,6 +6,7 @@ import Group from './WePrivate/Group';
 import Thread from './WePrivate/Thread';
 import { Route, Switch } from 'react-router-dom';
 
+let responseStatus = 0;
 class App extends Component {
   constructor() {
     super()
@@ -14,6 +15,8 @@ class App extends Component {
       user: '',
       psw: '',
       openedErrorFeedback: false,
+      responseStatus: false,
+      errorClass: "error-hidden"
     }
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
@@ -24,20 +27,14 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-    this.toggleErrorFeedback = this.toggleErrorFeedback.bind(this);
+   
   }
 
   // componentDidMount() {
   //   this.fecthApi();
   // }
 
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const { openedErrorFeedback } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
-  }
+
   fecthApi() {
     console.log("state", this.state.user)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
@@ -49,11 +46,23 @@ class App extends Component {
         "nickname": this.state.user,
         "password": this.state.psw
       })
-    }).then((response) => response.json({})).then((data) => {
-
-      this.savedToken(data.user.auth_token)
-      console.log(data.user.auth_token);
-    });
+    }).then((response) => {
+      responseStatus= response.status;
+      if (response.ok){
+          return response.json()
+          .then((data) => {
+            this.savedToken(data.user.auth_token)
+            console.log(data.user.auth_token);
+            this.setState({errorClass: "error-hidden"})
+          });
+        }  else {
+          console.log("error", response);
+          this.setState({errorClass: ""})
+          console.log("soy el estado", this.state.responseStatus);
+        }
+        
+    })
+    
   }
 
   savedToken(token) {
@@ -86,20 +95,11 @@ class App extends Component {
   }
 
   handleSubmitLogin(e) {
-    e.preventDefault;
+    e.preventDefault();
     console.log("entra submit")
     this.fecthApi();
   }
 
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const {
-      openedErrorFeedback
-    } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
-  }
 
   render() {
     const { openedErrorFeedback } = this.state;
@@ -107,6 +107,7 @@ class App extends Component {
     const routePublic = '/';
     const routeGroup = '/group';
     const routeThread = '/thread';
+    
 
     console.log('app openedErrorFeedback', openedErrorFeedback);
     return (
@@ -139,12 +140,12 @@ class App extends Component {
             exact path={routePublic}
             render={props =>
               <AppPublic
+                errorClass={this.state.errorClass}
                 openedErrorFeedback={openedErrorFeedback}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 match={props.match}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
-                onSubmitLogin={this.handleSubmitLogin}
                 onSubmitBtn={this.handleSubmitLogin}
               />
             }

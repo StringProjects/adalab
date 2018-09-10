@@ -58,6 +58,7 @@ class Login extends Component {
                             offset: 2
                         }}>
                             <WeForm 
+                                errorClass= {this.props.errorClass}
                                 onInputEmail={onInputEmail} 
                                 onInputPsw={onInputPsw}
                                 openedErrorFeedback={openedErrorFeedback}
@@ -67,7 +68,7 @@ class Login extends Component {
                         </Col>
 
                     </Row>
-
+                 
                 </main>
                 <div className="footer-login">
                      <p className="text-footer">2018 ©  We. by AdaLab <span className="heart">❤︎</span></p>    
