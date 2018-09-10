@@ -23,7 +23,7 @@ class Login extends Component {
             onSubmitBtn
             } = this.props;
         return (
-            <div className="wrapper">
+            <div className="wrapper-login">
                 <header className="header--login">
                     <WeHeader/>
                 </header>
@@ -69,7 +69,9 @@ class Login extends Component {
                     </Row>
 
                 </main>
-                {/* <WeHeaderThread/> */}
+                <div className="footer-login">
+                     <p className="text-footer">2018 ©  We. by AdaLab <span className="heart">❤︎</span></p>    
+                </div>
 
             </div>
         );
