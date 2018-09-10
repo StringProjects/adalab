@@ -18,6 +18,7 @@ class AppPublic extends Component {
      
      
       <Login
+        errorClass={this.props.errorClass}
         onInputEmail={onInputEmail}
         onInputPsw={onInputPsw}
         openedErrorFeedback={openedErrorFeedback}

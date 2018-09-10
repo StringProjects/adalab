@@ -57,6 +57,9 @@
     width: 1000px;
     margin: 20px auto; } }
 
+.error-hidden {
+  display: none; }
+
 .Header__title {
   color: #006ef5;
   font-weight: 600;
