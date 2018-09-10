@@ -36,3 +36,11 @@
 .HeaderThread__arrow{
  color: $color-secondary;
 }
+
+@media (min-width: 1024px) {
+    .dropdown-container{
+      width: 1000px;
+      background-color: white;
+      margin: auto;
+    }
+}

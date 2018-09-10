@@ -47,17 +47,40 @@
   padding: 0; }
 
 .WeList-wrapper {
-  max-width: 320px;
   margin: 20px; }
 
 .list-container {
   list-style: none; }
+
+@media (min-width: 1024px) {
+  .WeList-wrapper {
+    width: 1000px;
+    margin: 20px auto; } }
 
 .Header__title {
   color: #006ef5;
   font-weight: 600;
   text-align: center;
   padding: 30px 30px; }
+
+.footer-login {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 16px;
+  background-color: white;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.text-footer {
+  color: #006ef5;
+  margin-bottom: 0; }
+
+@media (max-width: 425px) {
+  .footer-login {
+    height: 35px; } }
 
 .HeaderThread__container {
   display: flex;
@@ -85,6 +108,11 @@
   color: #006ef5;
   font-weight: 600; }
 
+@media (min-width: 1024px) {
+  .HeaderThread__container {
+    width: 1000px;
+    margin: auto; } }
+
 .container--form-landing {
   margin-top: 70px; }
 
@@ -107,7 +135,7 @@
   border-bottom: 1px solid #6c757d; }
 
 .btn--login {
-  margin: 150px auto auto;
+  margin: 50px auto auto;
   width: 60px;
   border-radius: 35px;
   height: 60px;
@@ -154,27 +182,18 @@
 .HeaderThread__arrow {
   color: #0c2c5d; }
 
+@media (min-width: 1024px) {
+  .dropdown-container {
+    width: 1000px;
+    background-color: white;
+    margin: auto; } }
+
 .wrapper-login {
   height: 100vh;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
 
 .main--login {
   padding: 25px; }
-
-.footer-login {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  padding: 16px;
-  background-color: white;
-  height: 75px;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.text-footer {
-  color: #006ef5;
-  margin-bottom: 0; }
 
 @media (min-width: 1024px) {
   .container--text-login {
@@ -219,6 +238,19 @@
   bottom: 0;
   padding: 16px;
   background-color: white; }
+
+@media (min-width: 1024px) {
+  .wrapper-welist {
+    width: 1000px;
+    margin: auto; }
+  .wrapper-nameGroup {
+    width: 1000px;
+    margin: auto; } }
+
+@media (min-width: 1024px) {
+  .main--welist {
+    width: 1000px;
+    margin: auto; } }
 
 .Input__form {
   display: flex; }
