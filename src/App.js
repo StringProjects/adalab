@@ -49,11 +49,22 @@ class App extends Component {
         "nickname": this.state.user,
         "password": this.state.psw
       })
-    }).then((response) => response.json({})).then((data) => {
+    })
+    .then(function(response){
+      if(response.status === 200 ){
+        console.log("login")
+      }else {
+        console.log("login Incorrecto")  
+      }
+    })  
+    // .then((response) => response.json()).then((data) => {
+    //   this.savedToken(data.user.auth_token)
+    //   console.log(data.user.auth_token);
+    // });
+  }
 
-      this.savedToken(data.user.auth_token)
-      console.log(data.user.auth_token);
-    });
+  prueba(){
+
   }
 
   savedToken(token) {
@@ -144,7 +155,7 @@ class App extends Component {
                 match={props.match}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
-                onSubmitLogin={this.handleSubmitLogin}
+                //onSubmitLogin={this.handleSubmitLogin}
                 onSubmitBtn={this.handleSubmitLogin}
               />
             }
