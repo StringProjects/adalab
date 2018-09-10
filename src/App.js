@@ -53,6 +53,7 @@ class App extends Component {
 
       this.savedToken(data.user.auth_token)
       console.log(data.user.auth_token);
+      console.log('where is token', this.savedToken)
     });
   }
 
@@ -108,7 +109,6 @@ class App extends Component {
     const routeGroup = '/group';
     const routeThread = '/thread';
 
-    console.log('app openedErrorFeedback', openedErrorFeedback);
     return (
       <div className="container-fluid">
         <Switch>

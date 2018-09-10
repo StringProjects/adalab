@@ -51,8 +51,14 @@ class WeForm extends Component {
         }
     }
     render() {
-        const {onInputEmail, onInputPsw, openedErrorFeedback, toggleErrorFeedback, onSubmitBtn} = this.props;
-        console.log('WeForm openedErrorFeedback', openedErrorFeedback);
+        const {
+            onInputEmail, 
+            onInputPsw, 
+            openedErrorFeedback, 
+            toggleErrorFeedback, 
+            onSubmitBtn
+        } = this.props;
+       
         return (
             <div className="container--form-landing">
                 <Form className="form--style" onSubmit={onSubmitBtn}>
@@ -84,11 +90,9 @@ class WeForm extends Component {
                     >
                         Mostrar mensaje de error
                     </button>
-                    <Link to='/private' className="Button-option-link">
                         <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
                         </Button>
-                    </Link>
                 </Form>
             </div>
         );
