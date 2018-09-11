@@ -104,7 +104,7 @@ class App extends Component {
 
   handleSubmitLogin(e) {
     console.log('onSubmit en App')
-    // e.preventDefault();
+    e.preventDefault();
     this.fecthApi();
   }
   onInputMessageGroup(e){
