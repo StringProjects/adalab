@@ -13,7 +13,8 @@ class AppPublic extends Component {
       onInputEmail,
       onInputPsw,
       onSubmitBtn,
-      onDeleteLocalStorage
+      onDeleteLocalStorage,
+    
       } = this.props;
     return (
      
@@ -25,6 +26,8 @@ class AppPublic extends Component {
         openedErrorFeedback={openedErrorFeedback}
         toggleErrorFeedback={toggleErrorFeedback}
         onSubmitBtn={onSubmitBtn}
+        
+        
       />
      
 

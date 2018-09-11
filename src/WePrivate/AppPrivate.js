@@ -11,7 +11,8 @@ class AppPrivate extends Component {
       routePublic,
       routeGroup,
       match,
-      onDeleteLocalStorage
+      onDeleteLocalStorage,
+      prueba
     } = this.props;
 
     return (
@@ -28,6 +29,7 @@ class AppPrivate extends Component {
           routePrivate={routePrivate}
           routePublic={routePublic}
           routeGroup={routeGroup}
+         
         />
       </div>
     );

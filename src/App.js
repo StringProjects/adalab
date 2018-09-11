@@ -16,7 +16,8 @@ class App extends Component {
       psw: '',
       openedErrorFeedback: false,
       responseStatus: false,
-      errorClass: "error-hidden"
+      errorClass: "error-hidden",
+      prueba: ""
     }
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
@@ -52,7 +53,7 @@ class App extends Component {
       if (response.ok){
           return response.json()
           .then((data) => {
-            console.log("ENTRA API")
+            console.log("ENTRA API",data.groups)
             this.savedToken(data.user.auth_token)
             console.log(data.user.auth_token);
             this.setState({errorClass: "error-hidden"})
@@ -69,12 +70,12 @@ class App extends Component {
 
     fecthApiLogOut(tok) {
      
-      console.log("ENTRA LOGOUT")
+      console.log("ENTRA LOGOUT",tok)
       fetch('http://adalab.string-projects.com/api/v1/sessions', {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json',
-          'AUTH-TOKEN': tok
+          'AUTH-TOKEN': tok,
         }
       }).then((response) => {
       
@@ -125,6 +126,7 @@ class App extends Component {
   handleSubmitLogin(e) {
     e.preventDefault();
     console.log("entra submit")
+
     this.fecthApi();
   }
 
@@ -142,7 +144,7 @@ class App extends Component {
     const routePublic = '/';
     const routeGroup = '/group';
     const routeThread = '/thread';
-    
+  
 
     console.log('app openedErrorFeedback', openedErrorFeedback);
     return (
@@ -157,6 +159,7 @@ class App extends Component {
                 routePublic={routePublic}
                 routeGroup={routeGroup}
                 onDeleteLocalStorage={this.handleDeleteLocalStorage}
+                
               />
             }
           />
@@ -183,6 +186,7 @@ class App extends Component {
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
+             
                 
               />
             }
