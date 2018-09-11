@@ -11,8 +11,9 @@ class AppPrivate extends Component {
       routePublic,
       routeGroup,
       match,
+      onDeleteLocalStorage
     } = this.props;
-    console.log('props en app private', this.props)
+
     return (
       <div className="wrapper-group">
         <WeHeader />
@@ -21,6 +22,7 @@ class AppPrivate extends Component {
             routePublic={routePublic}
             routeGroup={routeGroup}
             match={match}
+            onDeleteLocalStorage={onDeleteLocalStorage}
           />
         <Groups
           routePrivate={routePrivate}

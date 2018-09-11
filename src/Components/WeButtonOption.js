@@ -24,6 +24,7 @@ class WeButtonOption extends Component {
       routePublic,
       routeGroup,
       match,
+      onDeleteLocalStorage
     } = this.props;
     return (
       <div className="dropdown-container">
@@ -38,7 +39,7 @@ class WeButtonOption extends Component {
           </DropdownToggle>
           <DropdownMenu className="dropdown-menu dropdown-menu-right">
             <DropdownItem> Crear grupo </DropdownItem>
-            <DropdownItem> Cerrar sesión</DropdownItem>
+            <DropdownItem onClick={onDeleteLocalStorage}> Cerrar sesión</DropdownItem>
           </DropdownMenu>
         </ButtonDropdown>
       </div>

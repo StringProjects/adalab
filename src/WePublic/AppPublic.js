@@ -12,7 +12,8 @@ class AppPublic extends Component {
       toggleErrorFeedback,
       onInputEmail,
       onInputPsw,
-      onSubmitBtn
+      onSubmitBtn,
+      onDeleteLocalStorage
       } = this.props;
     return (
      

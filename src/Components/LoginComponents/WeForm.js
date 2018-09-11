@@ -20,7 +20,6 @@ class WeForm extends Component {
     }
     handleClick(event) {
         if (event.target.classList.contains('show-off')) {
-            console.log("entra")
             document
                 .getElementById('pwd')
                 .type = 'text';
@@ -83,9 +82,11 @@ class WeForm extends Component {
                             errorClass= {this.props.errorClass}
                             className="error-message"
                         />
+                        <Link to='/private' className="Button-option-link">
                         <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
                         </Button>
+                        </Link>
                     
                 </Form>
             </div>
