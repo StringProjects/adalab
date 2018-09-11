@@ -70,7 +70,16 @@ class AppPrivate extends Component {
               </div>
             }
           />
-          <Route exact path={`${this.props.computedMatch.path}${routeThread}`} component={Thread} />
+          <Route
+            exact
+            path={`${this.props.computedMatch.path}${routeThread}`}
+            render={() =>
+              <Thread
+                routeGroup={routeGroup}
+                rootRoute={this.props.computedMatch.path}
+              />
+            }
+          />
         </Switch>
       </div>
     );
