@@ -11,6 +11,7 @@ class AppPublic extends Component {
       onInputPsw,
       onSubmitBtn
       } = this.props;
+      console.log('onSubmitBtn AppPublic',onSubmitBtn)
     return (
       <Login
         errorClass={this.props.errorClass}

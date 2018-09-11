@@ -111,6 +111,7 @@ resetInput(){
   })
 }
   render() {
+    console.log('this.handleSubmitLogin',this.handleSubmitLogin)
     const { openedErrorFeedback,valueInput } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
