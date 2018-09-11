@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Login from './WePublic/Login';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
-import Group from './WePrivate/Group';
-import Thread from './WePrivate/Thread';
 import { Route, Switch } from 'react-router-dom';
 
 let responseStatus = 0;
@@ -17,8 +15,7 @@ class App extends Component {
       openedErrorFeedback: false,
       responseStatus: false,
       errorClass: "error-hidden",
-      groupList: [],
-      groupPost: [],
+      
     }
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
@@ -29,7 +26,6 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-    this.goToGroup = this.goToGroup.bind(this);
   }
 
   // componentDidMount() {
@@ -56,19 +52,8 @@ class App extends Component {
           .then((data) => {
             this.savedToken(data.user.auth_token)
             console.log(data.user.auth_token);
-            this.setState({errorClass: "error-hidden", groupList: data.groups})
-            fetch('http://adalab.string-projects.com/api/v1/posts', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'AUTH-TOKEN': localStorage.getItem('token')
-      }
-    })
-      .then((response) => 
-      response.json())
-      .then((json) => {
-      this.setState({messages: json})
-    })
+            this.setState({errorClass: "error-hidden"})
+           
           });
         }  else {
           this.setState({errorClass: ""})
@@ -116,41 +101,9 @@ class App extends Component {
     this.goToGroup()
   }
 
-  //Principio llamada API de Group
-  goToGroup(){
-    fetch('http://adalab.string-projects.com/api/v1/posts', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        'AUTH-TOKEN': this.getToken()
-      }
-    }).then((response) => {
-        return response.json()
-    }).then((data)=>{
-        this.setState({groupPost:data})
-        console.log("POSTS", data)
-    })
-  }
-  
-  //Principio llamada API Thread
-  goToThreadFetch(){
-    fetch('http://adalab.string-projects.com/api/v1/posts', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        'AUTH-TOKEN': this.getToken()
-      }
-    }).then((response) => {
-        return response.json()
-    }).then((data)=>{
-        this.setState({groupPost:data})
-        console.log("POSTS", data)
-    })
-  }
+ 
 
-  goToThread(event){
-    console.log("event", event.target)
-  }
+  
 
   render() {
     const { openedErrorFeedback } = this.state;
@@ -158,42 +111,25 @@ class App extends Component {
     const routePublic = '/';
     const routeGroup = '/group';
     const routeThread = '/thread';
-    const groupList = this.props.groupList
 
     console.log('app openedErrorFeedback', openedErrorFeedback);
     return (
       <div className="container-fluid">
-        <Switch>
-          <Route
-            path={routePrivate}
-            render={props =>
+        {/* <Switch> */}
+          {/* <Route */}
+            {/* path={routePrivate}
+            render={props => */}
               <AppPrivate
-                match={props.match}
+                // match={props.match}
                 routePrivate={routePrivate}
                 routePublic={routePublic}
                 routeGroup={routeGroup}
-                handleFetchGroups={this.handleFetchGroups}
-                groupList= {this.state.groupList}
                 goToGroup={this.goToGroup}
-
               />
-            }
-          />
-          <Route
-            path={routeGroup}
-            render={props =>
-              <Group
-                match={props.match}
-                routeGroup={routeGroup}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-                groupPostArray={this.state.groupPost}
-                goToThread={this.goToThread}
-              />
-            }
-          />
-          <Route path={routeThread} component={Thread} />
-          <Route
+            {/* } */}
+          {/* /> */}
+          
+          {/* <Route
             exact path={routePublic}
             render={props =>
               <AppPublic
@@ -206,8 +142,8 @@ class App extends Component {
                 onSubmitBtn={this.handleSubmitLogin}
               />
             }
-          />
-        </Switch>
+          /> */}
+        {/* </Switch> */}
       </div>
     );
   }

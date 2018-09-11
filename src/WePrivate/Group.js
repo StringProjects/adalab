@@ -22,11 +22,11 @@ class Group extends Component {
     return (
       <div className="wrapper-group">
         <WeHeader />
-          <WeButtonOption
-              routePrivate={routePrivate}
-              routePublic={routePublic}
-              routeGroup={routeGroup}
-              match={match}
+        <WeButtonOption
+          routePrivate={routePrivate}
+          routePublic={routePublic}
+          routeGroup={routeGroup}
+          match={match}
           />
         <div className="wrapper-nameGroup">
           <img className="rounded-circle img-group" src={profile} alt="profile picture" />
@@ -39,6 +39,7 @@ class Group extends Component {
         <ul>
             {groupPostArray.map(function(post,i){
               return (
+                <Link to='/thread'>
                 <li key={i} onClick={this.props.goToGroup}>
                   <ElementList
                     image={profile}
@@ -47,6 +48,7 @@ class Group extends Component {
                     message={groupPostArray.description}
                   />
                 </li>
+              </Link>
               )
             })}
           </ul>

@@ -11,6 +11,7 @@ class Groups extends Component {
     console.log("groupList", groupList)
     return (
       <div className="main--welist">
+      <button onClick={this.props.fetchGroupList}>Hola</button>
         <Link to='/group'>
           <ul>
             {groupList.map(function(group,i){
