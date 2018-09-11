@@ -60,6 +60,14 @@
 .error-hidden {
   display: none; }
 
+.alert-danger {
+  font-size: 15px;
+  margin-bottom: 0; }
+
+@media (max-width: 375px) {
+  .alert-danger {
+    font-size: 13px; } }
+
 .Header__title {
   color: #006ef5;
   font-weight: 600;
@@ -72,7 +80,7 @@
   bottom: 0;
   padding: 16px;
   background-color: white;
-  height: 75px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -83,7 +91,9 @@
 
 @media (max-width: 425px) {
   .footer-login {
-    height: 35px; } }
+    height: 35px; }
+  .text-footer {
+    font-size: 13px; } }
 
 .HeaderThread__container {
   display: flex;
@@ -117,7 +127,7 @@
     margin: auto; } }
 
 .container--form-landing {
-  margin-top: 70px; }
+  margin-top: 40px; }
 
 .form--style {
   height: 100%;
@@ -138,7 +148,7 @@
   border-bottom: 1px solid #6c757d; }
 
 .btn--login {
-  margin: 50px auto auto;
+  margin: 20px auto auto;
   width: 60px;
   border-radius: 35px;
   height: 60px;
@@ -200,9 +210,9 @@
 
 @media (min-width: 1024px) {
   .container--text-login {
-    margin-top: 130px; }
+    margin-top: 100px; }
   .container--form-landing {
-    margin-top: 130px; } }
+    margin-top: 100px; } }
 
 @media (max-width: 375px) {
   .form--group {
