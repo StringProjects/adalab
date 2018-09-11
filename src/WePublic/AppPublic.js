@@ -4,9 +4,6 @@ import Login from './Login';
 
 class AppPublic extends Component {
   render() {
-
-    console.log('props AppPublic', this.props)
-
     const {
       openedErrorFeedback,
       toggleErrorFeedback,
@@ -17,6 +14,7 @@ class AppPublic extends Component {
       location,
       redirectToPrivateArea
       } = this.props;
+      console.log('onSubmitBtn AppPublic', onSubmitBtn)
     return (
       <Login
         errorClass={this.props.errorClass}

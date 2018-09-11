@@ -29,7 +29,7 @@ class Login extends Component {
             location
             } = this.props;
 
-            console.log('props en login', this.props)
+            console.log('onSubmitBtn en login', onSubmitBtn)
 
         const { from } = location.state || { from: { pathname: '/private'}};
 

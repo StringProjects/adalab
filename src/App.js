@@ -103,8 +103,8 @@ class App extends Component {
   }
 
   handleSubmitLogin(e) {
-    console.log('onsubmit')
-    e.preventDefault();
+    console.log('onSubmit en App')
+    // e.preventDefault();
     this.fecthApi();
   }
   onInputMessageGroup(e){
@@ -139,7 +139,7 @@ resetInput(){
     const routeGroup = '/group';
     const routeThread = '/thread';
 
-    console.log('onSubmit',this.handleSubmitLogin);
+    console.log('onSubmit en App',this.handleSubmitLogin);
     return (
       <div className="container-fluid">
         <Switch>

@@ -59,7 +59,7 @@ class WeForm extends Component {
             onSubmitBtn,
             getToken
         } = this.props;
-       
+        console.log('onSubmitBtn en WeForm',onSubmitBtn)
         return (
             <div className="container--form-landing">
                 <Form className="form--style" onSubmit={onSubmitBtn}>
