@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
-import WeList from '../Components/WeList';
 import WeInputButton from '../Components/WeInputButton';
-import ElementList from '../Components/WeListComponents/ElementList';
+import ElementList from '../Components/ElementList';
 import profile from '../images/wp-image-58683558-random-picture.jpg';
 import { Link } from 'react-router-dom';
 
 class Groups extends Component {
+
+
   render() {
+    const groupList = this.props.groupList
+    console.log("groupList", groupList)
     return (
       <div className="main--welist">
         <Link to='/group'>
-          <WeList
-            image={profile}
-            group="Adalab Work"
-            name="María"
-            date="15:13"
-            message="last message from this group"
-          />
+          <ul>
+            {groupList.map(function(group,i){
+              return (
+                <li key={i}>
+                  <ElementList
+                    image={profile}
+                    group={groupList.name}
+                    name="María"
+                    date="15:13"
+                    message="last message from this group"
+                  />
+                </li>
+              )
+            })}
+          </ul>
+          
         </Link>
-        <WeList
-          image={profile}
-          group="Adalab2 Work"
-          name="Bis"
-          date="2days"
-          message="last message from this group"
-        />
-
+        
       </div>
 
 

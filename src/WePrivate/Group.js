@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import WeList from '../Components/WeList';
 import WeButtonOption from '../Components/WeButtonOption';
 import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
-import ElementList from '../Components/WeListComponents/ElementList';
+import ElementList from '../Components/ElementList';
 import profile from '../images/wp-image-58683558-random-picture.jpg';
 import { Link } from 'react-router-dom';
 
 class Group extends Component {
+  
   render() {
     const {
       routePrivate,
@@ -35,7 +35,7 @@ class Group extends Component {
         </div>
         <div className="wrapper-welist">
         <Link to='/thread'>
-          <WeList
+          <ElementList
             image={profile}
             name="María"
             date="15:13"
@@ -43,7 +43,7 @@ class Group extends Component {
             answers="8 answers"
           />
         </Link>
-        <WeList
+        <ElementList
           image={profile}
           name="Bis"
           date="17:00"

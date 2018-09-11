@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap';
 class ElementList extends Component {
   render() {
     return (
-      <Row className="ElementList-wrapper">
+      <Row className="ElementList-wrapper" onClick={this.props.handleFetchGroups}>
           
         <Col xs="4" md="3" lg="2" xl="2" className="ElementList_image-container">
             <img className="rounded-circle ElementList-image" width="50px" height="50px" src={this.props.image} alt="profile picture" />

@@ -16,7 +16,8 @@ class App extends Component {
       psw: '',
       openedErrorFeedback: false,
       responseStatus: false,
-      errorClass: "error-hidden"
+      errorClass: "error-hidden",
+      groupList: [],
     }
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
@@ -34,6 +35,7 @@ class App extends Component {
   //   this.fecthApi();
   // }
 
+  
 
   fecthApi() {
     console.log("state", this.state.user)
@@ -51,12 +53,24 @@ class App extends Component {
       if (response.ok){
           return response.json()
           .then((data) => {
+            console.log(data)
             this.savedToken(data.user.auth_token)
             console.log(data.user.auth_token);
-            this.setState({errorClass: "error-hidden"})
+            this.setState({errorClass: "error-hidden", groupList: data.groups})
+            fetch('http://adalab.string-projects.com/api/v1/posts', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'AUTH-TOKEN': localStorage.getItem('token')
+      }
+    })
+      .then((response) => 
+      response.json())
+      .then((json) => {
+      this.setState({messages: json})
+    })
           });
         }  else {
-          console.log("error", response);
           this.setState({errorClass: ""})
           console.log("soy el estado", this.state.responseStatus);
         }
@@ -78,7 +92,6 @@ class App extends Component {
     this.setState({
       user: value
     })
-    console.log(value);
 
   }
 
@@ -90,7 +103,6 @@ class App extends Component {
     this.setState({
       psw: value
     })
-    console.log(value);
 
   }
 
@@ -107,7 +119,7 @@ class App extends Component {
     const routePublic = '/';
     const routeGroup = '/group';
     const routeThread = '/thread';
-    
+    const groupList = this.props.groupList
 
     console.log('app openedErrorFeedback', openedErrorFeedback);
     return (
@@ -121,6 +133,8 @@ class App extends Component {
                 routePrivate={routePrivate}
                 routePublic={routePublic}
                 routeGroup={routeGroup}
+                handleFetchGroups={this.handleFetchGroups}
+                groupList= {this.state.groupList}
               />
             }
           />

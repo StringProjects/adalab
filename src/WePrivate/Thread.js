@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import WeHeaderThread from '../Components/WeHeaderThread';
-import WeList from '../Components/WeList';
+import ElementList from '../Components/ElementList';
 import profile from '../images/wp-image-58683558-random-picture.jpg';
 import WeInputButton from '../Components/WeInputButton';
 
@@ -9,20 +9,20 @@ class Thread extends Component {
     return (
       <div className="wrapper-thread">
         <WeHeaderThread />
-        <WeList
+        <ElementList
           image={profile}
           name="María"
           date="1 day"
           message="last message from this group"
           answers="8 answers"
         />
-        <WeList
+        <ElementList
           image={profile}
           name="Bis"
           date="15:13"
           message="last message from this group"
         />
-        <WeList
+        <ElementList
           image={profile}
           name="Raquel"
           date="17h"
