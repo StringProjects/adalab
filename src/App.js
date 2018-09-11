@@ -13,7 +13,8 @@ class App extends Component {
       psw: '',
       openedErrorFeedback: false,
       responseStatus: false,
-      errorClass: "error-hidden"
+      errorClass: "error-hidden",
+      valueInput:'',
     }
 
     this.handleInputEmailLoginValue = this
@@ -25,6 +26,16 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
+      this.handlesendMessageGroup= this
+      .handlesendMessageGroup
+      .bind(this);
+      this.onInputMessageGroup= this
+      .onInputMessageGroup
+      .bind(this);
+      this.resetInput= this
+      .resetInput
+      .bind(this);
+      
   }
 
   fecthApi() {
@@ -79,9 +90,28 @@ class App extends Component {
     e.preventDefault();
     this.fecthApi();
   }
-
+  onInputMessageGroup(e){
+    const {
+      value
+    } = e.target;
+    this.setState({
+      valueInput: value
+    })
+    console.log("soy un value input", this.state.valueInput);
+  }
+  handlesendMessageGroup(e){
+    e.preventDefault();
+    InputMessageGroupValue = this.state.valueInput
+    console.log("soy el post",InputMessageGroupValue);
+    this.resetInput();
+  }
+resetInput(){
+  this.setState({
+    valueInput: ''
+  })
+}
   render() {
-    const { openedErrorFeedback } = this.state;
+    const { openedErrorFeedback,valueInput } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroup = '/group';
@@ -105,6 +135,9 @@ class App extends Component {
             path={routeGroup}
             render={props =>
               <Group
+                sendMessageGroup= {this.handlesendMessageGroup}
+                onInputMessageGroup={this.onInputMessageGroup}
+                InputMessageGroupValue={valueInput}
                 match={props.match}
                 routeGroup={routeGroup}
                 routePrivate={routePrivate}
