@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import {
     Button,
     Form,
     FormGroup,
     Input,
-    Row,
-    Col,
-    Nav
 } from 'reactstrap';
 import ErrorFeedBack from './ErrorFeedBack';
-import { Link } from 'react-router-dom';
 
 class WeForm extends Component {
     constructor(props) {

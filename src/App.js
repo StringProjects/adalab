@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Login from './WePublic/Login';
+import { 
+  Route, 
+  Switch 
+} from 'react-router-dom';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
 import Thread from './WePrivate/Thread';
-import { Route, Switch } from 'react-router-dom';
+
 
 class App extends Component {
   constructor() {
@@ -31,13 +34,6 @@ class App extends Component {
   //   this.fecthApi();
   // }
 
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const { openedErrorFeedback } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
-  }
   fecthApi() {
     console.log("state", this.state.user)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
@@ -86,7 +82,7 @@ class App extends Component {
   }
 
   handleSubmitLogin(e) {
-    e.preventDefault;
+    e.preventDefault();
     console.log("entra submit")
     this.fecthApi();
   }

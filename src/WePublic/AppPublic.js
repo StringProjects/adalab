@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Login from './Login';
-import AppPrivate from '../WePrivate/AppPrivate';
-
 
 class AppPublic extends Component {
 

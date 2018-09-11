@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import {ButtonDropdown, DropdownItem, DropdownToggle, DropdownMenu, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {
+  ButtonDropdown, 
+  DropdownItem, 
+  DropdownToggle, 
+  DropdownMenu, 
+  Button
+} from 'reactstrap';
+
 
 class WeButtonOption extends Component {
   constructor(props) {

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import WeList from '../Components/WeList';
 import WeButtonOption from '../Components/WeButtonOption';
 import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
-import ElementList from '../Components/WeListComponents/ElementList';
-import profile from '../images/wp-image-58683558-random-picture.jpg';
-import { Link } from 'react-router-dom';
+import profile from '../images/panda.jpg';
 
 class Group extends Component {
   render() {

@@ -1,17 +1,10 @@
 import React, {Component} from 'react';
-import WeHeader from '../Components/WeHeader';
-import WeHeaderThread from '../Components/WeHeaderThread';
-import WeForm from '../Components/LoginComponents/WeForm';
-import WeInputButton from '../Components/WeInputButton';
 import {
-    Button,
-    Form,
-    FormGroup,
-    Input,
     Row,
     Col,
-    Nav
 } from 'reactstrap';
+import WeHeader from '../Components/WeHeader';
+import WeForm from '../Components/LoginComponents/WeForm';
 
 class Login extends Component {
     render() {
