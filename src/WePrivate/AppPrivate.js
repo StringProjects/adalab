@@ -11,7 +11,6 @@ class AppPrivate extends Component {
       routePublic,
       routeGroup,
       match,
-      handleFetchGroups,
       groupList,
     } = this.props;
     console.log('props en app private', this.props)
