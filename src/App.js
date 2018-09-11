@@ -139,8 +139,7 @@ resetInput(){
     const routeGroup = '/group';
     const routeThread = '/thread';
 
-    console.log('localToken', localToken)
-    console.log('estan aqui location y match?',this.props);
+    console.log('onSubmit',this.handleSubmitLogin);
     return (
       <div className="container-fluid">
         <Switch>

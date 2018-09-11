@@ -5,7 +5,7 @@ import Login from './Login';
 class AppPublic extends Component {
   render() {
 
-    console.log('props', this.props)
+    console.log('props AppPublic', this.props)
 
     const {
       openedErrorFeedback,
