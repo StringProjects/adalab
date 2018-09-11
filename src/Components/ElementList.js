@@ -38,7 +38,7 @@ class ElementList extends Component {
           <Row>
             <Col className="flex-wrapper">
               <span className="answers-number">{this.props.answers}</span>
-              <span className="add-answer">{this.props.addAnswer}</span>
+              <span className="add-answer" onClick={this.props.goToThread}>{this.props.addAnswer}</span>
             </Col>
           </Row>
         

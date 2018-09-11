@@ -15,7 +15,7 @@ class Groups extends Component {
           <ul>
             {groupList.map(function(group,i){
               return (
-                <li key={i}>
+                <li key={i} onClick={this.props.goToGroup}>
                   <ElementList
                     image={profile}
                     group={groupList.name}

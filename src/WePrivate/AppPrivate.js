@@ -12,6 +12,7 @@ class AppPrivate extends Component {
       routeGroup,
       match,
       groupList,
+      goToGroup,
     } = this.props;
     console.log('props en app private', this.props)
     return (
@@ -28,6 +29,7 @@ class AppPrivate extends Component {
           routePublic={routePublic}
           routeGroup={routeGroup}
           groupList={groupList}
+          goToGroup={goToGroup}
         />
       </div>
     );

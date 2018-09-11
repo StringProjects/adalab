@@ -16,6 +16,8 @@ class Group extends Component {
       match,
     } = this.props;
 
+    const groupPostArray = this.props.groupPostArray
+
     console.log('props en group', this.props)
     return (
       <div className="wrapper-group">
@@ -34,21 +36,21 @@ class Group extends Component {
           </div>
         </div>
         <div className="wrapper-welist">
-        <Link to='/thread'>
-          <ElementList
-            image={profile}
-            name="María"
-            date="15:13"
-            message="last message from this group"
-            answers="8 answers"
-          />
-        </Link>
-        <ElementList
-          image={profile}
-          name="Bis"
-          date="17:00"
-          message="last message from this group"
-        />
+        <ul>
+            {groupPostArray.map(function(post,i){
+              return (
+                <li key={i} onClick={this.props.goToGroup}>
+                  <ElementList
+                    image={profile}
+                    name={groupPostArray.username}
+                    date={groupPostArray.date}
+                    message={groupPostArray.description}
+                  />
+                </li>
+              )
+            })}
+          </ul>
+        
         </div>
         <div className= "wrapper-input-send">
           <WeInputButton/>

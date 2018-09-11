@@ -18,6 +18,7 @@ class App extends Component {
       responseStatus: false,
       errorClass: "error-hidden",
       groupList: [],
+      groupPost: [],
     }
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
@@ -28,7 +29,7 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-   
+    this.goToGroup = this.goToGroup.bind(this);
   }
 
   // componentDidMount() {
@@ -53,7 +54,6 @@ class App extends Component {
       if (response.ok){
           return response.json()
           .then((data) => {
-            console.log(data)
             this.savedToken(data.user.auth_token)
             console.log(data.user.auth_token);
             this.setState({errorClass: "error-hidden", groupList: data.groups})
@@ -83,6 +83,9 @@ class App extends Component {
     localStorage.setItem('token', token)
   }
 
+  getToken() {
+    return localStorage.getItem('token')
+  }
 
   handleInputEmailLoginValue(e) {
 
@@ -110,8 +113,44 @@ class App extends Component {
     e.preventDefault();
     console.log("entra submit")
     this.fecthApi();
+    this.goToGroup()
   }
 
+  //Principio llamada API de Group
+  goToGroup(){
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'AUTH-TOKEN': this.getToken()
+      }
+    }).then((response) => {
+        return response.json()
+    }).then((data)=>{
+        this.setState({groupPost:data})
+        console.log("POSTS", data)
+    })
+  }
+  
+  //Principio llamada API Thread
+  goToThreadFetch(){
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'AUTH-TOKEN': this.getToken()
+      }
+    }).then((response) => {
+        return response.json()
+    }).then((data)=>{
+        this.setState({groupPost:data})
+        console.log("POSTS", data)
+    })
+  }
+
+  goToThread(event){
+    console.log("event", event.target)
+  }
 
   render() {
     const { openedErrorFeedback } = this.state;
@@ -135,6 +174,8 @@ class App extends Component {
                 routeGroup={routeGroup}
                 handleFetchGroups={this.handleFetchGroups}
                 groupList= {this.state.groupList}
+                goToGroup={this.goToGroup}
+
               />
             }
           />
@@ -146,6 +187,8 @@ class App extends Component {
                 routeGroup={routeGroup}
                 routePrivate={routePrivate}
                 routePublic={routePublic}
+                groupPostArray={this.state.groupPost}
+                goToThread={this.goToThread}
               />
             }
           />
