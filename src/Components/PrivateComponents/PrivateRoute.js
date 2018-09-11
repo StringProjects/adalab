@@ -1,14 +1,18 @@
-import React, {Component} from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { 
+  Route, 
+  Redirect 
+} from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
+  console.log('this.props privateroute',this.props)
   console.log('rest',rest);
   return (
   <Route
     {...rest}
-    render={props =>
-      rest.redirectToPrivateArea ? (
-        <Component {...props} />
+    render={(props) =>
+      rest.redirectToPrivateArea === true ? (
+        <Component {...props} {...rest} />
       ) : (
         <Redirect
           to={{
@@ -19,6 +23,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       )
     }
   />
-)};
+  )
+};
 
 export default PrivateRoute;

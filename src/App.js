@@ -128,29 +128,26 @@ class App extends Component {
     const routeThread = '/thread';
 
     console.log('localToken', localToken)
-
+    console.log('estan aqui location y match?',this.props);
     return (
       <div className="container-fluid">
         <Switch>
           <PrivateRoute
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
-            render={props =>
-              <AppPrivate
-                match={props.match}
-                location={props.location}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-                routeGroup={routeGroup}
-              />
-            }
+            component={AppPrivate}
+            match={this.props.match}
+            location={this.props.location}
+            routePrivate={routePrivate}
+            routePublic={routePublic}
+            routeGroup={routeGroup}
           />
           <Route
             path={routeGroup}
             render={props =>
               <Group
                 match={props.match}
-                loacation={props.location}
+                location={props.location}
                 routeGroup={routeGroup}
                 routePrivate={routePrivate}
                 routePublic={routePublic}

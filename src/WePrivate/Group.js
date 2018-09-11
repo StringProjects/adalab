@@ -14,6 +14,7 @@ class Group extends Component {
       routePublic,
       routeGroup,
       match,
+      location,
     } = this.props;
 
     console.log('props en group', this.props)
@@ -25,6 +26,7 @@ class Group extends Component {
               routePublic={routePublic}
               routeGroup={routeGroup}
               match={match}
+              location={location}
           />
         <div className="wrapper-nameGroup">
           <img className="rounded-circle img-group" src={profile} alt="profile picture" />
