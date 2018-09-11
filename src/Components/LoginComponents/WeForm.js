@@ -80,6 +80,7 @@ class WeForm extends Component {
                         </FormGroup>
                         <ErrorFeedBack
                             errorClass= {this.props.errorClass}
+                            className="error-message"
                         />
                         <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
