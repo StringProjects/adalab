@@ -78,7 +78,6 @@ class WeForm extends Component {
                                 id="hide-psw"
                                 className="far fa-eye-slash icon--psw show-off"></i>
                         </FormGroup>
-                  
                         <ErrorFeedBack
                             errorClass= {this.props.errorClass}
                         />

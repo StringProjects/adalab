@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import Login from './WePublic/Login';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
 import Thread from './WePrivate/Thread';
 import { Route, Switch } from 'react-router-dom';
-let InputMessageGroupValue= '';
-let responseStatus = 0;
 
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       user: '',
       psw: '',
@@ -20,6 +16,7 @@ class App extends Component {
       errorClass: "error-hidden",
       valueInput:'',
     }
+
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
       .bind(this);
@@ -41,11 +38,6 @@ class App extends Component {
       
   }
 
-  // componentDidMount() {
-  //   this.fecthApi();
-  // }
-
-
   fecthApi() {
     console.log("state", this.state.user)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
@@ -58,18 +50,14 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
-      responseStatus= response.status;
       if (response.ok){
           return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
-            console.log(data.user.auth_token);
             this.setState({errorClass: "error-hidden"})
           });
         }  else {
-          console.log("error", response);
           this.setState({errorClass: ""})
-          console.log("soy el estado", this.state.responseStatus);
         }
         
     })
@@ -81,32 +69,25 @@ class App extends Component {
   }
 
   handleInputEmailLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       user: value
     })
-    console.log(value);
-
   }
 
   handleInputPswLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       psw: value
     })
-    console.log(value);
-
   }
 
   handleSubmitLogin(e) {
     e.preventDefault();
-    console.log("entra submit")
     this.fecthApi();
   }
   onInputMessageGroup(e){
@@ -136,8 +117,6 @@ resetInput(){
     const routeGroup = '/group';
     const routeThread = '/thread';
     
-
-    console.log('app openedErrorFeedback', openedErrorFeedback);
     return (
       <div className="container-fluid">
         <Switch>

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Login from './Login';
-import AppPrivate from '../WePrivate/AppPrivate';
 
 
 class AppPublic extends Component {
-
-
   render() {
     const {
       openedErrorFeedback,
@@ -15,8 +12,6 @@ class AppPublic extends Component {
       onSubmitBtn
       } = this.props;
     return (
-     
-     
       <Login
         errorClass={this.props.errorClass}
         onInputEmail={onInputEmail}
@@ -25,8 +20,6 @@ class AppPublic extends Component {
         toggleErrorFeedback={toggleErrorFeedback}
         onSubmitBtn={onSubmitBtn}
       />
-     
-
     );
   }
 }
