@@ -55,6 +55,7 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
+      console.log('estoy en la api')
       if (response.ok){
           return response.json()
           .then((data) => {
@@ -104,6 +105,7 @@ class App extends Component {
   }
 
   handleSubmitLogin(e) {
+    console.log('onsubmit')
     e.preventDefault();
     this.fecthApi();
   }

@@ -23,7 +23,6 @@ class WeButtonOption extends Component {
       routePrivate,
       routePublic,
       routeGroup,
-      match,
       location
     } = this.props;
     console.log('this.props webuttonOption',this.props)
