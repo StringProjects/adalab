@@ -101,8 +101,8 @@ class App extends Component {
   }
   handlesendMessageGroup(e){
     e.preventDefault();
-    InputMessageGroupValue = this.state.valueInput
-    console.log("soy el post",InputMessageGroupValue);
+    // InputMessageGroupValue = this.state.valueInput
+    // console.log("soy el post",InputMessageGroupValue);
     this.resetInput();
   }
 resetInput(){
