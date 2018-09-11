@@ -53,7 +53,11 @@ class Group extends Component {
         />
         </div>
         <div className= "wrapper-input-send">
-          <WeInputButton/>
+          <WeInputButton
+            sendMessageGroup={this.props.sendMessageGroup}
+            onInputMessageGroup={this.props.onInputMessageGroup}
+            InputMessageGroupValue={this.props.InputMessageGroupValue}
+          />
         </div>
         
       </div>

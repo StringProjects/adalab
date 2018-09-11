@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Login from './Login';
-import AppPrivate from '../WePrivate/AppPrivate';
 
 
 class AppPublic extends Component {
-
-
   render() {
 
     console.log('props', this.props)
@@ -21,9 +18,8 @@ class AppPublic extends Component {
       redirectToPrivateArea
       } = this.props;
     return (
-     
-     
       <Login
+        errorClass={this.props.errorClass}
         onInputEmail={onInputEmail}
         onInputPsw={onInputPsw}
         openedErrorFeedback={openedErrorFeedback}
@@ -33,8 +29,6 @@ class AppPublic extends Component {
         redirectToPrivateArea={redirectToPrivateArea}
         location={location}
       />
-     
-
     );
   }
 }

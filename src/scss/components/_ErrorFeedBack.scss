@@ -1,0 +1,15 @@
+
+.error-hidden{
+    display: none;
+}
+
+.alert-danger{
+   font-size: 15px;
+   margin-bottom: 0;
+}
+
+@media (max-width: 375px) {
+    .alert-danger {
+     font-size: 13px;
+    }
+}

@@ -11,13 +11,16 @@ let localToken;
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       user: '',
       psw: '',
       openedErrorFeedback: false,
       redirectToPrivateArea: false,
+      responseStatus: false,
+      errorClass: "error-hidden",
+      valueInput:'',
     }
+
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
       .bind(this);
@@ -27,20 +30,17 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-    this.toggleErrorFeedback = this.toggleErrorFeedback.bind(this);
     this.getToken = this.getToken.bind(this);
-  }
-
-  // componentDidMount() {
-  //   this.fecthApi();
-  // }
-
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const { openedErrorFeedback } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
+      this.handlesendMessageGroup= this
+      .handlesendMessageGroup
+      .bind(this);
+      this.onInputMessageGroup= this
+      .onInputMessageGroup
+      .bind(this);
+      this.resetInput= this
+      .resetInput
+      .bind(this);
+      
   }
 
   fecthApi() {
@@ -54,11 +54,19 @@ class App extends Component {
         "nickname": this.state.user,
         "password": this.state.psw
       })
-    }).then((response) => response.json({})).then((data) => {
-
-      this.savedToken(data.user.auth_token)
-      console.log('what is token', data.user.auth_token);
-    });
+    }).then((response) => {
+      if (response.ok){
+          return response.json()
+          .then((data) => {
+            this.savedToken(data.user.auth_token)
+            this.setState({errorClass: "error-hidden"})
+          });
+        }  else {
+          this.setState({errorClass: ""})
+        }
+        
+    })
+    
   }
 
   savedToken(token) {
@@ -78,49 +86,52 @@ class App extends Component {
   }
 
   handleInputEmailLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       user: value
     })
-    console.log(value);
-
   }
 
   handleInputPswLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       psw: value
     })
-    console.log(value);
-
   }
 
   handleSubmitLogin(e) {
-    e.preventDefault;
-    console.log("entra submit")
+    e.preventDefault();
     this.fecthApi();
   }
-
-  toggleErrorFeedback(event) {
-    event.preventDefault();
+  onInputMessageGroup(e){
     const {
-      openedErrorFeedback
-    } = this.state;
+      value
+    } = e.target;
     this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
+      valueInput: value
+    })
+    console.log("soy un value input", this.state.valueInput);
   }
-
+  handlesendMessageGroup(e){
+    e.preventDefault();
+    // InputMessageGroupValue = this.state.valueInput
+    // console.log("soy el post",InputMessageGroupValue);
+    this.resetInput();
+  }
+resetInput(){
+  this.setState({
+    valueInput: ''
+  })
+}
   render() {
     const { 
       openedErrorFeedback,
-      redirectToPrivateArea
+      redirectToPrivateArea,
+      valueInput
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
@@ -146,6 +157,9 @@ class App extends Component {
             path={routeGroup}
             render={props =>
               <Group
+                sendMessageGroup= {this.handlesendMessageGroup}
+                onInputMessageGroup={this.onInputMessageGroup}
+                InputMessageGroupValue={valueInput}
                 match={props.match}
                 location={props.location}
                 routeGroup={routeGroup}
@@ -159,6 +173,7 @@ class App extends Component {
             exact path={routePublic}
             render={props =>
               <AppPublic
+                errorClass={this.state.errorClass}
                 openedErrorFeedback={openedErrorFeedback}
                 redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
@@ -166,7 +181,6 @@ class App extends Component {
                 location={props.location}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
-                onSubmitLogin={this.handleSubmitLogin}
                 onSubmitBtn={this.handleSubmitLogin}
                 getToken={this.getToken}
               />
