@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Login from './WePublic/Login';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
@@ -9,12 +8,15 @@ import { Route, Switch } from 'react-router-dom';
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       user: '',
       psw: '',
       openedErrorFeedback: false,
+      responseStatus: false,
+      errorClass: "error-hidden",
+      valueInput:'',
     }
+
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
       .bind(this);
@@ -24,20 +26,18 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-    this.toggleErrorFeedback = this.toggleErrorFeedback.bind(this);
+      this.handlesendMessageGroup= this
+      .handlesendMessageGroup
+      .bind(this);
+      this.onInputMessageGroup= this
+      .onInputMessageGroup
+      .bind(this);
+      this.resetInput= this
+      .resetInput
+      .bind(this);
+      
   }
 
-  // componentDidMount() {
-  //   this.fecthApi();
-  // }
-
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const { openedErrorFeedback } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
-  }
   fecthApi() {
     console.log("state", this.state.user)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
@@ -49,66 +49,74 @@ class App extends Component {
         "nickname": this.state.user,
         "password": this.state.psw
       })
-    }).then((response) => response.json({})).then((data) => {
-
-      this.savedToken(data.user.auth_token)
-      console.log(data.user.auth_token);
-    });
+    }).then((response) => {
+      if (response.ok){
+          return response.json()
+          .then((data) => {
+            this.savedToken(data.user.auth_token)
+            this.setState({errorClass: "error-hidden"})
+          });
+        }  else {
+          this.setState({errorClass: ""})
+        }
+        
+    })
+    
   }
 
   savedToken(token) {
     localStorage.setItem('token', token)
   }
 
-
   handleInputEmailLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       user: value
     })
-    console.log(value);
-
   }
 
   handleInputPswLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       psw: value
     })
-    console.log(value);
-
   }
 
   handleSubmitLogin(e) {
-    e.preventDefault;
-    console.log("entra submit")
+    e.preventDefault();
     this.fecthApi();
   }
-
-  toggleErrorFeedback(event) {
-    event.preventDefault();
+  onInputMessageGroup(e){
     const {
-      openedErrorFeedback
-    } = this.state;
+      value
+    } = e.target;
     this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
+      valueInput: value
+    })
+    console.log("soy un value input", this.state.valueInput);
   }
-
+  handlesendMessageGroup(e){
+    e.preventDefault();
+    // InputMessageGroupValue = this.state.valueInput
+    // console.log("soy el post",InputMessageGroupValue);
+    this.resetInput();
+  }
+resetInput(){
+  this.setState({
+    valueInput: ''
+  })
+}
   render() {
-    const { openedErrorFeedback } = this.state;
+    const { openedErrorFeedback,valueInput } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroup = '/group';
     const routeThread = '/thread';
-
-    console.log('app openedErrorFeedback', openedErrorFeedback);
+    
     return (
       <div className="container-fluid">
         <Switch>
@@ -127,6 +135,9 @@ class App extends Component {
             path={routeGroup}
             render={props =>
               <Group
+                sendMessageGroup= {this.handlesendMessageGroup}
+                onInputMessageGroup={this.onInputMessageGroup}
+                InputMessageGroupValue={valueInput}
                 match={props.match}
                 routeGroup={routeGroup}
                 routePrivate={routePrivate}
@@ -139,12 +150,12 @@ class App extends Component {
             exact path={routePublic}
             render={props =>
               <AppPublic
+                errorClass={this.state.errorClass}
                 openedErrorFeedback={openedErrorFeedback}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 match={props.match}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
-                onSubmitLogin={this.handleSubmitLogin}
                 onSubmitBtn={this.handleSubmitLogin}
               />
             }
