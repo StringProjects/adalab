@@ -12,12 +12,14 @@ import Thread from './WePrivate/Thread';
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       user: '',
       psw: '',
       openedErrorFeedback: false,
+      responseStatus: false,
+      errorClass: "error-hidden"
     }
+
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
       .bind(this);
@@ -27,12 +29,7 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-    this.toggleErrorFeedback = this.toggleErrorFeedback.bind(this);
   }
-
-  // componentDidMount() {
-  //   this.fecthApi();
-  // }
 
   fecthApi() {
     console.log("state", this.state.user)
@@ -45,40 +42,41 @@ class App extends Component {
         "nickname": this.state.user,
         "password": this.state.psw
       })
-    }).then((response) => response.json({})).then((data) => {
-
-      this.savedToken(data.user.auth_token)
-      console.log(data.user.auth_token);
-    });
+    }).then((response) => {
+      if (response.ok){
+          return response.json()
+          .then((data) => {
+            this.savedToken(data.user.auth_token)
+            this.setState({errorClass: "error-hidden"})
+          });
+        }  else {
+          this.setState({errorClass: ""})
+        }
+        
+    })
+    
   }
 
   savedToken(token) {
     localStorage.setItem('token', token)
   }
 
-
   handleInputEmailLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       user: value
     })
-    console.log(value);
-
   }
 
   handleInputPswLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       psw: value
     })
-    console.log(value);
-
   }
 
   handleSubmitLogin(e) {
@@ -87,24 +85,13 @@ class App extends Component {
     this.fecthApi();
   }
 
-  toggleErrorFeedback(event) {
-    event.preventDefault();
-    const {
-      openedErrorFeedback
-    } = this.state;
-    this.setState({
-      openedErrorFeedback: !openedErrorFeedback,
-    });
-  }
-
   render() {
     const { openedErrorFeedback } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroup = '/group';
     const routeThread = '/thread';
-
-    console.log('app openedErrorFeedback', openedErrorFeedback);
+    
     return (
       <div className="container-fluid">
         <Switch>
@@ -135,12 +122,12 @@ class App extends Component {
             exact path={routePublic}
             render={props =>
               <AppPublic
+                errorClass={this.state.errorClass}
                 openedErrorFeedback={openedErrorFeedback}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 match={props.match}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
-                onSubmitLogin={this.handleSubmitLogin}
                 onSubmitBtn={this.handleSubmitLogin}
               />
             }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 import {
     Button,
     Form,
@@ -75,17 +74,13 @@ class WeForm extends Component {
                                 id="hide-psw"
                                 className="far fa-eye-slash icon--psw show-off"></i>
                         </FormGroup>
-                    { openedErrorFeedback && <ErrorFeedBack />}
-                    <button
-                        onClick={toggleErrorFeedback}
-                    >
-                        Mostrar mensaje de error
-                    </button>
-                    <Link to='/private' className="Button-option-link">
+                        <ErrorFeedBack
+                            errorClass= {this.props.errorClass}
+                        />
                         <Button type="submit" className="btn btn--login">
                             <i className="fas fa-chevron-right"></i>
                         </Button>
-                    </Link>
+                    
                 </Form>
             </div>
         );
