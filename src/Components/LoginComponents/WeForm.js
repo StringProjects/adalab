@@ -89,19 +89,18 @@ class WeForm extends Component {
                             errorClass= {this.props.errorClass}
                             className="error-message"
                         />
-                        <button
-                            onClick={onSubmitBtn}
-                        >
-                            genera token
-                        </button>
+                        
                         <Button 
                             type="submit" 
-                            className="btn btn--login" 
-                            onClick={getToken}
+                            className="btn btn--login"  
                         >
-                        
                             <i className="fas fa-chevron-right"></i>
                         </Button>
+                        <button
+                            onClick={getToken}
+                        >
+                            Aceede a nuestra area privada
+                        </button>
                 </Form>
             </div>
         );
