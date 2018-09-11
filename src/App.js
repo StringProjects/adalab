@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
-import Group from './WePrivate/Group';
-import Thread from './WePrivate/Thread';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
 
 let localToken;
@@ -133,10 +131,11 @@ resetInput(){
     const { 
       openedErrorFeedback,
       redirectToPrivateArea,
-      valueInput
+      valueInput,
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
+    const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
 
@@ -154,23 +153,13 @@ resetInput(){
             routePrivate={routePrivate}
             routePublic={routePublic}
             routeGroup={routeGroup}
+            routeGroups={routeGroups}
+            routeThread={routeThread}
+
+            sendMessageGroup= {this.handlesendMessageGroup}
+            onInputMessageGroup={this.onInputMessageGroup}
+            InputMessageGroupValue={valueInput}
           />
-          <Route
-            path={routeGroup}
-            render={props =>
-              <Group
-                sendMessageGroup= {this.handlesendMessageGroup}
-                onInputMessageGroup={this.onInputMessageGroup}
-                InputMessageGroupValue={valueInput}
-                match={props.match}
-                location={props.location}
-                routeGroup={routeGroup}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-              />
-            }
-          />
-          <Route path={routeThread} component={Thread} />
           <Route
             exact path={routePublic}
             render={props =>

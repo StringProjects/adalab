@@ -15,6 +15,8 @@ class Group extends Component {
       routeGroup,
       match,
       location,
+      rootRoute,
+      routeThread,
     } = this.props;
 
     console.log('props en group', this.props)
@@ -36,7 +38,7 @@ class Group extends Component {
           </div>
         </div>
         <div className="wrapper-welist">
-        <Link to='/thread'>
+        <Link to={`${rootRoute}${routeThread}`}>
           <WeList
             image={profile}
             name="María"
