@@ -7,9 +7,14 @@ import { Link } from 'react-router-dom';
 
 class Groups extends Component {
   render() {
+    const {
+      rootRoute,
+      routeGroup,
+    } = this.props;
+    console.log('soy la ruta ',`${rootRoute}${routeGroup}`)
     return (
       <div className="main--welist">
-        <Link to='/group'>
+        <Link to={`${rootRoute}${routeGroup}`}>
           <WeList
             image={profile}
             group="Adalab Work"
