@@ -68,13 +68,16 @@ class App extends Component {
   }
 
     fecthApiLogOut(tok) {
+     
       console.log("ENTRA LOGOUT")
-      fetch('http://adalab.string-projects.com/api/v1/sessions/', {
+      fetch('http://adalab.string-projects.com/api/v1/sessions', {
         method: 'DELETE',
         headers: {
+          'Content-type': 'application/json',
           'AUTH-TOKEN': tok
         }
       }).then((response) => {
+      
           console.log("RESPUESTA LOGOUT", response)
 
       })
