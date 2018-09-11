@@ -4,6 +4,7 @@ import AppPrivate from './WePrivate/AppPrivate';
 import Group from './WePrivate/Group';
 import Thread from './WePrivate/Thread';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
 
 let localToken;
 
@@ -41,6 +42,7 @@ class App extends Component {
       openedErrorFeedback: !openedErrorFeedback,
     });
   }
+
   fecthApi() {
     console.log("state", this.state.user)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
@@ -130,8 +132,9 @@ class App extends Component {
     return (
       <div className="container-fluid">
         <Switch>
-          <Route
+          <PrivateRoute
             path={routePrivate}
+            redirectToPrivateArea={this.state.redirectToPrivateArea}
             render={props =>
               <AppPrivate
                 match={props.match}
