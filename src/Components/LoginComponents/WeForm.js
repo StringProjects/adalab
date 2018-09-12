@@ -92,8 +92,6 @@ class WeForm extends Component {
                         <Button 
                             type="submit" 
                             className="btn btn--login" 
-                            onClick={getToken}
-                            
                         >
                             <i className="fas fa-chevron-right"></i>
                         </Button>

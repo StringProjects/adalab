@@ -73,15 +73,10 @@ class App extends Component {
   }
 
   getToken(event) {
-    event.preventDefault();
-    localToken = localStorage.getItem('token');
+    //event.preventDefault();
+   return localToken = localStorage.getItem('token');
     
-    if (localToken !== null) {
-      console.log('estamos logeados??');
-      this.setState ({
-        redirectToPrivateArea: true,
-      },()=> {console.log('estado', this.state.redirectToPrivateArea)})
-    }
+
   }
 
   handleInputEmailLoginValue(e) {
@@ -106,6 +101,13 @@ class App extends Component {
     console.log('onsubmit')
     e.preventDefault();
     this.fecthApi();
+    const localToken = this.getToken();
+    if (localToken !== null) {
+      this.setState({
+        redirectToPrivateArea: true,
+      })
+    }
+  
   }
   onInputMessageGroup(e){
     const {
