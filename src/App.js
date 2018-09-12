@@ -75,14 +75,17 @@ class App extends Component {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json',
-          'AUTH-TOKEN': tok,
-        }
+          'AUTH-TOKEN': tok
+        },
       }).then((response) => {
-      
-          console.log("RESPUESTA LOGOUT", response)
+       if (response.ok) {
+         console.log("TODO Ok")
+       }
 
       })
-
+      .catch((error) => {
+        console.error(error);
+      });
     }
 
 
