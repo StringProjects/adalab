@@ -80,6 +80,7 @@ class App extends Component {
       }).then((response) => {
        if (response.ok) {
          console.log("TODO Ok")
+         this.deleteToken();
        }
 
       })
