@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { 
-  Route, 
-  Switch 
+import {
+  Route,
+  Switch
 } from 'react-router-dom';
 import WeHeader from '../Components/WeHeader';
 import WeButtonOption from '../Components/WeButtonOption';
@@ -24,9 +24,12 @@ class AppPrivate extends Component {
       groupList,
       handlefetchgroup,
       groupsPost,
-      handleIdThread
+      handleIdThread,
+      handlefetchSendMessage,
+      handleInputMessageValue,
+      inputMessageValue
     } = this.props;
-    
+
     return (
       <div className="wrapper-group">
         <Switch>
@@ -73,6 +76,9 @@ class AppPrivate extends Component {
                   routeThread={routeThread}
                   rootRoute={this.props.computedMatch.path}
                   handleIdThread={handleIdThread}
+                  handlefetchSendMessage={handlefetchSendMessage}
+                  handleInputMessageValue={handleInputMessageValue}
+                  inputMessageValue={inputMessageValue}
                 />
               </div>
             }

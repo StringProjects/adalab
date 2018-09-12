@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import { 
-  Form, 
-  Input, 
-  Button 
+import {
+  Form,
+  Input,
+  Button
 } from 'reactstrap';
 
 class WeInputButton extends Component {
   render() {
+    const {
+      handlefetchSendMessage,
+      handleInputMessageValue,
+      inputMessageValue
+    }=this.props;
+
     return (
       <Form className='Input__form' onSubmit={this.props.sendMessageGroup}>
         <Input
-          onChange={this.props.onInputMessageGroup}
+          onChange={handleInputMessageValue}
           type="text"
           className="form-control Input__text"
           id="message"
           placeholder="Type message"
-          value= {this.props.InputMessageGroupValue}
+          value= {inputMessageValue}
           name="message" />
         <Button
           type="submit"
-          className="btn Input__btn" 
+          className="btn Input__btn"
+          onClick={handlefetchSendMessage}
         >
           <p>Send</p>
         </Button>

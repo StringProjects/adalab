@@ -18,10 +18,13 @@ class Group extends Component {
       location,
       rootRoute,
       routeThread,
-      handleIdThread
+      handleIdThread,
+      handlefetchSendMessage,
+      handleInputMessageValue,
+      inputMessageValue
     } = this.props;
 
-    console.log('props en group', this.props)
+    // console.log('props en group', this.props)
     return (
       <div className="wrapper-group">
         <WeHeader />
@@ -48,7 +51,7 @@ class Group extends Component {
         <div className="wrapper-welist">
         <ul>
             {groupsPost.map(function(group,i){
-               
+
               return (
                 <Link to={`${rootRoute}${routeThread}`}>
                 <li className = "groupsli" key={i}>
@@ -63,13 +66,16 @@ class Group extends Component {
               )
             })}
           </ul>
-          
+
         </div>
         <div className="wrapper-input-send">
           <WeInputButton
             sendMessageGroup={this.props.sendMessageGroup}
             onInputMessageGroup={this.props.onInputMessageGroup}
             InputMessageGroupValue={this.props.InputMessageGroupValue}
+            handlefetchSendMessage={handlefetchSendMessage}
+            handleInputMessageValue={handleInputMessageValue}
+            inputMessageValue={inputMessageValue}
           />
         </div>
 
