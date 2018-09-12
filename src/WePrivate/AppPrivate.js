@@ -23,9 +23,10 @@ class AppPrivate extends Component {
       InputMessageGroupValue,
       groupList,
       handlefetchgroup,
-      groupPost
+      groupsPost
     } = this.props;
-    console.log('props en app private', this.props)
+  
+    
     return (
       <div className="wrapper-group">
         <Switch>
@@ -60,7 +61,7 @@ class AppPrivate extends Component {
               <div>
 
                 <Group
-                  groupPost={groupPost}
+                  groupsPost={groupsPost}
                   sendMessageGroup={sendMessageGroup}
                   onInputMessageGroup={onInputMessageGroup}
                   InputMessageGroupValue={InputMessageGroupValue}
@@ -82,6 +83,7 @@ class AppPrivate extends Component {
               <Thread
                 routeGroup={routeGroup}
                 rootRoute={this.props.computedMatch.path}
+                threadPost={this.props.threadPost}
               />
             }
           />

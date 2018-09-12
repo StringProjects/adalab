@@ -9,7 +9,8 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
   render() {
-    const groupPost= this.props.groupPost
+    const groupsPost= this.props.groupsPost;
+    console.log("GROUPPOST", groupsPost)
     const {
       routePrivate,
       routePublic,
@@ -45,7 +46,7 @@ class Group extends Component {
         </div>
         <div className="wrapper-welist">
         <ul>
-            {groupPost.map(function(group,i){
+            {groupsPost.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeThread}`}>
                 <li className = "groupsli" key={i}>

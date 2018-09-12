@@ -21,7 +21,8 @@ class App extends Component {
       errorClass: "error-hidden",
       valueInput:'',
       groupList: [],
-      groupPost:[]
+      groupsPost:[],
+      threadPost:[]
     }
 
     this.handleInputEmailLoginValue = this
@@ -91,10 +92,10 @@ class App extends Component {
 handlefetchgroup(){
   console.log("localtokeeen",localToken);
   fetch('http://adalab.string-projects.com/api/v1/posts', {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-type': 'application/json',
-      "AUTH-TOKEN":localToken
+      'AUTH-TOKEN':localToken
     },
     })
     
@@ -105,6 +106,29 @@ handlefetchgroup(){
     this.setState({groupsPost:data})
     });  
   })
+}
+
+handlefetchThread(){
+  console.log("localtokeeen",localToken);
+  fetch('http://adalab.string-projects.com/api/v1/posts', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    })
+    
+  .then((response) => {
+        return response.json()
+  .then((data) => {
+    console.log("soy data pooost",data);     
+    this.setState({groupsPost:data})
+    });  
+  })
+}
+
+handleIdThread(){
+  console.log("ENTRA THREAD")
 }
 //end fetch api for group post
   handleInputEmailLoginValue(e) {
@@ -168,7 +192,8 @@ resetInput(){
       redirectToPrivateArea,
       valueInput,
       groupList,
-      groupPost,
+      groupsPost,
+      threadPost
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
@@ -181,7 +206,7 @@ resetInput(){
       <div className="container-fluid">
         <Switch>
           <PrivateRoute
-            groupPost={groupPost}
+            groupsPost={groupsPost}
             handlefetchgroup={this.handlefetchgroup}
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
@@ -196,6 +221,8 @@ resetInput(){
             sendMessageGroup= {this.handlesendMessageGroup}
             onInputMessageGroup={this.onInputMessageGroup}
             InputMessageGroupValue={valueInput}
+            threadPost={threadPost}
+            handleIdThread={this.handleIdThread}
           />
           <Route
             exact path={routePublic}

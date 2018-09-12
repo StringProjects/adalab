@@ -5,8 +5,7 @@ import {
 } from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  console.log('this.props privateroute',this.props)
-  console.log('rest',rest);
+
   return (
   <Route
     {...rest}
