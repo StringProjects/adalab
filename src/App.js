@@ -10,8 +10,8 @@ import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
 let localToken;
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       user: '',
       psw: '',
@@ -22,7 +22,8 @@ class App extends Component {
       valueInput:'',
       groupList: [],
       groupsPost:[],
-      threadPost:[]
+      threadPost:[],
+      filterArray:[]
     }
 
     this.handleInputEmailLoginValue = this
@@ -53,6 +54,7 @@ class App extends Component {
       this.handlefetchThread= this
       .handlefetchThread
       .bind(this);
+      this.filterIdPost = this.filterIdPost.bind(this)
 
       
   }
@@ -73,7 +75,6 @@ class App extends Component {
           .then((data) => {
             this.savedToken(data.user.auth_token)
             this.redirectTo();
-            this.setState({errorClass: "error-hidden"});
             this.setState({errorClass: "error-hidden", groupList: data.groups});
           });
         }  else {
@@ -105,13 +106,10 @@ handlefetchgroup(){
   .then((response) => {
         return response.json()
   .then((data) => { 
-   
-    this.setState({groupsPost:data})
+    this.setState({groupsPost:data}, this.filterIdPost)
     })
     
   })
-  setInterval(this.filterIdPost, 2000)
-
 }
 //end fetch api for group post
 
@@ -134,8 +132,9 @@ handlefetchThread(){
   })
 }
 //END fetch api for group THREAD
-handleIdThread(event){
-  console.log("ME HAN CLICKADO",event.currentTarget);
+handleIdThread(event, id){
+  console.log("ME HAN CLICKADO",event.target);
+  console.log("ME HAN CLICKADO id",id);
   this.handlefetchThread()
 }
 
@@ -191,14 +190,14 @@ resetInput(){
   })
 }
 
-// filterIdPost(){
-//   console.log("ARRAY QUE FILTRA",this.state.groupsPost);
-// const arrayFilter = this.state.groupsPost.filter(function(post){
-//   console.log("FILTRANDO",post.post_id)
-//   return post.post_id === null;
-// });
-// console.log("ARRAYFILTRADO ", arrayFilter);
-// }
+filterIdPost(){
+  console.log("ARRAY QUE FILTRA",this.state.groupsPost);
+const arrayFilter = this.state.groupsPost.filter(function(post){
+  console.log("FILTRANDO",post.post_id)
+  return post.post_id === null;
+});
+this.setState( {filterArray : arrayFilter});
+}
 
 
 
@@ -209,7 +208,8 @@ resetInput(){
       valueInput,
       groupList,
       groupsPost,
-      threadPost
+      threadPost,
+      filterArray
     } = this.state;
   
     const routePrivate = '/private';
@@ -239,6 +239,7 @@ resetInput(){
             InputMessageGroupValue={valueInput}
             threadPost={threadPost}
             handleIdThread={this.handleIdThread}
+            filterArray={filterArray}
           />
           <Route
             exact path={routePublic}
