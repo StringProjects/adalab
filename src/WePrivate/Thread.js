@@ -7,6 +7,7 @@ import profile from '../images/panda.jpg';
 class Thread extends Component {
   render() {
     const threadPost = this.props.threadPost;
+    console.log("hillloooo",threadPost)
     const {
       rootRoute,
       routeGroup,
@@ -24,10 +25,9 @@ class Thread extends Component {
                 <li className = "groupsli" key={i}>
                    <ElementList
                       image={profile}
-                      name="María"
-                      date="1 day"
-                      message="last message from this group"
-                      answers="8 answers"
+                      name={thread.username}
+                      date={thread.date}
+                      message={thread.description}
                     />
                 </li>
                

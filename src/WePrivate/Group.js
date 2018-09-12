@@ -18,9 +18,9 @@ class Group extends Component {
       location,
       rootRoute,
       routeThread,
+      handleIdThread
     } = this.props;
 
-    console.log('props en group', this.props)
     return (
       <div className="wrapper-group">
         <WeHeader />
@@ -49,12 +49,15 @@ class Group extends Component {
             {groupsPost.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeThread}`}>
-                <li className = "groupsli" key={i}>
+                <li className = "groupsli" key={group.id}>
                   <ElementList
-                    image={profile}
+                    //image={group.avatar_url}
+                    image={group.avatar_url}
                     name={group.username}
                     date={group.date}
                     message={group.description}
+                    addAnswer="responde"
+                    handleIdThread={handleIdThread}
                   />
                 </li>
                 </Link>

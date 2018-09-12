@@ -23,9 +23,9 @@ class AppPrivate extends Component {
       InputMessageGroupValue,
       groupList,
       handlefetchgroup,
-      groupsPost
+      groupsPost,
+      handleIdThread
     } = this.props;
-  
     
     return (
       <div className="wrapper-group">
@@ -72,6 +72,7 @@ class AppPrivate extends Component {
                   routePublic={routePublic}
                   routeThread={routeThread}
                   rootRoute={this.props.computedMatch.path}
+                  handleIdThread={handleIdThread}
                 />
               </div>
             }

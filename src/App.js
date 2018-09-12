@@ -47,11 +47,17 @@ class App extends Component {
       this.handlefetchgroup= this
       .handlefetchgroup
       .bind(this);
+      this.handleIdThread= this
+      .handleIdThread
+      .bind(this);
+      this.handlefetchThread= this
+      .handlefetchThread
+      .bind(this);
+
       
   }
 
   fecthApi() {
-    console.log("ENTRA EN API")
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -62,12 +68,10 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
-      console.log('estoy en la api')
       if (response.ok){
           return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
-            console.log("TOKEN GUARDADO")
             this.redirectTo();
             this.setState({errorClass: "error-hidden"});
             this.setState({errorClass: "error-hidden", groupList: data.groups});
@@ -90,7 +94,6 @@ class App extends Component {
 
 //starts fetch api for group post
 handlefetchgroup(){
-  console.log("localtokeeen",localToken);
   fetch('http://adalab.string-projects.com/api/v1/posts', {
     method: 'GET',
     headers: {
@@ -101,36 +104,37 @@ handlefetchgroup(){
     
   .then((response) => {
         return response.json()
-  .then((data) => {
-    console.log("soy data pooost",data);     
+  .then((data) => {    
     this.setState({groupsPost:data})
     });  
   })
-}
-
-handlefetchThread(){
-  console.log("localtokeeen",localToken);
-  fetch('http://adalab.string-projects.com/api/v1/posts', {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-      'AUTH-TOKEN':localToken
-    },
-    })
-    
-  .then((response) => {
-        return response.json()
-  .then((data) => {
-    console.log("soy data pooost",data);     
-    this.setState({groupsPost:data})
-    });  
-  })
-}
-
-handleIdThread(){
-  console.log("ENTRA THREAD")
 }
 //end fetch api for group post
+
+//starts fetch api for group THREAD
+
+handlefetchThread(){
+  fetch('http://adalab.string-projects.com/api/v1/posts/1', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    })
+    
+  .then((response) => {
+        return response.json()
+  .then((data) => {    
+    this.setState({threadPost:data})
+    });  
+  })
+}
+//END fetch api for group THREAD
+handleIdThread(event){
+  console.log("ME HAN CLICKADO",event.currentTarget);
+  this.handlefetchThread()
+}
+
   handleInputEmailLoginValue(e) {
     const {
       value
@@ -151,18 +155,15 @@ handleIdThread(){
 
   redirectTo(){
     if (this.getToken() !== null) {
-    console.log('estamos logeados??');
       this.setState({
         redirectToPrivateArea: true,
         }, () => {
-          console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
         })
       }
   }
 
   handleSubmitLogin(e) {
     e.preventDefault();
-    console.log("entra submit")
     this.fecthApi();
     this.redirectTo();
   }
@@ -173,7 +174,6 @@ handleIdThread(){
     this.setState({
       valueInput: value
     })
-    console.log("soy un value input", this.state.valueInput);
   }
   handlesendMessageGroup(e){
     e.preventDefault();
@@ -195,12 +195,12 @@ resetInput(){
       groupsPost,
       threadPost
     } = this.state;
+    console.log("soy el hilo",threadPost)
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
-
  
     return (
       <div className="container-fluid">
