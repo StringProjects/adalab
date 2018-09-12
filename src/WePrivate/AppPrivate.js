@@ -21,6 +21,7 @@ class AppPrivate extends Component {
       sendMessageGroup,
       onInputMessageGroup,
       InputMessageGroupValue,
+      groupList
     } = this.props;
     console.log('props en app private', this.props)
     return (
@@ -41,6 +42,7 @@ class AppPrivate extends Component {
                 rootRoute={this.props.computedMatch.path}
               />
               <Groups
+              groupList={groupList}
               routePrivate={routePrivate}
               routePublic={routePublic}
               routeGroup={routeGroup}

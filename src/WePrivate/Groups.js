@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 class Groups extends Component {
   render() {
+    const groupList = this.props.groupList
     const {
       rootRoute,
       routeGroup,
@@ -15,21 +16,23 @@ class Groups extends Component {
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`}>
-          <WeList
-            image={profile}
-            group="Adalab Work"
-            name="María"
-            date="15:13"
-            message="last message from this group"
-          />
+        <ul>
+            {groupList.map(function(group,i){
+              return (
+                <li className = "groupsli" key={i}>
+                  <ElementList
+                    image={profile}
+                    group={group.name}
+                    name="María"
+                    date="15:13"
+                    message="last message from this group"
+                  />
+                </li>
+              )
+            })}
+          </ul>
         </Link>
-        <WeList
-          image={profile}
-          group="Adalab2 Work"
-          name="Bis"
-          date="2days"
-          message="last message from this group"
-        />
+  
 
       </div>
 
