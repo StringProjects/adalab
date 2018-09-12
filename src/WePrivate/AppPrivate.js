@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { 
+  Route, 
+  Switch 
+} from 'react-router-dom';
 import WeHeader from '../Components/WeHeader';
 import WeButtonOption from '../Components/WeButtonOption';
 import Groups from './Groups';
@@ -14,10 +17,7 @@ class AppPrivate extends Component {
       routePublic,
       routeGroup,
       routeThread,
-      routeGroups,
-      match,
       location,
-      valueInput,
       sendMessageGroup,
       onInputMessageGroup,
       InputMessageGroupValue,

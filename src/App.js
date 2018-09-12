@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { 
+  Route, 
+  Switch 
+} from 'react-router-dom';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
-import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
 
 let localToken;
@@ -106,6 +109,7 @@ class App extends Component {
   handleSubmitLogin(e) {
     console.log('onSubmit en App')
     e.preventDefault();
+    console.log("entra submit")
     this.fecthApi();
   }
   onInputMessageGroup(e){

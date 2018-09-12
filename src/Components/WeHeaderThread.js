@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 class WeHeaderThread extends Component {
   render() {

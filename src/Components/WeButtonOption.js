@@ -24,7 +24,6 @@ class WeButtonOption extends Component {
 
   render() {
     const {
-      routePrivate,
       routePublic,
       routeGroup,
       rootRoute,

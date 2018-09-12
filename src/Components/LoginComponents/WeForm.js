@@ -4,11 +4,7 @@ import {
     Form,
     FormGroup,
     Input,
-    Row,
-    Col,
-    Nav
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import ErrorFeedBack from './ErrorFeedBack';
 
 class WeForm extends Component {
@@ -54,8 +50,6 @@ class WeForm extends Component {
         const {
             onInputEmail, 
             onInputPsw, 
-            openedErrorFeedback, 
-            toggleErrorFeedback, 
             onSubmitBtn,
             getToken
         } = this.props;

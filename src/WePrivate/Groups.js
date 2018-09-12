@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import WeList from '../Components/WeList';
-import WeInputButton from '../Components/WeInputButton';
-import ElementList from '../Components/WeListComponents/ElementList';
-import profile from '../images/wp-image-58683558-random-picture.jpg';
 import { Link } from 'react-router-dom';
+import ElementList from '../Components/WeListComponents/ElementList';
+import profile from '../images/panda.jpg';
 
 class Groups extends Component {
   render() {
@@ -33,11 +31,7 @@ class Groups extends Component {
             })}
           </ul>
         </Link>
-  
-
       </div>
-
-
     );
   }
 }

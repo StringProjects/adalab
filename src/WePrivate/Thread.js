@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import WeHeaderThread from '../Components/WeHeaderThread';
 import WeList from '../Components/WeList';
-import profile from '../images/wp-image-58683558-random-picture.jpg';
 import WeInputButton from '../Components/WeInputButton';
+import profile from '../images/panda.jpg';
 
 class Thread extends Component {
   render() {
