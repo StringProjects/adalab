@@ -28,19 +28,15 @@
 
 .dropdown-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 2px 20px;
   align-items: center;
-}
-
-.HeaderThread__arrow{
- color: $color-secondary;
 }
 
 @media (min-width: 1024px) {
     .dropdown-container{
       width: 1000px;
-      background-color: white;
+      background-color: $color-light;
       margin: auto;
     }
 }

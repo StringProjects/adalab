@@ -147,7 +147,6 @@ resetInput(){
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}
-            match={this.props.match}
             location={this.props.location}
             routePrivate={routePrivate}
             routePublic={routePublic}
@@ -167,7 +166,6 @@ resetInput(){
                 openedErrorFeedback={openedErrorFeedback}
                 redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
-                match={props.match}
                 location={props.location}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}

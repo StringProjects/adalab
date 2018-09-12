@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WeList from '../Components/WeList';
 import WeButtonOption from '../Components/WeButtonOption';
+import WeArrow from '../Components/WeArrow';
 import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
 import ElementList from '../Components/WeListComponents/ElementList';
@@ -23,13 +24,19 @@ class Group extends Component {
     return (
       <div className="wrapper-group">
         <WeHeader />
-          <WeButtonOption
-              routePrivate={routePrivate}
-              routePublic={routePublic}
-              routeGroup={routeGroup}
-              match={match}
-              location={location}
+        <div className='wrapper-menu'>
+          <WeArrow
+            routePublic={routePublic}
+            routeGroup={routeGroup}
+            location={location}
           />
+          <WeButtonOption
+            routePrivate={routePrivate}
+            routePublic={routePublic}
+            routeGroup={routeGroup}
+            location={location}
+          />
+        </div>
         <div className="wrapper-nameGroup">
           <img className="rounded-circle img-group" src={profile} alt="profile picture" />
           <div className="wrapper-name-number">
@@ -38,30 +45,30 @@ class Group extends Component {
           </div>
         </div>
         <div className="wrapper-welist">
-        <Link to={`${rootRoute}${routeThread}`}>
+          <Link to={`${rootRoute}${routeThread}`}>
+            <WeList
+              image={profile}
+              name="María"
+              date="15:13"
+              message="last message from this group"
+              answers="8 answers"
+            />
+          </Link>
           <WeList
             image={profile}
-            name="María"
-            date="15:13"
+            name="Bis"
+            date="17:00"
             message="last message from this group"
-            answers="8 answers"
           />
-        </Link>
-        <WeList
-          image={profile}
-          name="Bis"
-          date="17:00"
-          message="last message from this group"
-        />
         </div>
-        <div className= "wrapper-input-send">
+        <div className="wrapper-input-send">
           <WeInputButton
             sendMessageGroup={this.props.sendMessageGroup}
             onInputMessageGroup={this.props.onInputMessageGroup}
             InputMessageGroupValue={this.props.InputMessageGroupValue}
           />
         </div>
-        
+
       </div>
     );
   }

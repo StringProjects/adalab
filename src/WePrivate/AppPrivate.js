@@ -29,23 +29,22 @@ class AppPrivate extends Component {
           <Route
             exact
             path={this.props.computedMatch.path}
-            render={ () =>
+            render={() =>
               <div>
-              <WeHeader />
-              <WeButtonOption
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-                routeGroup={routeGroup}
-                match={match}
-                location={location}
-                rootRoute={this.props.computedMatch.path}
-              />
-              <Groups
-              routePrivate={routePrivate}
-              routePublic={routePublic}
-              routeGroup={routeGroup}
-              rootRoute={this.props.computedMatch.path}
-              />
+                <WeHeader />
+                <WeButtonOption
+                  routePrivate={routePrivate}
+                  routePublic={routePublic}
+                  routeGroup={routeGroup}
+                  location={location}
+                  rootRoute={this.props.computedMatch.path}
+                />
+                <Groups
+                  routePrivate={routePrivate}
+                  routePublic={routePublic}
+                  routeGroup={routeGroup}
+                  rootRoute={this.props.computedMatch.path}
+                />
               </div>
             }
           />
@@ -55,18 +54,18 @@ class AppPrivate extends Component {
             render={props =>
               <div>
 
-              <Group
-                sendMessageGroup= {sendMessageGroup}
-                onInputMessageGroup={onInputMessageGroup}
-                InputMessageGroupValue={InputMessageGroupValue}
-                match={props.match}
-                location={props.location}
-                routeGroup={routeGroup}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-                routeThread={routeThread}
-                rootRoute={this.props.computedMatch.path}
-              />
+                <Group
+                  sendMessageGroup={sendMessageGroup}
+                  onInputMessageGroup={onInputMessageGroup}
+                  InputMessageGroupValue={InputMessageGroupValue}
+                  match={props.match}
+                  location={props.location}
+                  routeGroup={routeGroup}
+                  routePrivate={routePrivate}
+                  routePublic={routePublic}
+                  routeThread={routeThread}
+                  rootRoute={this.props.computedMatch.path}
+                />
               </div>
             }
           />
