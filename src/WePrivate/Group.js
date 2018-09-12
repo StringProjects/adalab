@@ -18,7 +18,8 @@ class Group extends Component {
       location,
       rootRoute,
       routeThread,
-      handleIdThread
+      handleIdThread,
+      filterArray
     } = this.props;
 
     console.log('props en group', this.props)
@@ -47,16 +48,19 @@ class Group extends Component {
         </div>
         <div className="wrapper-welist">
         <ul>
-            {groupsPost.map(function(group,i){
+            {filterArray.map(function(group,i){
                
               return (
                 <Link to={`${rootRoute}${routeThread}`}>
                 <li className = "groupsli" key={i}>
                   <ElementList
+                    id = {group.id}
                     image={profile}
                     name={group.username}
                     date={group.date}
                     message={group.description}
+                    addAnswer="respuesta"
+                    handleIdThread={handleIdThread}
                   />
                 </li>
                 </Link>

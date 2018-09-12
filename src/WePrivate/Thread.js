@@ -24,6 +24,7 @@ class Thread extends Component {
              
                 <li className = "groupsli" key={i}>
                    <ElementList
+                      id={thread.id}
                       image={profile}
                       name={thread.username}
                       date={thread.date}

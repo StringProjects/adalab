@@ -24,7 +24,8 @@ class AppPrivate extends Component {
       groupList,
       handlefetchgroup,
       groupsPost,
-      handleIdThread
+      handleIdThread,
+      filterArray
     } = this.props;
     
     return (
@@ -73,6 +74,7 @@ class AppPrivate extends Component {
                   routeThread={routeThread}
                   rootRoute={this.props.computedMatch.path}
                   handleIdThread={handleIdThread}
+                  filterArray={filterArray}
                 />
               </div>
             }
