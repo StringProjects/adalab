@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 
 class Groups extends Component {
   render() {
-    const groupList = this.props.groupList
+  
     const {
       rootRoute,
       routeGroup,
+      groupList
     } = this.props;
     console.log('soy la ruta ',`${rootRoute}${routeGroup}`)
     return (

@@ -45,6 +45,7 @@ class AppPrivate extends Component {
                   routePublic={routePublic}
                   routeGroup={routeGroup}
                   rootRoute={this.props.computedMatch.path}
+                  groupList={groupList}
                 />
               </div>
             }
