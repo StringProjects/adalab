@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 import {
     Row,
     Col,
@@ -7,14 +8,28 @@ import WeHeader from '../Components/WeHeader';
 import WeForm from '../Components/LoginComponents/WeForm';
 
 class Login extends Component {
+
     render() {
+
         const {
             onInputEmail,
             onInputPsw,
             openedErrorFeedback,
             toggleErrorFeedback,
-            onSubmitBtn
+            onSubmitBtn,
+            getToken,
+            redirectToPrivateArea,
+            location
             } = this.props;
+
+            console.log('onSubmitBtn en login', onSubmitBtn)
+
+        const { from } = location.state || { from: { pathname: '/private'}};
+
+        if (redirectToPrivateArea === true) {
+            return <Redirect to={from} />
+        }
+
         return (
             <div className="wrapper-login">
                 <header className="header--login">
@@ -57,6 +72,7 @@ class Login extends Component {
                                 openedErrorFeedback={openedErrorFeedback}
                                 toggleErrorFeedback={toggleErrorFeedback}
                                 onSubmitBtn={onSubmitBtn}
+                                getToken={getToken}
                             />
                         </Col>
 

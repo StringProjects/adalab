@@ -6,9 +6,16 @@ import profile from '../images/panda.jpg';
 
 class Thread extends Component {
   render() {
+    const {
+      rootRoute,
+      routeGroup,
+    } = this.props;
     return (
       <div className="wrapper-thread">
-        <WeHeaderThread />
+        <WeHeaderThread
+          rootRoute={rootRoute}
+          routeGroup={routeGroup}
+        />
         <WeList
           image={profile}
           name="María"

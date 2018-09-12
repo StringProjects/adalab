@@ -27,14 +27,15 @@ class WeButtonOption extends Component {
 
   render() {
     const {
-      routePrivate,
       routePublic,
       routeGroup,
-      match,
+      rootRoute,
+      location
     } = this.props;
+    console.log('this.props webuttonOption',this.props)
     return (
       <div className="dropdown-container">
-        <Link to={match.path===routeGroup ? routePrivate : routePublic}>
+        <Link to={location.pathname === `${rootRoute}${routeGroup}` ? rootRoute : routePublic}>
           <Button className='btn HeaderThread__btn'>
             <i className="fas fa-arrow-left HeaderThread__arrow"></i>
           </Button>
