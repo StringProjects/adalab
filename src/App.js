@@ -42,6 +42,9 @@ class App extends Component {
       this.resetInput= this
       .resetInput
       .bind(this);
+      this.handlefetchgroup= this
+      .handlefetchgroup
+      .bind(this);
       
   }
 
@@ -83,6 +86,25 @@ class App extends Component {
    return localToken = localStorage.getItem('token');
   }
 
+//starts fetch api for group post
+handlefetchgroup(){
+  fetch('http://adalab.string-projects.com/api/v1/posts', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+  "AUTH-TOKEN": this.state.psw
+    }
+    })
+    
+  .then((response) => {
+        return response.json()
+  .then((data) => {
+     console.log("soy data pooost",data);     
+    this.setState({groupsPost:data})
+    });  
+  })
+}
+//end fetch api for group post
   handleInputEmailLoginValue(e) {
     const {
       value
@@ -156,6 +178,7 @@ resetInput(){
       <div className="container-fluid">
         <Switch>
           <PrivateRoute
+            handlefetchgroup={this.handlefetchgroup}
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}
