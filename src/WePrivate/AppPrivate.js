@@ -21,6 +21,7 @@ class AppPrivate extends Component {
       sendMessageGroup,
       onInputMessageGroup,
       InputMessageGroupValue,
+      groupList
     } = this.props;
     console.log('props en app private', this.props)
     return (

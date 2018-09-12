@@ -17,6 +17,7 @@ class App extends Component {
       responseStatus: false,
       errorClass: "error-hidden",
       valueInput:'',
+      groupList: []
     }
 
     this.handleInputEmailLoginValue = this
@@ -58,7 +59,7 @@ class App extends Component {
           return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
-            this.setState({errorClass: "error-hidden"})
+            this.setState({errorClass: "error-hidden", groupList: data.groups})
           });
         }  else {
           this.setState({errorClass: ""})
@@ -132,6 +133,7 @@ resetInput(){
       openedErrorFeedback,
       redirectToPrivateArea,
       valueInput,
+      groupList,
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
@@ -153,7 +155,7 @@ resetInput(){
             routeGroup={routeGroup}
             routeGroups={routeGroups}
             routeThread={routeThread}
-
+            groupList={groupList}
             sendMessageGroup= {this.handlesendMessageGroup}
             onInputMessageGroup={this.onInputMessageGroup}
             InputMessageGroupValue={valueInput}
