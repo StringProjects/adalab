@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   fecthApi() {
-    console.log("state", this.state.user)
+    console.log("ENTRA EN API")
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -62,7 +62,10 @@ class App extends Component {
           return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
-            this.setState({errorClass: "error-hidden", groupList: data.groups})
+            console.log("TOKEN GUARDADO")
+            this.redirectTo();
+            this.setState({errorClass: "error-hidden"});
+            this.setState({errorClass: "error-hidden", groupList: data.groups});
           });
         }  else {
           this.setState({errorClass: ""})
@@ -77,15 +80,7 @@ class App extends Component {
   }
 
   getToken(event) {
-    event.preventDefault();
-    localToken = localStorage.getItem('token');
-    
-    if (localToken !== null) {
-      console.log('estamos logeados??');
-      this.setState ({
-        redirectToPrivateArea: true,
-      },()=> {console.log('estado', this.state.redirectToPrivateArea)})
-    }
+   return localToken = localStorage.getItem('token');
   }
 
   handleInputEmailLoginValue(e) {
@@ -106,11 +101,22 @@ class App extends Component {
     })
   }
 
+  redirectTo(){
+    if (this.getToken() !== null) {
+     console.log('estamos logeados??');
+      this.setState({
+        redirectToPrivateArea: true,
+        }, () => {
+          console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
+        })
+      }
+  }
+
   handleSubmitLogin(e) {
-    console.log('onSubmit en App')
     e.preventDefault();
     console.log("entra submit")
     this.fecthApi();
+    this.redirectTo();
   }
   onInputMessageGroup(e){
     const {
@@ -145,7 +151,7 @@ resetInput(){
     const routeGroup = '/group';
     const routeThread = '/thread';
 
-    console.log('onSubmit en App',this.handleSubmitLogin);
+ 
     return (
       <div className="container-fluid">
         <Switch>

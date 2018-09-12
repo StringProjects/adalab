@@ -53,7 +53,7 @@ class WeForm extends Component {
             onSubmitBtn,
             getToken
         } = this.props;
-        console.log('onSubmitBtn en WeForm',onSubmitBtn)
+   
         return (
             <div className="container--form-landing">
                 <Form className="form--style" onSubmit={onSubmitBtn}>
@@ -90,11 +90,7 @@ class WeForm extends Component {
                         >
                             <i className="fas fa-chevron-right"></i>
                         </Button>
-                        <button
-                            onClick={getToken}
-                        >
-                            Aceede a nuestra area privada
-                        </button>
+            
                 </Form>
             </div>
         );

@@ -14,7 +14,7 @@ class AppPublic extends Component {
       location,
       redirectToPrivateArea
       } = this.props;
-      console.log('onSubmitBtn AppPublic', onSubmitBtn)
+     
     return (
       <Login
         errorClass={this.props.errorClass}
