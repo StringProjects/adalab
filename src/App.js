@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   fecthApi() {
-    console.log("state", this.state.user)
+    console.log("ENTRA EN API")
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -58,6 +58,8 @@ class App extends Component {
           return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
+            console.log("TOKEN GUARDADO")
+            this.redirectTo();
             this.setState({errorClass: "error-hidden"})
           });
         }  else {
@@ -73,10 +75,7 @@ class App extends Component {
   }
 
   getToken(event) {
-    //event.preventDefault();
    return localToken = localStorage.getItem('token');
-    
-
   }
 
   handleInputEmailLoginValue(e) {
@@ -97,17 +96,22 @@ class App extends Component {
     })
   }
 
+  redirectTo(){
+        if (this.getToken() !== null) {
+          console.log('estamos logeados??');
+          this.setState({
+            redirectToPrivateArea: true,
+          }, () => {
+            console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
+          })
+        }
+  }
+
   handleSubmitLogin(e) {
     console.log('onsubmit')
     e.preventDefault();
     this.fecthApi();
-    const localToken = this.getToken();
-    if (localToken !== null) {
-      this.setState({
-        redirectToPrivateArea: true,
-      })
-    }
-  
+    this.redirectTo();
   }
   onInputMessageGroup(e){
     const {
