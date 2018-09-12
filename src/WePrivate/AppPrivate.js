@@ -27,7 +27,8 @@ class AppPrivate extends Component {
       handleIdThread,
       handlefetchSendMessage,
       handleInputMessageValue,
-      inputMessageValue
+      inputMessageValue,
+      filterArray
     } = this.props;
 
     return (
@@ -79,6 +80,7 @@ class AppPrivate extends Component {
                   handlefetchSendMessage={handlefetchSendMessage}
                   handleInputMessageValue={handleInputMessageValue}
                   inputMessageValue={inputMessageValue}
+                  filterArray={filterArray}
                 />
               </div>
             }
