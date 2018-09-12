@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { 
+  Route, 
+  Switch 
+} from 'react-router-dom';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
-import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
 
 let localToken;
@@ -106,6 +109,7 @@ class App extends Component {
   handleSubmitLogin(e) {
     console.log('onSubmit en App')
     e.preventDefault();
+    console.log("entra submit")
     this.fecthApi();
   }
   onInputMessageGroup(e){
@@ -149,7 +153,6 @@ resetInput(){
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}
-            match={this.props.match}
             location={this.props.location}
             routePrivate={routePrivate}
             routePublic={routePublic}
@@ -169,7 +172,6 @@ resetInput(){
                 openedErrorFeedback={openedErrorFeedback}
                 redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
-                match={props.match}
                 location={props.location}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}

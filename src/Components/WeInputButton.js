@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Input, Button } from 'reactstrap';
+import { 
+  Form, 
+  Input, 
+  Button 
+} from 'reactstrap';
 
 class WeInputButton extends Component {
   render() {
