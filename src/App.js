@@ -104,10 +104,14 @@ handlefetchgroup(){
     
   .then((response) => {
         return response.json()
-  .then((data) => {    
+  .then((data) => { 
+   
     this.setState({groupsPost:data})
-    });  
+    })
+    
   })
+  setInterval(this.filterIdPost, 2000)
+
 }
 //end fetch api for group post
 
@@ -186,6 +190,18 @@ resetInput(){
     valueInput: ''
   })
 }
+
+// filterIdPost(){
+//   console.log("ARRAY QUE FILTRA",this.state.groupsPost);
+// const arrayFilter = this.state.groupsPost.filter(function(post){
+//   console.log("FILTRANDO",post.post_id)
+//   return post.post_id === null;
+// });
+// console.log("ARRAYFILTRADO ", arrayFilter);
+// }
+
+
+
   render() {
     const { 
       openedErrorFeedback,
@@ -195,7 +211,7 @@ resetInput(){
       groupsPost,
       threadPost
     } = this.state;
-    console.log("soy el hilo",threadPost)
+  
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
