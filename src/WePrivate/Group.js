@@ -14,6 +14,9 @@ class Group extends Component {
       routePublic,
       routeGroup,
       match,
+      location,
+      rootRoute,
+      routeThread,
     } = this.props;
 
     console.log('props en group', this.props)
@@ -25,6 +28,7 @@ class Group extends Component {
               routePublic={routePublic}
               routeGroup={routeGroup}
               match={match}
+              location={location}
           />
         <div className="wrapper-nameGroup">
           <img className="rounded-circle img-group" src={profile} alt="profile picture" />
@@ -34,7 +38,7 @@ class Group extends Component {
           </div>
         </div>
         <div className="wrapper-welist">
-        <Link to='/thread'>
+        <Link to={`${rootRoute}${routeThread}`}>
           <WeList
             image={profile}
             name="María"
@@ -51,7 +55,11 @@ class Group extends Component {
         />
         </div>
         <div className= "wrapper-input-send">
-          <WeInputButton/>
+          <WeInputButton
+            sendMessageGroup={this.props.sendMessageGroup}
+            onInputMessageGroup={this.props.onInputMessageGroup}
+            InputMessageGroupValue={this.props.InputMessageGroupValue}
+          />
         </div>
         
       </div>

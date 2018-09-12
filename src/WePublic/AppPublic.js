@@ -9,8 +9,12 @@ class AppPublic extends Component {
       toggleErrorFeedback,
       onInputEmail,
       onInputPsw,
-      onSubmitBtn
+      onSubmitBtn,
+      getToken,
+      location,
+      redirectToPrivateArea
       } = this.props;
+      console.log('onSubmitBtn AppPublic', onSubmitBtn)
     return (
       <Login
         errorClass={this.props.errorClass}
@@ -19,6 +23,9 @@ class AppPublic extends Component {
         openedErrorFeedback={openedErrorFeedback}
         toggleErrorFeedback={toggleErrorFeedback}
         onSubmitBtn={onSubmitBtn}
+        getToken={getToken}
+        redirectToPrivateArea={redirectToPrivateArea}
+        location={location}
       />
     );
   }
