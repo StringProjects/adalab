@@ -29,7 +29,7 @@ class WeButtonOption extends Component {
       rootRoute,
       location
     } = this.props;
-    console.log('this.props webuttonOption',this.props)
+    // console.log('this.props webuttonOption',this.props)
     return (
       <div className="dropdown-container">
         <ButtonDropdown className="button-group" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>

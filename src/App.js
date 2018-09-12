@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { 
-  Route, 
-  Switch 
+import {
+  Route,
+  Switch
 } from 'react-router-dom';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
@@ -23,6 +23,7 @@ class App extends Component {
       groupList: [],
       groupsPost:[],
       threadPost:[],
+      inputMessageValue:'',
       filterArray:[]
     }
 
@@ -54,9 +55,12 @@ class App extends Component {
       this.handlefetchThread= this
       .handlefetchThread
       .bind(this);
+      this.handlefetchSendMessage=this
+      .handlefetchSendMessage
+      .bind(this);
+      this.handleInputMessageValue=this.handleInputMessageValue.bind(this);
       this.filterIdPost = this.filterIdPost.bind(this)
 
-      
   }
 
   fecthApi() {
@@ -80,9 +84,9 @@ class App extends Component {
         }  else {
           this.setState({errorClass: ""})
         }
-        
+
     })
-    
+
   }
 
   savedToken(token) {
@@ -102,13 +106,12 @@ handlefetchgroup(){
       'AUTH-TOKEN':localToken
     },
     })
-    
+
   .then((response) => {
         return response.json()
-  .then((data) => { 
+  .then((data) => {
     this.setState({groupsPost:data}, this.filterIdPost)
     })
-    
   })
 }
 //end fetch api for group post
@@ -123,15 +126,55 @@ handlefetchThread(){
       'AUTH-TOKEN':localToken
     },
     })
-    
+
   .then((response) => {
         return response.json()
-  .then((data) => {    
+  .then((data) => {
     this.setState({threadPost:data})
-    });  
+    });
   })
 }
 //END fetch api for group THREAD
+
+
+//starts fetch api to post message
+
+handleInputMessageValue(e) {
+  const {
+    value
+  } = e.target;
+  this.setState({
+    inputMessageValue: value
+  },
+  ()=> {
+    console.log('valor del estado', this.state.inputMessageValue);
+  })
+
+}
+
+handlefetchSendMessage(){
+  fetch('http://adalab.string-projects.com/api/v1/posts', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    body: JSON.stringify({
+      "post": {"description":this.state.inputMessageValue}
+    })
+  }).then((response) => { {/*console.log('response de POST',response);*/}
+      if(response.ok===true){
+        this.handlefetchgroup();
+        this.setState({
+          inputMessageValue: ''
+        })
+        // console.log('respuesta ok');
+      }
+
+  })
+}
+//END fetch api for message
+
 handleIdThread(event, id){
   console.log("ME HAN CLICKADO",event.target);
   console.log("ME HAN CLICKADO id",id);
@@ -202,7 +245,7 @@ this.setState( {filterArray : arrayFilter});
 
 
   render() {
-    const { 
+    const {
       openedErrorFeedback,
       redirectToPrivateArea,
       valueInput,
@@ -211,13 +254,13 @@ this.setState( {filterArray : arrayFilter});
       threadPost,
       filterArray
     } = this.state;
-  
+
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
- 
+
     return (
       <div className="container-fluid">
         <Switch>
@@ -239,6 +282,9 @@ this.setState( {filterArray : arrayFilter});
             InputMessageGroupValue={valueInput}
             threadPost={threadPost}
             handleIdThread={this.handleIdThread}
+            handlefetchSendMessage={this.handlefetchSendMessage}
+            handleInputMessageValue={this.handleInputMessageValue}
+            inputMessageValue={this.state.inputMessageValue}
             filterArray={filterArray}
           />
           <Route
