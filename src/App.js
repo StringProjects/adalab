@@ -160,6 +160,7 @@ resetInput(){
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}
             location={this.props.location}
+            history={this.props.history}
             routePrivate={routePrivate}
             routePublic={routePublic}
             routeGroup={routeGroup}
@@ -179,6 +180,7 @@ resetInput(){
                 redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 location={props.location}
+                history={props.history}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}

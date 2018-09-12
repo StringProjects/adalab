@@ -8,6 +8,7 @@ import WeButtonOption from '../Components/WeButtonOption';
 import Groups from './Groups';
 import Group from './Group';
 import Thread from './Thread';
+import Refresh from '../Components/PrivateComponents/Refresh';
 
 
 class AppPrivate extends Component {
@@ -81,6 +82,7 @@ class AppPrivate extends Component {
               />
             }
           />
+          <Refresh path="/refresh"/>
         </Switch>
       </div>
     );
