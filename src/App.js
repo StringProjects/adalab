@@ -97,14 +97,14 @@ class App extends Component {
   }
 
   redirectTo(){
-        if (this.getToken() !== null) {
-          console.log('estamos logeados??');
-          this.setState({
-            redirectToPrivateArea: true,
-          }, () => {
-            console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
-          })
-        }
+    if (this.getToken() !== null) {
+     console.log('estamos logeados??');
+      this.setState({
+        redirectToPrivateArea: true,
+        }, () => {
+          console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
+        })
+      }
   }
 
   handleSubmitLogin(e) {
