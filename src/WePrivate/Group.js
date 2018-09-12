@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import WeList from '../Components/WeList';
+import ElementList from '../Components/WeListComponents/ElementList';
 import WeButtonOption from '../Components/WeButtonOption';
 import WeArrow from '../Components/WeArrow';
 import WeInputButton from '../Components/WeInputButton';
@@ -9,6 +9,7 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
   render() {
+    const groupPost= this.props.groupPost
     const {
       routePrivate,
       routePublic,
@@ -43,21 +44,23 @@ class Group extends Component {
           </div>
         </div>
         <div className="wrapper-welist">
-          <Link to={`${rootRoute}${routeThread}`}>
-            <WeList
-              image={profile}
-              name="María"
-              date="15:13"
-              message="last message from this group"
-              answers="8 answers"
-            />
-          </Link>
-          <WeList
-            image={profile}
-            name="Bis"
-            date="17:00"
-            message="last message from this group"
-          />
+        <ul>
+            {groupPost.map(function(group,i){
+              return (
+                <Link to={`${rootRoute}${routeThread}`}>
+                <li className = "groupsli" key={i}>
+                  <ElementList
+                    image={profile}
+                    name={group.username}
+                    date={group.date}
+                    message={group.description}
+                  />
+                </li>
+                </Link>
+              )
+            })}
+          </ul>
+          
         </div>
         <div className="wrapper-input-send">
           <WeInputButton

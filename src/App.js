@@ -20,7 +20,8 @@ class App extends Component {
       responseStatus: false,
       errorClass: "error-hidden",
       valueInput:'',
-      groupList: []
+      groupList: [],
+      groupPost:[]
     }
 
     this.handleInputEmailLoginValue = this
@@ -83,23 +84,24 @@ class App extends Component {
   }
 
   getToken(event) {
-   return localToken = localStorage.getItem('token');
+  return localToken = localStorage.getItem('token');
   }
 
 //starts fetch api for group post
 handlefetchgroup(){
+  console.log("localtokeeen",localToken);
   fetch('http://adalab.string-projects.com/api/v1/posts', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-  "AUTH-TOKEN": this.state.psw
-    }
+      "AUTH-TOKEN":localToken
+    },
     })
     
   .then((response) => {
         return response.json()
   .then((data) => {
-     console.log("soy data pooost",data);     
+    console.log("soy data pooost",data);     
     this.setState({groupsPost:data})
     });  
   })
@@ -125,7 +127,7 @@ handlefetchgroup(){
 
   redirectTo(){
     if (this.getToken() !== null) {
-     console.log('estamos logeados??');
+    console.log('estamos logeados??');
       this.setState({
         redirectToPrivateArea: true,
         }, () => {
@@ -166,6 +168,7 @@ resetInput(){
       redirectToPrivateArea,
       valueInput,
       groupList,
+      groupPost,
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
@@ -178,6 +181,7 @@ resetInput(){
       <div className="container-fluid">
         <Switch>
           <PrivateRoute
+            groupPost={groupPost}
             handlefetchgroup={this.handlefetchgroup}
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}

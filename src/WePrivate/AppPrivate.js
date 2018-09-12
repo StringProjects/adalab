@@ -22,7 +22,8 @@ class AppPrivate extends Component {
       onInputMessageGroup,
       InputMessageGroupValue,
       groupList,
-      handlefetchgroup
+      handlefetchgroup,
+      groupPost
     } = this.props;
     console.log('props en app private', this.props)
     return (
@@ -59,6 +60,7 @@ class AppPrivate extends Component {
               <div>
 
                 <Group
+                  groupPost={groupPost}
                   sendMessageGroup={sendMessageGroup}
                   onInputMessageGroup={onInputMessageGroup}
                   InputMessageGroupValue={InputMessageGroupValue}
