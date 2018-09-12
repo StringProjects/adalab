@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
-import Group from './WePrivate/Group';
-import Thread from './WePrivate/Thread';
 import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
+
+let localToken;
 
 class App extends Component {
   constructor() {
@@ -12,6 +13,7 @@ class App extends Component {
       user: '',
       psw: '',
       openedErrorFeedback: false,
+      redirectToPrivateArea: false,
       responseStatus: false,
       errorClass: "error-hidden",
       valueInput:'',
@@ -26,6 +28,7 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
+    this.getToken = this.getToken.bind(this);
       this.handlesendMessageGroup= this
       .handlesendMessageGroup
       .bind(this);
@@ -50,6 +53,7 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
+      console.log('estoy en la api')
       if (response.ok){
           return response.json()
           .then((data) => {
@@ -65,7 +69,19 @@ class App extends Component {
   }
 
   savedToken(token) {
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', token);
+  }
+
+  getToken(event) {
+    event.preventDefault();
+    localToken = localStorage.getItem('token');
+    
+    if (localToken !== null) {
+      console.log('estamos logeados??');
+      this.setState ({
+        redirectToPrivateArea: true,
+      },()=> {console.log('estado', this.state.redirectToPrivateArea)})
+    }
   }
 
   handleInputEmailLoginValue(e) {
@@ -87,6 +103,7 @@ class App extends Component {
   }
 
   handleSubmitLogin(e) {
+    console.log('onSubmit en App')
     e.preventDefault();
     this.fecthApi();
   }
@@ -111,52 +128,51 @@ resetInput(){
   })
 }
   render() {
-    const { openedErrorFeedback,valueInput } = this.state;
+    const { 
+      openedErrorFeedback,
+      redirectToPrivateArea,
+      valueInput,
+    } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
+    const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
-    
+
+    console.log('onSubmit en App',this.handleSubmitLogin);
     return (
       <div className="container-fluid">
         <Switch>
-          <Route
+          <PrivateRoute
             path={routePrivate}
-            render={props =>
-              <AppPrivate
-                match={props.match}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-                routeGroup={routeGroup}
-              />
-            }
+            redirectToPrivateArea={this.state.redirectToPrivateArea}
+            component={AppPrivate}
+            match={this.props.match}
+            location={this.props.location}
+            routePrivate={routePrivate}
+            routePublic={routePublic}
+            routeGroup={routeGroup}
+            routeGroups={routeGroups}
+            routeThread={routeThread}
+
+            sendMessageGroup= {this.handlesendMessageGroup}
+            onInputMessageGroup={this.onInputMessageGroup}
+            InputMessageGroupValue={valueInput}
           />
-          <Route
-            path={routeGroup}
-            render={props =>
-              <Group
-                sendMessageGroup= {this.handlesendMessageGroup}
-                onInputMessageGroup={this.onInputMessageGroup}
-                InputMessageGroupValue={valueInput}
-                match={props.match}
-                routeGroup={routeGroup}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-              />
-            }
-          />
-          <Route path={routeThread} component={Thread} />
           <Route
             exact path={routePublic}
             render={props =>
               <AppPublic
                 errorClass={this.state.errorClass}
                 openedErrorFeedback={openedErrorFeedback}
+                redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 match={props.match}
+                location={props.location}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
+                getToken={this.getToken}
               />
             }
           />
