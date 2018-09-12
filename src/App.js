@@ -20,7 +20,9 @@ class App extends Component {
       responseStatus: false,
       errorClass: "error-hidden",
       valueInput:'',
-      groupList: []
+      groupList: [],
+      groupsPost:[],
+      threadPost:[]
     }
 
     this.handleInputEmailLoginValue = this
@@ -42,11 +44,20 @@ class App extends Component {
       this.resetInput= this
       .resetInput
       .bind(this);
+      this.handlefetchgroup= this
+      .handlefetchgroup
+      .bind(this);
+      this.handleIdThread= this
+      .handleIdThread
+      .bind(this);
+      this.handlefetchThread= this
+      .handlefetchThread
+      .bind(this);
+
       
   }
 
   fecthApi() {
-    console.log("ENTRA EN API")
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -57,12 +68,10 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
-      console.log('estoy en la api')
       if (response.ok){
           return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
-            console.log("TOKEN GUARDADO")
             this.redirectTo();
             this.setState({errorClass: "error-hidden"});
             this.setState({errorClass: "error-hidden", groupList: data.groups});
@@ -80,8 +89,55 @@ class App extends Component {
   }
 
   getToken(event) {
-   return localToken = localStorage.getItem('token');
+  return localToken = localStorage.getItem('token');
   }
+
+//starts fetch api for group post
+handlefetchgroup(){
+  fetch('http://adalab.string-projects.com/api/v1/posts', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    })
+    
+  .then((response) => {
+        return response.json()
+  .then((data) => { 
+   
+    this.setState({groupsPost:data})
+    })
+    
+  })
+  setInterval(this.filterIdPost, 2000)
+
+}
+//end fetch api for group post
+
+//starts fetch api for group THREAD
+
+handlefetchThread(){
+  fetch('http://adalab.string-projects.com/api/v1/posts/1', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    })
+    
+  .then((response) => {
+        return response.json()
+  .then((data) => {    
+    this.setState({threadPost:data})
+    });  
+  })
+}
+//END fetch api for group THREAD
+handleIdThread(event){
+  console.log("ME HAN CLICKADO",event.currentTarget);
+  this.handlefetchThread()
+}
 
   handleInputEmailLoginValue(e) {
     const {
@@ -103,18 +159,15 @@ class App extends Component {
 
   redirectTo(){
     if (this.getToken() !== null) {
-     console.log('estamos logeados??');
       this.setState({
         redirectToPrivateArea: true,
         }, () => {
-          console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
         })
       }
   }
 
   handleSubmitLogin(e) {
     e.preventDefault();
-    console.log("entra submit")
     this.fecthApi();
     this.redirectTo();
   }
@@ -125,7 +178,6 @@ class App extends Component {
     this.setState({
       valueInput: value
     })
-    console.log("soy un value input", this.state.valueInput);
   }
   handlesendMessageGroup(e){
     e.preventDefault();
@@ -138,24 +190,40 @@ resetInput(){
     valueInput: ''
   })
 }
+
+// filterIdPost(){
+//   console.log("ARRAY QUE FILTRA",this.state.groupsPost);
+// const arrayFilter = this.state.groupsPost.filter(function(post){
+//   console.log("FILTRANDO",post.post_id)
+//   return post.post_id === null;
+// });
+// console.log("ARRAYFILTRADO ", arrayFilter);
+// }
+
+
+
   render() {
     const { 
       openedErrorFeedback,
       redirectToPrivateArea,
       valueInput,
       groupList,
+      groupsPost,
+      threadPost
     } = this.state;
+  
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
-
  
     return (
       <div className="container-fluid">
         <Switch>
           <PrivateRoute
+            groupsPost={groupsPost}
+            handlefetchgroup={this.handlefetchgroup}
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}
@@ -169,6 +237,8 @@ resetInput(){
             sendMessageGroup= {this.handlesendMessageGroup}
             onInputMessageGroup={this.onInputMessageGroup}
             InputMessageGroupValue={valueInput}
+            threadPost={threadPost}
+            handleIdThread={this.handleIdThread}
           />
           <Route
             exact path={routePublic}

@@ -9,16 +9,17 @@ class Groups extends Component {
     const {
       rootRoute,
       routeGroup,
-      groupList
+      groupList,
+      handlefetchgroup
     } = this.props;
     console.log('soy la ruta ',`${rootRoute}${routeGroup}`)
     return (
       <div className="main--welist">
-        <Link to={`${rootRoute}${routeGroup}`}>
         <ul>
             {groupList.map(function(group,i){
               return (
-                <li className = "groupsli" key={i}>
+                <Link to={`${rootRoute}${routeGroup}`} >
+                <li className = "groupsli" key={i} onClick= {handlefetchgroup}>
                   <ElementList
                     image={profile}
                     group={group.name}
@@ -27,10 +28,10 @@ class Groups extends Component {
                     message="last message from this group"
                   />
                 </li>
+                </Link>
               )
             })}
           </ul>
-        </Link>
       </div>
     );
   }
