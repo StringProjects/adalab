@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
-import Login from './WePublic/Login';
+import {
+  Route,
+  Switch
+} from 'react-router-dom';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
-import Group from './WePrivate/Group';
-import Thread from './WePrivate/Thread';
-import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
 
-let responseStatus = 0;
+let localToken;
+
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       user: '',
       psw: '',
       openedErrorFeedback: false,
+      redirectToPrivateArea: false,
       responseStatus: false,
       errorClass: "error-hidden",
-      prueba: ""
+      prueba:'',
+      valueInput:'',
+      groupList: []
     }
+
     this.handleInputEmailLoginValue = this
       .handleInputEmailLoginValue
       .bind(this);
@@ -28,17 +33,25 @@ class App extends Component {
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
-    this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this);
-   
+
+      this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this);
+
+
+      this.getToken = this.getToken.bind(this);
+        this.handlesendMessageGroup= this
+        .handlesendMessageGroup
+        .bind(this);
+        this.onInputMessageGroup= this
+        .onInputMessageGroup
+        .bind(this);
+        this.resetInput= this
+        .resetInput
+        .bind(this);
+
   }
 
-  // componentDidMount() {
-  //   this.fecthApi();
-  // }
-
-
   fecthApi() {
-    console.log("state", this.state.user)
+    console.log("ENTRA EN API")
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -49,27 +62,27 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
-      responseStatus= response.status;
+      console.log('estoy en la api')
       if (response.ok){
           return response.json()
           .then((data) => {
             console.log("ENTRA API",data.groups)
             this.savedToken(data.user.auth_token)
-            console.log(data.user.auth_token);
-            this.setState({errorClass: "error-hidden"})
+            console.log("TOKEN GUARDADO")
+            this.redirectTo();
+            this.setState({errorClass: "error-hidden"});
+            this.setState({errorClass: "error-hidden", groupList: data.groups});
           });
         }  else {
-          console.log("error", response);
           this.setState({errorClass: ""})
-          console.log("soy el estado", this.state.responseStatus);
         }
-        
+
     })
-    
+
   }
 
     fecthApiLogOut(tok) {
-     
+
       console.log("ENTRA LOGOUT",tok)
       fetch('http://adalab.string-projects.com/api/v1/sessions', {
         method: 'DELETE',
@@ -91,40 +104,45 @@ class App extends Component {
 
 
   savedToken(token) {
-    localStorage.setItem('token', token)
-  }
-
-  getToken(){
-    return localStorage.getItem('token')
+    localStorage.setItem('token', token);
   }
 
   deleteToken(){
     localStorage.removeItem('token');
   }
 
+  getToken(event) {
+   return localToken = localStorage.getItem('token');
+  }
+
 
   handleInputEmailLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       user: value
     })
-    console.log(value);
-
   }
 
   handleInputPswLoginValue(e) {
-
     const {
       value
     } = e.target;
     this.setState({
       psw: value
     })
-    console.log(value);
+  }
 
+  redirectTo(){
+    if (this.getToken() !== null) {
+     console.log('estamos logeados??');
+      this.setState({
+        redirectToPrivateArea: true,
+        }, () => {
+          console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
+        })
+      }
   }
 
   handleSubmitLogin(e) {
@@ -132,6 +150,7 @@ class App extends Component {
     console.log("entra submit")
 
     this.fecthApi();
+    this.redirectTo();
   }
 
   handleDeleteLocalStorage(){
@@ -141,57 +160,72 @@ class App extends Component {
     //this.deleteToken();
   }
 
-
+  onInputMessageGroup(e){
+    const {
+      value
+    } = e.target;
+    this.setState({
+      valueInput: value
+    })
+    console.log("soy un value input", this.state.valueInput);
+  }
+  handlesendMessageGroup(e){
+    e.preventDefault();
+    // InputMessageGroupValue = this.state.valueInput
+    // console.log("soy el post",InputMessageGroupValue);
+    this.resetInput();
+  }
+resetInput(){
+  this.setState({
+    valueInput: ''
+  })
+}
   render() {
-    const { openedErrorFeedback } = this.state;
+    const {
+      openedErrorFeedback,
+      redirectToPrivateArea,
+      valueInput,
+      groupList,
+    } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
+    const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
-  
 
-    console.log('app openedErrorFeedback', openedErrorFeedback);
+
     return (
       <div className="container-fluid">
         <Switch>
-          <Route
+          <PrivateRoute
             path={routePrivate}
-            render={props =>
-              <AppPrivate
-                match={props.match}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-                routeGroup={routeGroup}
-                onDeleteLocalStorage={this.handleDeleteLocalStorage}
-                
-              />
-            }
+            onDeleteLocalStorage={this.handleDeleteLocalStorage}
+            redirectToPrivateArea={this.state.redirectToPrivateArea}
+            component={AppPrivate}
+            location={this.props.location}
+            routePrivate={routePrivate}
+            routePublic={routePublic}
+            routeGroup={routeGroup}
+            routeGroups={routeGroups}
+            routeThread={routeThread}
+            groupList={groupList}
+            sendMessageGroup= {this.handlesendMessageGroup}
+            onInputMessageGroup={this.onInputMessageGroup}
+            InputMessageGroupValue={valueInput}
           />
-          <Route
-            path={routeGroup}
-            render={props =>
-              <Group
-                match={props.match}
-                routeGroup={routeGroup}
-                routePrivate={routePrivate}
-                routePublic={routePublic}
-              />
-            }
-          />
-          <Route path={routeThread} component={Thread} />
           <Route
             exact path={routePublic}
             render={props =>
               <AppPublic
                 errorClass={this.state.errorClass}
                 openedErrorFeedback={openedErrorFeedback}
+                redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
-                match={props.match}
+                location={props.location}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
-             
-                
+                getToken={this.getToken}
               />
             }
           />

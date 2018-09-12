@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Login from './Login';
-import AppPrivate from '../WePrivate/AppPrivate';
 
 
 class AppPublic extends Component {
-
-
   render() {
     const {
       openedErrorFeedback,
@@ -13,12 +10,13 @@ class AppPublic extends Component {
       onInputEmail,
       onInputPsw,
       onSubmitBtn,
+      getToken,
+      location,
+      redirectToPrivateArea,
       onDeleteLocalStorage,
-    
       } = this.props;
+
     return (
-     
-     
       <Login
         errorClass={this.props.errorClass}
         onInputEmail={onInputEmail}
@@ -26,11 +24,10 @@ class AppPublic extends Component {
         openedErrorFeedback={openedErrorFeedback}
         toggleErrorFeedback={toggleErrorFeedback}
         onSubmitBtn={onSubmitBtn}
-        
-        
+        getToken={getToken}
+        redirectToPrivateArea={redirectToPrivateArea}
+        location={location}
       />
-     
-
     );
   }
 }

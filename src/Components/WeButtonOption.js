@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import {ButtonDropdown, DropdownItem, DropdownToggle, DropdownMenu, Button} from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { 
+  ButtonDropdown, 
+  DropdownItem, 
+  DropdownToggle, 
+  DropdownMenu 
+} from 'reactstrap';
 
 class WeButtonOption extends Component {
   constructor(props) {
@@ -20,19 +24,15 @@ class WeButtonOption extends Component {
 
   render() {
     const {
-      routePrivate,
       routePublic,
       routeGroup,
-      match,
-      onDeleteLocalStorage
+      onDeleteLocalStorage,
+      rootRoute,
+      location
     } = this.props;
+    console.log('this.props webuttonOption',this.props)
     return (
       <div className="dropdown-container">
-        <Link to={match.path===routeGroup ? routePrivate : routePublic}>
-          <Button className='btn HeaderThread__btn'>
-            <i className="fas fa-arrow-left HeaderThread__arrow"></i>
-          </Button>
-        </Link>
         <ButtonDropdown className="button-group" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
           <DropdownToggle className="Button-option" caret color="primary">
           ···

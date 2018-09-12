@@ -4,11 +4,7 @@ import {
     Form,
     FormGroup,
     Input,
-    Row,
-    Col,
-    Nav
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import ErrorFeedBack from './ErrorFeedBack';
 
 class WeForm extends Component {
@@ -50,8 +46,13 @@ class WeForm extends Component {
         }
     }
     render() {
-        const {onInputEmail, onInputPsw, openedErrorFeedback, toggleErrorFeedback, onSubmitBtn} = this.props;
-        console.log('WeForm openedErrorFeedback', openedErrorFeedback);
+        const {
+            onInputEmail,
+            onInputPsw,
+            onSubmitBtn,
+            getToken
+        } = this.props;
+
         return (
             <div className="container--form-landing">
                 <Form className="form--style" onSubmit={onSubmitBtn}>
@@ -77,18 +78,18 @@ class WeForm extends Component {
                                 id="hide-psw"
                                 className="far fa-eye-slash icon--psw show-off"></i>
                         </FormGroup>
-                  
                         <ErrorFeedBack
                             errorClass= {this.props.errorClass}
                             className="error-message"
                         />
-                       <Link to='/private' className="Button-option-link">
-                        <Button type="submit" className="btn btn--login">
+
+                        <Button
+                            type="submit"
+                            className="btn btn--login"
+                        >
                             <i className="fas fa-chevron-right"></i>
                         </Button>
-                        </Link>
-                    
-                    
+
                 </Form>
             </div>
         );

@@ -1,27 +1,35 @@
 import React, {Component} from 'react';
-import WeHeader from '../Components/WeHeader';
-import WeHeaderThread from '../Components/WeHeaderThread';
-import WeForm from '../Components/LoginComponents/WeForm';
-import WeInputButton from '../Components/WeInputButton';
+import { Redirect } from 'react-router-dom';
 import {
-    Button,
-    Form,
-    FormGroup,
-    Input,
     Row,
     Col,
-    Nav
 } from 'reactstrap';
+import WeHeader from '../Components/WeHeader';
+import WeForm from '../Components/LoginComponents/WeForm';
 
 class Login extends Component {
+
     render() {
+
         const {
             onInputEmail,
             onInputPsw,
             openedErrorFeedback,
             toggleErrorFeedback,
             onSubmitBtn,
+            getToken,
+            redirectToPrivateArea,
+            location
             } = this.props;
+
+
+
+        const { from } = location.state || { from: { pathname: '/private'}};
+
+        if (redirectToPrivateArea === true) {
+            return <Redirect to={from} />
+        }
+
         return (
             <div className="wrapper-login">
                 <header className="header--login">
@@ -44,7 +52,7 @@ class Login extends Component {
                         }}>
                             <div className="container--text-login">
                                 <h3 className="title--login text-center">¡Hola de nuevo!</h3>
-                                <p className="subtitle--landing text-center">Escribe tu email y contraseña para entrar en We.</p>
+                                <p className="subtitle--landing text-center">Escribe tu nombre de ususario y contraseña para entrar en We.</p>
                             </div>
                         </Col>
                         <Col
@@ -57,23 +65,22 @@ class Login extends Component {
                             size: 8,
                             offset: 2
                         }}>
-                            <WeForm 
+                            <WeForm
                                 errorClass= {this.props.errorClass}
-                                onInputEmail={onInputEmail} 
+                                onInputEmail={onInputEmail}
                                 onInputPsw={onInputPsw}
                                 openedErrorFeedback={openedErrorFeedback}
                                 toggleErrorFeedback={toggleErrorFeedback}
                                 onSubmitBtn={onSubmitBtn}
-                               
-                                
+                                getToken={getToken}
                             />
                         </Col>
 
                     </Row>
-                 
+
                 </main>
                 <div className="footer-login">
-                     <p className="text-footer">2018 ©  We. by AdaLab <span className="heart">❤︎</span></p>    
+                     <p className="text-footer">2018 ©  We. by AdaLab <span className="heart">❤︎</span></p>
                 </div>
 
             </div>

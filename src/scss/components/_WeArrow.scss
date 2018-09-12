@@ -1,0 +1,23 @@
+
+.HeaderThread__arrow{
+  color: $color-secondary;
+ }
+
+ .HeaderThread__btn {
+  background-color: transparent;
+  border: 0px;
+}
+
+.HeaderThread__btn:hover {
+  background-color: transparent;
+  border: 0px;
+}
+
+.HeaderThread__arrow {
+  font-size: 22px;
+  color: $color-terciary;
+}
+
+.HeaderThread__arrow:hover {
+  color: $color-button;
+}
