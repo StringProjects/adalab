@@ -59,7 +59,7 @@ class WeForm extends Component {
             onSubmitBtn,
             getToken
         } = this.props;
-       
+   
         return (
             <div className="container--form-landing">
                 <Form className="form--style" onSubmit={onSubmitBtn}>
@@ -89,13 +89,14 @@ class WeForm extends Component {
                             errorClass= {this.props.errorClass}
                             className="error-message"
                         />
+                        
                         <Button 
                             type="submit" 
-                            className="btn btn--login" 
+                            className="btn btn--login"  
                         >
                             <i className="fas fa-chevron-right"></i>
                         </Button>
-                    
+            
                 </Form>
             </div>
         );

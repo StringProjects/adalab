@@ -17,6 +17,7 @@ class App extends Component {
       responseStatus: false,
       errorClass: "error-hidden",
       valueInput:'',
+      groupList: []
     }
 
     this.handleInputEmailLoginValue = this
@@ -60,7 +61,8 @@ class App extends Component {
             this.savedToken(data.user.auth_token)
             console.log("TOKEN GUARDADO")
             this.redirectTo();
-            this.setState({errorClass: "error-hidden"})
+            this.setState({errorClass: "error-hidden"});
+            this.setState({errorClass: "error-hidden", groupList: data.groups});
           });
         }  else {
           this.setState({errorClass: ""})
@@ -108,7 +110,6 @@ class App extends Component {
   }
 
   handleSubmitLogin(e) {
-    console.log('onsubmit')
     e.preventDefault();
     this.fecthApi();
     this.redirectTo();
@@ -138,6 +139,7 @@ resetInput(){
       openedErrorFeedback,
       redirectToPrivateArea,
       valueInput,
+      groupList,
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
@@ -145,8 +147,7 @@ resetInput(){
     const routeGroup = '/group';
     const routeThread = '/thread';
 
-    console.log('localToken', localToken)
-    console.log('estan aqui location y match?',this.props);
+ 
     return (
       <div className="container-fluid">
         <Switch>
@@ -161,7 +162,7 @@ resetInput(){
             routeGroup={routeGroup}
             routeGroups={routeGroups}
             routeThread={routeThread}
-
+            groupList={groupList}
             sendMessageGroup= {this.handlesendMessageGroup}
             onInputMessageGroup={this.onInputMessageGroup}
             InputMessageGroupValue={valueInput}
