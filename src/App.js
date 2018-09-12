@@ -45,6 +45,10 @@ class App extends Component {
       
   }
 
+  componentDidMount() {
+    this.redirectTo();
+  }
+
   fecthApi() {
     console.log("ENTRA EN API")
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
