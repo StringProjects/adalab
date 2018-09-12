@@ -265,6 +265,9 @@
     width: 1000px;
     margin: auto; } }
 
+.groupsli {
+  list-style-type: none; }
+
 .Input__form {
   display: flex; }
 
