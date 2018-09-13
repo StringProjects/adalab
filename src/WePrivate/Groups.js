@@ -15,7 +15,7 @@ class Groups extends Component {
     console.log('soy la ruta ',`${rootRoute}${routeGroup}`)
     return (
       <div className="main--welist">
-        <ul>
+        <ul className="list--welist">
             {groupList.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeGroup}`} >

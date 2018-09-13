@@ -50,7 +50,7 @@ class Group extends Component {
           </div>
         </div>
         <div className="wrapper-welist">
-        <ul>
+        <ul className="list--welist">
             {filterArray.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeThread}`}>

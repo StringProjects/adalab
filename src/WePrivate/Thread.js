@@ -18,7 +18,8 @@ class Thread extends Component {
           rootRoute={rootRoute}
           routeGroup={routeGroup}
         />
-           <ul>
+          <div className="wrapper--list-thread">
+           <ul className="list--welist">
             {threadPost.map(function(thread,i){
               return (
              
@@ -35,8 +36,7 @@ class Thread extends Component {
               )
             })}
           </ul>
-    
- 
+            </div>
         <div className= "wrapper-input-send">
         <WeInputButton />
         </div>

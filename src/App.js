@@ -173,7 +173,6 @@ handlefetchSendMessage(){
         })
         // console.log('respuesta ok');
       }
-
   })
 }
 //END fetch api for message

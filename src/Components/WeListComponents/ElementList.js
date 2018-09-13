@@ -31,15 +31,7 @@ class ElementList extends Component {
         </Col>
         
         <Col xs="7" md="8" lg="7" xl="7" className="ElementList_text-container">
-          
-          <Row>
-            <Col>
-              <h3 className="group-title">
-              {this.props.group}
-              </h3>
-            </Col>
-          </Row>
-          
+        
           <Row>
               <Col className="flex-wrapper person-wrapper">
                 <h3 className="person-title">
