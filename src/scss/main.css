@@ -184,6 +184,11 @@
   padding: 2px 20px;
   align-items: center; }
 
+@media (min-width: 1024px) {
+  .dropdown-container {
+    width: 1000px;
+    margin: auto; } }
+
 .wrapper-login {
   height: 100vh;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
