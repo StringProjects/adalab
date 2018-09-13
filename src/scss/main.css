@@ -1,7 +1,9 @@
 .ElementList-wrapper {
   width: 100%;
   height: 100%;
-  margin: 0; }
+  margin: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid gainsboro; }
 
 .group-title {
   font-size: 16px;
@@ -15,10 +17,11 @@
 .flex-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; }
+  justify-content: flex-start; }
 
 .message-text {
-  font-size: 16px; }
+  font-size: 16px;
+  margin: 0; }
 
 .date-text {
   color: grey;
@@ -41,10 +44,12 @@
   margin-right: 12px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  padding-bottom: 30px; }
 
 .ElementList_text-container {
-  padding: 0; }
+  padding: 0;
+  margin-bottom: 10px; }
 
 .WeList-wrapper {
   margin: 20px; }
@@ -100,7 +105,8 @@
   justify-content: space-between;
   align-items: baseline;
   padding: 30px 30px;
-  border-bottom: 1px solid #6b869f; }
+  border-bottom: 1px solid #6b869f;
+  margin-bottom: 30px; }
 
 .HeaderThread__logo {
   color: #286df3;
@@ -109,7 +115,8 @@
 @media (min-width: 1024px) {
   .HeaderThread__container {
     width: 1000px;
-    margin: auto; } }
+    margin: auto;
+    margin-bottom: 30px; } }
 
 .container--form-landing {
   margin-top: 40px; }
@@ -177,12 +184,6 @@
   padding: 2px 20px;
   align-items: center; }
 
-@media (min-width: 1024px) {
-  .dropdown-container {
-    width: 1000px;
-    background-color: white;
-    margin: auto; } }
-
 .wrapper-login {
   height: 100vh;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
@@ -203,10 +204,10 @@
 .wrapper-menu {
   display: flex;
   justify-content: space-between;
-  align-items: baseline; }
+  align-items: center; }
 
 .wrapper-group {
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
 
 .wrapper-nameGroup {
@@ -230,6 +231,7 @@
   padding-left: 30px; }
 
 .wrapper-welist {
+  margin-top: 30px;
   margin-bottom: 100px; }
 
 .wrapper-input-send {
@@ -242,15 +244,27 @@
 @media (min-width: 1024px) {
   .wrapper-welist {
     width: 1000px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 100px; }
+  .wrapper-menu {
+    width: 1000px;
     margin: auto; }
   .wrapper-nameGroup {
     width: 1000px;
     margin: auto; } }
 
+.main--welist {
+  margin-top: 50px; }
+
 @media (min-width: 1024px) {
   .main--welist {
     width: 1000px;
     margin: auto; } }
+
+.list--welist {
+  margin: 0;
+  padding: 0; }
 
 .groupsli {
   list-style-type: none; }
@@ -274,6 +288,11 @@
 .wrapper-thread {
   height: 100vh;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%); }
+
+@media (min-width: 1024px) {
+  .wrapper--list-thread {
+    width: 1000px;
+    margin: auto; } }
 
 .HeaderThread__arrow {
   color: #0c2c5d; }
@@ -301,7 +320,8 @@ body {
 
 .container-fluid {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  height: 100vh; }
 
 .header {
   position: fixed;

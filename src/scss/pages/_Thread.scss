@@ -2,3 +2,11 @@
     height: 100vh;
     background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
+
+@media (min-width: 1024px){
+
+    .wrapper--list-thread{
+      width: 1000px;
+      margin: auto;
+    }
+}
