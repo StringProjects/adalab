@@ -61,7 +61,7 @@ class Group extends Component {
                     name={group.username}
                     date={group.date}
                     message={group.description}
-                    addAnswer="respuesta"
+                    addAnswer="Comienza hilo"
                     handleIdThread={handleIdThread}
                   />
                 </li>

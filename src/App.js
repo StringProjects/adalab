@@ -24,7 +24,9 @@ class App extends Component {
       groupsPost:[],
       threadPost:[],
       inputMessageValue:'',
-      filterArray:[]
+      filterArray:[],
+      filterArrayThread:[],
+      id:0,
     }
 
     this.handleInputEmailLoginValue = this
@@ -118,8 +120,8 @@ handlefetchgroup(){
 
 //starts fetch api for group THREAD
 
-handlefetchThread(){
-  fetch('http://adalab.string-projects.com/api/v1/posts/1', {
+handlefetchThread(id){
+  fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
@@ -131,8 +133,9 @@ handlefetchThread(){
         return response.json()
   .then((data) => {
     this.setState({threadPost:data})
+
     });
-  })
+  });
 }
 //END fetch api for group THREAD
 
@@ -176,9 +179,10 @@ handlefetchSendMessage(){
 //END fetch api for message
 
 handleIdThread(event, id){
-  console.log("ME HAN CLICKADO",event.target);
-  console.log("ME HAN CLICKADO id",id);
-  this.handlefetchThread()
+  this.setState({
+    id:id
+  })
+  this.handlefetchThread(id)
 }
 
   handleInputEmailLoginValue(e) {
