@@ -28,7 +28,8 @@ class AppPrivate extends Component {
       handlefetchSendMessage,
       handleInputMessageValue,
       inputMessageValue,
-      filterArray
+      filterArray,
+      handleDeleteLocalStorage
     } = this.props;
 
     return (
@@ -46,6 +47,7 @@ class AppPrivate extends Component {
                   routeGroup={routeGroup}
                   location={location}
                   rootRoute={this.props.computedMatch.path}
+                  handleDeleteLocalStorage = {handleDeleteLocalStorage}
                 />
                 <Groups
                   handlefetchgroup={handlefetchgroup}
