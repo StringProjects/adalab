@@ -165,37 +165,37 @@ handlefetchThread(id){
 }
 //start fetch logout
 
-     fecthApiLogOut(token) {
+    fecthApiLogOut(token) {
 
-       fetch('http://adalab.string-projects.com/api/v1/sessions', {
-           method: 'DELETE',
-           headers: {
-             'Content-type': 'application/json',
-             'AUTH-TOKEN': token
-           },
-         }).then((response) => {
-           if (response.ok) {
-             this.deleteToken();
-             this.setState({
-               redirectToPrivateArea: false,
-               user: '',
-               psw: '',
-             })
-           }
+      fetch('http://adalab.string-projects.com/api/v1/sessions', {
+          method: 'DELETE',
+          headers: {
+            'Content-type': 'application/json',
+            'AUTH-TOKEN': token
+          },
+        }).then((response) => {
+          if (response.ok) {
+            this.deleteToken();
+            this.setState({
+              redirectToPrivateArea: false,
+              user: '',
+              psw: '',
+            })
+          }
 
-         })
-         .catch((error) => {
-           console.error(error);
-         });
-     }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
 
 //end fetch logout
 
-   handleDeleteLocalStorage() {
-     const tokendelete = this.getToken()
-     this.fecthApiLogOut(tokendelete);
-     this.deleteToken();
-   }
+  handleDeleteLocalStorage() {
+    const tokendelete = this.getToken()
+    this.fecthApiLogOut(tokendelete);
+    this.deleteToken();
+  }
 
 
 

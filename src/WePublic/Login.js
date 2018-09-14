@@ -28,8 +28,9 @@ class Login extends Component {
         const { from } = location.state || { from: { pathname: '/private'}};
 
         if (redirectToPrivateArea === true) {
-            return <Redirect to={from} />
+            return <Redirect to={'/private'} />
         }
+        
 
         return (
             <div className="wrapper-login">
