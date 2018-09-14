@@ -215,45 +215,32 @@ handlefetchSendMessage(localToken){
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      'AUTH-TOKEN':localToken
+      'AUTH-TOKEN':this.getToken()
     },
     body: JSON.stringify({
-      "post": {"description":this.state.inputMessageValue}
+      "post": {"description":this.state.inputMessageValue}, 
+      "post_id": this.state.id
     })
   }).then((response) => { {/*console.log('response de POST',response);*/}
       if(response.ok===true){
-        this.handlefetchgroup();
-        this.setState({
-          inputMessageValue: ''
-        })
+        if("post_id"===null){
+          this.handlefetchgroup();
+          this.setState({
+            inputMessageValue:''
+          })
+        } else{
+            this.handlefetchThread();
+            this.setState({
+              inputMessageValue:''
+            })
+        }
+        
         // console.log('respuesta ok');
       }
   })
 }
 //END fetch api for message
 
-//Start fetch APi for thread
-handlefetchSendThread(){
-  fetch('http://adalab.string-projects.com/api/v1/posts', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-      'AUTH-TOKEN':localToken
-    },
-    body: JSON.stringify({
-      "post": {"description":this.state.inputMessageValue}
-    })
-  }).then((response) => { {/*console.log('response de POST',response);*/}
-      if(response.ok===true){
-        this.handlefetchgroup();
-        this.setState({
-          inputMessageValue: ''
-        })
-        // console.log('respuesta ok');
-      }
-
-  })
-}
 
 handleIdThread(event, id){
   this.setState({
@@ -348,6 +335,7 @@ this.setState( {filterArray : arrayFilter});
           <PrivateRoute
             groupsPost={groupsPost}
             handlefetchgroup={this.handlefetchgroup}
+            handlefetchThread={this.handlefetchThread}
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}

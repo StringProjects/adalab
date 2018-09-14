@@ -23,13 +23,15 @@ class AppPrivate extends Component {
       InputMessageGroupValue,
       groupList,
       handlefetchgroup,
-      groupsPost,
       handleIdThread,
+      groupsPost,
+      handlefetchThread,
       handlefetchSendMessage,
       handleInputMessageValue,
       inputMessageValue,
       filterArray,
-      handleDeleteLocalStorage
+      handleDeleteLocalStorage,
+      
     } = this.props;
 
     return (
@@ -84,6 +86,7 @@ class AppPrivate extends Component {
                   inputMessageValue={inputMessageValue}
                   filterArray={filterArray}
                   handleDeleteLocalStorage = {handleDeleteLocalStorage}
+                  handlefetchThread={handlefetchThread}
                 />
               </div>
             }
