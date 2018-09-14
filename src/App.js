@@ -62,6 +62,8 @@ class App extends Component {
       .bind(this);
       this.handleInputMessageValue=this.handleInputMessageValue.bind(this);
       this.filterIdPost = this.filterIdPost.bind(this)
+      this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this)
+      this.deleteToken = this.deleteToken.bind(this)
 
   }
 
@@ -96,11 +98,17 @@ class App extends Component {
   }
 
   getToken(event) {
-  return localToken = localStorage.getItem('token');
+    console.log("hola")
+   console.log("TOKEN", localStorage.getItem('token'))
+   return localStorage.getItem('token');
+  }
+
+  deleteToken(){
+    localStorage.removeItem('token');
   }
 
 //starts fetch api for group post
-handlefetchgroup(){
+fetchgroup(localToken) {
   fetch('http://adalab.string-projects.com/api/v1/posts', {
     method: 'GET',
     headers: {
@@ -112,10 +120,21 @@ handlefetchgroup(){
   .then((response) => {
         return response.json()
   .then((data) => {
+    console.log("ENTRA EN FETCHGROUP")
+    console.log("DATA", data)
     this.setState({groupsPost:data}, this.filterIdPost)
     })
+      .catch((error) => {
+        console.error(error);
+      });
   })
 }
+
+handlefetchgroup(){
+ const tokengroup = this.getToken()
+ this.fetchgroup(tokengroup);
+}
+
 //end fetch api for group post
 
 //starts fetch api for group THREAD
@@ -138,6 +157,44 @@ handlefetchThread(id){
   });
 }
 //END fetch api for group THREAD
+
+//start fetch logout
+
+     fecthApiLogOut(tok) {
+
+       console.log("ENTRA LOGOUT", tok)
+       fetch('http://adalab.string-projects.com/api/v1/sessions', {
+           method: 'DELETE',
+           headers: {
+             'Content-type': 'application/json',
+             'AUTH-TOKEN': tok
+           },
+         }).then((response) => {
+           if (response.ok) {
+             console.log("TODO Ok")
+             this.deleteToken();
+             this.setState({
+               redirectToPrivateArea: false,
+               user: '',
+               psw: '',
+             }, this.filterIdPost)
+           }
+
+         })
+         .catch((error) => {
+           console.error(error);
+         });
+     }
+
+//end fetch logout
+
+   handleDeleteLocalStorage() {
+     console.log("entra en el handle")
+     const tokendelete = this.getToken()
+     this.fecthApiLogOut(tokendelete);
+     this.deleteToken();
+   }
+
 
 
 //starts fetch api to post message
@@ -238,7 +295,7 @@ resetInput(){
 
 filterIdPost(){
   console.log("ARRAY QUE FILTRA",this.state.groupsPost);
-const arrayFilter = this.state.groupsPost.filter(function(post){
+  const arrayFilter = this.state.groupsPost.filter(function(post){
   console.log("FILTRANDO",post.post_id)
   return post.post_id === null;
 });
@@ -289,6 +346,7 @@ this.setState( {filterArray : arrayFilter});
             handleInputMessageValue={this.handleInputMessageValue}
             inputMessageValue={this.state.inputMessageValue}
             filterArray={filterArray}
+            handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
           />
           <Route
             exact path={routePublic}
