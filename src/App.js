@@ -152,7 +152,7 @@ handleInputMessageValue(e) {
 
 }
 
-handlefetchSendMessage(){
+handlefetchSendMessage(localToken){
   fetch('http://adalab.string-projects.com/api/v1/posts', {
     method: 'POST',
     headers: {
@@ -174,6 +174,29 @@ handlefetchSendMessage(){
   })
 }
 //END fetch api for message
+
+//Start fetch APi for thread
+handlefetchSendThread(){
+  fetch('http://adalab.string-projects.com/api/v1/posts', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    body: JSON.stringify({
+      "post": {"description":this.state.inputMessageValue}
+    })
+  }).then((response) => { {/*console.log('response de POST',response);*/}
+      if(response.ok===true){
+        this.handlefetchgroup();
+        this.setState({
+          inputMessageValue: ''
+        })
+        // console.log('respuesta ok');
+      }
+
+  })
+}
 
 handleIdThread(event, id){
   console.log("ME HAN CLICKADO",event.target);
