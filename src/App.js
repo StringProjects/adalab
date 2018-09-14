@@ -98,8 +98,6 @@ class App extends Component {
   }
 
   getToken(event) {
-    console.log("hola")
-   console.log("TOKEN", localStorage.getItem('token'))
    return localStorage.getItem('token');
   }
 
@@ -160,24 +158,22 @@ handlefetchThread(id){
 
 //start fetch logout
 
-     fecthApiLogOut(tok) {
+     fecthApiLogOut(token) {
 
-       console.log("ENTRA LOGOUT", tok)
        fetch('http://adalab.string-projects.com/api/v1/sessions', {
            method: 'DELETE',
            headers: {
              'Content-type': 'application/json',
-             'AUTH-TOKEN': tok
+             'AUTH-TOKEN': token
            },
          }).then((response) => {
            if (response.ok) {
-             console.log("TODO Ok")
              this.deleteToken();
              this.setState({
                redirectToPrivateArea: false,
                user: '',
                psw: '',
-             }, this.filterIdPost)
+             })
            }
 
          })
@@ -189,7 +185,6 @@ handlefetchThread(id){
 //end fetch logout
 
    handleDeleteLocalStorage() {
-     console.log("entra en el handle")
      const tokendelete = this.getToken()
      this.fecthApiLogOut(tokendelete);
      this.deleteToken();
