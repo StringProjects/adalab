@@ -137,7 +137,7 @@ handlefetchgroup(){
 
 //starts fetch api for group THREAD
 
-handlefetchThread(id){
+handlefetchThreadCall(id,localToken){
   fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
     method: 'GET',
     headers: {
@@ -155,7 +155,10 @@ handlefetchThread(id){
   });
 }
 //END fetch api for group THREAD
-
+handlefetchThread(id){
+  localToken= this.getToken() 
+  this.handlefetchThreadCall(id, localToken)
+}
 //start fetch logout
 
      fecthApiLogOut(token) {
