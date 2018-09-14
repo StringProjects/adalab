@@ -83,6 +83,7 @@ class AppPrivate extends Component {
                   handleInputMessageValue={handleInputMessageValue}
                   inputMessageValue={inputMessageValue}
                   filterArray={filterArray}
+                  handleDeleteLocalStorage = {handleDeleteLocalStorage}
                 />
               </div>
             }
