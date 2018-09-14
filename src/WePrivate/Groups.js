@@ -4,6 +4,18 @@ import ElementList from '../Components/WeListComponents/ElementList';
 import profile from '../images/panda.jpg';
 
 class Groups extends Component {
+  constructor(props){
+    super(props);
+
+  }
+
+
+  componentDidMount(){
+
+      this.props.fecthApi();
+  }
+
+
   render() {
   
     const {

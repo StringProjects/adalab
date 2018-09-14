@@ -71,12 +71,13 @@ class AppPrivate extends Component {
 
   
   //starts fetch api for group post
-  fetchgroup(localToken) {
+  handlefetchgroup() {
+    const tokengroup = this.getToken()
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
-        'AUTH-TOKEN': localToken
+        'AUTH-TOKEN': tokengroup
       },
     })
 
@@ -93,10 +94,7 @@ class AppPrivate extends Component {
       })
   }
 
-  handlefetchgroup() {
-    const tokengroup = this.getToken()
-    this.fetchgroup(tokengroup);
-  }
+
 
   //end fetch api for group post
 
@@ -252,6 +250,7 @@ class AppPrivate extends Component {
       routeThread,
       location,
       groupList,
+      fecthApi
     } = this.props;
 
     const {
@@ -284,6 +283,7 @@ class AppPrivate extends Component {
                   routeGroup={routeGroup}
                   rootRoute={this.props.computedMatch.path}
                   groupList={groupList}
+                  fecthApi={fecthApi}
                 />
               </div>
             }
