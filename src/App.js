@@ -137,7 +137,8 @@ handlefetchgroup(){
 
 //starts fetch api for group THREAD
 
-handlefetchThread(id){
+handlefetchThread(id, localToken) {
+  console.log("entra en fetch thread", id)
   fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
     method: 'GET',
     headers: {
@@ -230,10 +231,12 @@ handlefetchSendMessage(){
 //END fetch api for message
 
 handleIdThread(event, id){
+  console.log("Entra en handle thread")
   this.setState({
     id:id
   })
-  this.handlefetchThread(id)
+  let token = this.getToken();
+  this.handlefetchThread(id, token)
 }
 
   handleInputEmailLoginValue(e) {
@@ -291,7 +294,6 @@ resetInput(){
 filterIdPost(){
   console.log("ARRAY QUE FILTRA",this.state.groupsPost);
   const arrayFilter = this.state.groupsPost.filter(function(post){
-  console.log("FILTRANDO",post.post_id)
   return post.post_id === null;
 });
 this.setState( {filterArray : arrayFilter});
