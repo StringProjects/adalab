@@ -3,6 +3,9 @@
     width: 100%;
     height: 100%;
     margin: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gainsboro;
+   
 }
 
 .group-title {
@@ -19,11 +22,13 @@
 .flex-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .message-text {
     font-size: 16px;
+    margin: 0;
+    word-break: break-all;
 }
 
 .date-text {
@@ -53,8 +58,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .ElementList_text-container {
     padding: 0;
+    margin-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { 
-  Route, 
-  Switch 
+import {
+  Route,
+  Switch
 } from 'react-router-dom';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
@@ -10,8 +10,8 @@ import PrivateRoute from './Components/PrivateComponents/PrivateRoute';
 let localToken;
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       user: '',
       psw: '',
@@ -20,7 +20,13 @@ class App extends Component {
       responseStatus: false,
       errorClass: "error-hidden",
       valueInput:'',
-      groupList: []
+      groupList: [],
+      groupsPost:[],
+      threadPost:[],
+      inputMessageValue:'',
+      filterArray:[],
+      filterArrayThread:[],
+      id:0,
     }
 
     this.handleInputEmailLoginValue = this
@@ -42,7 +48,23 @@ class App extends Component {
       this.resetInput= this
       .resetInput
       .bind(this);
-      
+      this.handlefetchgroup= this
+      .handlefetchgroup
+      .bind(this);
+      this.handleIdThread= this
+      .handleIdThread
+      .bind(this);
+      this.handlefetchThread= this
+      .handlefetchThread
+      .bind(this);
+      this.handlefetchSendMessage=this
+      .handlefetchSendMessage
+      .bind(this);
+      this.handleInputMessageValue=this.handleInputMessageValue.bind(this);
+      this.filterIdPost = this.filterIdPost.bind(this)
+      this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this)
+      this.deleteToken = this.deleteToken.bind(this)
+
   }
 
   componentDidMount() {
@@ -50,7 +72,6 @@ class App extends Component {
   }
 
   fecthApi() {
-    console.log("ENTRA EN API")
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -61,22 +82,19 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
-      console.log('estoy en la api')
       if (response.ok){
           return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
-            console.log("TOKEN GUARDADO")
             this.redirectTo();
-            this.setState({errorClass: "error-hidden"});
             this.setState({errorClass: "error-hidden", groupList: data.groups});
           });
         }  else {
           this.setState({errorClass: ""})
         }
-        
+
     })
-    
+
   }
 
   savedToken(token) {
@@ -84,8 +102,143 @@ class App extends Component {
   }
 
   getToken(event) {
-   return localToken = localStorage.getItem('token');
+   return localStorage.getItem('token');
   }
+
+  deleteToken(){
+    localStorage.removeItem('token');
+  }
+
+//starts fetch api for group post
+fetchgroup(localToken) {
+  fetch('http://adalab.string-projects.com/api/v1/posts', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    })
+
+  .then((response) => {
+        return response.json()
+  .then((data) => {
+    console.log("ENTRA EN FETCHGROUP")
+    console.log("DATA", data)
+    this.setState({groupsPost:data}, this.filterIdPost)
+    })
+      .catch((error) => {
+        console.error(error);
+      });
+  })
+}
+
+handlefetchgroup(){
+ const tokengroup = this.getToken()
+ this.fetchgroup(tokengroup);
+}
+
+//end fetch api for group post
+
+//starts fetch api for group THREAD
+
+handlefetchThread(id){
+  fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    })
+
+  .then((response) => {
+        return response.json()
+  .then((data) => {
+    this.setState({threadPost:data})
+
+    });
+  });
+}
+//END fetch api for group THREAD
+
+//start fetch logout
+
+     fecthApiLogOut(token) {
+
+       fetch('http://adalab.string-projects.com/api/v1/sessions', {
+           method: 'DELETE',
+           headers: {
+             'Content-type': 'application/json',
+             'AUTH-TOKEN': token
+           },
+         }).then((response) => {
+           if (response.ok) {
+             this.deleteToken();
+             this.setState({
+               redirectToPrivateArea: false,
+               user: '',
+               psw: '',
+             })
+           }
+
+         })
+         .catch((error) => {
+           console.error(error);
+         });
+     }
+
+//end fetch logout
+
+   handleDeleteLocalStorage() {
+     const tokendelete = this.getToken()
+     this.fecthApiLogOut(tokendelete);
+     this.deleteToken();
+   }
+
+
+
+//starts fetch api to post message
+
+handleInputMessageValue(e) {
+  const {
+    value
+  } = e.target;
+  this.setState({
+    inputMessageValue: value
+  },
+  ()=> {
+    console.log('valor del estado', this.state.inputMessageValue);
+  })
+
+}
+
+handlefetchSendMessage(){
+  fetch('http://adalab.string-projects.com/api/v1/posts', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'AUTH-TOKEN':localToken
+    },
+    body: JSON.stringify({
+      "post": {"description":this.state.inputMessageValue}
+    })
+  }).then((response) => { {/*console.log('response de POST',response);*/}
+      if(response.ok===true){
+        this.handlefetchgroup();
+        this.setState({
+          inputMessageValue: ''
+        })
+        // console.log('respuesta ok');
+      }
+  })
+}
+//END fetch api for message
+
+handleIdThread(event, id){
+  this.setState({
+    id:id
+  })
+  this.handlefetchThread(id)
+}
 
   handleInputEmailLoginValue(e) {
     const {
@@ -107,18 +260,15 @@ class App extends Component {
 
   redirectTo(){
     if (this.getToken() !== null) {
-     console.log('estamos logeados??');
       this.setState({
         redirectToPrivateArea: true,
         }, () => {
-          console.log('ESTADO CALLBACK', this.state.redirectToPrivateArea)
         })
       }
   }
 
   handleSubmitLogin(e) {
     e.preventDefault();
-    console.log("entra submit")
     this.fecthApi();
     this.redirectTo();
   }
@@ -129,7 +279,6 @@ class App extends Component {
     this.setState({
       valueInput: value
     })
-    console.log("soy un value input", this.state.valueInput);
   }
   handlesendMessageGroup(e){
     e.preventDefault();
@@ -142,24 +291,41 @@ resetInput(){
     valueInput: ''
   })
 }
+
+filterIdPost(){
+  console.log("ARRAY QUE FILTRA",this.state.groupsPost);
+  const arrayFilter = this.state.groupsPost.filter(function(post){
+  console.log("FILTRANDO",post.post_id)
+  return post.post_id === null;
+});
+this.setState( {filterArray : arrayFilter});
+}
+
+
+
   render() {
-    const { 
+    const {
       openedErrorFeedback,
       redirectToPrivateArea,
       valueInput,
       groupList,
+      groupsPost,
+      threadPost,
+      filterArray
     } = this.state;
+
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
 
- 
     return (
       <div className="container-fluid">
         <Switch>
           <PrivateRoute
+            groupsPost={groupsPost}
+            handlefetchgroup={this.handlefetchgroup}
             path={routePrivate}
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}
@@ -174,6 +340,13 @@ resetInput(){
             sendMessageGroup= {this.handlesendMessageGroup}
             onInputMessageGroup={this.onInputMessageGroup}
             InputMessageGroupValue={valueInput}
+            threadPost={threadPost}
+            handleIdThread={this.handleIdThread}
+            handlefetchSendMessage={this.handlefetchSendMessage}
+            handleInputMessageValue={this.handleInputMessageValue}
+            inputMessageValue={this.state.inputMessageValue}
+            filterArray={filterArray}
+            handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
           />
           <Route
             exact path={routePublic}

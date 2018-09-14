@@ -1,11 +1,12 @@
 .wrapper-menu {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+ 
 }
 
 .wrapper-group{
-    height: 100vh;
+    height: 100%;
     background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
@@ -32,6 +33,7 @@
 }
 
 .wrapper-welist{
+    margin-top: 30px;
     margin-bottom: 100px;
 }
 
@@ -48,6 +50,13 @@
    .wrapper-welist {
       width: 1000px;
       margin: auto;
+      margin-top: 30px;
+      margin-bottom: 100px;
+   }
+
+   .wrapper-menu{
+    width: 1000px;
+    margin: auto;
    }
 
     .wrapper-nameGroup{

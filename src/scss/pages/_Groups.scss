@@ -1,9 +1,22 @@
+
+
+.main--welist{
+    margin-top: 50px;
+}
+
+
 @media (min-width: 1024px) {
     .main--welist {
         width: 1000px;
         margin: auto;
     }
 }
+
+.list--welist{
+    margin: 0;
+    padding: 0;
+}
+
 .groupsli{
     list-style-type:none;
 }

@@ -27,9 +27,10 @@ class WeButtonOption extends Component {
       routePublic,
       routeGroup,
       rootRoute,
-      location
+      location,
+      handleDeleteLocalStorage
     } = this.props;
-    console.log('this.props webuttonOption',this.props)
+    // console.log('this.props webuttonOption',this.props)
     return (
       <div className="dropdown-container">
         <ButtonDropdown className="button-group" direction="left" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -38,7 +39,7 @@ class WeButtonOption extends Component {
           </DropdownToggle>
           <DropdownMenu className="dropdown-menu dropdown-menu-right">
             <DropdownItem> Crear grupo </DropdownItem>
-            <DropdownItem> Cerrar sesión</DropdownItem>
+            <DropdownItem onClick={handleDeleteLocalStorage}> Cerrar sesión</DropdownItem>
           </DropdownMenu>
         </ButtonDropdown>
       </div>

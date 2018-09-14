@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { 
-  Route, 
-  Switch 
+import {
+  Route,
+  Switch
 } from 'react-router-dom';
 import WeHeader from '../Components/WeHeader';
 import WeButtonOption from '../Components/WeButtonOption';
@@ -21,9 +21,17 @@ class AppPrivate extends Component {
       sendMessageGroup,
       onInputMessageGroup,
       InputMessageGroupValue,
-      groupList
+      groupList,
+      handlefetchgroup,
+      groupsPost,
+      handleIdThread,
+      handlefetchSendMessage,
+      handleInputMessageValue,
+      inputMessageValue,
+      filterArray,
+      handleDeleteLocalStorage
     } = this.props;
-    console.log('props en app private', this.props)
+
     return (
       <div className="wrapper-group">
         <Switch>
@@ -39,8 +47,10 @@ class AppPrivate extends Component {
                   routeGroup={routeGroup}
                   location={location}
                   rootRoute={this.props.computedMatch.path}
+                  handleDeleteLocalStorage = {handleDeleteLocalStorage}
                 />
                 <Groups
+                  handlefetchgroup={handlefetchgroup}
                   routePrivate={routePrivate}
                   routePublic={routePublic}
                   routeGroup={routeGroup}
@@ -57,6 +67,7 @@ class AppPrivate extends Component {
               <div>
 
                 <Group
+                  groupsPost={groupsPost}
                   sendMessageGroup={sendMessageGroup}
                   onInputMessageGroup={onInputMessageGroup}
                   InputMessageGroupValue={InputMessageGroupValue}
@@ -67,6 +78,12 @@ class AppPrivate extends Component {
                   routePublic={routePublic}
                   routeThread={routeThread}
                   rootRoute={this.props.computedMatch.path}
+                  handleIdThread={handleIdThread}
+                  handlefetchSendMessage={handlefetchSendMessage}
+                  handleInputMessageValue={handleInputMessageValue}
+                  inputMessageValue={inputMessageValue}
+                  filterArray={filterArray}
+                  handleDeleteLocalStorage = {handleDeleteLocalStorage}
                 />
               </div>
             }
@@ -78,6 +95,7 @@ class AppPrivate extends Component {
               <Thread
                 routeGroup={routeGroup}
                 rootRoute={this.props.computedMatch.path}
+                threadPost={this.props.threadPost}
               />
             }
           />

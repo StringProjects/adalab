@@ -6,6 +6,22 @@ import {
 
 
 class ElementList extends Component {
+  constructor(props){
+    super(props)
+
+    this.handleClickThread = this
+    .handleClickThread
+    .bind(this);
+  }
+    
+    
+  handleClickThread(e){
+    
+    const { id, handleIdThread } = this.props;
+    handleIdThread(e, id);
+    console.log("aaaaaaa", this.props);
+  }
+
   render() {
     return (
       <Row className="ElementList-wrapper">
@@ -15,15 +31,7 @@ class ElementList extends Component {
         </Col>
         
         <Col xs="7" md="8" lg="7" xl="7" className="ElementList_text-container">
-          
-          <Row>
-            <Col>
-              <h3 className="group-title">
-              {this.props.group}
-              </h3>
-            </Col>
-          </Row>
-          
+        
           <Row>
               <Col className="flex-wrapper person-wrapper">
                 <h3 className="person-title">
@@ -41,7 +49,14 @@ class ElementList extends Component {
           <Row>
             <Col className="flex-wrapper">
               <span className="answers-number">{this.props.answers}</span>
-              <span className="add-answer">{this.props.addAnswer}</span>
+              {this.props.handleIdThread && (
+                  <span 
+                  className="add-answer"  
+                  onClick={this.handleClickThread}
+                  >
+                  {this.props.addAnswer}
+                  </span>
+                )}
             </Col>
           </Row>
         
