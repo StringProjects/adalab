@@ -19,14 +19,14 @@ class App extends Component {
       redirectToPrivateArea: false,
       responseStatus: false,
       errorClass: "error-hidden",
-      valueInput:'',
+      valueInput: '',
       groupList: [],
-      groupsPost:[],
-      threadPost:[],
-      inputMessageValue:'',
-      filterArray:[],
-      filterArrayThread:[],
-      id:0,
+      groupsPost: [],
+      threadPost: [],
+      inputMessageValue: '',
+      filterArray: [],
+      filterArrayThread: [],
+      id: 0,
     }
 
     this.handleInputEmailLoginValue = this
@@ -39,31 +39,31 @@ class App extends Component {
       .handleSubmitLogin
       .bind(this);
     this.getToken = this.getToken.bind(this);
-      this.handlesendMessageGroup= this
+    this.handlesendMessageGroup = this
       .handlesendMessageGroup
       .bind(this);
-      this.onInputMessageGroup= this
+    this.onInputMessageGroup = this
       .onInputMessageGroup
       .bind(this);
-      this.resetInput= this
+    this.resetInput = this
       .resetInput
       .bind(this);
-      this.handlefetchgroup= this
+    this.handlefetchgroup = this
       .handlefetchgroup
       .bind(this);
-      this.handleIdThread= this
+    this.handleIdThread = this
       .handleIdThread
       .bind(this);
-      this.handlefetchThread= this
+    this.handlefetchThread = this
       .handlefetchThread
       .bind(this);
-      this.handlefetchSendMessage=this
+    this.handlefetchSendMessage = this
       .handlefetchSendMessage
       .bind(this);
-      this.handleInputMessageValue=this.handleInputMessageValue.bind(this);
-      this.filterIdPost = this.filterIdPost.bind(this)
-      this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this)
-      this.deleteToken = this.deleteToken.bind(this)
+    this.handleInputMessageValue = this.handleInputMessageValue.bind(this);
+    this.filterIdPost = this.filterIdPost.bind(this)
+    this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this)
+    this.deleteToken = this.deleteToken.bind(this)
 
   }
 
@@ -82,16 +82,16 @@ class App extends Component {
         "password": this.state.psw
       })
     }).then((response) => {
-      if (response.ok){
-          return response.json()
+      if (response.ok) {
+        return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
             this.redirectTo();
-            this.setState({errorClass: "error-hidden", groupList: data.groups});
+            this.setState({ errorClass: "error-hidden", groupList: data.groups });
           });
-        }  else {
-          this.setState({errorClass: ""})
-        }
+      } else {
+        this.setState({ errorClass: "" })
+      }
 
     })
 
@@ -102,146 +102,147 @@ class App extends Component {
   }
 
   getToken(event) {
-   return localStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
-  deleteToken(){
+  deleteToken() {
     localStorage.removeItem('token');
   }
 
-//starts fetch api for group post
-fetchgroup(localToken) {
-  fetch('http://adalab.string-projects.com/api/v1/posts', {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-      'AUTH-TOKEN':localToken
-    },
+  //starts fetch api for group post
+  fetchgroup(localToken) {
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'AUTH-TOKEN': localToken
+      },
     })
 
-  .then((response) => {
+      .then((response) => {
         return response.json()
-  .then((data) => {
-    console.log("ENTRA EN FETCHGROUP")
-    console.log("DATA", data)
-    this.setState({groupsPost:data}, this.filterIdPost)
+          .then((data) => {
+            console.log("ENTRA EN FETCHGROUP")
+            console.log("DATA", data)
+            this.setState({ groupsPost: data }, this.filterIdPost)
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      })
+  }
+
+  handlefetchgroup() {
+    const tokengroup = this.getToken()
+    this.fetchgroup(tokengroup);
+  }
+
+  //end fetch api for group post
+
+  //starts fetch api for group THREAD
+
+  handlefetchThreadCall(id, localToken) {
+    fetch('http://adalab.string-projects.com/api/v1/posts/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'AUTH-TOKEN': localToken
+      },
+    })
+
+      .then((response) => {
+        return response.json()
+          .then((data) => {
+            this.setState({ threadPost: data })
+
+          });
+      });
+  }
+  //END fetch api for group THREAD
+  handlefetchThread(id) {
+    localToken = this.getToken()
+    this.handlefetchThreadCall(id, localToken)
+  }
+  //start fetch logout
+
+  fecthApiLogOut(token) {
+
+    fetch('http://adalab.string-projects.com/api/v1/sessions', {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        'AUTH-TOKEN': token
+      },
+    }).then((response) => {
+      if (response.ok) {
+        this.deleteToken();
+        this.setState({
+          redirectToPrivateArea: false,
+          user: '',
+          psw: '',
+        })
+      }
+
     })
       .catch((error) => {
         console.error(error);
       });
-  })
-}
+  }
 
-handlefetchgroup(){
- const tokengroup = this.getToken()
- this.fetchgroup(tokengroup);
-}
+  //end fetch logout
 
-//end fetch api for group post
+  handleDeleteLocalStorage() {
+    const tokendelete = this.getToken()
+    this.fecthApiLogOut(tokendelete);
+    this.deleteToken();
+  }
 
-//starts fetch api for group THREAD
 
-handlefetchThreadCall(id,localToken){
-  fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-      'AUTH-TOKEN':localToken
+
+  //starts fetch api to post message
+
+  handleInputMessageValue(e) {
+    const {
+      value
+    } = e.target;
+    this.setState({
+      inputMessageValue: value
     },
-    })
+      () => {
+        console.log('valor del estado', this.state.inputMessageValue);
+      })
 
-  .then((response) => {
-        return response.json()
-  .then((data) => {
-    this.setState({threadPost:data})
+  }
 
-    });
-  });
-}
-//END fetch api for group THREAD
-handlefetchThread(id){
-  localToken= this.getToken() 
-  this.handlefetchThreadCall(id, localToken)
-}
-//start fetch logout
-
-     fecthApiLogOut(token) {
-
-       fetch('http://adalab.string-projects.com/api/v1/sessions', {
-           method: 'DELETE',
-           headers: {
-             'Content-type': 'application/json',
-             'AUTH-TOKEN': token
-           },
-         }).then((response) => {
-           if (response.ok) {
-             this.deleteToken();
-             this.setState({
-               redirectToPrivateArea: false,
-               user: '',
-               psw: '',
-             })
-           }
-
-         })
-         .catch((error) => {
-           console.error(error);
-         });
-     }
-
-//end fetch logout
-
-   handleDeleteLocalStorage() {
-     const tokendelete = this.getToken()
-     this.fecthApiLogOut(tokendelete);
-     this.deleteToken();
-   }
-
-
-
-//starts fetch api to post message
-
-handleInputMessageValue(e) {
-  const {
-    value
-  } = e.target;
-  this.setState({
-    inputMessageValue: value
-  },
-  ()=> {
-    console.log('valor del estado', this.state.inputMessageValue);
-  })
-
-}
-
-handlefetchSendMessage(){
-  fetch('http://adalab.string-projects.com/api/v1/posts', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-      'AUTH-TOKEN':localToken
-    },
-    body: JSON.stringify({
-      "post": {"description":this.state.inputMessageValue}
-    })
-  }).then((response) => { {/*console.log('response de POST',response);*/}
-      if(response.ok===true){
+  handlefetchSendMessage() {
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        'AUTH-TOKEN': localToken
+      },
+      body: JSON.stringify({
+        "post": { "description": this.state.inputMessageValue }
+      })
+    }).then((response) => {
+      {/*console.log('response de POST',response);*/ }
+      if (response.ok === true) {
         this.handlefetchgroup();
         this.setState({
           inputMessageValue: ''
         })
         // console.log('respuesta ok');
       }
-  })
-}
-//END fetch api for message
+    })
+  }
+  //END fetch api for message
 
-handleIdThread(event, id){
-  this.setState({
-    id:id
-  })
-  this.handlefetchThread(id)
-}
+  handleIdThread(event, id) {
+    this.setState({
+      id: id
+    })
+    this.handlefetchThread(id)
+  }
 
   handleInputEmailLoginValue(e) {
     const {
@@ -261,13 +262,12 @@ handleIdThread(event, id){
     })
   }
 
-  redirectTo(){
+  redirectTo() {
     if (this.getToken() !== null) {
       this.setState({
         redirectToPrivateArea: true,
-        }, () => {
-        })
-      }
+      })
+    }
   }
 
   handleSubmitLogin(e) {
@@ -275,7 +275,7 @@ handleIdThread(event, id){
     this.fecthApi();
     this.redirectTo();
   }
-  onInputMessageGroup(e){
+  onInputMessageGroup(e) {
     const {
       value
     } = e.target;
@@ -283,26 +283,26 @@ handleIdThread(event, id){
       valueInput: value
     })
   }
-  handlesendMessageGroup(e){
+  handlesendMessageGroup(e) {
     e.preventDefault();
     // InputMessageGroupValue = this.state.valueInput
     // console.log("soy el post",InputMessageGroupValue);
     this.resetInput();
   }
-resetInput(){
-  this.setState({
-    valueInput: ''
-  })
-}
+  resetInput() {
+    this.setState({
+      valueInput: ''
+    })
+  }
 
-filterIdPost(){
-  console.log("ARRAY QUE FILTRA",this.state.groupsPost);
-  const arrayFilter = this.state.groupsPost.filter(function(post){
-  console.log("FILTRANDO",post.post_id)
-  return post.post_id === null;
-});
-this.setState( {filterArray : arrayFilter});
-}
+  filterIdPost() {
+    console.log("ARRAY QUE FILTRA", this.state.groupsPost);
+    const arrayFilter = this.state.groupsPost.filter(function (post) {
+      console.log("FILTRANDO", post.post_id)
+      return post.post_id === null;
+    });
+    this.setState({ filterArray: arrayFilter });
+  }
 
 
 
@@ -340,7 +340,7 @@ this.setState( {filterArray : arrayFilter});
             routeGroups={routeGroups}
             routeThread={routeThread}
             groupList={groupList}
-            sendMessageGroup= {this.handlesendMessageGroup}
+            sendMessageGroup={this.handlesendMessageGroup}
             onInputMessageGroup={this.onInputMessageGroup}
             InputMessageGroupValue={valueInput}
             threadPost={threadPost}
@@ -349,7 +349,7 @@ this.setState( {filterArray : arrayFilter});
             handleInputMessageValue={this.handleInputMessageValue}
             inputMessageValue={this.state.inputMessageValue}
             filterArray={filterArray}
-            handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
+            handleDeleteLocalStorage={this.handleDeleteLocalStorage}
           />
           <Route
             exact path={routePublic}
