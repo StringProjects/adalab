@@ -23,6 +23,7 @@ class Group extends Component {
       handleInputMessageValue,
       inputMessageValue,
       filterArray,
+      handleDeleteLocalStorage
     } = this.props;
 
     // console.log('props en group', this.props)
@@ -40,6 +41,7 @@ class Group extends Component {
             routePublic={routePublic}
             routeGroup={routeGroup}
             location={location}
+            handleDeleteLocalStorage = {handleDeleteLocalStorage}
           />
         </div>
         <div className="wrapper-nameGroup">
@@ -61,7 +63,7 @@ class Group extends Component {
                     name={group.username}
                     date={group.date}
                     message={group.description}
-                    addAnswer="Responder"
+                    addAnswer="Comienza hilo"
                     handleIdThread={handleIdThread}
                   />
                 </li>

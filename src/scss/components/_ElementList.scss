@@ -5,6 +5,7 @@
     margin: 0;
     margin-bottom: 20px;
     border-bottom: 1px solid gainsboro;
+   
 }
 
 .group-title {
@@ -27,6 +28,7 @@
 .message-text {
     font-size: 16px;
     margin: 0;
+    word-break: break-all;
 }
 
 .date-text {
