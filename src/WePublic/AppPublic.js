@@ -12,6 +12,7 @@ class AppPublic extends Component {
       onSubmitBtn,
       getToken,
       location,
+      history,
       redirectToPrivateArea
       } = this.props;
      
@@ -26,6 +27,7 @@ class AppPublic extends Component {
         getToken={getToken}
         redirectToPrivateArea={redirectToPrivateArea}
         location={location}
+        history={history}
       />
     );
   }

@@ -67,6 +67,10 @@ class App extends Component {
 
   }
 
+  componentDidMount() {
+    this.redirectTo();
+  }
+
   fecthApi() {
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
@@ -329,6 +333,7 @@ this.setState( {filterArray : arrayFilter});
             redirectToPrivateArea={this.state.redirectToPrivateArea}
             component={AppPrivate}
             location={this.props.location}
+            history={this.props.history}
             routePrivate={routePrivate}
             routePublic={routePublic}
             routeGroup={routeGroup}
@@ -355,6 +360,7 @@ this.setState( {filterArray : arrayFilter});
                 redirectToPrivateArea={redirectToPrivateArea}
                 toggleErrorFeedback={this.toggleErrorFeedback}
                 location={props.location}
+                history={props.history}
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}

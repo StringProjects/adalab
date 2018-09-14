@@ -19,10 +19,11 @@ class Login extends Component {
             onSubmitBtn,
             getToken,
             redirectToPrivateArea,
-            location
+            location,
+            history
             } = this.props;
 
-
+            console.log('props en login', this.props)
 
         const { from } = location.state || { from: { pathname: '/private'}};
 
