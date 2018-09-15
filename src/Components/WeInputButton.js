@@ -10,11 +10,12 @@ class WeInputButton extends Component {
     const {
       handlefetchSendMessage,
       handleInputMessageValue,
-      inputMessageValue
+      inputMessageValue,
+      sendMessageGroup
     }=this.props;
 
     return (
-      <Form className='Input__form' onSubmit={this.props.sendMessageGroup}>
+      <Form className='Input__form' onSubmit={sendMessageGroup}>
         <Input
           onChange={handleInputMessageValue}
           type="text"
@@ -22,12 +23,13 @@ class WeInputButton extends Component {
           id="message"
           placeholder="Type message"
           value= {inputMessageValue}
-          name="message" />
-        <Button
-          type="submit"
-          className="btn Input__btn"
-          onClick={handlefetchSendMessage}
-        >
+          name="message" 
+          />
+          <Button
+            type="submit"
+            className="btn Input__btn"
+            onClick={handlefetchSendMessage}
+          >
           <p>Send</p>
         </Button>
       </Form>

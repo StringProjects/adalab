@@ -57,17 +57,17 @@ class Group extends Component {
             {filterArray.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeThread}`}>
-                <li className = "groupsli" key={i} onClick={handlefetchThread}>
-                  <ElementList
-                    id = {group.id}
-                    image={profile}
-                    name={group.username}
-                    date={group.date}
-                    message={group.description}
-                    addAnswer="Comienza hilo"
-                    handleIdThread={handleIdThread}
-                  />
-                </li>
+                  <li className = "groupsli" key={i}>
+                    <ElementList
+                      id = {group.id}
+                      image={profile}
+                      name={group.username}
+                      date={group.date}
+                      message={group.description}
+                      addAnswer="Comienza hilo"
+                      handleIdThread={handleIdThread}
+                    />
+                  </li>
                 </Link>
               )
             })}

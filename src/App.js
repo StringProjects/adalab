@@ -26,7 +26,7 @@ class App extends Component {
       inputMessageValue:'',
       filterArray:[],
       filterArrayThread:[],
-      id:0,
+      id:null,
     }
 
     this.handleInputEmailLoginValue = this
@@ -113,7 +113,7 @@ fetchgroup(localToken) {
       'Content-type': 'application/json',
       'AUTH-TOKEN':localToken
     },
-    })
+  })
 
   .then((response) => {
         return response.json()
@@ -138,20 +138,20 @@ handlefetchgroup(){
 //starts fetch api for group THREAD
 
 handlefetchThreadCall(id,localToken){
-  fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
+  console.log('handlefetchThreadCall', id);
+  fetch('http://adalab.string-projects.com/api/v1/posts/' + id, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
       'AUTH-TOKEN':localToken
-    },
+    }
     })
-
   .then((response) => {
         return response.json()
+  })
   .then((data) => {
-    this.setState({threadPost:data})
-
-    });
+    // console.log('handlefetchThreadCall Data:', data)
+    this.setState({threadPost: data})
   });
 }
 //END fetch api for group THREAD
@@ -210,39 +210,38 @@ handleInputMessageValue(e) {
 
 }
 
-handlefetchSendMessage(localToken){
+handlefetchSendMessage(){
+  
+  console.log('handlefetchSendMessage id:', this.state.id);
+
   fetch('http://adalab.string-projects.com/api/v1/posts', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      'AUTH-TOKEN':this.getToken()
+      'AUTH-TOKEN': this.getToken()
     },
     body: JSON.stringify({
-      "post": {"description":this.state.inputMessageValue}, 
-      "post_id": this.state.id
+      "post": {"description" : this.state.inputMessageValue}, 
+      "post_id": this.state.id ? this.state.id : ''
     })
-  }).then((response) => { {/*console.log('response de POST',response);*/}
-      if(response.ok===true){
-        if("post_id"===null){
-          this.handlefetchgroup();
-          this.setState({
-            inputMessageValue:''
-          })
-        } else{
-            this.handlefetchThread();
-            this.setState({
-              inputMessageValue:''
-            })
-        }
-        
-        // console.log('respuesta ok');
+  })
+  .then((response) => {
+    if(response.ok===true) {
+      if(this.state.id) {
+        this.handlefetchThread(this.state.id);
+      } else {
+        this.handlefetchgroup();
       }
+      this.setState({
+        inputMessageValue : ''
+      })
+    }
   })
 }
 //END fetch api for message
 
 
-handleIdThread(event, id){
+handleIdThread(e, id){
   this.setState({
     id:id
   })
@@ -281,6 +280,7 @@ handleIdThread(event, id){
     this.fecthApi();
     this.redirectTo();
   }
+
   onInputMessageGroup(e){
     const {
       value
@@ -289,25 +289,23 @@ handleIdThread(event, id){
       valueInput: value
     })
   }
+
   handlesendMessageGroup(e){
     e.preventDefault();
-    // InputMessageGroupValue = this.state.valueInput
-    // console.log("soy el post",InputMessageGroupValue);
     this.resetInput();
   }
-resetInput(){
-  this.setState({
-    valueInput: ''
-  })
-}
+  
+  resetInput(){
+    this.setState({
+      valueInput: ''
+    })
+  }
 
 filterIdPost(){
-  console.log("ARRAY QUE FILTRA",this.state.groupsPost);
   const arrayFilter = this.state.groupsPost.filter(function(post){
-  console.log("FILTRANDO",post.post_id)
   return post.post_id === null;
-});
-this.setState( {filterArray : arrayFilter});
+  });
+  this.setState( {filterArray : arrayFilter});
 }
 
 

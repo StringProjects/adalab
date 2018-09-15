@@ -16,10 +16,9 @@ class ElementList extends Component {
     
     
   handleClickThread(e){
-    
+    console.log("aaaaaaa", this.props);
     const { id, handleIdThread } = this.props;
     handleIdThread(e, id);
-    console.log("aaaaaaa", this.props);
   }
 
   render() {

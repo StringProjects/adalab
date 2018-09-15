@@ -67,7 +67,6 @@ class AppPrivate extends Component {
             path={`${this.props.computedMatch.path}${routeGroup}`}
             render={props =>
               <div>
-
                 <Group
                   groupsPost={groupsPost}
                   sendMessageGroup={sendMessageGroup}
