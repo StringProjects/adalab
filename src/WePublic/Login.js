@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import WeHeader from '../Components/WeHeader';
 import WeForm from '../Components/LoginComponents/WeForm';
+import logoAdalab from '../images/logo-adalab.svg';
 
 class Login extends Component {
 
@@ -82,7 +83,7 @@ class Login extends Component {
                  
                 </main>
                 <div className="footer-login">
-                     <p className="text-footer">2018 ©  We. by AdaLab <span className="heart">❤︎</span></p>    
+                     <p className="text-footer">2018 ©  We. by <img className="logo-adalab" src={logoAdalab} alt="logo-adalab"/> <span className="heart">❤︎</span></p>    
                 </div>
 
             </div>

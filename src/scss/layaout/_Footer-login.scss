@@ -1,19 +1,22 @@
 .footer-login{
-
     position: fixed;
     width: 100%;
     bottom: 0;
     padding: 16px;
     background-color: white;
-    height: 50px;
+    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .text-footer{
     color:#006ef5;
     margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
@@ -26,4 +29,22 @@
         font-size: 13px;
     }
     
+}
+.logo-adalab{
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 80px;
+    height: 80px;
+}
+
+
+.heart {
+	animation: beat .50s infinite alternate;
+	transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+	to { transform: scale(1.4); }
 }
