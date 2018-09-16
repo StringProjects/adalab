@@ -32,8 +32,10 @@ class App extends Component {
       .bind(this);
     this.redirectTo = this.redirectTo.bind(this);
     this.fecthApi = this.fecthApi.bind(this);
-    this.savedToken = this.savedToken.bind(this)
-    this.getToken = this.getToken.bind(this)
+    this.savedToken = this.savedToken.bind(this);
+    this.getToken = this.getToken.bind(this);
+    this.savedGroupName = this.savedGroupName.bind(this);
+    this.getGroupName = this.getGroupName.bind(this);
   }
 
   componentDidMount() {
@@ -66,6 +68,7 @@ class App extends Component {
         return response.json()
           .then((data) => {
             this.savedToken(data.user.auth_token)
+            this.savedGroupName(data.groups[0].name)
             this.redirectTo();
             this.setState({ errorClass: "error-hidden", groupList: data.groups });
           });
@@ -105,8 +108,16 @@ class App extends Component {
     localStorage.setItem('token', token);
   }
 
-  getToken(event) {
+  savedGroupName(groupName) {
+    localStorage.setItem('groupName', groupName);
+  }
+
+  getToken() {
     return localStorage.getItem('token');
+  }
+
+  getGroupName() {
+    return localStorage.getItem('groupName');
   }
 
 
@@ -138,6 +149,8 @@ class App extends Component {
             routeThread={routeThread}
             groupList={groupList}
             fecthApi = {this.fecthApi}
+            getGroupName = {this.getGroupName}
+            savedGroupName = {this.getGroupName}
           />
           <Route
             exact path={routePublic}

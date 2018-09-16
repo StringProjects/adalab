@@ -61,7 +61,7 @@ class AppPrivate extends Component {
     localStorage.setItem('token', token);
   }
 
-  getToken(event) {
+  getToken() {
     return localStorage.getItem('token');
   }
 
@@ -241,7 +241,6 @@ class AppPrivate extends Component {
 
 
 
-
   render() {
     const {
       routePrivate,
@@ -250,7 +249,9 @@ class AppPrivate extends Component {
       routeThread,
       location,
       groupList,
-      fecthApi
+      fecthApi,
+      getGroupName,
+      savedGroupName
     } = this.props;
 
     const {
@@ -258,6 +259,8 @@ class AppPrivate extends Component {
       filterArray,
       threadPost
     } = this.state;
+
+    
 
     return (
       <div className="wrapper-group">
@@ -284,6 +287,8 @@ class AppPrivate extends Component {
                   rootRoute={this.props.computedMatch.path}
                   groupList={groupList}
                   fecthApi={fecthApi}
+                  getGroupName = {getGroupName}
+                  savedGroupName = {savedGroupName}
                 />
               </div>
             }
