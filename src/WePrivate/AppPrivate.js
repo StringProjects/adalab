@@ -73,7 +73,7 @@ class AppPrivate extends Component {
   //starts fetch api for group post
   handlefetchgroup() {
     const tokengroup = this.getToken()
-    fetch('https://adalab.string-projects.com/api/v1/posts', {
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -101,7 +101,7 @@ class AppPrivate extends Component {
   //starts fetch api for group THREAD
 
   handlefetchThreadCall(id, localToken) {
-    fetch('https://adalab.string-projects.com/api/v1/posts/' + id, {
+    fetch('http://adalab.string-projects.com/api/v1/posts/' + id, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -126,7 +126,7 @@ class AppPrivate extends Component {
 
   fecthApiLogOut(token) {
 
-    fetch('https://adalab.string-projects.com/api/v1/sessions', {
+    fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -174,7 +174,7 @@ class AppPrivate extends Component {
   }
 
   fetchSendMessage(localToken) {
-    fetch('https://adalab.string-projects.com/api/v1/posts', {
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

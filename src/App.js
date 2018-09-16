@@ -51,10 +51,7 @@ class App extends Component {
   }
 
   fecthApi() {
-    console.log("API PRIMERA")
-    console.log("USER",this.state.user)
-    console.log("USER",this.state.psw)
-    fetch('https://adalab.string-projects.com/api/v1/sessions', {
+    fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
