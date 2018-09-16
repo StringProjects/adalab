@@ -251,7 +251,6 @@ class AppPrivate extends Component {
       groupList,
       fecthApi,
       getGroupName,
-      savedGroupName
     } = this.props;
 
     const {
@@ -288,7 +287,6 @@ class AppPrivate extends Component {
                   groupList={groupList}
                   fecthApi={fecthApi}
                   getGroupName = {getGroupName}
-                  savedGroupName = {savedGroupName}
                 />
               </div>
             }
