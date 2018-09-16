@@ -93,13 +93,32 @@
 
 .text-footer {
   color: #286df3;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
 
 @media (max-width: 425px) {
   .footer-login {
     height: 35px; }
   .text-footer {
     font-size: 13px; } }
+
+.logo-adalab {
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80px;
+  height: 80px; }
+
+.heart {
+  animation: beat .50s infinite alternate;
+  transform-origin: center; }
+
+/* Heart beat animation */
+@keyframes beat {
+  to {
+    transform: scale(1.4); } }
 
 .HeaderThread__container {
   display: flex;
@@ -207,6 +226,41 @@
   .form--group {
     padding: 0; } }
 
+.container--text-login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap; }
+
+.text-wrapp {
+  align-self: center;
+  width: 300px;
+  margin: 0;
+  padding: 0; }
+
+.title--login {
+  overflow: hidden;
+  border-right: .10em solid black;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite; }
+
+.subtitle--landing {
+  font-size: 20px; }
+
+@keyframes typing {
+  from {
+    width: 0; }
+  to {
+    width: 100%; } }
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent; }
+  50% {
+    border-color: black; } }
+
 .wrapper-menu {
   display: flex;
   justify-content: space-between;
@@ -274,6 +328,9 @@
 
 .groupsli {
   list-style-type: none; }
+
+.group-name {
+  text-align: center; }
 
 .Input__form {
   display: flex; }
