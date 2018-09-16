@@ -8,11 +8,12 @@ class Groups extends Component {
     super(props);
 
     this.state = {
-      groupName: '',
+      groupName: this.props.getGroupName
     }
   }
 
   componentDidMount() {
+    console.log("groupname ", this.props.getGroupName)
     const { getGroupName } = this.props;
     getGroupName();
     this.setState({
@@ -22,7 +23,7 @@ class Groups extends Component {
 
 
   render() {
-
+    console.log("groupname", this.state.groupName)
     const {
       rootRoute,
       routeGroup,
