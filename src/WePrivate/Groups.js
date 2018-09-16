@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ElementList from '../Components/WeListComponents/ElementList';
 import profile from '../images/panda.jpg';
+import {
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 
 class Groups extends Component {
   constructor(props) {
@@ -29,21 +34,22 @@ class Groups extends Component {
    fetchApiGroup()
  }
   render() {
-
+    console.log("groupname", this.state.groupName)
     const {
       rootRoute,
       routeGroup,
-      filterArrayLastPost,
+      groupList,
+      routePublic,
       handlefetchgroup,
+      filterArrayLastPost,
     } = this.props;
-    console.log("last array",filterArrayLastPost);
-    const { groupName } = this.state;
-    console.log('soy la ruta ', `${rootRoute}${routeGroup}`)
+    
+
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`} >
           <div className = "group-name" onClick={handlefetchgroup}>
-            <p>{groupName}</p>
+            <p>{this.state.groupName}</p>
           </div>
         </Link>
         <ul className="list--welist">

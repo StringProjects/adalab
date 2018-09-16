@@ -7,7 +7,9 @@ import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
 import profile from '../images/panda.jpg';
 
+
 class Group extends Component {
+
   render() {
 
     const {
@@ -25,6 +27,7 @@ class Group extends Component {
       handleDeleteLocalStorage,
       handlefetchThread
     } = this.props;
+
 
     // console.log('props en group', this.props)
     return (
