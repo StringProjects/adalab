@@ -2,15 +2,17 @@
 
 //Colores página
 
-$color-primary: rgb(40, 109, 243); //Black letters
+$color-primary: rgb(14, 14, 15); //Black letters
 $color-secondary: rgb(12, 44, 93); //Dark blue
-$color-terciary:rgb(107, 134, 159); //grey-medium
+$color-terciary:rgb(128, 128, 128); //grey-medium
 
 $color-button: rgb(40, 109, 243); //blue
 $color-button-null: rgb(239, 242, 245); //grey
 $color-icon-ilustrator:rgb(255, 102, 255); //pink
+$color-border: rgb(220, 220, 220);
 
 $color-light:rgb(255, 255, 255); //white
+$color-light-gradient: rgb(223, 233, 243); //super-light-blue
 $color-medium-light:rgb(254, 254, 254); //grey-light
 
 
@@ -18,7 +20,7 @@ $color-medium-light:rgb(254, 254, 254); //grey-light
 
 //Family
 
-$font-primary: 'Open Sans';
+$font-primary: 'Montserrat', sans-serif;
 
 
 //Weight
@@ -30,8 +32,9 @@ $weigth-bold: 600;
 
 //Size
 
-$size-s: 16px;
-$size-m: 19px;
-$size-l: 22px;
-$size-g: 26px;
-$size-xl: 35px;
+$size-xs:13px;
+$size-s: 14px;
+$size-m: 15px;
+$size-l: 16px;
+$size-g: 22px;
+$size-xl: 34px;

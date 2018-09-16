@@ -20,7 +20,7 @@ height: 100vh;
 }
 
 body{
-   font-family: 'Montserrat', sans-serif; 
+   font-family: $font-primary; 
 }
 
 .container-fluid{
@@ -31,7 +31,7 @@ body{
 .header{
     position: fixed;
     width: 100%;
-    background-color: white;
+    background-color: $color-light;
     z-index: 1;
     top: 0;
 }
