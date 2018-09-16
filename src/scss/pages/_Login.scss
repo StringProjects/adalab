@@ -26,3 +26,39 @@
         padding: 0;
     }
 }
+.container--text-login{
+display: flex;
+justify-content: center;
+flex-direction: column;
+flex-wrap: wrap;
+
+}
+.text-wrapp{
+align-self: center;
+width:300px;
+margin: 0;
+padding: 0;
+}
+.title--login {
+    overflow: hidden; 
+    border-right: .10em solid black; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+.subtitle--landing{
+    font-size: 20px;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% ;
+        }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+}
