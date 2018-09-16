@@ -25,7 +25,7 @@ class Login extends Component {
 
             console.log('props en login', this.props)
 
-        const { from } = location.state || { from: { pathname: '/private'}};
+       // const { from } = location.state || { from: { pathname: '/private'}};
 
         if (redirectToPrivateArea === true) {
             return <Redirect to={'/private'} />
