@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import WeHeader from '../Components/WeHeader';
 import WeButtonOption from '../Components/WeButtonOption';
@@ -23,6 +24,7 @@ class AppPrivate extends Component {
       filterArray: [],
       filterArrayThread: [],
       id: 0,
+      redirectToLogin : false
     }
 
     this.deleteToken = this.deleteToken.bind(this)
@@ -73,7 +75,7 @@ class AppPrivate extends Component {
   //starts fetch api for group post
   handlefetchgroup() {
     const tokengroup = this.getToken()
-    fetch('https://adalab.string-projects.com/api/v1/posts', {
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -101,7 +103,7 @@ class AppPrivate extends Component {
   //starts fetch api for group THREAD
 
   handlefetchThreadCall(id, localToken) {
-    fetch('https://adalab.string-projects.com/api/v1/posts/' + id, {
+    fetch('http://adalab.string-projects.com/api/v1/posts/' + id, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -124,9 +126,12 @@ class AppPrivate extends Component {
   }
   //start fetch logout
 
+  
   fecthApiLogOut(token) {
 
-    fetch('https://adalab.string-projects.com/api/v1/sessions', {
+    this.props.logOut()
+   
+    fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -135,11 +140,7 @@ class AppPrivate extends Component {
     }).then((response) => {
       if (response.ok) {
         this.deleteToken();
-        this.setState({
-          redirectToPrivateArea: false,
-          user: '',
-          psw: '',
-        })
+        this.setState({ redirectToLogin: true })
       }
 
     })
@@ -147,8 +148,6 @@ class AppPrivate extends Component {
         console.error(error);
       });
   }
-
-  //end fetch logout
 
   handleDeleteLocalStorage() {
     const tokendelete = this.getToken()
@@ -174,7 +173,7 @@ class AppPrivate extends Component {
   }
 
   fetchSendMessage(localToken) {
-    fetch('https://adalab.string-projects.com/api/v1/posts', {
+    fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -257,10 +256,9 @@ class AppPrivate extends Component {
     const {
       groupsPost,
       filterArray,
-      threadPost
+      threadPost,
     } = this.state;
 
-    
 
     return (
       <div className="wrapper-group">
@@ -289,6 +287,7 @@ class AppPrivate extends Component {
                   fecthApi={fecthApi}
                   getGroupName = {getGroupName}
                   savedGroupName = {savedGroupName}
+                  
                 />
               </div>
             }

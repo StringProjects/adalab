@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ElementList from '../Components/WeListComponents/ElementList';
 import profile from '../images/panda.jpg';
+import {
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 
 class Groups extends Component {
   constructor(props) {
@@ -27,9 +32,11 @@ class Groups extends Component {
       rootRoute,
       routeGroup,
       groupList,
+      routePublic,
       handlefetchgroup
     } = this.props;
-    console.log('soy la ruta ', `${rootRoute}${routeGroup}`)
+    
+
     return (
       <div className="main--welist">
         <ul className="list--welist">

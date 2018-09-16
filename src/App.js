@@ -36,6 +36,7 @@ class App extends Component {
     this.getToken = this.getToken.bind(this);
     this.savedGroupName = this.savedGroupName.bind(this);
     this.getGroupName = this.getGroupName.bind(this);
+    this.logOut = this.logOut.bind(this)
   }
 
   componentDidMount() {
@@ -51,10 +52,7 @@ class App extends Component {
   }
 
   fecthApi() {
-    console.log("API PRIMERA")
-    console.log("USER",this.state.user)
-    console.log("USER",this.state.psw)
-    fetch('https://adalab.string-projects.com/api/v1/sessions', {
+    fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -120,6 +118,12 @@ class App extends Component {
     return localStorage.getItem('groupName');
   }
 
+  logOut(){
+    this.setState({
+      redirectToPrivateArea: false
+    })
+  }
+
 
   render() {
     const {
@@ -138,7 +142,7 @@ class App extends Component {
         <Switch>
           <PrivateRoute
             path={routePrivate}
-            redirectToPrivateArea={this.state.redirectToPrivateArea}
+            redirectToPrivateArea={redirectToPrivateArea}
             component={AppPrivate}
             location={this.props.location}
             history={this.props.history}
@@ -151,6 +155,7 @@ class App extends Component {
             fecthApi = {this.fecthApi}
             getGroupName = {this.getGroupName}
             savedGroupName = {this.getGroupName}
+            logOut = {this.logOut}
           />
           <Route
             exact path={routePublic}
