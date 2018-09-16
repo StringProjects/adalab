@@ -18,7 +18,6 @@ class App extends Component {
       errorClass: "error-hidden",
       redirectToPrivateArea: false,
       groupList: [],
-      
     }
 
     this.handleSubmitLogin = this
@@ -101,7 +100,7 @@ class App extends Component {
     this.fecthApi();
     this.redirectTo();
   }
- 
+
   savedToken(token) {
     localStorage.setItem('token', token);
   }
@@ -115,7 +114,7 @@ class App extends Component {
   }
 
   getGroupName() {
-    return localStorage.getItem('groupName');
+    localStorage.getItem('groupName');
   }
 
   logOut(){
@@ -130,7 +129,6 @@ class App extends Component {
       redirectToPrivateArea,
       groupList
     } = this.state;
-
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';

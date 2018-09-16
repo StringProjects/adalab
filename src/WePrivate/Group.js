@@ -7,9 +7,10 @@ import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
 import profile from '../images/panda.jpg';
 
+
 class Group extends Component {
+
   render() {
-    const groupsPost= this.props.groupsPost;
 
     const {
       routePrivate,
@@ -23,8 +24,10 @@ class Group extends Component {
       handleInputMessageValue,
       inputMessageValue,
       filterArray,
-      handleDeleteLocalStorage
+      handleDeleteLocalStorage,
+      handlefetchThread
     } = this.props;
+
 
     // console.log('props en group', this.props)
     return (
@@ -56,7 +59,7 @@ class Group extends Component {
             {filterArray.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeThread}`}>
-                <li className = "groupsli" key={i}>
+                <li className = "groupsli" key={i} onClick={handlefetchThread}>
                   <ElementList
                     id = {group.id}
                     image={profile}
