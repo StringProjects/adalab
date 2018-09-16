@@ -8,16 +8,20 @@ class Groups extends Component {
     super(props);
 
     this.state = {
-      groupName: '',
+      groupName: this.paintGroupName,
     }
   }
 
   componentDidMount() {
-    const { getGroupName } = this.props;
-    getGroupName();
+    this.paintGroupName();
+  }
+
+  paintGroupName() {
+    const groupName = localStorage.getItem('groupName');
     this.setState({
-      groupName: getGroupName
+      groupName: groupName,
     })
+    console.log('que narices pasa', groupName)
   }
 
 
@@ -27,23 +31,28 @@ class Groups extends Component {
       rootRoute,
       routeGroup,
       groupList,
-      handlefetchgroup
+      handlefetchgroup,
     } = this.props;
+    const { groupName } = this.state;
     console.log('soy la ruta ', `${rootRoute}${routeGroup}`)
     return (
       <div className="main--welist">
+        <Link to={`${rootRoute}${routeGroup}`} >
+          <div onClick={handlefetchgroup}>
+            <p>{groupName}</p>
+          </div>
+        </Link>
         <ul className="list--welist">
-          <Link to={`${rootRoute}${routeGroup}`} >
-            <li className="groupsli" onClick={handlefetchgroup}>
-              <ElementList
-                image={profile}
-                group={this.state.groupName}
-                name="María"
-                date="15:13"
-                message="last message from this group"
-              />
-            </li>
-          </Link>
+
+          <li className="groupsli" >
+            <ElementList
+              image={profile}
+              group={groupName}
+              name="María"
+              date="15:13"
+              message="last message from this group"
+            />
+          </li>
           {/* {groupList.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeGroup}`} >
@@ -60,7 +69,7 @@ class Groups extends Component {
               )
             })} */}
         </ul>
-      </div>
+      </div >
     );
   }
 }

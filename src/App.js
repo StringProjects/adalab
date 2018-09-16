@@ -18,7 +18,6 @@ class App extends Component {
       errorClass: "error-hidden",
       redirectToPrivateArea: false,
       groupList: [],
-      
     }
 
     this.handleSubmitLogin = this
@@ -114,7 +113,7 @@ class App extends Component {
   }
 
   getGroupName() {
-    return localStorage.getItem('groupName');
+    localStorage.getItem('groupName');
   }
 
 
@@ -123,7 +122,6 @@ class App extends Component {
       redirectToPrivateArea,
       groupList
     } = this.state;
-
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
@@ -147,7 +145,6 @@ class App extends Component {
             groupList={groupList}
             fecthApi = {this.fecthApi}
             getGroupName = {this.getGroupName}
-            savedGroupName = {this.getGroupName}
           />
           <Route
             exact path={routePublic}
