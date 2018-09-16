@@ -23,6 +23,7 @@ class AppPrivate extends Component {
       filterArray: [],
       filterArrayThread: [],
       id: 0,
+      filterArrayLastPost: [],
     }
 
     this.deleteToken = this.deleteToken.bind(this)
@@ -53,6 +54,7 @@ class AppPrivate extends Component {
     this.handleInputMessageValue = this.handleInputMessageValue.bind(this);
     this.filterIdPost = this.filterIdPost.bind(this)
     this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this)
+    this.filterLastPost=this.filterLastPost.bind(this)
 
   }
 
@@ -236,9 +238,12 @@ class AppPrivate extends Component {
       console.log("FILTRANDO", post.post_id)
       return post.post_id === null;
     });
-    this.setState({ filterArray: arrayFilter });
+    this.setState({ filterArray: arrayFilter },this.filterLastPost);
   }
-
+filterLastPost(){
+  const arrayFilterLastPost = this.state.filterArray[0];
+  this.setState({ filterArrayLastPost: arrayFilterLastPost });
+ }
 
 
   render() {
@@ -256,7 +261,8 @@ class AppPrivate extends Component {
     const {
       groupsPost,
       filterArray,
-      threadPost
+      threadPost,
+      filterArrayLastPost
     } = this.state;
 
     
@@ -279,12 +285,13 @@ class AppPrivate extends Component {
                   handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
                 />
                 <Groups
+                  fetchApiGroup={this.handlefetchgroup}
                   handlefetchgroup={this.handlefetchgroup}
                   routePrivate={routePrivate}
                   routePublic={routePublic}
                   routeGroup={routeGroup}
                   rootRoute={this.props.computedMatch.path}
-                  groupList={groupList}
+                  filterArrayLastPost={filterArrayLastPost}
                   fecthApi={fecthApi}
                   getGroupName = {getGroupName}
                 />

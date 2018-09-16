@@ -99,7 +99,7 @@ class App extends Component {
     this.fecthApi();
     this.redirectTo();
   }
- 
+
   savedToken(token) {
     localStorage.setItem('token', token);
   }
