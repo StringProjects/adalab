@@ -25,7 +25,7 @@
   word-break: break-all; }
 
 .date-text {
-  color: grey;
+  color: gray;
   font-size: 13px;
   margin-left: 10px; }
 
@@ -34,11 +34,11 @@
 
 .answers-number {
   font-size: 13px;
-  color: grey; }
+  color: gray; }
 
 .add-answer {
   font-size: 13px;
-  color: grey; }
+  color: gray; }
 
 .ElementList_image-container {
   padding: 0;
@@ -75,7 +75,7 @@
     font-size: 13px; } }
 
 .Header__title {
-  color: #006ef5;
+  color: #286df3;
   font-weight: 600;
   text-align: center;
   padding: 30px 30px; }
@@ -92,7 +92,7 @@
   align-items: center; }
 
 .text-footer {
-  color: #006ef5;
+  color: #286df3;
   margin-bottom: 0; }
 
 @media (max-width: 425px) {
@@ -106,7 +106,7 @@
   justify-content: space-between;
   align-items: baseline;
   padding: 30px 30px;
-  border-bottom: 1px solid #6b869f;
+  border-bottom: 1px solid gray;
   margin-bottom: 30px; }
 
 .HeaderThread__logo {
@@ -138,14 +138,14 @@
   border-radius: 0;
   padding: 6px;
   background-color: transparent;
-  border-bottom: 1px solid #6c757d; }
+  border-bottom: 1px solid gray; }
 
 .btn--login {
   margin: 20px auto auto;
   width: 60px;
   border-radius: 35px;
   height: 60px;
-  background-color: #006ef5; }
+  background-color: #286df3; }
 
 .icon--psw {
   position: absolute;
@@ -221,7 +221,7 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  border-bottom: 1px solid #687682; }
+  border-bottom: 1px solid gray; }
 
 .img-group {
   width: 40px;
@@ -282,13 +282,13 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid  #989898;
+  border-bottom: 1px solid gray;
   border-radius: 0; }
 
 .Input__btn {
   width: 100px;
   height: 40px;
-  background-color: #006ef5;
+  background-color: #286df3;
   border-radius: 30px; }
 
 .wrapper-thread {
@@ -313,7 +313,7 @@
 
 .HeaderThread__arrow {
   font-size: 22px;
-  color: #6b869f; }
+  color: gray; }
 
 .HeaderThread__arrow:hover {
   color: #286df3; }
@@ -322,7 +322,7 @@ body, #root {
   height: 100vh; }
 
 body {
-  font-family: 'Montserrat', sans-serif; }
+  font-family: "Montserrat", sans-serif; }
 
 .container-fluid {
   padding: 0;
