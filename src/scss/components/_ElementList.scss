@@ -4,17 +4,17 @@
     height: 100%;
     margin: 0;
     margin-bottom: 20px;
-    border-bottom: 1px solid gainsboro;
+    border-bottom: 1px solid $color-border;
    
 }
 
 .group-title {
-    font-size: 16px;
+    font-size: $size-l;
     margin-bottom: 0;
 }
 
 .person-title {
-    font-size: 16px;
+    font-size: $size-l;
     margin-bottom: 0;
     padding: 0;
 }
@@ -26,14 +26,14 @@
 }
 
 .message-text {
-    font-size: 16px;
+    font-size: $size-l;
     margin: 0;
     word-break: break-all;
 }
 
 .date-text {
-    color: grey;
-    font-size: 13px;
+    color: $color-terciary;
+    font-size: $size-xs;
     margin-left: 10px;
 }
 
@@ -42,14 +42,14 @@
 }
 
 .answers-number {
-    font-size: 13px;
-    color: grey;
+    font-size: $size-xs;
+    color: $color-terciary;
 
 }
 
 .add-answer {
-    font-size: 13px;
-    color: grey;
+    font-size: $size-xs;
+    color: $color-terciary;
 }
 
 .ElementList_image-container {

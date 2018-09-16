@@ -22,7 +22,8 @@ class Group extends Component {
       handleInputMessageValue,
       inputMessageValue,
       filterArray,
-      handleDeleteLocalStorage
+      handleDeleteLocalStorage,
+      handlefetchThread
     } = this.props;
 
     // console.log('props en group', this.props)
@@ -55,7 +56,7 @@ class Group extends Component {
             {filterArray.map(function(group,i){
               return (
                 <Link to={`${rootRoute}${routeThread}`}>
-                <li className = "groupsli" key={i}>
+                <li className = "groupsli" key={i} onClick={handlefetchThread}>
                   <ElementList
                     id = {group.id}
                     image={profile}

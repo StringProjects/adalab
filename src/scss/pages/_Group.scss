@@ -7,7 +7,7 @@
 
 .wrapper-group{
     height: 100%;
-    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    background-image: linear-gradient(to top, $color-light-gradient 0%, $color-light 100%);
 }
 
 .wrapper-nameGroup{
@@ -15,7 +15,7 @@
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    border-bottom: 1px solid rgb(104,118,130);
+    border-bottom: 1px solid $color-terciary;
 }
 
 .img-group{
@@ -27,7 +27,7 @@
 }
 .numberGroup{
     align-self: stretch;
-    font-size: 14px;
+    font-size: $size-s;
     width: 100%;
     padding-left: 30px;
 }
@@ -42,7 +42,7 @@
     width: 100%;
     bottom: 0;
     padding: 16px;
-    background-color: white;
+    background-color: $color-light;
 }
 
 
