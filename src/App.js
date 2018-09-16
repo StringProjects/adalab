@@ -88,9 +88,7 @@ class App extends Component {
         }  else {
           this.setState({errorClass: ""})
         }
-
     })
-
   }
 
   savedToken(token) {
@@ -118,12 +116,9 @@ fetchgroup(localToken) {
   .then((response) => {
         return response.json()
   .then((data) => {
-    console.log("ENTRA EN FETCHGROUP")
-    console.log("DATA", data)
     this.setState({groupsPost:data}, this.filterIdPost)
     })
       .catch((error) => {
-        console.error(error);
       });
   })
 }
@@ -150,7 +145,6 @@ handlefetchThreadCall(id,localToken){
         return response.json()
   })
   .then((data) => {
-    // console.log('handlefetchThreadCall Data:', data)
     this.setState({threadPost: data})
   });
 }
@@ -181,7 +175,6 @@ handlefetchThread(id){
 
          })
          .catch((error) => {
-           console.error(error);
          });
      }
 
@@ -211,14 +204,14 @@ handleInputMessageValue(e) {
 }
 
 handlefetchSendMessage(){
-  
+  const token = this.getToken();
   console.log('handlefetchSendMessage id:', this.state.id);
-
+  console.log("token", token);
   fetch('http://adalab.string-projects.com/api/v1/posts', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      'AUTH-TOKEN': this.getToken()
+      'AUTH-TOKEN': token
     },
     body: JSON.stringify({
       "post": {"description" : this.state.inputMessageValue}, 
@@ -227,7 +220,9 @@ handlefetchSendMessage(){
   })
   .then((response) => {
     if(response.ok===true) {
+
       if(this.state.id) {
+        console.log("token", token);
         this.handlefetchThread(this.state.id);
       } else {
         this.handlefetchgroup();
@@ -237,6 +232,7 @@ handlefetchSendMessage(){
       })
     }
   })
+  console.log("token", token);
 }
 //END fetch api for message
 
