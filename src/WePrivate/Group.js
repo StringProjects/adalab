@@ -9,6 +9,7 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
   render() {
+    console.log("PROPS",this.props);
 
     const {
       routePrivate,
@@ -53,8 +54,9 @@ class Group extends Component {
         <div className="wrapper-welist">
         <ul className="list--welist">
             {filterArray.map(function(group,i){
+              console.log("IDDDD en group", group.id)
               return (
-                <Link to={`${rootRoute}${routeThread}`}>
+                <Link to={`${rootRoute}${routeThread}/${group.id}`}>
                 <li className = "groupsli" key={i}>
                   <ElementList
                     id = {group.id}

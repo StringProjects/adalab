@@ -86,8 +86,6 @@ class AppPrivate extends Component {
       .then((response) => {
         return response.json()
           .then((data) => {
-            console.log("ENTRA EN FETCHGROUP")
-            console.log("DATA", data)
             this.setState({ groupsPost: data }, this.filterIdPost)
           })
           .catch((error) => {
@@ -233,7 +231,6 @@ class AppPrivate extends Component {
   }
 
   filterIdPost() {
-    console.log("ARRAY QUE FILTRA", this.state.groupsPost);
     const arrayFilter = this.state.groupsPost.filter(function (post) {
       console.log("FILTRANDO", post.post_id)
       return post.post_id === null;
@@ -247,6 +244,7 @@ filterLastPost(){
 
 
   render() {
+    console.log("IDDD en appprivate", this.state.id);
     const {
       routePrivate,
       routePublic,
@@ -262,7 +260,8 @@ filterLastPost(){
       groupsPost,
       filterArray,
       threadPost,
-      filterArrayLastPost
+      filterArrayLastPost,
+      id
     } = this.state;
 
     
@@ -328,13 +327,14 @@ filterLastPost(){
           />
           <Route
             exact
-            path={`${this.props.computedMatch.path}${routeThread}`}
-            render={() =>
+            path={`${this.props.computedMatch.path}${routeThread}/${id}`}
+            render={(props) =>
               <Thread
+                threadPost={threadPost}
                 routeGroup={routeGroup}
                 rootRoute={this.props.computedMatch.path}
-                threadPost={threadPost}
               />
+            
             }
           />
         </Switch>

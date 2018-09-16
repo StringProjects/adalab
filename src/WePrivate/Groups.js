@@ -29,7 +29,7 @@ class Groups extends Component {
    fetchApiGroup()
  }
   render() {
-
+   
     const {
       rootRoute,
       routeGroup,
