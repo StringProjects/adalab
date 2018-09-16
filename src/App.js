@@ -18,7 +18,6 @@ class App extends Component {
       errorClass: "error-hidden",
       redirectToPrivateArea: false,
       groupList: [],
-      
     }
 
     this.handleSubmitLogin = this
@@ -51,9 +50,6 @@ class App extends Component {
   }
 
   fecthApi() {
-    console.log("API PRIMERA")
-    console.log("USER",this.state.user)
-    console.log("USER",this.state.psw)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -103,7 +99,7 @@ class App extends Component {
     this.fecthApi();
     this.redirectTo();
   }
- 
+
   savedToken(token) {
     localStorage.setItem('token', token);
   }
@@ -117,7 +113,7 @@ class App extends Component {
   }
 
   getGroupName() {
-    return localStorage.getItem('groupName');
+    localStorage.getItem('groupName');
   }
 
 
@@ -126,7 +122,6 @@ class App extends Component {
       redirectToPrivateArea,
       groupList
     } = this.state;
-
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
@@ -150,7 +145,6 @@ class App extends Component {
             groupList={groupList}
             fecthApi = {this.fecthApi}
             getGroupName = {this.getGroupName}
-            savedGroupName = {this.getGroupName}
           />
           <Route
             exact path={routePublic}

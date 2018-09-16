@@ -11,7 +11,6 @@ import profile from '../images/panda.jpg';
 class Group extends Component {
 
   render() {
-    const groupsPost= this.props.groupsPost;
 
     const {
       routePrivate,

@@ -329,6 +329,9 @@
 .groupsli {
   list-style-type: none; }
 
+.group-name {
+  text-align: center; }
+
 .Input__form {
   display: flex; }
 

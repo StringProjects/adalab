@@ -8,58 +8,55 @@ class Groups extends Component {
     super(props);
 
     this.state = {
-      groupName: this.props.getGroupName
+      groupName: this.paintGroupName,
     }
   }
 
   componentDidMount() {
-    console.log("groupname ", this.props.getGroupName)
-    const { getGroupName } = this.props;
-    getGroupName();
+    this.paintGroupName();
+    this.fetchApiGroup()
+  }
+
+  paintGroupName() {
+    const groupName = localStorage.getItem('groupName');
     this.setState({
-      groupName: getGroupName
+      groupName: groupName,
     })
   }
 
-
+ fetchApiGroup(){
+   const {fetchApiGroup}= this.props
+   fetchApiGroup()
+ }
   render() {
     console.log("groupname", this.state.groupName)
     const {
       rootRoute,
       routeGroup,
-      groupList,
-      handlefetchgroup
+      filterArrayLastPost,
+      handlefetchgroup,
     } = this.props;
+    console.log("last array",filterArrayLastPost);
+    const { groupName } = this.state;
     console.log('soy la ruta ', `${rootRoute}${routeGroup}`)
     return (
       <div className="main--welist">
+        <Link to={`${rootRoute}${routeGroup}`} >
+          <div className = "group-name" onClick={handlefetchgroup}>
+            <p>{groupName}</p>
+          </div>
+        </Link>
         <ul className="list--welist">
-          <Link to={`${rootRoute}${routeGroup}`} >
-            <li className="groupsli" onClick={handlefetchgroup}>
-              <ElementList
-                image={profile}
-                group={this.state.groupName}
-                name="María"
-                date="15:13"
-                message="last message from this group"
-              />
-            </li>
-          </Link>
-          {/* {groupList.map(function(group,i){
-              return (
-                <Link to={`${rootRoute}${routeGroup}`} >
-                <li className = "groupsli" key={i} onClick= {handlefetchgroup}>
-                  <ElementList
-                    image={profile}
-                    group={group.name}
-                    name="María"
-                    date="15:13"
-                    message="last message from this group"
-                  />
-                </li>
-                </Link>
-              )
-            })} */}
+          <li className="groupsli" >
+            <ElementList
+              image={profile}
+              name={filterArrayLastPost.username}
+              date={filterArrayLastPost.date}
+              message={filterArrayLastPost.description}
+            />
+          </li>
+          
+
         </ul>
       </div>
     );
