@@ -1,9 +1,9 @@
 
 .HeaderThread__arrow{
   color: $color-secondary;
- }
+}
 
- .HeaderThread__btn {
+.HeaderThread__btn {
   background-color: transparent;
   border: 0px;
 }
@@ -14,7 +14,7 @@
 }
 
 .HeaderThread__arrow {
-  font-size: 22px;
+  font-size: $size-g;
   color: $color-terciary;
 }
 

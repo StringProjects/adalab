@@ -35,6 +35,7 @@ class App extends Component {
     this.getToken = this.getToken.bind(this);
     this.savedGroupName = this.savedGroupName.bind(this);
     this.getGroupName = this.getGroupName.bind(this);
+    this.logOut = this.logOut.bind(this)
   }
 
   componentDidMount() {
@@ -116,6 +117,12 @@ class App extends Component {
     localStorage.getItem('groupName');
   }
 
+  logOut(){
+    this.setState({
+      redirectToPrivateArea: false
+    })
+  }
+
 
   render() {
     const {
@@ -133,7 +140,7 @@ class App extends Component {
         <Switch>
           <PrivateRoute
             path={routePrivate}
-            redirectToPrivateArea={this.state.redirectToPrivateArea}
+            redirectToPrivateArea={redirectToPrivateArea}
             component={AppPrivate}
             location={this.props.location}
             history={this.props.history}
@@ -145,6 +152,8 @@ class App extends Component {
             groupList={groupList}
             fecthApi = {this.fecthApi}
             getGroupName = {this.getGroupName}
+            savedGroupName = {this.getGroupName}
+            logOut = {this.logOut}
           />
           <Route
             exact path={routePublic}

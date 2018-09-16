@@ -1,6 +1,6 @@
 .wrapper-thread{
     height: 100vh;
-    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    background-image: linear-gradient(to top,$color-light-gradient 0%, $color-light 100%);
 }
 
 @media (min-width: 1024px){

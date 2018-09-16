@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import WeHeader from '../Components/WeHeader';
 import WeButtonOption from '../Components/WeButtonOption';
@@ -124,8 +125,11 @@ class AppPrivate extends Component {
   }
   //start fetch logout
 
+  
   fecthApiLogOut(token) {
 
+    this.props.logOut()
+   
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
@@ -135,11 +139,7 @@ class AppPrivate extends Component {
     }).then((response) => {
       if (response.ok) {
         this.deleteToken();
-        this.setState({
-          redirectToPrivateArea: false,
-          user: '',
-          psw: '',
-        })
+        this.setState({ redirectToLogin: true })
       }
 
     })
@@ -147,8 +147,6 @@ class AppPrivate extends Component {
         console.error(error);
       });
   }
-
-  //end fetch logout
 
   handleDeleteLocalStorage() {
     const tokendelete = this.getToken()
@@ -264,7 +262,6 @@ filterLastPost(){
       id
     } = this.state;
 
-    
 
     return (
       <div className="wrapper-group">
@@ -293,6 +290,8 @@ filterLastPost(){
                   filterArrayLastPost={filterArrayLastPost}
                   fecthApi={fecthApi}
                   getGroupName = {getGroupName}
+                  //savedGroupName = {savedGroupName}
+                  
                 />
               </div>
             }

@@ -7,7 +7,9 @@ import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
 import profile from '../images/panda.jpg';
 
+
 class Group extends Component {
+
   render() {
     console.log("PROPS",this.props);
 
@@ -23,8 +25,10 @@ class Group extends Component {
       handleInputMessageValue,
       inputMessageValue,
       filterArray,
-      handleDeleteLocalStorage
+      handleDeleteLocalStorage,
+      handlefetchThread
     } = this.props;
+
 
     // console.log('props en group', this.props)
     return (

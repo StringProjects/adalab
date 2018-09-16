@@ -4,12 +4,12 @@
 }
 
 .alert-danger{
-   font-size: 15px;
-   margin-bottom: 0;
+    font-size: $size-m;
+    margin-bottom: 0;
 }
 
 @media (max-width: 375px) {
     .alert-danger {
-     font-size: 13px;
+        font-size: $size-xs;
     }
 }
