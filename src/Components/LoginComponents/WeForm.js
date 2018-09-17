@@ -10,41 +10,32 @@ import ErrorFeedBack from './ErrorFeedBack';
 class WeForm extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            type: "password",
+            classShow: "fa-eye-slash",
+            show: false
+
+        }
+
         this.handleClick = this
             .handleClick
             .bind(this);
     }
     handleClick(event) {
-        if (event.target.classList.contains('show-off')) {
-            console.log("entra")
-            document
-                .getElementById('pwd')
-                .type = 'text';
-            document
-                .getElementById('hide-psw')
-                .classList
-                .remove('show-off');
-            document
-                .getElementById('hide-psw')
-                .classList
-                .remove('fa-eye-slash');
-            document
-                .getElementById('hide-psw')
-                .classList
-                .add('fa-eye');
-        } else {
-            document
-                .getElementById('pwd')
-                .type = 'password';
-            document
-                .getElementById('hide-psw')
-                .classList
-                .add('show-off');
-            document
-                .getElementById('hide-psw')
-                .classList
-                .add('fa-eye-slash');
+        if(this.state.show === false){
+            this.setState({
+                classShow: "fa-eye",
+                show: true,
+                type: "text"
+             })
+        }else{
+            this.setState({
+                classShow: "fa-eye-slash",
+                show: false,
+                type: "password"
+             })
         }
+   
     }
     render() {
         const {
@@ -69,7 +60,7 @@ class WeForm extends Component {
                         <FormGroup role="form">
                             <Input
                                 onChange={onInputPsw}
-                                type="password"
+                                type={this.state.type}
                                 className="form-control input--login-style"
                                 id="pwd"
                                 placeholder="Contraseña"
@@ -77,7 +68,7 @@ class WeForm extends Component {
                             <i
                                 onClick={this.handleClick}
                                 id="hide-psw"
-                                className="far fa-eye-slash icon--psw show-off"></i>
+                                className={`far ${this.state.classShow} icon--psw `}  ></i>
                         </FormGroup>
                         <ErrorFeedBack
                             errorClass= {this.props.errorClass}
