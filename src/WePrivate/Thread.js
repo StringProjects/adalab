@@ -5,6 +5,11 @@ import WeInputButton from '../Components/WeInputButton';
 import profile from '../images/panda.jpg';
 
 class Thread extends Component {
+
+  componentWillUnmount(){
+    handleIdThread()
+  }
+
   render() {
     const threadPost = this.props.threadPost;
     const {
@@ -13,6 +18,7 @@ class Thread extends Component {
       handlefetchSendMessage,
       handleInputMessageValue
     } = this.props;
+    
     
     return (
       <div className="wrapper-thread">

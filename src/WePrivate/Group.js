@@ -14,8 +14,11 @@ class Group extends Component {
     const {fetchApiMessages} = this.props;
     fetchApiMessages();
   }
+      
 
   render() {
+    console.log("state", this.state)
+    console.log("props", this.props)
     const {
       routePrivate,
       routePublic,
@@ -82,7 +85,6 @@ class Group extends Component {
           <div className="wrapper-welist">
           <ul className="list--welist">
               {filterArray.map(function(group,i){
-                console.log("IDDDD en group", group.id)
                 return (
                   <Link to={`${rootRoute}${routeThread}/${group.id}`}>
                   <li className = "groupsli" key={i}>

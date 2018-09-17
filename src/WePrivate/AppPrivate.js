@@ -181,12 +181,7 @@ class AppPrivate extends Component {
           "post_id": this.state.id !== null ? this.state.id : ''
         }
       })
-      // {
-      //   "post": {
-      //     "description": "this is the message", 
-      //     "post_id": ""
-      //   }
-      // }
+     
     }).then((response) => {
       if (response.ok === true) {
         if(this.state.id !== null) {
@@ -212,9 +207,11 @@ class AppPrivate extends Component {
     this.setState({
       id: id
     })
-    this.handlefetchThread(id)
+    if(id !== null){
+      this.handlefetchThread(id)
+    }
+    
   }
-
 
   onInputMessageGroup(e) {
     const {
@@ -268,6 +265,7 @@ filterLastPost(){
       groupList,
       fecthApi,
       getGroupName,
+      handleIdThread,
     } = this.props;
 
     const {
@@ -278,7 +276,7 @@ filterLastPost(){
       id
     } = this.state;
 
-
+console.log("ID private", id)
     return (
       <div className="wrapper-group">
         <Switch>
@@ -337,6 +335,7 @@ filterLastPost(){
                   inputMessageValue={this.inputMessageValue}
                   filterArray={filterArray}
                   handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
+                  id = {id}
                 />
               </div>
             }
@@ -352,6 +351,7 @@ filterLastPost(){
                 threadPost={threadPost}
                 handlefetchSendMessage={this.handlefetchSendMessage}
                 handleInputMessageValue={this.handleInputMessageValue}
+                handleIdThread = {handleIdThread}
               />
             
             }
