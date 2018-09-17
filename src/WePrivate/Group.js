@@ -36,7 +36,6 @@ class Group extends Component {
     } = this.props;
 
 
-    // console.log('props en group', this.props)
     return (
       <div className="wrapper-group">
         <WeHeader />
