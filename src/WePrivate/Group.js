@@ -10,6 +10,11 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
 
+  componentDidMount() {
+    const {fetchApiMessages} = this.props;
+    fetchApiMessages();
+  }
+
   render() {
     console.log("PROPS",this.props);
 
@@ -18,6 +23,7 @@ class Group extends Component {
       routePublic,
       routeGroup,
       location,
+      history,
       rootRoute,
       routeThread,
       handleIdThread,

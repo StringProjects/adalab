@@ -19,7 +19,7 @@ class Groups extends Component {
 
   componentDidMount() {
     this.paintGroupName();
-    this.fetchApiGroup()
+    this.fetchApiGroup();
   }
 
   paintGroupName() {
@@ -31,7 +31,7 @@ class Groups extends Component {
 
 fetchApiGroup(){
     const {fetchApiGroup}= this.props
-    fetchApiGroup()
+    fetchApiGroup();
 }
   render() {
     const {
