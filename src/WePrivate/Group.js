@@ -10,10 +10,10 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
 
-  componentDidMount() {
-    const {fetchApiMessages} = this.props;
-    fetchApiMessages();
-  }
+  // componentDidMount() {
+  //   const {fetchApiMessages} = this.props;
+  //   fetchApiMessages();
+  // }
 
   render() {
     console.log("PROPS",this.props);
