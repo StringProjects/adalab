@@ -53,10 +53,10 @@ class AppPrivate extends Component {
       .handlefetchSendMessage
       .bind(this);
     this.handleInputMessageValue = this.handleInputMessageValue.bind(this);
-    this.filterIdPost = this.filterIdPost.bind(this)
-    this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this)
-    this.filterLastPost=this.filterLastPost.bind(this)
-
+    this.filterIdPost = this.filterIdPost.bind(this);
+    this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this);
+    this.filterLastPost=this.filterLastPost.bind(this);
+    this.deleteGroupName = this.deleteGroupName.bind(this);
   }
 
 
@@ -70,6 +70,10 @@ class AppPrivate extends Component {
 
   deleteToken() {
     localStorage.removeItem('token');
+  }
+
+  deleteGroupName() {
+    localStorage.removeItem('groupName');
   }
 
   
@@ -139,6 +143,7 @@ class AppPrivate extends Component {
     }).then((response) => {
       if (response.ok) {
         this.deleteToken();
+        this.deleteGroupName();
         this.setState({ redirectToLogin: true })
       }
 
@@ -152,6 +157,7 @@ class AppPrivate extends Component {
     const tokendelete = this.getToken()
     this.fecthApiLogOut(tokendelete);
     this.deleteToken();
+    this.deleteGroupName();
   }
 
 
@@ -229,11 +235,15 @@ class AppPrivate extends Component {
   }
 
   filterIdPost() {
+    if(this.state.groupsPost.length > 0){
     const arrayFilter = this.state.groupsPost.filter(function (post) {
       console.log("FILTRANDO", post.post_id)
       return post.post_id === null;
     });
     this.setState({ filterArray: arrayFilter },this.filterLastPost);
+  }else{
+    console.log("vACIO")
+  }
   }
 filterLastPost(){
   const arrayFilterLastPost = this.state.filterArray[0];
@@ -311,8 +321,10 @@ filterLastPost(){
                   sendMessageGroup={this.sendMessageGroup}
                   onInputMessageGroup={this.onInputMessageGroup}
                   InputMessageGroupValue={this.InputMessageGroupValue}
+                  fetchApiMessages = {this.handlefetchgroup}
                   match={props.match}
                   location={props.location}
+                  history={props.history}
                   routeGroup={routeGroup}
                   routePrivate={routePrivate}
                   routePublic={routePublic}

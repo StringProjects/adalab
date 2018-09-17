@@ -19,7 +19,7 @@ class Groups extends Component {
 
   componentDidMount() {
     this.paintGroupName();
-    this.fetchApiGroup()
+    this.callFetchApiGroup();
   }
 
   paintGroupName() {
@@ -29,9 +29,9 @@ class Groups extends Component {
     })
   }
 
-fetchApiGroup(){
+callFetchApiGroup(){
     const {fetchApiGroup}= this.props
-    fetchApiGroup()
+    fetchApiGroup();
 }
   render() {
     const {
@@ -42,11 +42,11 @@ fetchApiGroup(){
       handlefetchgroup,
       filterArrayLastPost,
     } = this.props;
-  
+   console.log("Filter Array LAst Post",filterArrayLastPost)
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`} >
-          <div className = "group-name" onClick={handlefetchgroup}>
+          <div className = "group-name">
             <p>{this.state.groupName}</p>
           </div>
         </Link>
