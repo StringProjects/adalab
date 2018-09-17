@@ -343,7 +343,7 @@ filterLastPost(){
                 rootRoute={this.props.computedMatch.path}
                 handleIdThread={this.handleIdThread}
                 filterArray={filterArray}
-                match={props.match}
+                id={props.match.params.id}
               />
             
             }

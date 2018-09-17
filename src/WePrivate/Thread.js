@@ -8,7 +8,7 @@ class Thread extends Component {
 
   componentDidMount() {
     const {id, handleIdThread} = this.props;
-    handleIdThread(this.props.match.params.id);
+    handleIdThread(id);
   }
 
   render() {
