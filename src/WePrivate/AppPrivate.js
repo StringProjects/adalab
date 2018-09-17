@@ -307,8 +307,10 @@ filterLastPost(){
                   sendMessageGroup={this.sendMessageGroup}
                   onInputMessageGroup={this.onInputMessageGroup}
                   InputMessageGroupValue={this.InputMessageGroupValue}
+                  fetchApiMessages = {this.handlefetchgroup}
                   match={props.match}
                   location={props.location}
+                  history={props.history}
                   routeGroup={routeGroup}
                   routePrivate={routePrivate}
                   routePublic={routePublic}
