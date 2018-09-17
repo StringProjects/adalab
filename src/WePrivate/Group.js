@@ -35,67 +35,92 @@ class Group extends Component {
       handlefetchThread
     } = this.props;
 
-
-    // console.log('props en group', this.props)
-    return (
-      <div className="wrapper-group">
-        <WeHeader />
-        <div className='wrapper-menu'>
-          <WeArrow
-            routePublic={routePublic}
-            routeGroup={routeGroup}
-            location={location}
-          />
-          <WeButtonOption
-            routePrivate={routePrivate}
-            routePublic={routePublic}
-            routeGroup={routeGroup}
-            location={location}
-            handleDeleteLocalStorage = {handleDeleteLocalStorage}
-          />
-        </div>
-        <div className="wrapper-nameGroup">
-          <img className="rounded-circle img-group" src={profile} alt="profile picture" />
-          <div className="wrapper-name-number">
-            <h2 className="nameGroup">Adalab Work</h2>
-            <h3 className="numberGroup">10 personas</h3>
+    if(filterArray.length === 0){
+      return(
+      <div>
+             <WeHeader />
+          <div className='wrapper-menu'>
+            <WeArrow
+              routePublic={routePublic}
+              routeGroup={routeGroup}
+              location={location}
+            />
+            <WeButtonOption
+              routePrivate={routePrivate}
+              routePublic={routePublic}
+              routeGroup={routeGroup}
+              location={location}
+              handleDeleteLocalStorage = {handleDeleteLocalStorage}
+            />
           </div>
-        </div>
-        <div className="wrapper-welist">
-        <ul className="list--welist">
-            {filterArray.map(function(group,i){
-              //console.log("IDDDD en group", group.id)
-              return (
-                <Link to={`${rootRoute}${routeThread}/${group.id}`}>
-                <li className = "groupsli" key={i}>
-                  <ElementList
-                    id = {group.id}
-                    image={profile}
-                    name={group.username}
-                    date={group.date}
-                    message={group.description}
-                    addAnswer="Comienza hilo"
-                  />
-                </li>
-                </Link>
-              )
-            })}
-          </ul>
+          <div className = "msg-load"><p className="text-center">Cargando datos, si pasa más de 1 minuto inicia sesion de nuevo</p></div>
+      </div>)
+      
+    }else{
 
+      return (
+        <div className="wrapper-group">
+          <WeHeader />
+          <div className='wrapper-menu'>
+            <WeArrow
+              routePublic={routePublic}
+              routeGroup={routeGroup}
+              location={location}
+            />
+            <WeButtonOption
+              routePrivate={routePrivate}
+              routePublic={routePublic}
+              routeGroup={routeGroup}
+              location={location}
+              handleDeleteLocalStorage = {handleDeleteLocalStorage}
+            />
+          </div>
+          <div className="wrapper-nameGroup">
+            <img className="rounded-circle img-group" src={profile} alt="profile picture" />
+            <div className="wrapper-name-number">
+              <h2 className="nameGroup">Adalab Work</h2>
+              <h3 className="numberGroup">10 personas</h3>
+            </div>
+          </div>
+          <div className="wrapper-welist">
+          <ul className="list--welist">
+              {filterArray.map(function(group,i){
+                console.log("IDDDD en group", group.id)
+                return (
+                  <Link to={`${rootRoute}${routeThread}/${group.id}`}>
+                  <li className = "groupsli" key={i}>
+                    <ElementList
+                      id = {group.id}
+                      image={profile}
+                      name={group.username}
+                      date={group.date}
+                      message={group.description}
+                      addAnswer="Comienza hilo"
+                    />
+                  </li>
+                  </Link>
+                )
+              })}
+            </ul>
+  
+          </div>
+          <div className="wrapper-input-send">
+            <WeInputButton
+              sendMessageGroup={this.props.sendMessageGroup}
+              onInputMessageGroup={this.props.onInputMessageGroup}
+              InputMessageGroupValue={this.props.InputMessageGroupValue}
+              handlefetchSendMessage={handlefetchSendMessage}
+              handleInputMessageValue={handleInputMessageValue}
+              inputMessageValue={inputMessageValue}
+            />
+          </div>
+  
         </div>
-        <div className="wrapper-input-send">
-          <WeInputButton
-            sendMessageGroup={this.props.sendMessageGroup}
-            onInputMessageGroup={this.props.onInputMessageGroup}
-            InputMessageGroupValue={this.props.InputMessageGroupValue}
-            handlefetchSendMessage={handlefetchSendMessage}
-            handleInputMessageValue={handleInputMessageValue}
-            inputMessageValue={inputMessageValue}
-          />
-        </div>
+      );
 
-      </div>
-    );
+    }
+
+ 
   }
 }
 

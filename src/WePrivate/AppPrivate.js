@@ -236,15 +236,23 @@ class AppPrivate extends Component {
   }
 
   filterIdPost() {
+    if(this.state.groupsPost.length > 0){
     const arrayFilter = this.state.groupsPost.filter(function (post) {
       //console.log("FILTRANDO", post.post_id)
       return post.post_id === null;
     });
     this.setState({ filterArray: arrayFilter },this.filterLastPost);
+  }else{
+    console.log("vACIO")
+  }
   }
 filterLastPost(){
   const arrayFilterLastPost = this.state.filterArray[0];
   this.setState({ filterArrayLastPost: arrayFilterLastPost });
+ }
+
+ componentDidMount(){
+   console.log("esto primero")
  }
 
 
