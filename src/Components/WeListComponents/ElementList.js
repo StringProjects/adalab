@@ -49,13 +49,12 @@ class ElementList extends Component {
           <Row>
             <Col className="flex-wrapper">
               <span className="answers-number">{this.props.answers}</span>
-              {this.props.handleIdThread && (
                   <span 
                   className="add-answer"  
                   >
                   {this.props.addAnswer}
                   </span>
-                )}
+                
             </Col>
           </Row>
         
