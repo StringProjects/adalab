@@ -42,7 +42,7 @@ callFetchApiGroup(){
       handlefetchgroup,
       filterArrayLastPost,
     } = this.props;
-  
+   console.log("Filter Array LAst Post",filterArrayLastPost)
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`} >
