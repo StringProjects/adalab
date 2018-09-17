@@ -57,6 +57,7 @@ class AppPrivate extends Component {
     this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this);
     this.filterLastPost=this.filterLastPost.bind(this);
     this.deleteGroupName = this.deleteGroupName.bind(this);
+    this.handlefetchThreadCall = this.handlefetchThreadCall.bind(this);
   }
 
 
@@ -79,7 +80,7 @@ class AppPrivate extends Component {
   
   //starts fetch api for group post
   handlefetchgroup() {
-    const tokengroup = this.getToken()
+    const tokengroup = this.getToken();
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
@@ -206,7 +207,7 @@ class AppPrivate extends Component {
   
   //END fetch api for message
 
-  handleIdThread(event, id) {
+  handleIdThread(id) {
     this.setState({
       id: id
     })
@@ -237,7 +238,7 @@ class AppPrivate extends Component {
   filterIdPost() {
     if(this.state.groupsPost.length > 0){
     const arrayFilter = this.state.groupsPost.filter(function (post) {
-      console.log("FILTRANDO", post.post_id)
+      //console.log("FILTRANDO", post.post_id)
       return post.post_id === null;
     });
     this.setState({ filterArray: arrayFilter },this.filterLastPost);
@@ -342,12 +343,15 @@ filterLastPost(){
           />
           <Route
             exact
-            path={`${this.props.computedMatch.path}${routeThread}/${id}`}
+            path={`${this.props.computedMatch.path}${routeThread}/:id`}
             render={(props) =>
               <Thread
                 threadPost={threadPost}
                 routeGroup={routeGroup}
                 rootRoute={this.props.computedMatch.path}
+                handleIdThread={this.handleIdThread}
+                filterArray={filterArray}
+                id={props.match.params.id}
               />
             
             }

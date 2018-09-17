@@ -52,7 +52,6 @@ class ElementList extends Component {
               {this.props.handleIdThread && (
                   <span 
                   className="add-answer"  
-                  onClick={this.handleClickThread}
                   >
                   {this.props.addAnswer}
                   </span>

@@ -96,7 +96,6 @@ class Group extends Component {
                       date={group.date}
                       message={group.description}
                       addAnswer="Comienza hilo"
-                      handleIdThread={handleIdThread}
                     />
                   </li>
                   </Link>
