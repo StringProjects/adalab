@@ -13,7 +13,7 @@ class WeArrow extends Component {
 
     return (
       <Link to={location.pathname === `${rootRoute}${routeGroup}` ? rootRoute : routePublic}>
-        <Button className='btn HeaderThread__btn'>
+        <Button className='btn-primary HeaderThread__btn'>
           <i className="fas fa-arrow-left HeaderThread__arrow"></i>
         </Button>
       </Link>
