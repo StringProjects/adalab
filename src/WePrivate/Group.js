@@ -10,12 +10,18 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
 
+  componentDidMount() {
+    const {fetchApiMessages} = this.props;
+    fetchApiMessages();
+  }
+
   render() {
     const {
       routePrivate,
       routePublic,
       routeGroup,
       location,
+      history,
       rootRoute,
       routeThread,
       handleIdThread,
