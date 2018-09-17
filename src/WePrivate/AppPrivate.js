@@ -240,6 +240,10 @@ filterLastPost(){
   this.setState({ filterArrayLastPost: arrayFilterLastPost });
  }
 
+ componentDidMount(){
+   console.log("esto primero")
+ }
+
 
   render() {
     console.log("IDDD en appprivate", this.state.id);
