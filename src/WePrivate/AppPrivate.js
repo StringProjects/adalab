@@ -14,7 +14,6 @@ class AppPrivate extends Component {
   constructor(props){
     super(props)
     this.state = {
-    
       responseStatus: false,
       valueInput: '',
       groupsPost: [],
@@ -22,7 +21,7 @@ class AppPrivate extends Component {
       inputMessageValue: '',
       filterArray: [],
       filterArrayThread: [],
-      id: 0,
+      id: null,
       filterArrayLastPost: [],
     }
 
@@ -82,7 +81,6 @@ class AppPrivate extends Component {
         'AUTH-TOKEN': tokengroup
       },
     })
-
       .then((response) => {
         return response.json()
           .then((data) => {
@@ -110,12 +108,11 @@ class AppPrivate extends Component {
         'AUTH-TOKEN': localToken
       },
     })
-
       .then((response) => {
         return response.json()
           .then((data) => {
-            this.setState({ threadPost: data })
-
+            console.log("API data", data)
+            this.setState({ threadPost: data }, console.log("thread data", data));
           });
       });
   }
@@ -168,14 +165,17 @@ class AppPrivate extends Component {
     } = e.target;
     this.setState({
       inputMessageValue: value
-    },
-      () => {
-        console.log('valor del estado', this.state.inputMessageValue);
-      })
-
+    })
   }
 
   fetchSendMessage(localToken) {
+    console.log('fetchSendMessage', this.state);
+    console.log(JSON.stringify({
+      "post": { 
+        "description": this.state.inputMessageValue,
+        "post_id": this.state.id !== 0 ? this.state.id : ''
+      }
+    }))
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
@@ -183,12 +183,25 @@ class AppPrivate extends Component {
         'AUTH-TOKEN': localToken
       },
       body: JSON.stringify({
-        "post": { "description": this.state.inputMessageValue }
+        "post": { 
+          "description": this.state.inputMessageValue,
+          "post_id": this.state.id !== null ? this.state.id : ''
+        }
       })
+      // {
+      //   "post": {
+      //     "description": "this is the message", 
+      //     "post_id": "527"
+      //   }
+      // }
     }).then((response) => {
-      {/*console.log('response de POST',response);*/ }
       if (response.ok === true) {
-        this.handlefetchgroup();
+        if(this.state.id !== null) {
+          console.log("local token", this.state.id, localToken);
+          this.handlefetchThread(this.state.id);
+        } else {
+          this.handlefetchgroup();
+        }
         this.setState({
           inputMessageValue: ''
         })
@@ -196,8 +209,8 @@ class AppPrivate extends Component {
     })
   }
 
-  handlefetchSendMessage(){
-
+  handlefetchSendMessage(event){
+    event.preventDefault();
     let localToken = this.getToken();
     this.fetchSendMessage(localToken)
   }
@@ -233,13 +246,12 @@ class AppPrivate extends Component {
   }
 
   filterIdPost() {
-    console.log("ARRAY QUE FILTRA", this.state.groupsPost);
     const arrayFilter = this.state.groupsPost.filter(function (post) {
-      console.log("FILTRANDO", post.post_id)
       return post.post_id === null;
     });
     this.setState({ filterArray: arrayFilter },this.filterLastPost);
   }
+
 filterLastPost(){
   const arrayFilterLastPost = this.state.filterArray[0];
   this.setState({ filterArrayLastPost: arrayFilterLastPost });
@@ -333,6 +345,8 @@ filterLastPost(){
                 routeGroup={routeGroup}
                 rootRoute={this.props.computedMatch.path}
                 threadPost={threadPost}
+                handlefetchSendMessage={this.handlefetchSendMessage}
+                handleInputMessageValue={this.handleInputMessageValue}
               />
             }
           />

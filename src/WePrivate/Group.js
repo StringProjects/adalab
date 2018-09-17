@@ -23,10 +23,9 @@ class Group extends Component {
       inputMessageValue,
       filterArray,
       handleDeleteLocalStorage,
-      handlefetchThread
     } = this.props;
 
-    // console.log('props en group', this.props)
+    console.log('handlefetchSendMessage', handlefetchSendMessage)
     return (
       <div className="wrapper-group">
         <WeHeader />

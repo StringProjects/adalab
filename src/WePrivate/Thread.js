@@ -7,11 +7,15 @@ import profile from '../images/panda.jpg';
 class Thread extends Component {
   render() {
     const threadPost = this.props.threadPost;
-    console.log("hillloooo",threadPost)
     const {
       rootRoute,
       routeGroup,
+      handlefetchSendMessage,
+      handleInputMessageValue
     } = this.props;
+
+    console.log('threadPost', threadPost);
+    
     return (
       <div className="wrapper-thread">
         <WeHeaderThread
@@ -38,7 +42,10 @@ class Thread extends Component {
           </ul>
             </div>
         <div className= "wrapper-input-send">
-        <WeInputButton />
+        <WeInputButton 
+          handlefetchSendMessage={handlefetchSendMessage}
+          handleInputMessageValue={handleInputMessageValue}
+        />
         </div>
       </div>
     );
