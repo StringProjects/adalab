@@ -169,13 +169,7 @@ class AppPrivate extends Component {
   }
 
   fetchSendMessage(localToken) {
-    console.log('fetchSendMessage', this.state);
-    console.log(JSON.stringify({
-      "post": { 
-        "description": this.state.inputMessageValue,
-        "post_id": this.state.id !== 0 ? this.state.id : ''
-      }
-    }))
+    
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
@@ -191,13 +185,12 @@ class AppPrivate extends Component {
       // {
       //   "post": {
       //     "description": "this is the message", 
-      //     "post_id": "527"
+      //     "post_id": ""
       //   }
       // }
     }).then((response) => {
       if (response.ok === true) {
         if(this.state.id !== null) {
-          console.log("local token", this.state.id, localToken);
           this.handlefetchThread(this.state.id);
         } else {
           this.handlefetchgroup();
