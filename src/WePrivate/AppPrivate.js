@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import WeHeader from '../Components/WeHeader';
 import WeButtonOption from '../Components/WeButtonOption';
@@ -84,8 +85,6 @@ class AppPrivate extends Component {
       .then((response) => {
         return response.json()
           .then((data) => {
-            console.log("ENTRA EN FETCHGROUP")
-            console.log("DATA", data)
             this.setState({ groupsPost: data }, this.filterIdPost)
           })
           .catch((error) => {
@@ -123,8 +122,11 @@ class AppPrivate extends Component {
   }
   //start fetch logout
 
+  
   fecthApiLogOut(token) {
 
+    this.props.logOut()
+   
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
@@ -134,11 +136,7 @@ class AppPrivate extends Component {
     }).then((response) => {
       if (response.ok) {
         this.deleteToken();
-        this.setState({
-          redirectToPrivateArea: false,
-          user: '',
-          psw: '',
-        })
+        this.setState({ redirectToLogin: true })
       }
 
     })
@@ -146,8 +144,6 @@ class AppPrivate extends Component {
         console.error(error);
       });
   }
-
-  //end fetch logout
 
   handleDeleteLocalStorage() {
     const tokendelete = this.getToken()
@@ -252,6 +248,7 @@ filterLastPost(){
 
 
   render() {
+    console.log("IDDD en appprivate", this.state.id);
     const {
       routePrivate,
       routePublic,
@@ -267,10 +264,10 @@ filterLastPost(){
       groupsPost,
       filterArray,
       threadPost,
-      filterArrayLastPost
+      filterArrayLastPost,
+      id
     } = this.state;
 
-    
 
     return (
       <div className="wrapper-group">
@@ -299,6 +296,8 @@ filterLastPost(){
                   filterArrayLastPost={filterArrayLastPost}
                   fecthApi={fecthApi}
                   getGroupName = {getGroupName}
+                  //savedGroupName = {savedGroupName}
+                  
                 />
               </div>
             }
@@ -332,15 +331,17 @@ filterLastPost(){
           />
           <Route
             exact
-            path={`${this.props.computedMatch.path}${routeThread}`}
-            render={() =>
+            path={`${this.props.computedMatch.path}${routeThread}/${id}`}
+            render={(props) =>
               <Thread
+                threadPost={threadPost}
                 routeGroup={routeGroup}
                 rootRoute={this.props.computedMatch.path}
                 threadPost={threadPost}
                 handlefetchSendMessage={this.handlefetchSendMessage}
                 handleInputMessageValue={this.handleInputMessageValue}
               />
+            
             }
           />
         </Switch>

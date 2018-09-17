@@ -6,6 +6,7 @@ import profile from '../images/panda.jpg';
 
 class Thread extends Component {
   render() {
+    console.log("ffffff",this.props)
     const threadPost = this.props.threadPost;
     const {
       rootRoute,
@@ -23,12 +24,12 @@ class Thread extends Component {
           routeGroup={routeGroup}
         />
           <div className="wrapper--list-thread">
-           <ul className="list--welist">
-            {threadPost.map(function(thread,i){
+          <ul className="list--welist">
+          {threadPost.map(function(thread,i){
               return (
-             
-                <li className = "groupsli" key={i}>
-                   <ElementList
+              <li className = "groupsli">
+                  <ElementList
+                      image={profile}
                       id={thread.id}
                       image={profile}
                       name={thread.username}
@@ -36,9 +37,7 @@ class Thread extends Component {
                       message={thread.description}
                     />
                 </li>
-               
-              )
-            })}
+          )})}
           </ul>
             </div>
         <div className= "wrapper-input-send">
