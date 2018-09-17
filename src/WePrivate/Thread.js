@@ -5,10 +5,14 @@ import WeInputButton from '../Components/WeInputButton';
 import profile from '../images/panda.jpg';
 
 class Thread extends Component {
+
+  componentDidMount() {
+    const {id, handleIdThread} = this.props;
+    handleIdThread(this.props.match.params.id);
+  }
+
   render() {
-    console.log("ffffff",this.props)
     const threadPost = this.props.threadPost;
-    console.log("hillloooo",threadPost)
     const {
       rootRoute,
       routeGroup,
