@@ -92,11 +92,9 @@ class AppPrivate extends Component {
           });
       })
   }
-
-
-
   //end fetch api for group post
 
+  
   //starts fetch api for group THREAD
 
   handlefetchThreadCall(id, localToken) {
@@ -120,9 +118,9 @@ class AppPrivate extends Component {
    let  localToken = this.getToken()
     this.handlefetchThreadCall(id, localToken)
   }
-  //start fetch logout
-
   
+  
+  //start fetch logout
   fecthApiLogOut(token) {
 
     this.props.logOut()
@@ -154,7 +152,6 @@ class AppPrivate extends Component {
 
 
   //starts fetch api to post message
-
   handleInputMessageValue(e) {
     const {
       value
@@ -192,7 +189,7 @@ class AppPrivate extends Component {
           this.handlefetchgroup();
         }
         this.setState({
-          inputMessageValue: ''
+          inputMessageValue: '',
         })
       }
     })
@@ -203,7 +200,6 @@ class AppPrivate extends Component {
     let localToken = this.getToken();
     this.fetchSendMessage(localToken)
   }
-  
   //END fetch api for message
 
   handleIdThread(event, id) {
@@ -222,12 +218,13 @@ class AppPrivate extends Component {
       valueInput: value
     })
   }
+  
   handlesendMessageGroup(e) {
     e.preventDefault();
     // InputMessageGroupValue = this.state.valueInput
-    // console.log("soy el post",InputMessageGroupValue);
     this.resetInput();
   }
+  
   resetInput() {
     this.setState({
       valueInput: ''
@@ -248,7 +245,6 @@ filterLastPost(){
 
 
   render() {
-    console.log("IDDD en appprivate", this.state.id);
     const {
       routePrivate,
       routePublic,
