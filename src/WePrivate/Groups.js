@@ -29,12 +29,11 @@ class Groups extends Component {
     })
   }
 
- fetchApiGroup(){
-   const {fetchApiGroup}= this.props
-   fetchApiGroup()
- }
+fetchApiGroup(){
+    const {fetchApiGroup}= this.props
+    fetchApiGroup()
+}
   render() {
-    console.log("groupname", this.state.groupName)
     const {
       rootRoute,
       routeGroup,
@@ -43,8 +42,7 @@ class Groups extends Component {
       handlefetchgroup,
       filterArrayLastPost,
     } = this.props;
-    
-
+  
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`} >
