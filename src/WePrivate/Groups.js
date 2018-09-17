@@ -46,7 +46,7 @@ callFetchApiGroup(){
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`} >
-          <div className = "group-name" onClick={handlefetchgroup}>
+          <div className = "group-name">
             <p>{this.state.groupName}</p>
           </div>
         </Link>
