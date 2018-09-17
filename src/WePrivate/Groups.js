@@ -4,34 +4,60 @@ import ElementList from '../Components/WeListComponents/ElementList';
 import profile from '../images/panda.jpg';
 
 class Groups extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      groupName: this.paintGroupName,
+    }
+  }
+
+  componentDidMount() {
+    this.paintGroupName();
+    this.fetchApiGroup()
+  }
+
+  paintGroupName() {
+    const groupName = localStorage.getItem('groupName');
+    this.setState({
+      groupName: groupName,
+    })
+  }
+
+ fetchApiGroup(){
+   const {fetchApiGroup}= this.props
+   fetchApiGroup()
+ }
   render() {
-  
+
     const {
       rootRoute,
       routeGroup,
-      groupList,
-      handlefetchgroup
+      filterArrayLastPost,
+      handlefetchgroup,
     } = this.props;
-    console.log('soy la ruta ',`${rootRoute}${routeGroup}`)
+    console.log("last array",filterArrayLastPost);
+    const { groupName } = this.state;
+    console.log('soy la ruta ', `${rootRoute}${routeGroup}`)
     return (
       <div className="main--welist">
+        <Link to={`${rootRoute}${routeGroup}`} >
+          <div className = "group-name" onClick={handlefetchgroup}>
+            <p>{groupName}</p>
+          </div>
+        </Link>
         <ul className="list--welist">
-            {groupList.map(function(group,i){
-              return (
-                <Link to={`${rootRoute}${routeGroup}`} >
-                <li className = "groupsli" key={i} onClick= {handlefetchgroup}>
-                  <ElementList
-                    image={profile}
-                    group={group.name}
-                    name="María"
-                    date="15:13"
-                    message="last message from this group"
-                  />
-                </li>
-                </Link>
-              )
-            })}
-          </ul>
+          <li className="groupsli" >
+            <ElementList
+              image={profile}
+              name={filterArrayLastPost.username}
+              date={filterArrayLastPost.date}
+              message={filterArrayLastPost.description}
+            />
+          </li>
+          
+
+        </ul>
       </div>
     );
   }

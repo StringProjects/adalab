@@ -25,7 +25,7 @@
   word-break: break-all; }
 
 .date-text {
-  color: grey;
+  color: gray;
   font-size: 13px;
   margin-left: 10px; }
 
@@ -34,11 +34,11 @@
 
 .answers-number {
   font-size: 13px;
-  color: grey; }
+  color: gray; }
 
 .add-answer {
   font-size: 13px;
-  color: grey; }
+  color: gray; }
 
 .ElementList_image-container {
   padding: 0;
@@ -75,7 +75,7 @@
     font-size: 13px; } }
 
 .Header__title {
-  color: #006ef5;
+  color: #286df3;
   font-weight: 600;
   text-align: center;
   padding: 30px 30px; }
@@ -92,8 +92,11 @@
   align-items: center; }
 
 .text-footer {
-  color: #006ef5;
-  margin-bottom: 0; }
+  color: #286df3;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
 
 @media (max-width: 425px) {
   .footer-login {
@@ -101,12 +104,28 @@
   .text-footer {
     font-size: 13px; } }
 
+.logo-adalab {
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80px;
+  height: 80px; }
+
+.heart {
+  animation: beat .50s infinite alternate;
+  transform-origin: center; }
+
+/* Heart beat animation */
+@keyframes beat {
+  to {
+    transform: scale(1.4); } }
+
 .HeaderThread__container {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   padding: 30px 30px;
-  border-bottom: 1px solid #6b869f;
+  border-bottom: 1px solid gray;
   margin-bottom: 30px; }
 
 .HeaderThread__logo {
@@ -138,14 +157,14 @@
   border-radius: 0;
   padding: 6px;
   background-color: transparent;
-  border-bottom: 1px solid #6c757d; }
+  border-bottom: 1px solid gray; }
 
 .btn--login {
   margin: 20px auto auto;
   width: 60px;
   border-radius: 35px;
   height: 60px;
-  background-color: #006ef5; }
+  background-color: #286df3; }
 
 .icon--psw {
   position: absolute;
@@ -207,6 +226,41 @@
   .form--group {
     padding: 0; } }
 
+.container--text-login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap; }
+
+.text-wrapp {
+  align-self: center;
+  width: 300px;
+  margin: 0;
+  padding: 0; }
+
+.title--login {
+  overflow: hidden;
+  border-right: .10em solid black;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite; }
+
+.subtitle--landing {
+  font-size: 20px; }
+
+@keyframes typing {
+  from {
+    width: 0; }
+  to {
+    width: 100%; } }
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent; }
+  50% {
+    border-color: black; } }
+
 .wrapper-menu {
   display: flex;
   justify-content: space-between;
@@ -221,7 +275,7 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  border-bottom: 1px solid #687682; }
+  border-bottom: 1px solid gray; }
 
 .img-group {
   width: 40px;
@@ -275,6 +329,9 @@
 .groupsli {
   list-style-type: none; }
 
+.group-name {
+  text-align: center; }
+
 .Input__form {
   display: flex; }
 
@@ -282,13 +339,13 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid  #989898;
+  border-bottom: 1px solid gray;
   border-radius: 0; }
 
 .Input__btn {
   width: 100px;
   height: 40px;
-  background-color: #006ef5;
+  background-color: #286df3;
   border-radius: 30px; }
 
 .wrapper-thread {
@@ -313,7 +370,7 @@
 
 .HeaderThread__arrow {
   font-size: 22px;
-  color: #6b869f; }
+  color: gray; }
 
 .HeaderThread__arrow:hover {
   color: #286df3; }
@@ -322,7 +379,7 @@ body, #root {
   height: 100vh; }
 
 body {
-  font-family: 'Montserrat', sans-serif; }
+  font-family: "Montserrat", sans-serif; }
 
 .container-fluid {
   padding: 0;
