@@ -8,7 +8,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .text-footer{
@@ -19,17 +18,15 @@
     align-items: center;
 }
 
-
 @media (max-width: 425px) {
-
     .footer-login{
         height: 35px;
     }
     .text-footer {
         font-size: 13px;
     }
-    
 }
+
 .logo-adalab{
     display: block;
     padding-left: 10px;
@@ -37,7 +34,6 @@
     width: 80px;
     height: 80px;
 }
-
 
 .heart {
 	animation: beat .50s infinite alternate;
