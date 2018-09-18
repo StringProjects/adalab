@@ -51,6 +51,8 @@ class App extends Component {
   }
 
   fecthApi() {
+    console.log("user ", this.state.user)
+    console.log("pass ", this.state.psw)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
       headers: {
@@ -119,7 +121,9 @@ class App extends Component {
 
   logOut(){
     this.setState({
-      redirectToPrivateArea: false
+      redirectToPrivateArea: false,
+      user: "",
+      psw:""
     })
   }
 
