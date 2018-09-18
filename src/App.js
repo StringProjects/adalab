@@ -79,7 +79,6 @@ class App extends Component {
       }
 
     })
-
   }
 
   handleInputEmailLoginValue(e) {
@@ -139,7 +138,7 @@ class App extends Component {
     const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
-
+console.log("match",this.props.match)
     return (
       <div className="container-fluid">
         <Switch>
