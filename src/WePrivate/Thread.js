@@ -5,6 +5,16 @@ import WeInputButton from '../Components/WeInputButton';
 import profile from '../images/panda.jpg';
 
 class Thread extends Component {
+  constructor(props){
+    super(props)
+
+  }
+
+  componentWillUnmount(){
+    this.props.handlefetchSendMessage;
+  }
+
+
   render() {
     const threadPost = this.props.threadPost;
     const {

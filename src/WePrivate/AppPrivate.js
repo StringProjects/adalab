@@ -30,9 +30,9 @@ class AppPrivate extends Component {
     this.savedToken = this.savedToken.bind(this)
     this.getToken = this.getToken.bind(this)
     
-    this.handlesendMessageGroup = this
-      .handlesendMessageGroup
-      .bind(this);
+    // this.handlesendMessageGroup = this
+    //   .handlesendMessageGroup
+    //   .bind(this);
     this.onInputMessageGroup = this
       .onInputMessageGroup
       .bind(this);
@@ -51,11 +51,12 @@ class AppPrivate extends Component {
     this.handlefetchSendMessage = this
       .handlefetchSendMessage
       .bind(this);
-    this.handleInputMessageValue = this.handleInputMessageValue.bind(this);
+    // this.handleInputMessageValue = this.handleInputMessageValue.bind(this);
     this.filterIdPost = this.filterIdPost.bind(this);
     this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this);
     this.filterLastPost=this.filterLastPost.bind(this);
     this.deleteGroupName = this.deleteGroupName.bind(this);
+    this.resetId = this.resetId.bind(this);
   }
 
 
@@ -158,17 +159,19 @@ class AppPrivate extends Component {
 
 
   //starts fetch api to post message
-  handleInputMessageValue(e) {
-    const {
-      value
-    } = e.target;
-    this.setState({
-      inputMessageValue: value
-    })
-  }
-
-  fetchSendMessage(localToken) {
+  // handleInputMessageValue = (inputValue) =>{
+  //  console.log(" entra en el input de private ", inputValue)
+  //   this.setState({
+  //     inputMessageValue: inputValue
+  //   });
     
+  //   console.log(" nuevo estado ", this.state.inputMessageValue)
+  // }
+ 
+
+  fetchSendMessage(localToken, texto) {
+    console.log("Lo que hay en el estado del input", texto)
+    console.log("id en el thread", this.state.id)
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
@@ -177,7 +180,7 @@ class AppPrivate extends Component {
       },
       body: JSON.stringify({
         "post": { 
-          "description": this.state.inputMessageValue,
+          "description": texto,
           "post_id": this.state.id !== null ? this.state.id : ''
         }
       })
@@ -201,10 +204,20 @@ class AppPrivate extends Component {
     })
   }
 
-  handlefetchSendMessage(event){
-    event.preventDefault();
+  resetId = () =>{
+    console.log("Reset de la id")
+    this.setState({
+      id:null
+    })
+  }
+
+  handlefetchSendMessage(e, texto){
+    console.log("Entra en el submit de enviar mensaje")
+    console.log("El estado del input ", texto)
+    e.preventDefault();
     let localToken = this.getToken();
-    this.fetchSendMessage(localToken)
+    this.fetchSendMessage(localToken, texto)
+  
   }
   //END fetch api for message
 
@@ -225,15 +238,11 @@ class AppPrivate extends Component {
     })
   }
   
-  handlesendMessageGroup(e) {
-    e.preventDefault();
-    // InputMessageGroupValue = this.state.valueInput
-    this.resetInput();
-  }
-  
-  resetInput() {
+
+  resetInput = () => {
+    console.log("Entra en el reset de limpiar")
     this.setState({
-      valueInput: ''
+      inputMessageValue: ""
     })
   }
 
@@ -329,6 +338,7 @@ filterLastPost(){
                   inputMessageValue={this.inputMessageValue}
                   filterArray={filterArray}
                   handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
+                  resetId = {this.resetId}
                 />
               </div>
             }

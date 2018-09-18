@@ -10,9 +10,12 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
 
+  
+
   componentDidMount() {
     const {fetchApiMessages} = this.props;
     fetchApiMessages();
+    this.props.resetId();
   }
 
   render() {
@@ -60,7 +63,6 @@ class Group extends Component {
         <div className="wrapper-welist">
         <ul className="list--welist">
             {filterArray.map(function(group,i){
-              console.log("ID en group", group.id)
               return (
                 <Link to={`${rootRoute}${routeThread}/${group.id}`}>
                 <li className = "groupsli" key={i}>
