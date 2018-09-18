@@ -13,6 +13,7 @@ class Group extends Component {
   componentDidMount() {
     const {fetchApiMessages} = this.props;
     fetchApiMessages();
+    this.props.resetId();
   }
       
 

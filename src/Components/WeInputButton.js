@@ -6,6 +6,40 @@ import {
 } from 'reactstrap';
 
 class WeInputButton extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      inputValue: ""
+    }
+ 
+    this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleSubmitSend = this.handleSubmitSend.bind(this);
+    this.clearInput = this.clearInput.bind(this);
+  }
+ 
+ 
+  handleChangeInput = (e) =>{
+   this.setState({
+     inputValue: e.target.value
+   })
+ 
+ 
+  }
+ 
+  handleSubmitSend(e){
+    e.preventDefault();
+    let inputText = this.state.inputValue;
+    this.props.handlefetchSendMessage(e, inputText);
+    this.clearInput()
+  }
+ 
+  clearInput = () =>{
+      this.setState({
+        inputValue: ""
+      });
+  }
+
   render() {
     const {
       handlefetchSendMessage,
@@ -15,20 +49,19 @@ class WeInputButton extends Component {
     }=this.props;
 
     return (
-      <Form className='Input__form' onSubmit={sendMessageGroup}>
+      <Form className='Input__form' onSubmit={this.handleSubmitSend}>
         <Input
-          onChange={handleInputMessageValue}
+          onChange={this.handleChangeInput}
           type="text"
           className="form-control Input__text"
           id="message"
           placeholder="Type message"
-          value= {inputMessageValue}
+          value= {this.state.inputValue}
           name="message" 
           />
           <Button
             type="submit"
             className="btn Input__btn"
-            onClick={handlefetchSendMessage}
           >
           <p>Send</p>
         </Button>

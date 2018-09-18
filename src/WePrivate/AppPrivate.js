@@ -30,9 +30,9 @@ class AppPrivate extends Component {
     this.savedToken = this.savedToken.bind(this)
     this.getToken = this.getToken.bind(this)
     
-    this.handlesendMessageGroup = this
-      .handlesendMessageGroup
-      .bind(this);
+    // this.handlesendMessageGroup = this
+    //   .handlesendMessageGroup
+    //   .bind(this);
     this.onInputMessageGroup = this
       .onInputMessageGroup
       .bind(this);
@@ -51,11 +51,11 @@ class AppPrivate extends Component {
     this.handlefetchSendMessage = this
       .handlefetchSendMessage
       .bind(this);
-    this.handleInputMessageValue = this.handleInputMessageValue.bind(this);
     this.filterIdPost = this.filterIdPost.bind(this);
     this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this);
     this.filterLastPost=this.filterLastPost.bind(this);
     this.deleteGroupName = this.deleteGroupName.bind(this);
+    this.resetId=this.resetInput.bind(this);
   }
 
 
@@ -102,7 +102,10 @@ class AppPrivate extends Component {
   //starts fetch api for group THREAD
 
   handlefetchThreadCall(id, localToken) {
-    fetch('http://adalab.string-projects.com/api/v1/posts/' + id, {
+    // const endPoint = ;
+    // const url = id ? endPoint+id : endPoint;
+    console.log("fetch thread ID", id)
+    fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -158,17 +161,17 @@ class AppPrivate extends Component {
 
 
   //starts fetch api to post message
-  handleInputMessageValue(e) {
-    const {
-      value
-    } = e.target;
-    this.setState({
-      inputMessageValue: value
-    })
-  }
+  // handleInputMessageValue(e) {
+  //   const {
+  //     value
+  //   } = e.target;
+  //   this.setState({
+  //     inputMessageValue: value
+  //   })
+  // }
 
-  fetchSendMessage(localToken) {
-    
+  fetchSendMessage(localToken, text) {
+    console.log("description", this.state.inputMessageValue)
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
@@ -177,11 +180,11 @@ class AppPrivate extends Component {
       },
       body: JSON.stringify({
         "post": { 
-          "description": this.state.inputMessageValue,
+          "description": text,
           "post_id": this.state.id !== null ? this.state.id : ''
         }
       })
-     
+      
     }).then((response) => {
       if (response.ok === true) {
         if(this.state.id !== null) {
@@ -196,21 +199,25 @@ class AppPrivate extends Component {
     })
   }
 
-  handlefetchSendMessage(event){
-    event.preventDefault();
+  resetId = () =>{
+    console.log("Reset de la id")
+    this.setState({
+      id:null
+    })
+  }
+
+  handlefetchSendMessage(e, text){
+    e.preventDefault();
     let localToken = this.getToken();
-    this.fetchSendMessage(localToken)
+    this.fetchSendMessage(localToken, text)
   }
   //END fetch api for message
 
-  handleIdThread(event, id) {
+  handleIdThread(e, id) {
     this.setState({
       id: id
     })
-    if(id !== null){
       this.handlefetchThread(id)
-    }
-    
   }
 
   onInputMessageGroup(e) {
@@ -222,15 +229,15 @@ class AppPrivate extends Component {
     })
   }
   
-  handlesendMessageGroup(e) {
-    e.preventDefault();
-    // InputMessageGroupValue = this.state.valueInput
-    this.resetInput();
-  }
+  // handlesendMessageGroup(e) {
+  //   e.preventDefault();
+  //   // InputMessageGroupValue = this.state.valueInput
+  //   this.resetInput();
+  // }
   
-  resetInput() {
+  resetInput = () => {
     this.setState({
-      valueInput: ''
+      inputMesageValue: ''
     })
   }
 
@@ -250,11 +257,6 @@ filterLastPost(){
   this.setState({ filterArrayLastPost: arrayFilterLastPost });
  }
 
- componentDidMount(){
-   console.log("esto primero")
- }
-
-
   render() {
     const {
       routePrivate,
@@ -265,7 +267,6 @@ filterLastPost(){
       groupList,
       fecthApi,
       getGroupName,
-      handleIdThread,
     } = this.props;
 
     const {
@@ -273,7 +274,8 @@ filterLastPost(){
       filterArray,
       threadPost,
       filterArrayLastPost,
-      id
+      id,
+      
     } = this.state;
 
 console.log("ID private", id)
@@ -336,6 +338,7 @@ console.log("ID private", id)
                   filterArray={filterArray}
                   handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
                   id = {id}
+                  resetId= {this.resetId}
                 />
               </div>
             }
@@ -351,7 +354,7 @@ console.log("ID private", id)
                 threadPost={threadPost}
                 handlefetchSendMessage={this.handlefetchSendMessage}
                 handleInputMessageValue={this.handleInputMessageValue}
-                handleIdThread = {handleIdThread}
+                handleIdThread={this.handleIdThread}
               />
             
             }

@@ -7,7 +7,7 @@ import profile from '../images/panda.jpg';
 class Thread extends Component {
 
   componentWillUnmount(){
-    handleIdThread()
+    this.props.handleIdThread()
   }
 
   render() {
