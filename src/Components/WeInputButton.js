@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Form,
   Input,
@@ -43,9 +44,11 @@ class WeInputButton extends Component {
     const {
     
       handleInputMessageValue,
-      handlefetchSendMessage
+      handlefetchSendMessage,
+      inputMessageValue,
+      sendMessageGroup,
     }=this.props;
-
+    // console.log('this.props WeInputButton raquel',this.props);
     return (
       <Form className='Input__form' onSubmit={this.handleSubmitSend}>
         <Input
@@ -67,6 +70,13 @@ class WeInputButton extends Component {
       </Form>
     );
   }
+}
+
+WeInputButton.propTypes = {
+  handlefetchSendMessage: PropTypes.func.isRequired,
+  handleInputMessageValue: PropTypes.func.isRequired,
+  inputMessageValue: PropTypes.string.isRequired,
+  sendMessageGroup: PropTypes.func.isRequired,
 }
 
 export default WeInputButton;

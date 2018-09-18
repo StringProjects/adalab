@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ElementList from '../Components/WeListComponents/ElementList';
 import profile from '../images/panda.jpg';
@@ -28,7 +29,7 @@ class Groups extends Component {
     const groupName = localStorage.getItem('groupName');
     this.setState({
       groupName: groupName,
-    })
+    });
   }
 
 callFetchApiGroup(){
@@ -44,7 +45,8 @@ callFetchApiGroup(){
       handlefetchgroup,
       filterArrayLastPost,
     } = this.props;
-   console.log("Filter Array LAst Post",filterArrayLastPost)
+    // console.log('this.props Groups raquel',this.props);
+  //  console.log("Filter Array LAst Post",filterArrayLastPost)
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`} >
@@ -61,12 +63,21 @@ callFetchApiGroup(){
               message={filterArrayLastPost.description}
             />
           </li>
-          
-
         </ul>
       </div>
     );
   }
+}
+
+Groups.propTypes = {
+  fetchApiGroup: PropTypes.func.isRequired,
+  rootRoute: PropTypes.string.isRequired,
+  routeGroup: PropTypes.string.isRequired,
+  handlefetchgroup: PropTypes.func.isRequired,
+  filterArrayLastPost: PropTypes.object.isRequired,
+  routePublic: PropTypes.string.isRequired,
+
+  groupList: PropTypes,
 }
 
 export default Groups;

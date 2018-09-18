@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import WeHeaderThread from '../Components/WeHeaderThread';
 import ElementList from '../Components/WeListComponents/ElementList';
 import WeInputButton from '../Components/WeInputButton';
@@ -10,10 +11,18 @@ class Thread extends Component {
 
   }
 
-  componentWillUnmount(){
-    this.props.handlefetchSendMessage;
-  }
+  // componentWillUnmount(){
+  //   this.props.handlefetchSendMessage;
+  // }
 
+  componentDidMount() {
+    const {
+      id, 
+      handleIdThread,
+    } = this.props;
+    handleIdThread(id);
+    console.log("id",id)
+  }
 
   render() {
     const threadPost = this.props.threadPost;
@@ -23,7 +32,7 @@ class Thread extends Component {
       handlefetchSendMessage,
       handleInputMessageValue
     } = this.props;
-    
+    console.log("threadPost", this.props)
     
     return (
       <div className="wrapper-thread">
@@ -58,6 +67,14 @@ class Thread extends Component {
       </div>
     );
   }
+}
+
+Thread.propTypes = {
+  rootRoute: PropTypes.string.isRequired,
+  routeGroup: PropTypes.string.isRequired,
+  threadPost: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired, 
+  handleIdThread: PropTypes.func.isRequired,
 }
 
 export default Thread;

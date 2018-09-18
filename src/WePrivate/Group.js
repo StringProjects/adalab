@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ElementList from '../Components/WeListComponents/ElementList';
 import WeButtonOption from '../Components/WeButtonOption';
@@ -20,8 +21,8 @@ class Group extends Component {
       
 
   render() {
-    console.log("state", this.state)
-    console.log("props", this.props)
+    // console.log("PROPS",this.props);
+
     const {
       routePrivate,
       routePublic,
@@ -36,8 +37,11 @@ class Group extends Component {
       inputMessageValue,
       filterArray,
       handleDeleteLocalStorage,
+      handlefetchThread,
+      onInputMessageGroup,
+      InputMessageGroupValue,
     } = this.props;
-
+    // console.log('this.props Gropu raquel',this.props);
     if(filterArray.length === 0){
       return(
       <div>
@@ -88,6 +92,7 @@ class Group extends Component {
           <div className="wrapper-welist">
           <ul className="list--welist">
               {filterArray.map(function(group,i){
+                // console.log("IDDDD en group", group.id)
                 return (
                   <Link to={`${rootRoute}${routeThread}/${group.id}`}>
                   <li className = "groupsli" key={i}>
@@ -98,7 +103,6 @@ class Group extends Component {
                       date={group.date}
                       message={group.description}
                       addAnswer="Comienza hilo"
-                      handleIdThread={handleIdThread}
                     />
                   </li>
                   </Link>
@@ -109,9 +113,8 @@ class Group extends Component {
           </div>
           <div className="wrapper-input-send">
             <WeInputButton
-              sendMessageGroup={this.props.sendMessageGroup}
-              onInputMessageGroup={this.props.onInputMessageGroup}
-              InputMessageGroupValue={this.props.InputMessageGroupValue}
+              onInputMessageGroup={onInputMessageGroup}
+              InputMessageGroupValue={InputMessageGroupValue}
               handlefetchSendMessage={handlefetchSendMessage}
               handleInputMessageValue={handleInputMessageValue}
               inputMessageValue={inputMessageValue}
@@ -125,6 +128,27 @@ class Group extends Component {
 
  
   }
+}
+
+Group.propTypes = {
+  routePrivate: PropTypes.string.isRequired ,
+  routePublic: PropTypes.string.isRequired,
+  routeGroup: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  rootRoute: PropTypes.string.isRequired,
+  routeThread: PropTypes.string.isRequired,
+  handleIdThread: PropTypes.func.isRequired,
+  handlefetchSendMessage: PropTypes.func.isRequired,
+  handleInputMessageValue: PropTypes.func.isRequired,
+  inputMessageValue: PropTypes.func.isRequired,
+  filterArray: PropTypes.array.isRequired,
+  handleDeleteLocalStorage: PropTypes.func.isRequired,
+  sendMessageGroup: PropTypes.func.isRequired,
+  onInputMessageGroup: PropTypes.func.isRequired,
+  
+  handlefetchThread: PropTypes.func.isRequired,
+  InputMessageGroupValue: PropTypes,
 }
 
 export default Group;

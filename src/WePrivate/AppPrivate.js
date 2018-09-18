@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Route,
   Switch,
@@ -57,6 +58,7 @@ class AppPrivate extends Component {
     this.filterLastPost=this.filterLastPost.bind(this);
     this.deleteGroupName = this.deleteGroupName.bind(this);
     this.resetId = this.resetId.bind(this);
+    this.handlefetchThreadCall = this.handlefetchThreadCall.bind(this);
   }
 
 
@@ -79,7 +81,7 @@ class AppPrivate extends Component {
   
   //starts fetch api for group post
   handlefetchgroup() {
-    const tokengroup = this.getToken()
+    const tokengroup = this.getToken();
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
@@ -93,7 +95,7 @@ class AppPrivate extends Component {
             this.setState({ groupsPost: data }, this.filterIdPost)
           })
           .catch((error) => {
-            console.error(error);
+            // console.error(error);
           });
       })
   }
@@ -116,8 +118,9 @@ class AppPrivate extends Component {
       .then((response) => {
         return response.json()
           .then((data) => {
-            console.log("API data", data)
-            this.setState({ threadPost: data }, console.log("thread data", data));
+            this.setState({ 
+              threadPost: data 
+            });
           });
       });
   }
@@ -143,12 +146,14 @@ class AppPrivate extends Component {
       if (response.ok) {
         this.deleteToken();
         this.deleteGroupName();
-        this.setState({ redirectToLogin: true })
+        this.setState({ 
+          redirectToLogin: true 
+        });
       }
 
     })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   }
 
@@ -171,6 +176,19 @@ class AppPrivate extends Component {
   //   console.log(" nuevo estado ", this.state.inputMessageValue)
   // }
  
+
+  
+  //   handleInputMessageValue(e) {
+  //   const {
+  //     value
+  //   } = e.target;
+  //   this.setState({
+  //     inputMessageValue: value
+  //   },
+  //     () => {
+  //       // console.log('valor del estado', this.state.inputMessageValue);
+  //     });
+  // }
 
   fetchSendMessage(localToken, texto) {
     console.log("Lo que hay en el estado del input", texto)
@@ -196,8 +214,8 @@ class AppPrivate extends Component {
           this.handlefetchgroup();
         }
         this.setState({
-          inputMessageValue: '',
-        })
+          inputMessageValue: ''
+        });
       }
     })
   }
@@ -222,7 +240,7 @@ class AppPrivate extends Component {
   handleIdThread(e, id) {
     this.setState({
       id: id
-    })
+    });
       this.handlefetchThread(id)
   }
 
@@ -232,7 +250,7 @@ class AppPrivate extends Component {
     } = e.target;
     this.setState({
       valueInput: value
-    })
+    });
   }
   
 
@@ -250,13 +268,15 @@ class AppPrivate extends Component {
     });
     this.setState({ filterArray: arrayFilter },this.filterLastPost);
   }else{
-    console.log("vACIO")
+    // console.log("vACIO")
   }
   }
 
 filterLastPost(){
   const arrayFilterLastPost = this.state.filterArray[0];
-  this.setState({ filterArrayLastPost: arrayFilterLastPost });
+  this.setState({ 
+    filterArrayLastPost: arrayFilterLastPost 
+  });
  }
 
   render() {
@@ -269,6 +289,7 @@ filterLastPost(){
       groupList,
       fecthApi,
       getGroupName,
+      computedMatch,
     } = this.props;
 
     const {
@@ -286,7 +307,7 @@ console.log("ID private", id)
         <Switch>
           <Route
             exact
-            path={this.props.computedMatch.path}
+            path={computedMatch.path}
             render={() =>
               <div>
                 <WeHeader />
@@ -295,7 +316,7 @@ console.log("ID private", id)
                   routePublic={routePublic}
                   routeGroup={routeGroup}
                   location={location}
-                  rootRoute={this.props.computedMatch.path}
+                  rootRoute={computedMatch.path}
                   handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
                 />
                 <Groups
@@ -304,7 +325,7 @@ console.log("ID private", id)
                   routePrivate={routePrivate}
                   routePublic={routePublic}
                   routeGroup={routeGroup}
-                  rootRoute={this.props.computedMatch.path}
+                  rootRoute={computedMatch.path}
                   filterArrayLastPost={filterArrayLastPost}
                   fecthApi={fecthApi}
                   getGroupName = {getGroupName}
@@ -316,7 +337,7 @@ console.log("ID private", id)
           />
           <Route
             exact
-            path={`${this.props.computedMatch.path}${routeGroup}`}
+            path={`${computedMatch.path}${routeGroup}`}
             render={props =>
               <div>
                 <Group
@@ -332,7 +353,7 @@ console.log("ID private", id)
                   routePrivate={routePrivate}
                   routePublic={routePublic}
                   routeThread={routeThread}
-                  rootRoute={this.props.computedMatch.path}
+                  rootRoute={computedMatch.path}
                   handleIdThread={this.handleIdThread}
                   handlefetchSendMessage={this.handlefetchSendMessage}
                   handleInputMessageValue={this.handleInputMessageValue}
@@ -346,16 +367,18 @@ console.log("ID private", id)
           />
           <Route
             exact
-            path={`${this.props.computedMatch.path}${routeThread}/${id}`}
+            path={`${computedMatch.path}${routeThread}/:id`}
             render={(props) =>
               <Thread
                 threadPost={threadPost}
                 routeGroup={routeGroup}
-                rootRoute={this.props.computedMatch.path}
                 threadPost={threadPost}
                 handlefetchSendMessage={this.handlefetchSendMessage}
                 handleInputMessageValue={this.handleInputMessageValue}
+                rootRoute={computedMatch.path}
                 handleIdThread={this.handleIdThread}
+                filterArray={filterArray}
+                id={props.match.params.id}
               />
             
             }
@@ -364,6 +387,18 @@ console.log("ID private", id)
       </div>
     );
   }
+}
+
+AppPrivate.propTypes = {
+  routePrivate: PropTypes.string.isRequired,
+  routePublic: PropTypes.string.isRequired,
+  routeGroup: PropTypes.string.isRequired,
+  routeThread: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  groupList: PropTypes.array.isRequired,
+  fecthApi: PropTypes.func.isRequired,
+  computedMatch: PropTypes.object.isRequired,
+  getGroupName: PropTypes.func.isRequired,
 }
 
 export default AppPrivate;
