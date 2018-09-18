@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
- 
 }
 
 .wrapper-group{
@@ -22,9 +21,11 @@
     width: 40px; 
     height: 40px;
 }
+
 .nameGroup{
     padding-left: 30px;
 }
+
 .numberGroup{
     align-self: stretch;
     font-size: $size-s;
@@ -44,7 +45,6 @@
     padding: 16px;
     background-color: $color-light;
 }
-
 
 @media (min-width: 1024px) {
    .wrapper-welist {
