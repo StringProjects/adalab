@@ -59,6 +59,7 @@ class AppPrivate extends Component {
 
   //starts fetch api for group post
   handlefetchgroup() {
+    console.log("Interval")
     const tokengroup = this.getToken();
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
@@ -76,6 +77,7 @@ class AppPrivate extends Component {
             console.error(error);
           });
       })
+      
   }
   //end fetch api for group post
 
