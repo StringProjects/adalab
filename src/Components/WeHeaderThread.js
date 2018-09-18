@@ -12,7 +12,7 @@ class WeHeaderThread extends Component {
       
         <header className='HeaderThread__container'>
           <Link to={`${rootRoute}${routeGroup}`}>
-            <Button className='btn HeaderThread__btn'>
+            <Button className='btn-primary HeaderThread__btn'>
               <i className="fas fa-arrow-left HeaderThread__arrow"></i>
             </Button>
           </Link>
