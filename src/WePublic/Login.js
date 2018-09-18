@@ -10,21 +10,11 @@ import WeForm from '../Components/LoginComponents/WeForm';
 import logoAdalab from '../images/logo-adalab.svg';
 
 class Login extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            redirectToPrivateArea:this.props.redirectToPrivateArea
-        }
+  componentWillUnmount(){
+        const {turnOffJustLog}= this.props
+        turnOffJustLog();
     } 
-    componentWillUnmount(){
-        if (this.props.justLog === true){
-        this.props.justLog === false
-    }
-}
-
-
     render() {
-        console.log("maria y marivi login render",this.props.redirectToPrivateArea)
         const {
             onInputEmail,
             onInputPsw,
@@ -36,17 +26,20 @@ class Login extends Component {
             location,
             history,
             errorClass,
-            justLog
+            justLog,
             } = this.props;
 
         // console.log('props en login raquel', this.props)
 
-       const { from } = location.state || { from: { pathname: '/private'}};
- if (redirectToPrivateArea === true &&  justLog=== false  ) {
-            return <Redirect to={from} />
-        } 
-        else if(redirectToPrivateArea === true &&  justLog=== true ) {
+        const { from } = location.state || { from: { pathname: '/private'}};
+        if (redirectToPrivateArea === true &&  justLog=== true  ) {
+            console.log("soy el primer camino")
+
             return <Redirect to={'/private'} />
+        } 
+        else if(redirectToPrivateArea === true &&  justLog=== false ) {
+            console.log("soy el segundo camino")
+            return <Redirect to={from} />
         }
 
         

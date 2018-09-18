@@ -20,7 +20,8 @@ class App extends Component {
       groupList: [],
       justLog: false
     }
-
+    this.changeStates=this.changeStates.bind(this);
+    this.turnOffJustLog=this.turnOffJustLog.bind(this);
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
@@ -42,8 +43,19 @@ class App extends Component {
   componentDidMount() {
     this.redirectTo();
   }
-
+  turnOffJustLog(){
+    this.setState({
+      justLog:false ,
+    });
+  }
   redirectTo() {
+    if (this.getToken() !== null) {
+      this.setState({
+        redirectToPrivateArea: true
+      });
+    }
+  }
+  changeStates() {
     if (this.getToken() !== null) {
       this.setState({
         redirectToPrivateArea: true,
@@ -68,7 +80,7 @@ class App extends Component {
           .then((data) => {
             this.savedToken(data.user.auth_token)
             this.savedGroupName(data.groups[0].name)
-            this.redirectTo();
+            this.changeStates();
             this.setState({ 
               errorClass: "error-hidden", 
               groupList: data.groups 
@@ -174,6 +186,7 @@ console.log("match",this.props.match)
                 onSubmitBtn={this.handleSubmitLogin}
                 getToken={this.getToken}
                 justLog={justLog}
+                turnOffJustLog={this.turnOffJustLog}
               />
             }
           />
