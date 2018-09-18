@@ -237,7 +237,7 @@ class AppPrivate extends Component {
   }
   //END fetch api for message
 
-  handleIdThread(e, id) {
+  handleIdThread(id) {
     this.setState({
       id: id
     });
