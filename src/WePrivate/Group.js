@@ -11,10 +11,14 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
 
+  
+
   componentDidMount() {
     const {fetchApiMessages} = this.props;
     fetchApiMessages();
+    this.props.resetId();
   }
+      
 
   render() {
     // console.log("PROPS",this.props);
@@ -34,7 +38,6 @@ class Group extends Component {
       filterArray,
       handleDeleteLocalStorage,
       handlefetchThread,
-      sendMessageGroup,
       onInputMessageGroup,
       InputMessageGroupValue,
     } = this.props;
@@ -110,7 +113,6 @@ class Group extends Component {
           </div>
           <div className="wrapper-input-send">
             <WeInputButton
-              sendMessageGroup={sendMessageGroup}
               onInputMessageGroup={onInputMessageGroup}
               InputMessageGroupValue={InputMessageGroupValue}
               handlefetchSendMessage={handlefetchSendMessage}
