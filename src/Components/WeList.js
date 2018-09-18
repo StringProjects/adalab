@@ -3,17 +3,26 @@ import ElementList from './WeListComponents/ElementList';
 
 class WeList extends Component {
   render() {
+    const { 
+      image,
+      group,
+      name,
+      date,
+      message,
+      answers,
+    } = this.props;
+    console.log('this.props WeList raquel',this.props);
     return (
       <div className="WeList-wrapper">
         <ul className="list-group list-container">
           <li className="list-element">
             <ElementList
-              image={this.props.image}
-              group={this.props.group}
-              name={this.props.name}
-              date={this.props.date}
-              message={this.props.message}
-              answers={this.props.answers}
+              image={image}
+              group={group}
+              name={name}
+              date={date}
+              message={message}
+              answers={answers}
             />
           </li>
         </ul>

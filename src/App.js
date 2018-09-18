@@ -46,7 +46,7 @@ class App extends Component {
     if (this.getToken() !== null) {
       this.setState({
         redirectToPrivateArea: true,
-      })
+      });
     }
   }
 
@@ -69,10 +69,15 @@ class App extends Component {
             this.savedToken(data.user.auth_token)
             this.savedGroupName(data.groups[0].name)
             this.redirectTo();
-            this.setState({ errorClass: "error-hidden", groupList: data.groups });
+            this.setState({ 
+              errorClass: "error-hidden", 
+              groupList: data.groups 
+            });
           });
       } else {
-        this.setState({ errorClass: "" })
+        this.setState({ 
+          errorClass: "" 
+        });
       }
 
     })
@@ -85,7 +90,7 @@ class App extends Component {
     } = e.target;
     this.setState({
       user: value
-    })
+    });
   }
 
   handleInputPswLoginValue(e) {
@@ -94,7 +99,7 @@ class App extends Component {
     } = e.target;
     this.setState({
       psw: value
-    })
+    });
   }
 
   handleSubmitLogin(e) {
