@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import WeHeaderThread from '../Components/WeHeaderThread';
 import ElementList from '../Components/WeListComponents/ElementList';
 import WeInputButton from '../Components/WeInputButton';
@@ -7,7 +8,10 @@ import profile from '../images/panda.jpg';
 class Thread extends Component {
 
   componentDidMount() {
-    const {id, handleIdThread} = this.props;
+    const {
+      id, 
+      handleIdThread,
+    } = this.props;
     handleIdThread(id);
   }
 
@@ -17,6 +21,7 @@ class Thread extends Component {
       rootRoute,
       routeGroup,
     } = this.props;
+    // console.log('this.props Thread raquel',this.props);
     return (
       <div className="wrapper-thread">
         <WeHeaderThread
@@ -46,6 +51,14 @@ class Thread extends Component {
       </div>
     );
   }
+}
+
+Thread.propTypes = {
+  rootRoute: PropTypes.string.isRequired,
+  routeGroup: PropTypes.string.isRequired,
+  threadPost: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired, 
+  handleIdThread: PropTypes.func.isRequired,
 }
 
 export default Thread;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {
     Button,
     Form,
@@ -14,12 +15,9 @@ class WeForm extends Component {
             type: "password",
             classShow: "fa-eye-slash",
             show: false
-
         }
 
-        this.handleClick = this
-            .handleClick
-            .bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
     handleClick(event) {
         if(this.state.show === false){
@@ -27,13 +25,13 @@ class WeForm extends Component {
                 classShow: "fa-eye",
                 show: true,
                 type: "text"
-             })
+            });
         }else{
             this.setState({
                 classShow: "fa-eye-slash",
                 show: false,
                 type: "password"
-             })
+            });
         }
    
     }
@@ -42,7 +40,8 @@ class WeForm extends Component {
             onInputEmail, 
             onInputPsw, 
             onSubmitBtn,
-            getToken
+            getToken,
+            errorClass,
         } = this.props;
    
         return (
@@ -71,7 +70,7 @@ class WeForm extends Component {
                                 className={`far ${this.state.classShow} icon--psw `}  ></i>
                         </FormGroup>
                         <ErrorFeedBack
-                            errorClass= {this.props.errorClass}
+                            errorClass= {errorClass}
                             className="error-message"
                         />
                         
@@ -86,6 +85,14 @@ class WeForm extends Component {
             </div>
         );
     }
+}
+
+WeForm.propTypes = {
+    onInputEmail: PropTypes.func.isRequired,
+    onInputPsw: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    errorClass: PropTypes.string.isRequired,
+    getToken: PropTypes.func.isRequired,
 }
 
 export default WeForm;

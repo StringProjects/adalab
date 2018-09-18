@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { 
   ButtonDropdown, 
   DropdownItem, 
@@ -46,5 +47,9 @@ class WeButtonOption extends Component {
     );
   }
 }
+
+WeButtonOption.propTypes = {
+  handleDeleteLocalStorage: PropTypes.func.isRequired,
+};
 
 export default WeButtonOption;
