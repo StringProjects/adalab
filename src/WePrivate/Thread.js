@@ -6,6 +6,14 @@ import WeInputButton from '../Components/WeInputButton';
 import profile from '../images/panda.jpg';
 
 class Thread extends Component {
+  constructor(props){
+    super(props)
+
+  }
+
+  // componentWillUnmount(){
+  //   this.props.handlefetchSendMessage;
+  // }
 
   componentDidMount() {
     const {
@@ -13,6 +21,7 @@ class Thread extends Component {
       handleIdThread,
     } = this.props;
     handleIdThread(id);
+    console.log("id",id)
   }
 
   render() {
@@ -20,8 +29,11 @@ class Thread extends Component {
     const {
       rootRoute,
       routeGroup,
+      handlefetchSendMessage,
+      handleInputMessageValue
     } = this.props;
-    // console.log('this.props Thread raquel',this.props);
+    console.log("threadPost", this.props)
+    
     return (
       <div className="wrapper-thread">
         <WeHeaderThread
@@ -31,6 +43,7 @@ class Thread extends Component {
           <div className="wrapper--list-thread">
           <ul className="list--welist">
           {threadPost.map(function(thread,i){
+              
               return (
               <li className = "groupsli">
                   <ElementList
@@ -46,7 +59,10 @@ class Thread extends Component {
           </ul>
             </div>
         <div className= "wrapper-input-send">
-        <WeInputButton />
+        <WeInputButton 
+          handlefetchSendMessage={handlefetchSendMessage}
+          handleInputMessageValue={handleInputMessageValue}
+        />
         </div>
       </div>
     );

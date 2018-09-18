@@ -22,7 +22,7 @@ class ElementList extends Component {
       id, 
       handleIdThread 
     } = this.props;
-    handleIdThread(e, id);
+    handleIdThread(id);
     // console.log("aaaaaaa", this.props);
   }
 
