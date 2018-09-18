@@ -18,6 +18,7 @@ class App extends Component {
       errorClass: "error-hidden",
       redirectToPrivateArea: false,
       groupList: [],
+      justLog: false
     }
 
     this.handleSubmitLogin = this
@@ -46,6 +47,7 @@ class App extends Component {
     if (this.getToken() !== null) {
       this.setState({
         redirectToPrivateArea: true,
+        justLog: true,
       });
     }
   }
@@ -103,7 +105,6 @@ class App extends Component {
   handleSubmitLogin(e) {
     e.preventDefault();
     this.fecthApi();
-    this.redirectTo();
   }
 
   savedToken(token) {
@@ -132,7 +133,8 @@ class App extends Component {
   render() {
     const {
       redirectToPrivateArea,
-      groupList
+      groupList,
+      justLog
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
@@ -172,6 +174,7 @@ class App extends Component {
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
                 getToken={this.getToken}
+                justLog={justLog}
               />
             }
           />

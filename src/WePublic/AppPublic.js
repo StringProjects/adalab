@@ -15,6 +15,7 @@ class AppPublic extends Component {
       history,
       redirectToPrivateArea,
       errorClass,
+      justLog,
     } = this.props;
     // console.log('this.props AppPublic raquel',this.props) 
     return (
@@ -29,6 +30,7 @@ class AppPublic extends Component {
         redirectToPrivateArea={redirectToPrivateArea}
         location={location}
         history={history}
+        justLog= {justLog}
       />
     );
   }

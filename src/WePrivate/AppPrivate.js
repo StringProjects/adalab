@@ -26,12 +26,13 @@ class AppPrivate extends Component {
       filterArrayThread: [],
       id: 0,
       filterArrayLastPost: [],
+      redirectToPrivateArea: this.props.redirectToPrivateArea,
     }
 
     this.deleteToken = this.deleteToken.bind(this)
     this.savedToken = this.savedToken.bind(this)
     this.getToken = this.getToken.bind(this)
-    
+  
     this.handlesendMessageGroup = this
       .handlesendMessageGroup
       .bind(this);
@@ -61,7 +62,12 @@ class AppPrivate extends Component {
     this.handlefetchThreadCall = this.handlefetchThreadCall.bind(this);
   }
 
-
+  componentDidUpdate(prevProps, prevState){
+    if(this.props.redirectToPrivateArea !== prevProps && this.props.redirectToPrivateArea === true){
+      return <Redirect to={'/private'} />
+    }
+    
+  }
   savedToken(token) {
     localStorage.setItem('token', token);
   }
