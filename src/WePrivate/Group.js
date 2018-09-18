@@ -18,7 +18,7 @@ class Group extends Component {
     fetchApiMessages();
     this.props.resetId();
   }
-      
+  
 
   render() {
     // console.log("PROPS",this.props);

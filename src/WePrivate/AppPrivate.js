@@ -81,7 +81,9 @@ class AppPrivate extends Component {
   
   //starts fetch api for group post
   handlefetchgroup() {
+    console.log("Entrando en la api")
     const tokengroup = this.getToken();
+    console.log("Token", tokengroup)
     fetch('http://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
@@ -135,7 +137,7 @@ class AppPrivate extends Component {
   fecthApiLogOut(token) {
 
     this.props.logOut()
-   
+    console.log("Token logout", token)
     fetch('http://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
