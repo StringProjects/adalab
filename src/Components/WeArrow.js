@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
@@ -20,5 +21,12 @@ class WeArrow extends Component {
     );
   }
 }
+
+WeArrow.propTypes = {
+  routePublic: PropTypes.string.isRequired,
+  routeGroup: PropTypes.string.isRequired,
+  rootRoute: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+};
 
 export default WeArrow;

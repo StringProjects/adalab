@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import {
     Row,
@@ -21,10 +22,11 @@ class Login extends Component {
             getToken,
             redirectToPrivateArea,
             location,
-            history
+            history,
+            errorClass,
             } = this.props;
 
-            console.log('props en login', this.props)
+        // console.log('props en login raquel', this.props)
 
        const { from } = location.state || { from: { pathname: '/private'}};
 
@@ -71,7 +73,7 @@ class Login extends Component {
                             offset: 2
                         }}>
                             <WeForm 
-                                errorClass= {this.props.errorClass}
+                                errorClass= {errorClass}
                                 onInputEmail={onInputEmail} 
                                 onInputPsw={onInputPsw}
                                 openedErrorFeedback={openedErrorFeedback}
@@ -91,6 +93,21 @@ class Login extends Component {
             </div>
         );
     }
+}
+
+Login.propTypes = {
+    onInputEmail: PropTypes.func.isRequired,
+    onInputPsw: PropTypes.func.isRequired,
+    onSubmitBtn: PropTypes.func.isRequired,
+    getToken: PropTypes.func.isRequired,
+    redirectToPrivateArea: PropTypes.bool.isRequired,
+    location: PropTypes.object.isRequired,
+    errorClass: PropTypes.string.isRequired,
+    
+    history: PropTypes.object.isRequired,
+    //Estas 2 pueden desaparecer
+    openedErrorFeedback:PropTypes,
+    toggleErrorFeedback: PropTypes, 
 }
 
 export default Login;

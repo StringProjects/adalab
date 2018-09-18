@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
@@ -8,6 +9,7 @@ class WeHeaderThread extends Component {
       rootRoute,
       routeGroup,
     }=this.props;
+    // console.log('this.props WeHeaderThread raquel',this.props);
     return (
       
         <header className='HeaderThread__container'>
@@ -21,6 +23,11 @@ class WeHeaderThread extends Component {
     
     );
   }
+}
+
+WeHeaderThread.propTypes = {
+  rootRoute: PropTypes.string.isRequired,
+  routeGroup: PropTypes.string.isRequired,
 }
 
 export default WeHeaderThread;

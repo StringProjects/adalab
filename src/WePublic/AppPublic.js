@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Login from './Login';
-
 
 class AppPublic extends Component {
   render() {
@@ -13,12 +13,13 @@ class AppPublic extends Component {
       getToken,
       location,
       history,
-      redirectToPrivateArea
-      } = this.props;
-     
+      redirectToPrivateArea,
+      errorClass,
+    } = this.props;
+    // console.log('this.props AppPublic raquel',this.props) 
     return (
       <Login
-        errorClass={this.props.errorClass}
+        errorClass={errorClass}
         onInputEmail={onInputEmail}
         onInputPsw={onInputPsw}
         openedErrorFeedback={openedErrorFeedback}
@@ -31,6 +32,20 @@ class AppPublic extends Component {
       />
     );
   }
+}
+
+AppPublic.propTypes = {
+  errorClass: PropTypes.string.isRequired,
+  getToken: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  onInputEmail: PropTypes.func.isRequired,
+  onInputPsw: PropTypes.func.isRequired,
+  onSubmitBtn: PropTypes.func.isRequired,
+  redirectToPrivateArea: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired,
+  //Estas 2 deberian borrarse
+  openedErrorFeedback: PropTypes,
+  toggleErrorFeedback: PropTypes,
 }
 
 export default AppPublic;
