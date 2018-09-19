@@ -19,13 +19,10 @@ class Group extends Component {
     fetchApiMessages();
     this.props.resetId();
   }
-      
-  // componentWillUnmount(){
-  //   clearInterval(this.interval)
-  // }
+  
 
   render() {
-    // console.log("PROPS",this.props);
+
 
     const {
       routePrivate,

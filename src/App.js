@@ -136,8 +136,10 @@ class App extends Component {
 
   logOut(){
     this.setState({
-      redirectToPrivateArea: false
-    });
+      redirectToPrivateArea: false,
+      user: "",
+      psw:""
+    })
   }
 
 
