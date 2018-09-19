@@ -219,7 +219,6 @@ class AppPrivate extends Component {
       filterArray,
       threadPost,
       filterArrayLastPost,
-      id,
     } = this.state;
 
     return (
@@ -241,9 +240,7 @@ class AppPrivate extends Component {
                 />
                 <Groups
                   fetchApiGroup={this.handlefetchgroup}
-                  handlefetchgroup={this.handlefetchgroup}
                   routePrivate={routePrivate}
-                  routePublic={routePublic}
                   routeGroup={routeGroup}
                   rootRoute={computedMatch.path}
                   filterArrayLastPost={filterArrayLastPost}
