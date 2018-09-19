@@ -20,14 +20,10 @@ class Thread extends Component {
       id, 
       handleIdThread,
     } = this.props;
-    this.ThreadInterval = setInterval(handleIdThread, 3000)
     handleIdThread(id);
     console.log("id",id)
   }
 
-  componentWillUnmount(){
-    clearInterval(this.ThreadInterval)
-  }
 
   render() {
     const threadPost = this.props.threadPost;
