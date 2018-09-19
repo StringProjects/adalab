@@ -4,21 +4,16 @@
 }
 
 .main--login{
-    
     padding: 25px;
 }
 
-
-
 @media (min-width: 1024px) {
-
     .container--text-login{
         margin-top: 100px;
     }
     .container--form-landing {
         margin-top: 100px;
     }
-
 }
 
 @media (max-width: 375px){
@@ -26,19 +21,21 @@
         padding: 0;
     }
 }
-.container--text-login{
-display: flex;
-justify-content: center;
-flex-direction: column;
-flex-wrap: wrap;
 
+.container--text-login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
+
 .text-wrapp{
-align-self: center;
-width:300px;
-margin: 0;
-padding: 0;
+    align-self: center;
+    width:300px;
+    margin: 0;
+    padding: 0;
 }
+
 .title--login {
     overflow: hidden; 
     border-right: .10em solid black; 
@@ -49,16 +46,21 @@ padding: 0;
     typing 3.5s steps(40, end),
     blink-caret .75s step-end infinite;
 }
+
 .subtitle--landing{
     font-size: 20px;
 }
+
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% ;
-        }
+    from { 
+        width: 0 
+    }
+    to { 
+        width: 100% ;
+    }
 }
 
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: black; }
+    50% { border-color: $color-primary; }
 }

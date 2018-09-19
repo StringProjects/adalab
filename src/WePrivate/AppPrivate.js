@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Route,
   Switch,
-  Redirect
 } from 'react-router-dom';
 import WeHeader from '../Components/WeHeader';
 import WeButtonOption from '../Components/WeButtonOption';
@@ -13,11 +12,10 @@ import Thread from './Thread';
 
 
 class AppPrivate extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       responseStatus: false,
-      valueInput: '',
       groupsPost: [],
       threadPost: [],
       inputMessageValue: '',
@@ -31,43 +29,19 @@ class AppPrivate extends Component {
     this.deleteToken = this.deleteToken.bind(this)
     this.savedToken = this.savedToken.bind(this)
     this.getToken = this.getToken.bind(this)
-    
-    // this.handlesendMessageGroup = this
-    //   .handlesendMessageGroup
-    //   .bind(this);
-    this.onInputMessageGroup = this
-      .onInputMessageGroup
-      .bind(this);
-    this.resetInput = this
-      .resetInput
-      .bind(this);
-    this.handlefetchgroup = this
-      .handlefetchgroup
-      .bind(this);
-    this.handleIdThread = this
-      .handleIdThread
-      .bind(this);
-    this.handlefetchThread = this
-      .handlefetchThread
-      .bind(this);
-    this.handlefetchSendMessage = this
-      .handlefetchSendMessage
-      .bind(this);
-    // this.handleInputMessageValue = this.handleInputMessageValue.bind(this);
+    this.resetInput = this.resetInput.bind(this);
+    this.handlefetchgroup = this.handlefetchgroup.bind(this);
+    this.handleIdThread = this.handleIdThread.bind(this);
+    this.handlefetchThread = this.handlefetchThread.bind(this);
+    this.handlefetchSendMessage = this.handlefetchSendMessage.bind(this);
     this.filterIdPost = this.filterIdPost.bind(this);
     this.handleDeleteLocalStorage = this.handleDeleteLocalStorage.bind(this);
-    this.filterLastPost=this.filterLastPost.bind(this);
+    this.filterLastPost = this.filterLastPost.bind(this);
     this.deleteGroupName = this.deleteGroupName.bind(this);
     this.resetId = this.resetId.bind(this);
     this.handlefetchThreadCall = this.handlefetchThreadCall.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if(this.props.redirectToPrivateArea !== prevProps && this.props.redirectToPrivateArea === true){
-      return <Redirect to={'/private'} />
-    }
-    
-  }
   savedToken(token) {
     localStorage.setItem('token', token);
   }
@@ -84,11 +58,10 @@ class AppPrivate extends Component {
     localStorage.removeItem('groupName');
   }
 
-  
   //starts fetch api for group post
   handlefetchgroup() {
     const tokengroup = this.getToken();
-    fetch('http://adalab.string-projects.com/api/v1/posts', {
+    fetch('https://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -101,20 +74,16 @@ class AppPrivate extends Component {
             this.setState({ groupsPost: data }, this.filterIdPost)
           })
           .catch((error) => {
-            // console.error(error);
+            console.error(error);
           });
       })
   }
   //end fetch api for group post
 
-  
   //starts fetch api for group THREAD
-
   handlefetchThreadCall(id, localToken) {
-    // const endPoint = ;
-    // const url = id ? endPoint+id : endPoint;
     console.log("fetch thread ID", id)
-    fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
+    fetch('https://adalab.string-projects.com/api/v1/posts/'+id, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -124,24 +93,25 @@ class AppPrivate extends Component {
       .then((response) => {
         return response.json()
           .then((data) => {
-            this.setState({ 
-              threadPost: data 
+            this.setState({
+              threadPost: data
             });
           });
       });
   }
   //END fetch api for group THREAD
   handlefetchThread(id) {
-  let  localToken = this.getToken()
+    let localToken = this.getToken()
     this.handlefetchThreadCall(id, localToken)
   }
-  
-  
+
+
   //start fetch logout
   fecthApiLogOut(token) {
 
     this.props.logOut()
-    fetch('http://adalab.string-projects.com/api/v1/sessions', {
+
+    fetch('https://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -151,8 +121,8 @@ class AppPrivate extends Component {
       if (response.ok) {
         this.deleteToken();
         this.deleteGroupName();
-        this.setState({ 
-          redirectToLogin: true 
+        this.setState({
+          redirectToLogin: true
         });
       }
 
@@ -177,12 +147,12 @@ class AppPrivate extends Component {
   //   this.setState({
   //     inputMessageValue: inputValue
   //   });
-    
+
   //   console.log(" nuevo estado ", this.state.inputMessageValue)
   // }
 
 
-  
+
   //   handleInputMessageValue(e) {
   //   const {
   //     value
@@ -198,22 +168,22 @@ class AppPrivate extends Component {
   fetchSendMessage(localToken, texto) {
     console.log("Lo que hay en el estado del input", texto)
     console.log("id en el thread", this.state.id)
-    fetch('http://adalab.string-projects.com/api/v1/posts', {
+    fetch('https://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
         'AUTH-TOKEN': localToken
       },
       body: JSON.stringify({
-        "post": { 
+        "post": {
           "description": texto,
           "post_id": this.state.id !== null ? this.state.id : ''
         }
       })
-      
+
     }).then((response) => {
       if (response.ok === true) {
-        if(this.state.id !== null) {
+        if (this.state.id !== null) {
           this.handlefetchThread(this.state.id);
         } else {
           this.handlefetchgroup();
@@ -225,20 +195,20 @@ class AppPrivate extends Component {
     })
   }
 
-  resetId = () =>{
+  resetId = () => {
     console.log("Reset de la id")
     this.setState({
-      id:null
+      id: null
     })
   }
 
-  handlefetchSendMessage(e, texto){
+  handlefetchSendMessage(e, texto) {
     console.log("Entra en el submit de enviar mensaje")
     console.log("El estado del input ", texto)
     e.preventDefault();
     let localToken = this.getToken();
     this.fetchSendMessage(localToken, texto)
-  
+
   }
   //END fetch api for message
 
@@ -246,18 +216,8 @@ class AppPrivate extends Component {
     this.setState({
       id: id
     });
-      this.handlefetchThread(id)
+    this.handlefetchThread(id)
   }
-
-  onInputMessageGroup(e) {
-    const {
-      value
-    } = e.target;
-    this.setState({
-      valueInput: value
-    });
-  }
-  
 
   resetInput = () => {
     console.log("Entra en el reset de limpiar")
@@ -267,22 +227,22 @@ class AppPrivate extends Component {
   }
 
   filterIdPost() {
-    if(this.state.groupsPost.length > 0){
-    const arrayFilter = this.state.groupsPost.filter(function (post) {
-      return post.post_id === null;
-    });
-    this.setState({ filterArray: arrayFilter },this.filterLastPost);
-  }else{
-    // console.log("vACIO")
-  }
+    if (this.state.groupsPost.length > 0) {
+      const arrayFilter = this.state.groupsPost.filter(function (post) {
+        return post.post_id === null;
+      });
+      this.setState({ filterArray: arrayFilter }, this.filterLastPost);
+    } else {
+      // console.log("vACIO")
+    }
   }
 
-filterLastPost(){
-  const arrayFilterLastPost = this.state.filterArray[0];
-  this.setState({ 
-    filterArrayLastPost: arrayFilterLastPost 
-  });
- }
+  filterLastPost() {
+    const arrayFilterLastPost = this.state.filterArray[0];
+    this.setState({
+      filterArrayLastPost: arrayFilterLastPost
+    });
+  }
 
   render() {
     const {
@@ -303,10 +263,10 @@ filterLastPost(){
       threadPost,
       filterArrayLastPost,
       id,
-      
+
     } = this.state;
 
-console.log("ID private", id)
+    console.log("ID private", id)
     return (
       <div className="wrapper-group">
         <Switch>
@@ -322,7 +282,7 @@ console.log("ID private", id)
                   routeGroup={routeGroup}
                   location={location}
                   rootRoute={computedMatch.path}
-                  handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
+                  handleDeleteLocalStorage={this.handleDeleteLocalStorage}
                 />
                 <Groups
                   fetchApiGroup={this.handlefetchgroup}
@@ -333,9 +293,9 @@ console.log("ID private", id)
                   rootRoute={computedMatch.path}
                   filterArrayLastPost={filterArrayLastPost}
                   fecthApi={fecthApi}
-                  getGroupName = {getGroupName}
-                  //savedGroupName = {savedGroupName}
-                  
+                  getGroupName={getGroupName}
+                //savedGroupName = {savedGroupName}
+
                 />
               </div>
             }
@@ -348,9 +308,8 @@ console.log("ID private", id)
                 <Group
                   groupsPost={groupsPost}
                   sendMessageGroup={this.sendMessageGroup}
-                  onInputMessageGroup={this.onInputMessageGroup}
                   InputMessageGroupValue={this.InputMessageGroupValue}
-                  fetchApiMessages = {this.handlefetchgroup}
+                  fetchApiMessages={this.handlefetchgroup}
                   match={props.match}
                   location={props.location}
                   history={props.history}
@@ -364,8 +323,8 @@ console.log("ID private", id)
                   handleInputMessageValue={this.handleInputMessageValue}
                   inputMessageValue={this.inputMessageValue}
                   filterArray={filterArray}
-                  handleDeleteLocalStorage = {this.handleDeleteLocalStorage}
-                  resetId = {this.resetId}
+                  handleDeleteLocalStorage={this.handleDeleteLocalStorage}
+                  resetId={this.resetId}
                 />
               </div>
             }
@@ -385,7 +344,7 @@ console.log("ID private", id)
                 filterArray={filterArray}
                 id={props.match.params.id}
               />
-            
+
             }
           />
         </Switch>
