@@ -10,9 +10,11 @@ import WeForm from '../Components/LoginComponents/WeForm';
 import logoAdalab from '../images/logo-adalab.svg';
 
 class Login extends Component {
-
+  componentWillUnmount(){
+        const {turnOffJustLog}= this.props
+        turnOffJustLog();
+    } 
     render() {
-
         const {
             onInputEmail,
             onInputPsw,
@@ -24,15 +26,23 @@ class Login extends Component {
             location,
             history,
             errorClass,
+            justLog,
             } = this.props;
 
         // console.log('props en login raquel', this.props)
 
-       const { from } = location.state || { from: { pathname: '/private'}};
+        const { from } = location.state || { from: { pathname: '/private'}};
+        if (redirectToPrivateArea === true &&  justLog=== true  ) {
+            console.log("soy el primer camino")
 
-        if (redirectToPrivateArea === true) {
+            return <Redirect to={'/private'} />
+        } 
+        else if(redirectToPrivateArea === true &&  justLog=== false ) {
+            console.log("soy el segundo camino")
             return <Redirect to={from} />
         }
+
+        
         
 
         return (

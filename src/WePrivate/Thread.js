@@ -24,6 +24,7 @@ class Thread extends Component {
     console.log("id",id)
   }
 
+
   render() {
     const threadPost = this.props.threadPost;
     const {

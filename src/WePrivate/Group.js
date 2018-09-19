@@ -15,13 +15,14 @@ class Group extends Component {
 
   componentDidMount() {
     const {fetchApiMessages} = this.props;
+    // this.interval = setInterval(fetchApiMessages, 20000)
     fetchApiMessages();
     this.props.resetId();
   }
   
 
   render() {
-    // console.log("PROPS",this.props);
+
 
     const {
       routePrivate,

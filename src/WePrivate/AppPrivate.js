@@ -23,6 +23,7 @@ class AppPrivate extends Component {
       filterArrayThread: [],
       id: null,
       filterArrayLastPost: [],
+      redirectToPrivateArea: this.props.redirectToPrivateArea,
     }
 
     this.deleteToken = this.deleteToken.bind(this)
@@ -59,10 +60,8 @@ class AppPrivate extends Component {
 
   //starts fetch api for group post
   handlefetchgroup() {
-    console.log("Entrando en la api")
     const tokengroup = this.getToken();
-    console.log("Token", tokengroup)
-    fetch('http://adalab.string-projects.com/api/v1/posts', {
+    fetch('https://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -78,13 +77,14 @@ class AppPrivate extends Component {
             console.error(error);
           });
       })
+      
   }
   //end fetch api for group post
 
   //starts fetch api for group THREAD
   handlefetchThreadCall(id, localToken) {
     console.log("fetch thread ID", id)
-    fetch('http://adalab.string-projects.com/api/v1/posts/'+id, {
+    fetch('https://adalab.string-projects.com/api/v1/posts/'+id, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -111,7 +111,8 @@ class AppPrivate extends Component {
   fecthApiLogOut(token) {
 
     this.props.logOut()
-    fetch('http://adalab.string-projects.com/api/v1/sessions', {
+
+    fetch('https://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -168,7 +169,7 @@ class AppPrivate extends Component {
   fetchSendMessage(localToken, texto) {
     console.log("Lo que hay en el estado del input", texto)
     console.log("id en el thread", this.state.id)
-    fetch('http://adalab.string-projects.com/api/v1/posts', {
+    fetch('https://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
