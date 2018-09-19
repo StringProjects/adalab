@@ -24,26 +24,17 @@ class Login extends Component {
             getToken,
             redirectToPrivateArea,
             location,
-            history,
             errorClass,
             justLog,
         } = this.props;
 
-        // console.log('props en login raquel', this.props)
-
         const { from } = location.state || { from: { pathname: '/private' } };
         if (redirectToPrivateArea === true && justLog === true) {
-            console.log("soy el primer camino")
-
             return <Redirect to={'/private'} />
         }
         else if (redirectToPrivateArea === true && justLog === false) {
-            console.log("soy el segundo camino")
             return <Redirect to={from} />
         }
-
-
-
 
         return (
             <div className="wrapper-login">
@@ -92,18 +83,15 @@ class Login extends Component {
                                 getToken={getToken}
                             />
                         </Col>
-
                     </Row>
-
                 </main>
                 <div className="footer-login">
                     <p className="text-footer">2018 ©  We. by
                      <a href="https://adalab.es/" target="_blank">
-                        <img className="logo-adalab" src={logoAdalab} alt="logo-adalab" />
-                    </a>
-                    <span className="heart">❤︎</span></p>
+                            <img className="logo-adalab" src={logoAdalab} alt="logo-adalab" />
+                        </a>
+                        <span className="heart">❤︎</span></p>
                 </div>
-
             </div>
         );
     }
@@ -117,11 +105,6 @@ Login.propTypes = {
     redirectToPrivateArea: PropTypes.bool.isRequired,
     location: PropTypes.object.isRequired,
     errorClass: PropTypes.string.isRequired,
-
-    history: PropTypes.object.isRequired,
-    //Estas 2 pueden desaparecer
-    openedErrorFeedback: PropTypes,
-    toggleErrorFeedback: PropTypes,
 }
 
 export default Login;
