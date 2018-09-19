@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ElementList from '../Components/WeListComponents/ElementList';
 import profile from '../images/panda.jpg';
-import {
-  Route,
-  Switch,
-  Redirect
-} from 'react-router-dom';
 
 class Groups extends Component {
   constructor(props) {
@@ -17,8 +12,6 @@ class Groups extends Component {
       groupName: this.paintGroupName,
     }
   }
-
- 
 
   componentDidMount() {
     this.paintGroupName();
@@ -32,25 +25,22 @@ class Groups extends Component {
     });
   }
 
-callFetchApiGroup(){
-    const {fetchApiGroup}= this.props
+  callFetchApiGroup() {
+    const { fetchApiGroup } = this.props
     fetchApiGroup();
-}
+  }
+
   render() {
     const {
       rootRoute,
       routeGroup,
-      groupList,
-      routePublic,
-      handlefetchgroup,
       filterArrayLastPost,
     } = this.props;
-    // console.log('this.props Groups raquel',this.props);
-  //  console.log("Filter Array LAst Post",filterArrayLastPost)
+
     return (
       <div className="main--welist">
         <Link to={`${rootRoute}${routeGroup}`} >
-          <div className = "group-name">
+          <div className="group-name">
             <p>{this.state.groupName}</p>
           </div>
         </Link>
