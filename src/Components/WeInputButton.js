@@ -48,7 +48,7 @@ class WeInputButton extends Component {
       inputMessageValue,
       sendMessageGroup,
     }=this.props;
-    // console.log('this.props WeInputButton raquel',this.props);
+   
     return (
       <Form className='Input__form' onSubmit={this.handleSubmitSend}>
         <Input
