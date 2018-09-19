@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.08ba7bf8.css",
-  "main.css.map": "static/css/main.08ba7bf8.css.map",
-  "main.js": "static/js/main.c685601e.js",
-  "main.js.map": "static/js/main.c685601e.js.map",
+  "main.css": "static/css/main.299e2da2.css",
+  "main.css.map": "static/css/main.299e2da2.css.map",
+  "main.js": "static/js/main.1e8330f6.js",
+  "main.js.map": "static/js/main.1e8330f6.js.map",
   "static/media/fa-brands-400.eot": "static/media/fa-brands-400.9b6c8da3.eot",
   "static/media/fa-brands-400.svg": "static/media/fa-brands-400.b5472631.svg",
   "static/media/fa-brands-400.ttf": "static/media/fa-brands-400.947b9537.ttf",
@@ -18,5 +18,6 @@
   "static/media/fa-solid-900.ttf": "static/media/fa-solid-900.0079a0ab.ttf",
   "static/media/fa-solid-900.woff": "static/media/fa-solid-900.815694de.woff",
   "static/media/fa-solid-900.woff2": "static/media/fa-solid-900.14a08198.woff2",
+  "static/media/logo-adalab.svg": "static/media/logo-adalab.471b278d.svg",
   "static/media/panda.jpg": "static/media/panda.6e42b8b3.jpg"
 }
