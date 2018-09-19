@@ -81,7 +81,7 @@ class Group extends Component {
             <img className="rounded-circle img-group" src={profile} alt="profile picture" />
             <div className="wrapper-name-number">
               <h2 className="nameGroup">Adalab Work</h2>
-              <h3 className="numberGroup">10 personas</h3>
+              <h3 className="numberGroup">4 personas</h3>
             </div>
           </div>
           <div className="wrapper-welist">

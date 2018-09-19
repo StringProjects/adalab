@@ -56,7 +56,7 @@ class WeInputButton extends Component {
           type="text"
           className="form-control Input__text"
           id="message"
-          placeholder="Type message"
+          placeholder="Escribe tu mensaje"
           name="message" 
           value={this.state.inputValue}
           />
@@ -65,7 +65,7 @@ class WeInputButton extends Component {
             className="btn Input__btn"
             // onClick={handlefetchSendMessage}
           >
-          <p>Send</p>
+          <p>Enviar</p>
         </Button>
       </Form>
     );
