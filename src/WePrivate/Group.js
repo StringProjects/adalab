@@ -97,7 +97,7 @@ class Group extends Component {
                         name={group.username}
                         date={group.date}
                         message={group.description}
-                        addAnswer="Comienza hilo"
+                        addAnswer="Ir a hilo"
                       />
                     </li>
                   </Link>
