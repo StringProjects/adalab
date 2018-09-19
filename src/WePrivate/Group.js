@@ -38,7 +38,6 @@ class Group extends Component {
       filterArray,
       handleDeleteLocalStorage,
       handlefetchThread,
-      onInputMessageGroup,
       InputMessageGroupValue,
     } = this.props;
     // console.log('this.props Gropu raquel',this.props);
@@ -113,7 +112,6 @@ class Group extends Component {
           </div>
           <div className="wrapper-input-send">
             <WeInputButton
-              onInputMessageGroup={onInputMessageGroup}
               InputMessageGroupValue={InputMessageGroupValue}
               handlefetchSendMessage={handlefetchSendMessage}
               handleInputMessageValue={handleInputMessageValue}
@@ -145,7 +143,6 @@ Group.propTypes = {
   filterArray: PropTypes.array.isRequired,
   handleDeleteLocalStorage: PropTypes.func.isRequired,
   sendMessageGroup: PropTypes.func.isRequired,
-  onInputMessageGroup: PropTypes.func.isRequired,
   
   handlefetchThread: PropTypes.func.isRequired,
   InputMessageGroupValue: PropTypes,

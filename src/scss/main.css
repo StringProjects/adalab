@@ -259,7 +259,7 @@
   from, to {
     border-color: transparent; }
   50% {
-    border-color: black; } }
+    border-color: #0e0e0f; } }
 
 .wrapper-menu {
   display: flex;
