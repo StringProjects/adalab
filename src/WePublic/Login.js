@@ -98,7 +98,7 @@ class Login extends Component {
                 </main>
                 <div className="footer-login">
                     <p className="text-footer">2018 ©  We. by
-                     <a href="https://adalab.es/">
+                     <a href="https://adalab.es/" target="_blank">
                         <img className="logo-adalab" src={logoAdalab} alt="logo-adalab" />
                     </a>
                     <span className="heart">❤︎</span></p>
