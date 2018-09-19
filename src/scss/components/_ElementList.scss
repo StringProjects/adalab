@@ -26,7 +26,7 @@
 .message-text {
     font-size: $size-l;
     margin: 0;
-    word-break: break-all;
+    word-break: pre-line;
 }
 
 .date-text {
