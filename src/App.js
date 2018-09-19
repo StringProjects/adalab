@@ -18,8 +18,10 @@ class App extends Component {
       errorClass: "error-hidden",
       redirectToPrivateArea: false,
       groupList: [],
+      justLog: false
     }
-
+    this.changeStates=this.changeStates.bind(this);
+    this.turnOffJustLog=this.turnOffJustLog.bind(this);
     this.handleSubmitLogin = this
       .handleSubmitLogin
       .bind(this);
@@ -41,11 +43,23 @@ class App extends Component {
   componentDidMount() {
     this.redirectTo();
   }
-
+  turnOffJustLog(){
+    this.setState({
+      justLog:false ,
+    });
+  }
   redirectTo() {
     if (this.getToken() !== null) {
       this.setState({
+        redirectToPrivateArea: true
+      });
+    }
+  }
+  changeStates() {
+    if (this.getToken() !== null) {
+      this.setState({
         redirectToPrivateArea: true,
+        justLog: true,
       });
     }
   }
@@ -66,7 +80,7 @@ class App extends Component {
           .then((data) => {
             this.savedToken(data.user.auth_token)
             this.savedGroupName(data.groups[0].name)
-            this.redirectTo();
+            this.changeStates();
             this.setState({ 
               errorClass: "error-hidden", 
               groupList: data.groups 
@@ -102,7 +116,6 @@ class App extends Component {
   handleSubmitLogin(e) {
     e.preventDefault();
     this.fecthApi();
-    this.redirectTo();
   }
 
   savedToken(token) {
@@ -131,7 +144,8 @@ class App extends Component {
   render() {
     const {
       redirectToPrivateArea,
-      groupList
+      groupList,
+      justLog
     } = this.state;
     const routePrivate = '/private';
     const routePublic = '/';
@@ -171,6 +185,8 @@ console.log("match",this.props.match)
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
                 getToken={this.getToken}
+                justLog={justLog}
+                turnOffJustLog={this.turnOffJustLog}
               />
             }
           />

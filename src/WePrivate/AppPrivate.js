@@ -23,6 +23,7 @@ class AppPrivate extends Component {
       filterArrayThread: [],
       id: null,
       filterArrayLastPost: [],
+      redirectToPrivateArea: this.props.redirectToPrivateArea,
     }
 
     this.deleteToken = this.deleteToken.bind(this)
