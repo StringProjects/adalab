@@ -10,7 +10,6 @@ import Groups from './Groups';
 import Group from './Group';
 import Thread from './Thread';
 
-
 class AppPrivate extends Component {
   constructor(props) {
     super(props)
@@ -60,7 +59,6 @@ class AppPrivate extends Component {
 
   //starts fetch api for group post
   handlefetchgroup() {
-    console.log("Interval")
     const tokengroup = this.getToken();
     fetch('https://adalab.string-projects.com/api/v1/posts', {
       method: 'GET',
@@ -78,14 +76,12 @@ class AppPrivate extends Component {
             console.error(error);
           });
       })
-      
   }
   //end fetch api for group post
 
   //starts fetch api for group THREAD
   handlefetchThreadCall(id, localToken) {
-    console.log("fetch thread ID", id)
-    fetch('https://adalab.string-projects.com/api/v1/posts/'+id, {
+    fetch('https://adalab.string-projects.com/api/v1/posts/' + id, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
@@ -107,12 +103,9 @@ class AppPrivate extends Component {
     this.handlefetchThreadCall(id, localToken)
   }
 
-
   //start fetch logout
   fecthApiLogOut(token) {
-
     this.props.logOut()
-
     fetch('https://adalab.string-projects.com/api/v1/sessions', {
       method: 'DELETE',
       headers: {
@@ -127,10 +120,9 @@ class AppPrivate extends Component {
           redirectToLogin: true
         });
       }
-
     })
       .catch((error) => {
-        // console.error(error);
+        console.error(error);
       });
   }
 
@@ -141,35 +133,7 @@ class AppPrivate extends Component {
     this.deleteGroupName();
   }
 
-
-
-  //starts fetch api to post message
-  // handleInputMessageValue = (inputValue) =>{
-  //  console.log(" entra en el input de private ", inputValue)
-  //   this.setState({
-  //     inputMessageValue: inputValue
-  //   });
-
-  //   console.log(" nuevo estado ", this.state.inputMessageValue)
-  // }
-
-
-
-  //   handleInputMessageValue(e) {
-  //   const {
-  //     value
-  //   } = e.target;
-  //   this.setState({
-  //     inputMessageValue: value
-  //   },
-  //     () => {
-  //       // console.log('valor del estado', this.state.inputMessageValue);
-  //     });
-  // }
-
   fetchSendMessage(localToken, texto) {
-    console.log("Lo que hay en el estado del input", texto)
-    console.log("id en el thread", this.state.id)
     fetch('https://adalab.string-projects.com/api/v1/posts', {
       method: 'POST',
       headers: {
@@ -182,7 +146,6 @@ class AppPrivate extends Component {
           "post_id": this.state.id !== null ? this.state.id : ''
         }
       })
-
     }).then((response) => {
       if (response.ok === true) {
         if (this.state.id !== null) {
@@ -198,19 +161,15 @@ class AppPrivate extends Component {
   }
 
   resetId = () => {
-    console.log("Reset de la id")
     this.setState({
       id: null
     })
   }
 
   handlefetchSendMessage(e, texto) {
-    console.log("Entra en el submit de enviar mensaje")
-    console.log("El estado del input ", texto)
     e.preventDefault();
     let localToken = this.getToken();
     this.fetchSendMessage(localToken, texto)
-
   }
   //END fetch api for message
 
@@ -222,7 +181,6 @@ class AppPrivate extends Component {
   }
 
   resetInput = () => {
-    console.log("Entra en el reset de limpiar")
     this.setState({
       inputMessageValue: ""
     })
@@ -234,8 +192,6 @@ class AppPrivate extends Component {
         return post.post_id === null;
       });
       this.setState({ filterArray: arrayFilter }, this.filterLastPost);
-    } else {
-      // console.log("vACIO")
     }
   }
 
@@ -253,7 +209,6 @@ class AppPrivate extends Component {
       routeGroup,
       routeThread,
       location,
-      groupList,
       fecthApi,
       getGroupName,
       computedMatch,
@@ -265,10 +220,8 @@ class AppPrivate extends Component {
       threadPost,
       filterArrayLastPost,
       id,
-
     } = this.state;
 
-    console.log("ID private", id)
     return (
       <div className="wrapper-group">
         <Switch>
@@ -296,8 +249,6 @@ class AppPrivate extends Component {
                   filterArrayLastPost={filterArrayLastPost}
                   fecthApi={fecthApi}
                   getGroupName={getGroupName}
-                //savedGroupName = {savedGroupName}
-
                 />
               </div>
             }
@@ -346,7 +297,6 @@ class AppPrivate extends Component {
                 filterArray={filterArray}
                 id={props.match.params.id}
               />
-
             }
           />
         </Switch>
@@ -361,7 +311,6 @@ AppPrivate.propTypes = {
   routeGroup: PropTypes.string.isRequired,
   routeThread: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
-  groupList: PropTypes.array.isRequired,
   fecthApi: PropTypes.func.isRequired,
   computedMatch: PropTypes.object.isRequired,
   getGroupName: PropTypes.func.isRequired,
