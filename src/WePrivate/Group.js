@@ -8,25 +8,19 @@ import WeInputButton from '../Components/WeInputButton';
 import WeHeader from '../Components/WeHeader';
 import profile from '../images/panda.jpg';
 
-
 class Group extends Component {
-
-  
-
   componentDidMount() {
-    const {fetchApiMessages} = this.props;
-    // this.interval = setInterval(fetchApiMessages, 20000)
+    const { fetchApiMessages } = this.props;
+    this.interval = setInterval(fetchApiMessages, 2000)
     fetchApiMessages();
     this.props.resetId();
   }
-      
-  // componentWillUnmount(){
-  //   clearInterval(this.interval)
-  // }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
 
   render() {
-    // console.log("PROPS",this.props);
-
     const {
       routePrivate,
       routePublic,
@@ -45,10 +39,10 @@ class Group extends Component {
       InputMessageGroupValue,
     } = this.props;
     // console.log('this.props Gropu raquel',this.props);
-    if(filterArray.length === 0){
-      return(
-      <div>
-             <WeHeader />
+    if (filterArray.length === 0) {
+      return (
+        <div>
+          <WeHeader />
           <div className='wrapper-menu'>
             <WeArrow
               routePublic={routePublic}
@@ -60,14 +54,12 @@ class Group extends Component {
               routePublic={routePublic}
               routeGroup={routeGroup}
               location={location}
-              handleDeleteLocalStorage = {handleDeleteLocalStorage}
+              handleDeleteLocalStorage={handleDeleteLocalStorage}
             />
           </div>
-          <div className = "msg-load"><p className="text-center">Cargando datos, si pasa más de 1 minuto inicia sesion de nuevo</p></div>
-      </div>)
-      
-    }else{
-
+          <div className="msg-load"><p className="text-center">Cargando datos, si pasa más de 1 minuto inicia sesion de nuevo</p></div>
+        </div>)
+    } else {
       return (
         <div className="wrapper-group">
           <WeHeader />
@@ -82,7 +74,7 @@ class Group extends Component {
               routePublic={routePublic}
               routeGroup={routeGroup}
               location={location}
-              handleDeleteLocalStorage = {handleDeleteLocalStorage}
+              handleDeleteLocalStorage={handleDeleteLocalStorage}
             />
           </div>
           <div className="wrapper-nameGroup">
@@ -93,26 +85,25 @@ class Group extends Component {
             </div>
           </div>
           <div className="wrapper-welist">
-          <ul className="list--welist">
-              {filterArray.map(function(group,i){
+            <ul className="list--welist">
+              {filterArray.map(function (group, i) {
                 // console.log("IDDDD en group", group.id)
                 return (
                   <Link to={`${rootRoute}${routeThread}/${group.id}`}>
-                  <li className = "groupsli" key={i}>
-                    <ElementList
-                      id = {group.id}
-                      image={profile}
-                      name={group.username}
-                      date={group.date}
-                      message={group.description}
-                      addAnswer="Comienza hilo"
-                    />
-                  </li>
+                    <li className="groupsli" key={i}>
+                      <ElementList
+                        id={group.id}
+                        image={profile}
+                        name={group.username}
+                        date={group.date}
+                        message={group.description}
+                        addAnswer="Comienza hilo"
+                      />
+                    </li>
                   </Link>
                 )
               })}
             </ul>
-  
           </div>
           <div className="wrapper-input-send">
             <WeInputButton
@@ -122,18 +113,14 @@ class Group extends Component {
               inputMessageValue={inputMessageValue}
             />
           </div>
-  
         </div>
       );
-
     }
-
- 
   }
 }
 
 Group.propTypes = {
-  routePrivate: PropTypes.string.isRequired ,
+  routePrivate: PropTypes.string.isRequired,
   routePublic: PropTypes.string.isRequired,
   routeGroup: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
@@ -147,7 +134,6 @@ Group.propTypes = {
   filterArray: PropTypes.array.isRequired,
   handleDeleteLocalStorage: PropTypes.func.isRequired,
   sendMessageGroup: PropTypes.func.isRequired,
-  
   handlefetchThread: PropTypes.func.isRequired,
   InputMessageGroupValue: PropTypes,
 }
