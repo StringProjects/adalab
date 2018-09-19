@@ -9,7 +9,7 @@ class ErrorFeedBack extends Component {
     return (
       <div className={errorClass}>
         <Alert color="danger">
-          El corrreo electronico o contraseña que has introducido no coincide con ninguna cuenta. Registrate para poder acceder.
+          El nombre de usuario o contraseña que has introducido no coincide con ninguna cuenta. Registrate para poder acceder.
         </Alert>
       </div>
     );
