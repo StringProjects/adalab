@@ -40,47 +40,48 @@ class WeForm extends Component {
             onInputEmail, 
             onInputPsw, 
             onSubmitBtn,
-            getToken,
             errorClass,
         } = this.props;
    
         return (
             <div className="container--form-landing">
                 <Form className="form--style" onSubmit={onSubmitBtn}>
-                        <FormGroup role="form">
-                            <Input
-                                onChange={onInputEmail}
-                                type="text"
-                                className="form-control input--login-style"
-                                id="email"
-                                placeholder="Usuario"
-                                name="email"/>
-                        </FormGroup>
-                        <FormGroup role="form">
-                            <Input
-                                onChange={onInputPsw}
-                                type={this.state.type}
-                                className="form-control input--login-style"
-                                id="pwd"
-                                placeholder="Contraseña"
-                                name="pswd"/>
-                            <i
-                                onClick={this.handleClick}
-                                id="hide-psw"
-                                className={`far ${this.state.classShow} icon--psw `}  ></i>
-                        </FormGroup>
-                        <ErrorFeedBack
-                            errorClass= {errorClass}
-                            className="error-message"
+                    <FormGroup role="form">
+                        <Input
+                            onChange={onInputEmail}
+                            type="text"
+                            className="form-control input--login-style"
+                            id="email"
+                            placeholder="Usuario"
+                            name="email"
                         />
-                        
-                        <Button 
-                            type="submit" 
-                            className="btn btn--login"  
+                    </FormGroup>
+                    <FormGroup role="form">
+                        <Input
+                            onChange={onInputPsw}
+                            type={this.state.type}
+                            className="form-control input--login-style"
+                            id="pwd"
+                            placeholder="Contraseña"
+                            name="pswd"
+                        />
+                        <i
+                            onClick={this.handleClick}
+                            id="hide-psw"
+                            className={`far ${this.state.classShow} icon--psw `}  
                         >
-                            <i className="fas fa-chevron-right"></i>
-                        </Button>
-            
+                        </i>
+                    </FormGroup>
+                    <ErrorFeedBack
+                        errorClass= {errorClass}
+                        className="error-message"
+                    />
+                    <Button 
+                        type="submit" 
+                        className="btn btn--login"  
+                    >
+                        <i className="fas fa-chevron-right"></i>
+                    </Button>
                 </Form>
             </div>
         );
@@ -92,7 +93,6 @@ WeForm.propTypes = {
     onInputPsw: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     errorClass: PropTypes.string.isRequired,
-    getToken: PropTypes.func.isRequired,
 }
 
 export default WeForm;

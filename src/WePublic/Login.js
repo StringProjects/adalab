@@ -80,7 +80,6 @@ class Login extends Component {
                                 openedErrorFeedback={openedErrorFeedback}
                                 toggleErrorFeedback={toggleErrorFeedback}
                                 onSubmitBtn={onSubmitBtn}
-                                getToken={getToken}
                             />
                         </Col>
                     </Row>
