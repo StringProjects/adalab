@@ -10,7 +10,9 @@ import profile from '../images/panda.jpg';
 
 class Group extends Component {
   componentDidMount() {
-    const { fetchApiMessages } = this.props;
+    const { 
+      fetchApiMessages,
+    } = this.props;
     this.interval = setInterval(fetchApiMessages, 2000)
     fetchApiMessages();
     this.props.resetId();
@@ -22,20 +24,16 @@ class Group extends Component {
 
   render() {
     const {
-      routePrivate,
       routePublic,
       routeGroup,
       location,
-      history,
       rootRoute,
       routeThread,
-      handleIdThread,
       handlefetchSendMessage,
       handleInputMessageValue,
       inputMessageValue,
       filterArray,
       handleDeleteLocalStorage,
-      handlefetchThread,
       InputMessageGroupValue,
     } = this.props;
     // console.log('this.props Gropu raquel',this.props);
@@ -70,7 +68,7 @@ class Group extends Component {
             />
           </div>
           <div className="wrapper-nameGroup">
-            <img className="rounded-circle img-group" src={profile} alt="profile picture" />
+            <img className="rounded-circle img-group" src={profile} alt="profile" />
             <div className="wrapper-name-number">
               <h2 className="nameGroup">Adalab Work</h2>
               <h3 className="numberGroup">4 personas</h3>
@@ -112,21 +110,17 @@ class Group extends Component {
 }
 
 Group.propTypes = {
-  routePrivate: PropTypes.string.isRequired,
   routePublic: PropTypes.string.isRequired,
   routeGroup: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
   rootRoute: PropTypes.string.isRequired,
   routeThread: PropTypes.string.isRequired,
-  handleIdThread: PropTypes.func.isRequired,
   handlefetchSendMessage: PropTypes.func.isRequired,
   handleInputMessageValue: PropTypes.func.isRequired,
   inputMessageValue: PropTypes.func.isRequired,
   filterArray: PropTypes.array.isRequired,
   handleDeleteLocalStorage: PropTypes.func.isRequired,
   sendMessageGroup: PropTypes.func.isRequired,
-  handlefetchThread: PropTypes.func.isRequired,
   InputMessageGroupValue: PropTypes,
 }
 
