@@ -60,7 +60,7 @@ class Login extends Component {
                                 <div className="text-wrapp">
                                     <h3 className="title--login text-center">¡Hola de nuevo!</h3>
                                 </div>
-                                <p className="subtitle--landing text-center">Escribe tu nombre de ususario y contraseña para entrar en We.</p>
+                                <p className="subtitle--landing text-center">Escribe tu nombre de usuario y contraseña para entrar en We.</p>
                             </div>
                         </Col>
                         <Col

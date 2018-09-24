@@ -231,11 +231,6 @@ class AppPrivate extends Component {
               <div>
                 <WeHeader />
                 <WeButtonOption
-                  routePrivate={routePrivate}
-                  routePublic={routePublic}
-                  routeGroup={routeGroup}
-                  location={location}
-                  rootRoute={computedMatch.path}
                   handleDeleteLocalStorage={this.handleDeleteLocalStorage}
                 />
                 <Groups
@@ -286,7 +281,6 @@ class AppPrivate extends Component {
               <Thread
                 threadPost={threadPost}
                 routeGroup={routeGroup}
-                threadPost={threadPost}
                 handlefetchSendMessage={this.handlefetchSendMessage}
                 handleInputMessageValue={this.handleInputMessageValue}
                 rootRoute={computedMatch.path}

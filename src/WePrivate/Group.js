@@ -50,10 +50,6 @@ class Group extends Component {
               location={location}
             />
             <WeButtonOption
-              routePrivate={routePrivate}
-              routePublic={routePublic}
-              routeGroup={routeGroup}
-              location={location}
               handleDeleteLocalStorage={handleDeleteLocalStorage}
             />
           </div>
@@ -70,10 +66,6 @@ class Group extends Component {
               location={location}
             />
             <WeButtonOption
-              routePrivate={routePrivate}
-              routePublic={routePublic}
-              routeGroup={routeGroup}
-              location={location}
               handleDeleteLocalStorage={handleDeleteLocalStorage}
             />
           </div>
