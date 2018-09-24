@@ -6,9 +6,6 @@ import WeInputButton from '../Components/WeInputButton';
 import profile from '../images/panda.jpg';
 
 class Thread extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     const {
@@ -53,7 +50,6 @@ class Thread extends Component {
                 return (
                   <li className="groupsli">
                     <ElementList
-                      image={profile}
                       id={thread.id}
                       image={profile}
                       name={thread.username}

@@ -36,7 +36,7 @@ class Login extends Component {
         return (
             <div className="wrapper-login">
                 <header className="header--login">
-                    <WeHeader />
+                    <WeHeader/>
                 </header>
                 <main className="main--login">
                     <Row>
@@ -55,9 +55,13 @@ class Login extends Component {
                             }}>
                             <div className="container--text-login">
                                 <div className="text-wrapp">
-                                    <h3 className="title--login text-center">¡Hola de nuevo!</h3>
+                                    <h3 className="title--login text-center">
+                                        ¡Hola de nuevo!
+                                    </h3>
                                 </div>
-                                <p className="subtitle--landing text-center">Escribe tu nombre de usuario y contraseña para entrar en We.</p>
+                                <p className="subtitle--landing text-center">
+                                    Escribe tu nombre de usuario y contraseña para entrar en We.
+                                </p>
                             </div>
                         </Col>
                         <Col
@@ -80,11 +84,22 @@ class Login extends Component {
                     </Row>
                 </main>
                 <div className="footer-login">
-                    <p className="text-footer">2018 ©  We. by
-                     <a href="https://adalab.es/" target="_blank">
-                            <img className="logo-adalab" src={logoAdalab} alt="logo-adalab" />
+                    <p className="text-footer">
+                        2018 ©  We. by
+                        <a 
+                            href="https://adalab.es/" 
+                            target="_blank"
+                        >
+                            <img 
+                                className="logo-adalab" 
+                                src={logoAdalab} 
+                                alt="logo-adalab"
+                            />
                         </a>
-                        <span className="heart">❤︎</span></p>
+                        <span className="heart">
+                            ❤︎
+                        </span>
+                    </p>
                 </div>
             </div>
         );
