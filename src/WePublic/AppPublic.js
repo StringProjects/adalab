@@ -8,7 +8,6 @@ class AppPublic extends Component {
       onInputEmail,
       onInputPsw,
       onSubmitBtn,
-      getToken,
       location,
       history,
       redirectToPrivateArea,
@@ -41,7 +40,6 @@ AppPublic.propTypes = {
   onSubmitBtn: PropTypes.func.isRequired,
   redirectToPrivateArea: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
-  //Estas 2 deberian borrarse
 }
 
 export default AppPublic;

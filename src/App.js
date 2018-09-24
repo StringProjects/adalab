@@ -186,7 +186,6 @@ console.log("match",this.props.match)
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
-                getToken={this.getToken}
                 justLog={justLog}
                 turnOffJustLog={this.turnOffJustLog}
               />
