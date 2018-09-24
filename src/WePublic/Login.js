@@ -18,10 +18,7 @@ class Login extends Component {
         const {
             onInputEmail,
             onInputPsw,
-            openedErrorFeedback,
-            toggleErrorFeedback,
             onSubmitBtn,
-            getToken,
             redirectToPrivateArea,
             location,
             errorClass,
@@ -77,8 +74,6 @@ class Login extends Component {
                                 errorClass={errorClass}
                                 onInputEmail={onInputEmail}
                                 onInputPsw={onInputPsw}
-                                openedErrorFeedback={openedErrorFeedback}
-                                toggleErrorFeedback={toggleErrorFeedback}
                                 onSubmitBtn={onSubmitBtn}
                             />
                         </Col>
@@ -100,7 +95,6 @@ Login.propTypes = {
     onInputEmail: PropTypes.func.isRequired,
     onInputPsw: PropTypes.func.isRequired,
     onSubmitBtn: PropTypes.func.isRequired,
-    getToken: PropTypes.func.isRequired,
     redirectToPrivateArea: PropTypes.bool.isRequired,
     location: PropTypes.object.isRequired,
     errorClass: PropTypes.string.isRequired,
