@@ -19,6 +19,7 @@ class WeForm extends Component {
 
         this.handleClick = this.handleClick.bind(this);
     }
+
     handleClick(event) {
         if(this.state.show === false){
             this.setState({
@@ -33,8 +34,8 @@ class WeForm extends Component {
                 type: "password"
             });
         }
-   
     }
+    
     render() {
         const {
             onInputEmail, 

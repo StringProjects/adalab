@@ -11,7 +11,7 @@ class WeList extends Component {
       message,
       answers,
     } = this.props;
-    console.log('this.props WeList raquel',this.props);
+    // console.log('this.props WeList raquel',this.props);
     return (
       <div className="WeList-wrapper">
         <ul className="list-group list-container">

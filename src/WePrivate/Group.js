@@ -84,7 +84,6 @@ class Group extends Component {
           <div className="wrapper-welist">
             <ul className="list--welist">
               {filterArray.map(function(group, i) {
-                // console.log("IDDDD en group", group.id)
                 return (
                   <Link to={`${rootRoute}${routeThread}/${group.id}`}>
                     <li className="groupsli" key={i}>
