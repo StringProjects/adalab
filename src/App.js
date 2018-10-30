@@ -175,96 +175,44 @@ class App extends Component {
     const routeGroup = '/group';
     const routeThread = '/thread';
 
-    return ( <
-      div className = "container-fluid" >
-      <
-      Switch >
-      <
-      PrivateRoute path = {
-        routePrivate
-      }
-      redirectToPrivateArea = {
-        redirectToPrivateArea
-      }
-      component = {
-        AppPrivate
-      }
-      location = {
-        this.props.location
-      }
-      history = {
-        this.props.history
-      }
-      routePrivate = {
-        routePrivate
-      }
-      routePublic = {
-        routePublic
-      }
-      routeGroup = {
-        routeGroup
-      }
-      routeGroups = {
-        routeGroups
-      }
-      routeThread = {
-        routeThread
-      }
-      groupList = {
-        groupList
-      }
-      fecthApi = {
-        this.fecthApi
-      }
-      getGroupName = {
-        this.getGroupName
-      }
-      savedGroupName = {
-        this.getGroupName
-      }
-      logOut = {
-        this.logOut
-      }
-      /> <
-      Route exact path = {
-        routePublic
-      }
-      render = {
-        props =>
-        <
-        AppPublic
-        errorClass = {
-          this.state.errorClass
-        }
-        redirectToPrivateArea = {
-          redirectToPrivateArea
-        }
-        location = {
-          props.location
-        }
-        history = {
-          props.history
-        }
-        onInputEmail = {
-          this.handleInputEmailLoginValue
-        }
-        onInputPsw = {
-          this.handleInputPswLoginValue
-        }
-        onSubmitBtn = {
-          this.handleSubmitLogin
-        }
-        justLog = {
-          justLog
-        }
-        turnOffJustLog = {
-          this.turnOffJustLog
-        }
-        />
-      }
-      /> <
-      /Switch> <
-      /div>
+    return (
+      <div className="container-fluid">
+        <Switch>
+          <PrivateRoute
+            path={routePrivate}
+            redirectToPrivateArea={redirectToPrivateArea}
+            component={AppPrivate}
+            location={this.props.location}
+            history={this.props.history}
+            routePrivate={routePrivate}
+            routePublic={routePublic}
+            routeGroup={routeGroup}
+            routeGroups={routeGroups}
+            routeThread={routeThread}
+            groupList={groupList}
+            fecthApi = {this.fecthApi}
+            getGroupName = {this.getGroupName}
+            savedGroupName = {this.getGroupName}
+            logOut = {this.logOut}
+          />
+          <Route
+            exact path={routePublic}
+            render={props =>
+              <AppPublic
+                errorClass={this.state.errorClass}
+                redirectToPrivateArea={redirectToPrivateArea}
+                location={props.location}
+                history={props.history}
+                onInputEmail={this.handleInputEmailLoginValue}
+                onInputPsw={this.handleInputPswLoginValue}
+                onSubmitBtn={this.handleSubmitLogin}
+                justLog={justLog}
+                turnOffJustLog={this.turnOffJustLog}
+              />
+            }
+          />
+        </Switch>
+      </div>
     );
   }
 }

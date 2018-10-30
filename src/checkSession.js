@@ -7,12 +7,12 @@ const CHECK = 2;
 
 export function checkSession(token) {
  
-  if(token === null && localStorage.getItem('token') === null) {
+  if(token === '' && localStorage.getItem('token') === null) {
    return OUT;
   } 
-  else if(token === null && localStorage.getItem('token') !== null) {
+  else if(token === '' && localStorage.getItem('token') !== null) {
     return CHECK;
-  } else if(token !== null && localStorage.getItem('token') !== null) {
+  } else if(token !== '' && localStorage.getItem('token') !== null) {
     return IN;
   } 
 }
