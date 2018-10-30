@@ -1,14 +1,10 @@
 import { combineReducers } from 'redux';
 
-// import listCatalogue from './listCatalogue';
-// import listCart from './listCart';
-// import listFavourites from './listFavourites';
+import storeSession from './storeSession';
 
 //genera el store general
 const rootReducer = combineReducers({
-  // listCatalogue,
-  // listCart,
-  // listFavourites,
+  storeSession,
 })
 
 export default rootReducer
