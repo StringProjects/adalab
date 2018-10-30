@@ -19,36 +19,25 @@ class WeInputButton extends Component {
 
 
   handleChangeInput = (e) =>{
-   this.setState({
-     inputValue: e.target.value
-   })
-   
-    
+    this.setState({
+      inputValue: e.target.value
+    });
   }
 
   handleSubmitSend(e){
     e.preventDefault();
     let inputText = this.state.inputValue;
-    // this.props.handleInputMessageValue(inputText);
     this.props.handlefetchSendMessage(e, inputText);
-    this.clearInput()
+    this.clearInput();
   }
 
   clearInput = () =>{
-      this.setState({
-        inputValue: ""
-      });
+    this.setState({
+      inputValue: ""
+    });
   }
 
-  render() {
-    const {
-    
-      handleInputMessageValue,
-      handlefetchSendMessage,
-      inputMessageValue,
-      sendMessageGroup,
-    }=this.props;
-   
+  render() {   
     return (
       <Form className='Input__form' onSubmit={this.handleSubmitSend}>
         <Input
@@ -63,7 +52,6 @@ class WeInputButton extends Component {
           <Button
             type="submit"
             className="btn Input__btn"
-            // onClick={handlefetchSendMessage}
           >
           <p>Enviar</p>
         </Button>
@@ -74,9 +62,6 @@ class WeInputButton extends Component {
 
 WeInputButton.propTypes = {
   handlefetchSendMessage: PropTypes.func.isRequired,
-  handleInputMessageValue: PropTypes.func.isRequired,
-  inputMessageValue: PropTypes.string.isRequired,
-  sendMessageGroup: PropTypes.func.isRequired,
 }
 
 export default WeInputButton;

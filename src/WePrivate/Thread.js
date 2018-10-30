@@ -1,20 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import WeHeaderThread from '../Components/WeHeaderThread';
-import ElementList from '../Components/WeListComponents/ElementList';
-import WeInputButton from '../Components/WeInputButton';
-import profile from '../images/panda.jpg';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import WeHeaderThread from "../Components/WeHeaderThread";
+import ElementList from "../Components/WeListComponents/ElementList";
+import WeInputButton from "../Components/WeInputButton";
+import profile from "../images/panda.jpg";
 
 class Thread extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
-    const {
-      id,
-      handleIdThread,
-    } = this.props;
+    const { id, handleIdThread } = this.props;
     handleIdThread(id);
   }
 
@@ -28,32 +21,26 @@ class Thread extends Component {
     } = this.props;
 
     if (threadPost.length === 0) {
-
       return (
         <div className="wrapper-thread">
-          <WeHeaderThread
-            rootRoute={rootRoute}
-            routeGroup={routeGroup}
-          />
-          <div className="msg-load"><p className="text-center">Cargando datos, si pasa más de 1 minuto inicia sesion de nuevo</p></div>
+          <WeHeaderThread rootRoute={rootRoute} routeGroup={routeGroup} />
+          <div className="msg-load">
+            <p className="text-center">
+              Cargando datos, si pasa más de 1 minuto inicia sesion de nuevo
+            </p>
+          </div>
         </div>
       );
     } else {
-
       return (
         <div className="wrapper-thread">
-          <WeHeaderThread
-            rootRoute={rootRoute}
-            routeGroup={routeGroup}
-          />
+          <WeHeaderThread rootRoute={rootRoute} routeGroup={routeGroup} />
           <div className="wrapper--list-thread">
             <ul className="list--welist">
-              {threadPost.map(function (thread, i) {
-
+              {threadPost.map(function(thread, i) {
                 return (
                   <li className="groupsli">
                     <ElementList
-                      image={profile}
                       id={thread.id}
                       image={profile}
                       name={thread.username}
@@ -61,7 +48,7 @@ class Thread extends Component {
                       message={thread.description}
                     />
                   </li>
-                )
+                );
               })}
             </ul>
           </div>
@@ -82,8 +69,7 @@ Thread.propTypes = {
   routeGroup: PropTypes.string.isRequired,
   threadPost: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
-  handleIdThread: PropTypes.func.isRequired,
-}
+  handleIdThread: PropTypes.func.isRequired
+};
 
 export default Thread;
-

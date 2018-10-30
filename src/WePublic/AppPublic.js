@@ -5,12 +5,9 @@ import Login from './Login';
 class AppPublic extends Component {
   render() {
     const {
-      openedErrorFeedback,
-      toggleErrorFeedback,
       onInputEmail,
       onInputPsw,
       onSubmitBtn,
-      getToken,
       location,
       history,
       redirectToPrivateArea,
@@ -24,10 +21,7 @@ class AppPublic extends Component {
         errorClass={errorClass}
         onInputEmail={onInputEmail}
         onInputPsw={onInputPsw}
-        openedErrorFeedback={openedErrorFeedback}
-        toggleErrorFeedback={toggleErrorFeedback}
         onSubmitBtn={onSubmitBtn}
-        getToken={getToken}
         redirectToPrivateArea={redirectToPrivateArea}
         location={location}
         history={history}
@@ -40,16 +34,12 @@ class AppPublic extends Component {
 
 AppPublic.propTypes = {
   errorClass: PropTypes.string.isRequired,
-  getToken: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   onInputEmail: PropTypes.func.isRequired,
   onInputPsw: PropTypes.func.isRequired,
   onSubmitBtn: PropTypes.func.isRequired,
   redirectToPrivateArea: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
-  //Estas 2 deberian borrarse
-  openedErrorFeedback: PropTypes,
-  toggleErrorFeedback: PropTypes,
 }
 
 export default AppPublic;

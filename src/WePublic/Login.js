@@ -18,10 +18,7 @@ class Login extends Component {
         const {
             onInputEmail,
             onInputPsw,
-            openedErrorFeedback,
-            toggleErrorFeedback,
             onSubmitBtn,
-            getToken,
             redirectToPrivateArea,
             location,
             errorClass,
@@ -39,7 +36,7 @@ class Login extends Component {
         return (
             <div className="wrapper-login">
                 <header className="header--login">
-                    <WeHeader />
+                    <WeHeader/>
                 </header>
                 <main className="main--login">
                     <Row>
@@ -58,9 +55,13 @@ class Login extends Component {
                             }}>
                             <div className="container--text-login">
                                 <div className="text-wrapp">
-                                    <h3 className="title--login text-center">¡Hola de nuevo!</h3>
+                                    <h3 className="title--login text-center">
+                                        ¡Hola de nuevo!
+                                    </h3>
                                 </div>
-                                <p className="subtitle--landing text-center">Escribe tu nombre de ususario y contraseña para entrar en We.</p>
+                                <p className="subtitle--landing text-center">
+                                    Escribe tu nombre de usuario y contraseña para entrar en We.
+                                </p>
                             </div>
                         </Col>
                         <Col
@@ -77,20 +78,28 @@ class Login extends Component {
                                 errorClass={errorClass}
                                 onInputEmail={onInputEmail}
                                 onInputPsw={onInputPsw}
-                                openedErrorFeedback={openedErrorFeedback}
-                                toggleErrorFeedback={toggleErrorFeedback}
                                 onSubmitBtn={onSubmitBtn}
-                                getToken={getToken}
                             />
                         </Col>
                     </Row>
                 </main>
                 <div className="footer-login">
-                    <p className="text-footer">2018 ©  We. by
-                     <a href="https://adalab.es/" target="_blank">
-                            <img className="logo-adalab" src={logoAdalab} alt="logo-adalab" />
+                    <p className="text-footer">
+                        2018 ©  We. by
+                        <a 
+                            href="https://adalab.es/" 
+                            target="_blank"
+                        >
+                            <img 
+                                className="logo-adalab" 
+                                src={logoAdalab} 
+                                alt="logo-adalab"
+                            />
                         </a>
-                        <span className="heart">❤︎</span></p>
+                        <span className="heart">
+                            ❤︎
+                        </span>
+                    </p>
                 </div>
             </div>
         );
@@ -101,7 +110,6 @@ Login.propTypes = {
     onInputEmail: PropTypes.func.isRequired,
     onInputPsw: PropTypes.func.isRequired,
     onSubmitBtn: PropTypes.func.isRequired,
-    getToken: PropTypes.func.isRequired,
     redirectToPrivateArea: PropTypes.bool.isRequired,
     location: PropTypes.object.isRequired,
     errorClass: PropTypes.string.isRequired,

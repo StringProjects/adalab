@@ -208,7 +208,6 @@ class AppPrivate extends Component {
       routePublic,
       routeGroup,
       routeThread,
-      location,
       fecthApi,
       getGroupName,
       computedMatch,
@@ -231,11 +230,6 @@ class AppPrivate extends Component {
               <div>
                 <WeHeader />
                 <WeButtonOption
-                  routePrivate={routePrivate}
-                  routePublic={routePublic}
-                  routeGroup={routeGroup}
-                  location={location}
-                  rootRoute={computedMatch.path}
                   handleDeleteLocalStorage={this.handleDeleteLocalStorage}
                 />
                 <Groups
@@ -262,13 +256,10 @@ class AppPrivate extends Component {
                   fetchApiMessages={this.handlefetchgroup}
                   match={props.match}
                   location={props.location}
-                  history={props.history}
                   routeGroup={routeGroup}
-                  routePrivate={routePrivate}
                   routePublic={routePublic}
                   routeThread={routeThread}
                   rootRoute={computedMatch.path}
-                  handleIdThread={this.handleIdThread}
                   handlefetchSendMessage={this.handlefetchSendMessage}
                   handleInputMessageValue={this.handleInputMessageValue}
                   inputMessageValue={this.inputMessageValue}
@@ -286,7 +277,6 @@ class AppPrivate extends Component {
               <Thread
                 threadPost={threadPost}
                 routeGroup={routeGroup}
-                threadPost={threadPost}
                 handlefetchSendMessage={this.handlefetchSendMessage}
                 handleInputMessageValue={this.handleInputMessageValue}
                 rootRoute={computedMatch.path}

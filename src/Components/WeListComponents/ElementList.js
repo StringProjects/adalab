@@ -23,7 +23,6 @@ class ElementList extends Component {
       handleIdThread 
     } = this.props;
     handleIdThread(id);
-    // console.log("aaaaaaa", this.props);
   }
 
   render() {
@@ -41,7 +40,7 @@ class ElementList extends Component {
       <Row className="ElementList-wrapper">
           
         <Col xs="4" md="3" lg="2" xl="2" className="ElementList_image-container">
-            <img className="rounded-circle ElementList-image" width="50px" height="50px" src={image} alt="profile picture" />
+            <img className="rounded-circle ElementList-image" width="50px" height="50px" src={image} alt="profile" />
         </Col>
         
         <Col xs="7" md="8" lg="7" xl="7" className="ElementList_text-container">

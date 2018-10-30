@@ -154,7 +154,7 @@ class App extends Component {
     const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
-console.log("match",this.props.match)
+
     return (
       <div className="container-fluid">
         <Switch>
@@ -186,7 +186,6 @@ console.log("match",this.props.match)
                 onInputEmail={this.handleInputEmailLoginValue}
                 onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
-                getToken={this.getToken}
                 justLog={justLog}
                 turnOffJustLog={this.turnOffJustLog}
               />
