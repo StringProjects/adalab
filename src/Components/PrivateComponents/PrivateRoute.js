@@ -1,27 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { 
   Route, 
   Redirect 
 } from 'react-router-dom';
+import {
+  connect
+} from 'react-redux';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  return (
-  <Route
-    {...rest}
-    render={(props) =>
-      rest.redirectToPrivateArea === true ? (
-        <Component {...props} {...rest} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/",
-            state: { from: props.location }
-          }}
-        />
-      )
-    }
-  />
-  )
-};
+class PrivateRoute extends Component {
+  render() {
+    
+    return (
+      <Route
+        path={"/private"}
+        render={(props) => {
+          debugger
+          this.props.redirectToPrivateArea === true ? (
+            this.props.children
+          ).bind(this) : (
+            <Redirect
+              to={{
+                pathname: this.props.public_path,
+                state: { from: this.props.location }
+              }}
+            />
+          )
+        }
+          
+        }
+      />
+    );
+  }
+}
+ 
+function mapStateToProps(state) {
+  return {
+    redirectToPrivateArea: state.storeSession.redirectToPrivateArea,
+  }
+}
 
-export default PrivateRoute;
+function mapDispatchToProps(dispatch) {
+  return {
+
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PrivateRoute)

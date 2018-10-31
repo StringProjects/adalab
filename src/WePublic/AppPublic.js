@@ -5,8 +5,6 @@ import Login from './Login';
 class AppPublic extends Component {
   render() {
     const {
-      onInputEmail,
-      onInputPsw,
       onSubmitBtn,
       location,
       history,
@@ -19,8 +17,6 @@ class AppPublic extends Component {
     return (
       <Login
         errorClass={errorClass}
-        onInputEmail={onInputEmail}
-        onInputPsw={onInputPsw}
         onSubmitBtn={onSubmitBtn}
         redirectToPrivateArea={redirectToPrivateArea}
         location={location}

@@ -222,12 +222,14 @@ class AppPrivate extends Component {
 
     return (
       <div className="wrapper-group">
+      <p>prueba</p>
         <Switch>
           <Route
             exact
             path={computedMatch.path}
             render={() =>
               <div>
+                
                 <WeHeader />
                 <WeButtonOption
                   handleDeleteLocalStorage={this.handleDeleteLocalStorage}

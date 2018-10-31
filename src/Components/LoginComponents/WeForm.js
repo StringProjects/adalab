@@ -14,6 +14,8 @@ class WeForm extends Component {
         this.state = {
             type: "password",
             classShow: "fa-eye-slash",
+            username: '',
+            password: '',
             show: false
         }
 
@@ -35,21 +37,28 @@ class WeForm extends Component {
             });
         }
     }
+
+    _success(){
+        window.location.replace('/private');
+    }
+
+    _submit(e){
+        e.preventDefault();
+        this.props.onSubmitBtn(this.state.username, this.state.password, false, 'error-hidden', true, this._success);
+    }
     
     render() {
         const {
-            onInputEmail, 
-            onInputPsw, 
             onSubmitBtn,
             errorClass,
         } = this.props;
    
         return (
             <div className="container--form-landing">
-                <Form className="form--style" onSubmit={onSubmitBtn}>
+                <Form className="form--style" onSubmit={this._submit.bind(this)}>
                     <FormGroup role="form">
                         <Input
-                            onChange={onInputEmail}
+                            onChange={(e) => {this.setState({username: e.target.value})}}
                             type="text"
                             className="form-control input--login-style"
                             id="email"
@@ -59,7 +68,7 @@ class WeForm extends Component {
                     </FormGroup>
                     <FormGroup role="form">
                         <Input
-                            onChange={onInputPsw}
+                            onChange={(e) => {this.setState({password: e.target.value})}}
                             type={this.state.type}
                             className="form-control input--login-style"
                             id="pwd"

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
 import {
     Row,
     Col,
@@ -9,6 +8,14 @@ import WeHeader from '../Components/WeHeader';
 import WeForm from '../Components/LoginComponents/WeForm';
 import logoAdalab from '../images/logo-adalab.svg';
 
+import {
+    connect
+  } from 'react-redux';
+
+import {
+    fetchSession
+} from '../actions';
+
 class Login extends Component {
     componentWillUnmount() {
         const { turnOffJustLog } = this.props
@@ -16,22 +23,12 @@ class Login extends Component {
     }
     render() {
         const {
-            onInputEmail,
-            onInputPsw,
             onSubmitBtn,
             redirectToPrivateArea,
             location,
             errorClass,
             justLog,
         } = this.props;
-
-        const { from } = location.state || { from: { pathname: '/private' } };
-        if (redirectToPrivateArea === true && justLog === true) {
-            return <Redirect to={'/private'} />
-        }
-        else if (redirectToPrivateArea === true && justLog === false) {
-            return <Redirect to={from} />
-        }
 
         return (
             <div className="wrapper-login">
@@ -76,9 +73,7 @@ class Login extends Component {
                             }}>
                             <WeForm
                                 errorClass={errorClass}
-                                onInputEmail={onInputEmail}
-                                onInputPsw={onInputPsw}
-                                onSubmitBtn={onSubmitBtn}
+                                onSubmitBtn={this.props.fetchSession}
                             />
                         </Col>
                     </Row>
@@ -115,4 +110,18 @@ Login.propTypes = {
     errorClass: PropTypes.string.isRequired,
 }
 
-export default Login;
+function mapStateToProps(state) {
+    return {
+    }
+  }
+  
+function mapDispatchToProps(dispatch) {
+    return {
+      fetchSession: (nickname, password, justLog, errorClass, redirectToPrivateArea, success) => dispatch(fetchSession(nickname, password, justLog, errorClass, redirectToPrivateArea, success))
+    }
+  }
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(Login)

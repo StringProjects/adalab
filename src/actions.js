@@ -28,7 +28,7 @@ export function showError(errorClass) {
   };
 }
 
-export function fetchSession(nickname, password, justLog, errorClass, redirectToPrivateArea) {
+export function fetchSession(nickname, password, justLog, errorClass, redirectToPrivateArea, success) {
   console.log(nickname, password, justLog, errorClass, redirectToPrivateArea)
   return (dispatch) => {
     return   fetch('https://adalab.string-projects.com/api/v1/sessions', {
@@ -47,7 +47,9 @@ export function fetchSession(nickname, password, justLog, errorClass, redirectTo
        
             dispatch(saveToken(data.user.auth_token));
             localStorage.setItem('token', data.user.auth_token);
-            localStorage.setItem('groupName', data.groups[0].name);
+            //localStorage.setItem('groupName', data.groups[0].name);
+            debugger
+            success();
             dispatch(userSingUp(justLog, errorClass, redirectToPrivateArea, data.groups))
           });
       } else {

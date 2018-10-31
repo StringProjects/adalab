@@ -3,7 +3,8 @@ import React, {
 } from 'react';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect 
 } from 'react-router-dom';
 import AppPublic from './WePublic/AppPublic';
 import AppPrivate from './WePrivate/AppPrivate';
@@ -23,26 +24,8 @@ import {
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      user: '',
-      psw: '',
-    }
-    this.changeStates = this.changeStates.bind(this);
+    //this.changeStates = this.changeStates.bind(this);
     this.turnOffJustLog = this.turnOffJustLog.bind(this);
-    this.handleSubmitLogin = this
-      .handleSubmitLogin
-      .bind(this);
-    this.handleInputEmailLoginValue = this
-      .handleInputEmailLoginValue
-      .bind(this);
-    this.handleInputPswLoginValue = this
-      .handleInputPswLoginValue
-      .bind(this);
-    // this.redirectTo = this.redirectTo.bind(this);
-    // //this.fecthApi = this.fecthApi.bind(this);
-    // this.savedToken = this.savedToken.bind(this);
-    // this.getToken = this.getToken.bind(this);
-    // this.savedGroupName = this.savedGroupName.bind(this);
     // this.getGroupName = this.getGroupName.bind(this);
     // this.logOut = this.logOut.bind(this)
   }
@@ -71,63 +54,17 @@ class App extends Component {
     }
   }
 
-  changeStates() {
-    if (this.getToken() !== null) {
-      this.setState({
-        redirectToPrivateArea: true,
-        justLog: true,
-      });
-    }
-  }
-
-  // fecthApi() {
-  //   fetch('https://adalab.string-projects.com/api/v1/sessions', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       "nickname": this.state.user,
-  //       "password": this.state.psw
-  //     })
-  //   }).then((response) => {
-  //     if (response.ok) {
-  //       return response.json()
-  //         .then((data) => {
-  //           this.savedToken(data.user.auth_token)
-  //           this.savedGroupName(data.groups[0].name)
-  //           this.changeStates();
-  //           this.setState({ 
-  //             errorClass: "error-hidden", 
-  //             groupList: data.groups 
-  //           });
-  //         });
-  //     } else {
-  //       this.setState({ 
-  //         errorClass: "" 
-  //       });
-  //     }
-
-  //   })
+  // changeStates() {
+  //   if (this.getToken() !== null) {
+  //     this.setState({
+  //       redirectToPrivateArea: true,
+  //       justLog: true,
+  //     });
+  //   }
   // }
 
-  handleInputEmailLoginValue(e) {
-    const {
-      value
-    } = e.target;
-    this.setState({
-      user: value
-    });
-  }
 
-  handleInputPswLoginValue(e) {
-    const {
-      value
-    } = e.target;
-    this.setState({
-      psw: value
-    });
-  }
+  
 
   handleSubmitLogin(e) {
     console.log(this.props)
@@ -161,49 +98,37 @@ class App extends Component {
 
   render() {
     console.log('token en app', this.props)
-    const {
-      redirectToPrivateArea,
-      groupList,
-      justLog
-    } = this.props;
+    // const {
+    //   redirectToPrivateArea,
+    //   groupList,
+    //   justLog
+    // } = this.props;
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
     const routeGroup = '/group';
     const routeThread = '/thread';
-
+    
     return (
       <div className="container-fluid">
         <Switch>
-          <PrivateRoute
-            path={routePrivate}
-            redirectToPrivateArea={redirectToPrivateArea}
-            component={AppPrivate}
-            location={this.props.location}
-            history={this.props.history}
-            routePrivate={routePrivate}
-            routePublic={routePublic}
-            routeGroup={routeGroup}
-            routeGroups={routeGroups}
-            routeThread={routeThread}
-            groupList={groupList}
-            fecthApi = {this.fecthApi}
-            getGroupName = {this.getGroupName}
-            savedGroupName = {this.getGroupName}
-            logOut = {this.logOut}
+          <Route
+            path={"/private"}
+            render={(props) => {
+              return (<div>Hola</div>);
+            }
+          }
           />
           <Route
             exact path={routePublic}
             render={props =>
               <AppPublic
                 errorClass={this.props.errorClass}
-                redirectToPrivateArea={redirectToPrivateArea}
+                redirectToPrivateArea={this.props.redirectToPrivateArea}
                 location={props.location}
                 history={props.history}
-                onInputEmail={this.handleInputEmailLoginValue}
-                onInputPsw={this.handleInputPswLoginValue}
                 onSubmitBtn={this.handleSubmitLogin}
-                justLog={justLog}
+                justLog={this.props.justLog}
                 turnOffJustLog={this.turnOffJustLog}
               />
             }
@@ -225,7 +150,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchSession: (nickname, password, justLog, errorClass, redirectToPrivateArea) => dispatch(fetchSession(nickname, password, justLog, errorClass, redirectToPrivateArea))
   }
 }
 
