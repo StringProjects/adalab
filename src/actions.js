@@ -1,5 +1,7 @@
 import { 
-  SAVE_TOKEN
+  SAVE_TOKEN,
+  SING_UP,
+  SHOW_ERROR
 } from './constants';
 
 export function saveToken(token) {
@@ -8,8 +10,26 @@ export function saveToken(token) {
     token,
   };
 }
+export function userSingUp(justLog, errorClass, redirectToPrivateArea, groupList) {
+  justLog = true;
+  errorClass= "error-hidden";
+  redirectToPrivateArea = true;
+  return {
+    type: SING_UP,
+    justLog, errorClass, redirectToPrivateArea, groupList
+  };
+}
 
-export function fetchSession(nickname, password) {
+export function showError(errorClass) {
+  errorClass = ""
+  return {
+    type: SHOW_ERROR,
+    errorClass
+  };
+}
+
+export function fetchSession(nickname, password, justLog, errorClass, redirectToPrivateArea) {
+  console.log(nickname, password, justLog, errorClass, redirectToPrivateArea)
   return (dispatch) => {
     return   fetch('https://adalab.string-projects.com/api/v1/sessions', {
       method: 'POST',
@@ -24,20 +44,14 @@ export function fetchSession(nickname, password) {
       if (response.ok) {
         return response.json()
           .then((data) => {
-            dispatch(saveToken(data.user.auth_token))
-            localStorage.setItem('token', data.user.auth_token)
-            // this.savedToken(data.user.auth_token)
-            // this.savedGroupName(data.groups[0].name)
-            // this.changeStates();
-            // this.setState({ 
-            //   errorClass: "error-hidden", 
-            //   groupList: data.groups 
-            // });
+       
+            dispatch(saveToken(data.user.auth_token));
+            localStorage.setItem('token', data.user.auth_token);
+            localStorage.setItem('groupName', data.groups[0].name);
+            dispatch(userSingUp(justLog, errorClass, redirectToPrivateArea, data.groups))
           });
       } else {
-        this.setState({ 
-          errorClass: "" 
-        });
+        dispatch(showError(errorClass))
       }
   
     })

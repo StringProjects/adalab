@@ -1,5 +1,9 @@
 const SAVE_TOKEN = 'SAVE_TOKEN';
+const SING_UP = 'SING_UP';
+const SHOW_ERROR = 'SHOW_ERROR';
 
 export {
   SAVE_TOKEN,
+  SING_UP,
+  SHOW_ERROR
 };
