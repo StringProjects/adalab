@@ -13,7 +13,7 @@ import {
   connect
 } from 'react-redux';
 import {
-  fetchSession
+  fetchSession, userSingUp
 } from './actions';
 
 import {
@@ -26,10 +26,6 @@ class App extends Component {
     this.state = {
       user: '',
       psw: '',
-      errorClass: "error-hidden",
-      redirectToPrivateArea: false,
-      groupList: [],
-      justLog: false
     }
     this.changeStates = this.changeStates.bind(this);
     this.turnOffJustLog = this.turnOffJustLog.bind(this);
@@ -42,20 +38,20 @@ class App extends Component {
     this.handleInputPswLoginValue = this
       .handleInputPswLoginValue
       .bind(this);
-    this.redirectTo = this.redirectTo.bind(this);
-    //this.fecthApi = this.fecthApi.bind(this);
-    this.savedToken = this.savedToken.bind(this);
-    this.getToken = this.getToken.bind(this);
-    this.savedGroupName = this.savedGroupName.bind(this);
-    this.getGroupName = this.getGroupName.bind(this);
-    this.logOut = this.logOut.bind(this)
+    // this.redirectTo = this.redirectTo.bind(this);
+    // //this.fecthApi = this.fecthApi.bind(this);
+    // this.savedToken = this.savedToken.bind(this);
+    // this.getToken = this.getToken.bind(this);
+    // this.savedGroupName = this.savedGroupName.bind(this);
+    // this.getGroupName = this.getGroupName.bind(this);
+    // this.logOut = this.logOut.bind(this)
   }
 
   componentDidMount() {
     if (checkSession(this.props.token) === 1) {
       console.log('out')
     } else if (checkSession(this.props.token) === 2) {
-      console.log('check')
+      
     } else if (checkSession(this.props.token) === 0) {
       console.log('in')
     }
@@ -134,17 +130,18 @@ class App extends Component {
   }
 
   handleSubmitLogin(e) {
+    console.log(this.props)
     e.preventDefault();
-    this.props.fetchSession(this.state.user, this.state.psw);
+    this.props.fetchSession(this.state.user, this.state.psw, this.props.justLog, this.props.errorClass, this.props.redirectToPrivateArea);
   }
 
-  savedToken(token) {
-    localStorage.setItem('token', token);
-  }
+  // savedToken(token) {
+  //   localStorage.setItem('token', token);
+  // }
 
-  savedGroupName(groupName) {
-    localStorage.setItem('groupName', groupName);
-  }
+  // savedGroupName(groupName) {
+  //   localStorage.setItem('groupName', groupName);
+  // }
 
   getToken() {
     return localStorage.getItem('token');
@@ -163,12 +160,12 @@ class App extends Component {
   }
 
   render() {
-    console.log('token en app', this.props.token)
+    console.log('token en app', this.props)
     const {
       redirectToPrivateArea,
       groupList,
       justLog
-    } = this.state;
+    } = this.props;
     const routePrivate = '/private';
     const routePublic = '/';
     const routeGroups = '/groups';
@@ -199,7 +196,7 @@ class App extends Component {
             exact path={routePublic}
             render={props =>
               <AppPublic
-                errorClass={this.state.errorClass}
+                errorClass={this.props.errorClass}
                 redirectToPrivateArea={redirectToPrivateArea}
                 location={props.location}
                 history={props.history}
@@ -220,12 +217,15 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     token: state.storeSession.token,
+    justLog: state.storeSession.justLog,
+    errorClass: state.storeSession.errorClass,
+    redirectToPrivateArea: state.storeSession.redirectToPrivateArea,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchSession: (nickname, password) => dispatch(fetchSession(nickname, password))
+    fetchSession: (nickname, password, justLog, errorClass, redirectToPrivateArea) => dispatch(fetchSession(nickname, password, justLog, errorClass, redirectToPrivateArea))
   }
 }
 
